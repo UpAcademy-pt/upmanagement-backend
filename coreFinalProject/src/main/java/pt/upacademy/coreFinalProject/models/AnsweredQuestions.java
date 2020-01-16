@@ -1,12 +1,11 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
 
 @Entity
-public class AnsweredQuestions extends Entity_ implements Serializable {
+public class AnsweredQuestions extends Entity_ {
 	
 	private static final long serialVersionUID = 1L;
 	

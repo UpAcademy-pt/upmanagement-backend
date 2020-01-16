@@ -13,10 +13,29 @@ public class Answer extends Entity_{
 		singleOption
 	}
 	
-	
 	private String answer;
 	private AnswerType rtype;
 	private long questionId;
+	
+	
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	public AnswerType getRtype() {
+		return rtype;
+	}
+	public void setRtype(AnswerType rtype) {
+		this.rtype = rtype;
+	}
+	public long getQuestionId() {
+		return questionId;
+	}
+	public void setQuestionId(long questionId) {
+		this.questionId = questionId;
+	}
 	
 	
 	
