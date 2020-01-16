@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.Services;
 
+import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -28,6 +30,10 @@ public class EntityService<R extends EntityRepository<E>, E extends Entity_> {
 	
 	public void delete(long id ) {
 		repository.deleteEntity(id);
+	}
+	
+	public Collection<E> getAll(){
+		return repository.getAll();
 	}
 
 }
