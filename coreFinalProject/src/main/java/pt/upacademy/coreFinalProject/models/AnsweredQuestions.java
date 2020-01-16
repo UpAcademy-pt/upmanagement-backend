@@ -1,27 +1,26 @@
 package pt.upacademy.coreFinalProject.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class AnsweredQuestions {
+import javax.persistence.Entity;
+
+@Entity
+public class AnsweredQuestions extends Entity_ implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private enum Qtype {
 		quiz,
 		evaluation
 	}
 	
-	private long id;
 	private Account accountId;
-	private List<Question> QuestionsList;
+	private List<Question> questionsList;
 	private long templateId;
 	private Qtype type;
 	
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public Account getAccountId() {
 		return accountId;
 	}
@@ -29,10 +28,10 @@ public class AnsweredQuestions {
 		this.accountId = accountId;
 	}
 	public List<Question> getQuestionsList() {
-		return QuestionsList;
+		return questionsList;
 	}
 	public void setQuestionsList(List<Question> questionsList) {
-		QuestionsList = questionsList;
+		this.questionsList = questionsList;
 	}
 	public long getTemplateId() {
 		return templateId;
@@ -47,5 +46,6 @@ public class AnsweredQuestions {
 		this.type = type;
 	}
 	
+
 	
 }
