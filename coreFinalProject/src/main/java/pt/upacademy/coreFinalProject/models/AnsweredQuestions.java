@@ -44,6 +44,7 @@ public class AnsweredQuestions extends Entity_ implements Serializable {
 	}
 	public void setType(Qtype type) {
 		this.type = type;
+		
 	}
 	
 
