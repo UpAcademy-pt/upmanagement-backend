@@ -2,22 +2,19 @@ package pt.upacademy.coreFinalProject.models;
 
 import java.util.List;
 
-public class Account {
+import javax.persistence.Entity;
+
+@Entity
+public class Account extends Entity_ {
 		private List<Long> userAcademies;
 		private String permissions;
 		private Long userId;
 		private String email;
 		private String name;
-		//private AnsweredQuestions data;
+		private AnsweredQuestions data;
 		
-		public Account(List<Long> userAcademies, String permissions, Long userId, String email, String name) {
-			this.userAcademies = userAcademies;
-			this.permissions = permissions;
-			this.userId = userId;
-			this.email = email;
-			this.name = name;
-		}
-
+		private static final long serialVersionUID = 1L;
+		
 		public List<Long> getUserAcademies() {
 			return userAcademies;
 		}
@@ -58,12 +55,12 @@ public class Account {
 			this.name = name;
 		}
 
-//        public AnsweredQuestions getData() {
-//			return data;
-//		}
+        public AnsweredQuestions getData() {
+			return data;
+		}
 
-//		public void setData(AnsweredQuestions data) {
-//			this.data = data;
-//		}
+		public void setData(AnsweredQuestions data) {
+			this.data = data;
+		}
 
 	}
