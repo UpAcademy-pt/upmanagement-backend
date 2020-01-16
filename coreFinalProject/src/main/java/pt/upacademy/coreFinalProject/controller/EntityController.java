@@ -39,11 +39,11 @@ public abstract class EntityController<S extends EntityService<R,E>, R extends E
 			}
 	}
 	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-		public List<E> getAll(){
-		return entityToDto(service.getAll());
-	}
+//	@GET
+//	@Produces(MediaType.APPLICATION_JSON)
+//		public List<E> getAll(){
+//		return service.getAll();
+//	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

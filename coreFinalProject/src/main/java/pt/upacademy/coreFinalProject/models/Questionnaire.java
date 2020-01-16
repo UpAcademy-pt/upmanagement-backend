@@ -3,10 +3,14 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q")})
 public class Questionnaire extends Entity_{
 
+	public static final String GET_ALL_QUESTIONNAIRES = "getAllQuestionnaire";
 	private static final long serialVersionUID = 1L;
 	
 	private List<Question> questionList;
