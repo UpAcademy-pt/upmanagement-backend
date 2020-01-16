@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 @Entity
 public class Question extends Entity_{
 
+	private static final long serialVersionUID = 1L;
+	
 	private enum AnswerType {
 		multiple,
 		open,
