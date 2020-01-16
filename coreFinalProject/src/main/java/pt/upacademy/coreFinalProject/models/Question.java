@@ -1,6 +1,9 @@
 package pt.upacademy.coreFinalProject.models;
 
-public class Question {
+import javax.persistence.Entity;
+
+@Entity
+public class Question extends Entity_{
 
 	private enum AnswerType {
 		multiple,

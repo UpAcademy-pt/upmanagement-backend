@@ -2,7 +2,10 @@ package pt.upacademy.coreFinalProject.models;
 
 import java.util.List;
 
-public class Questionnaire {
+import javax.persistence.Entity;
+
+@Entity
+public class Questionnaire extends Entity_{
 
 	private List<Question> questionList;
 	private String name;
