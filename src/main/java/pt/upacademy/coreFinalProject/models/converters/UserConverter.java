@@ -1,9 +1,12 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
+import javax.enterprise.context.RequestScoped;
+
 import pt.upacademy.coreFinalProject.models.User;
 import pt.upacademy.coreFinalProject.models.DTOS.UserDTO;
 import pt.upacademy.coreFinalProject.services.UserService;
 
+@RequestScoped
 public class UserConverter extends EntityConverter<User, UserDTO>{
 
 	public User toEntity(UserDTO dto) {
