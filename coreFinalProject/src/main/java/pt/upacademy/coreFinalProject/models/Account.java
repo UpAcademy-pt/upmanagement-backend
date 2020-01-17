@@ -3,26 +3,32 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 
 @Entity
+@NamedQueries({ @NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a")})
 public class Account extends Entity_ {
 
+	public static final String GET_ALL_ACCOUNTS = "getAllAccounts";
 	private static final long serialVersionUID = 1L;
 
-	private List<Long> userAcademies;
+	
+	//private List<Long> userAcademies;
 	private String permissions;
-	private Long userId;
+	private long userId;
 	private String email;
 	private String name;
-	private AnsweredQuestions data;
+	//private AnsweredQuestions data;
 
-	public List<Long> getUserAcademies() {
-		return userAcademies;
-	}
-
-	public void setUserAcademies(List<Long> userAcademies) {
-		this.userAcademies = userAcademies;
-	}
+//	public List<Long> getUserAcademies() {
+//		return userAcademies;
+//	}
+//
+//	public void setUserAcademies(List<Long> userAcademies) {
+//		this.userAcademies = userAcademies;
+//	}
 
 	public String getPermissions() {
 		return permissions;
@@ -56,12 +62,12 @@ public class Account extends Entity_ {
 		this.name = name;
 	}
 
-	public AnsweredQuestions getData() {
-		return data;
-	}
-
-	public void setData(AnsweredQuestions data) {
-		this.data = data;
-	}
+//	public AnsweredQuestions getData() {
+//		return data;
+//	}
+//
+//	public void setData(AnsweredQuestions data) {
+//		this.data = data;
+//	}
 
 }

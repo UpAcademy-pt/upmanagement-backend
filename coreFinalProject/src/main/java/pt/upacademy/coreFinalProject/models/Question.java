@@ -1,10 +1,14 @@
 package pt.upacademy.coreFinalProject.models;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = Question.GET_ALL_QUESTIONS, query = "SELECT q FROM Question q")})
 public class Question extends Entity_{
 
+	public static final String GET_ALL_QUESTIONS = "getAllQuestion";
 	private static final long serialVersionUID = 1L;
 	
 	private enum AnswerType {
@@ -56,6 +60,6 @@ public class Question extends Entity_{
 	}
 	
 	
-	
+
 	
 }

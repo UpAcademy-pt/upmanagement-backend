@@ -3,10 +3,14 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = AnsweredQuestions.GET_ALL_ANSWEREDQUESTIONS, query = "SELECT a FROM AnsweredQuestions a")})
 public class AnsweredQuestions extends Entity_ {
 	
+	public static final String GET_ALL_ANSWEREDQUESTIONS = "getAllAnsweredQuestions";
 	private static final long serialVersionUID = 1L;
 	
 	private enum Qtype {
@@ -15,7 +19,7 @@ public class AnsweredQuestions extends Entity_ {
 	}
 	
 	private Account accountId;
-	private List<Question> questionsList;
+	//private List<Question> questionsList;
 	private long templateId;
 	private Qtype type;
 	
@@ -26,12 +30,12 @@ public class AnsweredQuestions extends Entity_ {
 	public void setAccountId(Account accountId) {
 		this.accountId = accountId;
 	}
-	public List<Question> getQuestionsList() {
-		return questionsList;
-	}
-	public void setQuestionsList(List<Question> questionsList) {
-		this.questionsList = questionsList;
-	}
+//	public List<Question> getQuestionsList() {
+//		return questionsList;
+//	}
+//	public void setQuestionsList(List<Question> questionsList) {
+//		this.questionsList = questionsList;
+//	}
 	public long getTemplateId() {
 		return templateId;
 	}
