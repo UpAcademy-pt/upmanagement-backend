@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q")})
-public class Questionnaire extends Entity_{
+public class Questionnaire extends EntityRoot{
 
 	public static final String GET_ALL_QUESTIONNAIRES = "getAllQuestionnaire";
 	private static final long serialVersionUID = 1L;

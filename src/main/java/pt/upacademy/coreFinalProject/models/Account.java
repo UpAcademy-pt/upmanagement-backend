@@ -9,7 +9,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a")})
-public class Account extends Entity_ {
+public class Account extends EntityRoot {
 
 	public static final String GET_ALL_ACCOUNTS = "getAllAccounts";
 	private static final long serialVersionUID = 1L;

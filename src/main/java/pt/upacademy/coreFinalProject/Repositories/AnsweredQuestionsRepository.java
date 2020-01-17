@@ -1,4 +1,4 @@
-package pt.upacademy.coreFinalProject.Repositories;
+package pt.upacademy.coreFinalProject.repositories;
 
 import javax.enterprise.context.RequestScoped;
 
