@@ -10,13 +10,23 @@ public class Module extends EntityRoot implements Serializable {
 	private List<Evaluation> evaluation;
 	private List<String> themes;
 	private String name;
+	private List<User> teachers;
 
 	public Module() {}
 	
-	public Module(List<Evaluation> evaluation, List<String> themes, String name) {
+	public Module(List<Evaluation> evaluation, List<String> themes, String name, List<User> teachers) {
 		this.evaluation = evaluation;
 		this.themes = themes;
 		this.name = name;
+		this.teachers = teachers;
+	}
+
+	public List<User> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(List<User> teachers) {
+		this.teachers = teachers;
 	}
 
 	public List<Evaluation> getEvaluation() {
