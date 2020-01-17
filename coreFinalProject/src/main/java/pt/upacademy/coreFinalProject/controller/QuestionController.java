@@ -9,6 +9,6 @@ import pt.upacademy.coreFinalProject.models.Question;
 
 @Path("question")
 @RequestScoped
-public class QuestionController extends EntityController<QuestionService, QuestionRepository, Question>{
+public class QuestionController extends EntityController_<QuestionService, QuestionRepository, Question>{
 
 }

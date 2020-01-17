@@ -10,7 +10,7 @@ import pt.upacademy.coreFinalProject.models.Entity_;
 
 
 @Transactional
-public abstract class EntityRepository<T extends Entity_> {
+public abstract class EntityRepository_<T extends Entity_> {
 	
 	@PersistenceContext(unitName = "database")
 	protected EntityManager em;

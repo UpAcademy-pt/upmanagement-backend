@@ -6,6 +6,6 @@ import pt.upacademy.coreFinalProject.Repositories.AnsweredQuestionsRepository;
 import pt.upacademy.coreFinalProject.models.AnsweredQuestions;
 
 @RequestScoped
-public class AnsweredQuestionsService extends EntityService<AnsweredQuestionsRepository, AnsweredQuestions>{
+public class AnsweredQuestionsService extends EntityService_<AnsweredQuestionsRepository, AnsweredQuestions>{
 
 }

@@ -17,7 +17,6 @@ public class Questionnaire extends Entity_{
 	private static final long serialVersionUID = 1L;
 	
 	@OneToMany
-	
 	private List<Question> questionList;
 	private String name;
 	private boolean template;

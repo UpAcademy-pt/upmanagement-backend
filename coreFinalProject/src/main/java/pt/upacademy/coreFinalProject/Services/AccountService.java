@@ -6,7 +6,7 @@ import pt.upacademy.coreFinalProject.Repositories.AccountRepository;
 import pt.upacademy.coreFinalProject.models.Account;
 
 @RequestScoped
-public class AccountService extends EntityService<AccountRepository, Account>{
+public class AccountService extends EntityService_<AccountRepository, Account>{
 
 	
 	

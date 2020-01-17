@@ -5,7 +5,7 @@ import javax.enterprise.context.RequestScoped;
 import pt.upacademy.coreFinalProject.models.Answer;
 
 @RequestScoped
-public class AnswerRepository extends EntityRepository<Answer>{
+public class AnswerRepository extends EntityRepository_<Answer>{
 
 	@Override
 	protected Class<Answer> getEntityClass() {

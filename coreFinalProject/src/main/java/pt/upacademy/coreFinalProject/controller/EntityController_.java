@@ -15,12 +15,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import pt.upacademy.coreFinalProject.Repositories.EntityRepository;
-import pt.upacademy.coreFinalProject.Services.EntityService;
+import pt.upacademy.coreFinalProject.Repositories.EntityRepository_;
+import pt.upacademy.coreFinalProject.Services.EntityService_;
 import pt.upacademy.coreFinalProject.models.Entity_;
 
 @Transactional
-public abstract class EntityController<S extends EntityService<R,E>, R extends EntityRepository<E>,E extends Entity_> {
+public abstract class EntityController_<S extends EntityService_<R,E>, R extends EntityRepository_<E>,E extends Entity_> {
 	
 	@Inject
 	protected S service;

@@ -6,6 +6,6 @@ import pt.upacademy.coreFinalProject.Repositories.QuestionnaireRepository;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
 
 @RequestScoped
-public class QuestionnaireService extends EntityService<QuestionnaireRepository, Questionnaire> {
+public class QuestionnaireService extends EntityService_<QuestionnaireRepository, Questionnaire> {
 
 }

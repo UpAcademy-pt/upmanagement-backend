@@ -5,7 +5,7 @@ import javax.enterprise.context.RequestScoped;
 import pt.upacademy.coreFinalProject.models.Account;
 
 @RequestScoped
-public class AccountRepository extends EntityRepository<Account>{
+public class AccountRepository extends EntityRepository_<Account>{
 
 	@Override
 	protected Class<Account> getEntityClass() {
