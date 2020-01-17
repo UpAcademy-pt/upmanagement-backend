@@ -1,15 +1,9 @@
 package pt.upacademy.coreFinalProject.models;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import pt.upacademy.coreFinalProject.models.DTOS.EntityDTO;
 
-@Entity
-@NamedQueries({ @NamedQuery(name = Question.GET_ALL_QUESTIONS, query = "SELECT q FROM Question q")})
-public class Question extends Entity_{
 
-	public static final String GET_ALL_QUESTIONS = "getAllQuestion";
-	private static final long serialVersionUID = 1L;
+public class QuestionDTO extends EntityDTO  {
 	
 	public enum AnswerType {
 		multiple,
@@ -25,10 +19,27 @@ public class Question extends Entity_{
 	
 	private String question;
 	private AnswerType aType;
-	private long rightAnswer;
 	private long[] options;
 	private Filter filter;
 	
+	
+
+	
+	public QuestionDTO(String question, AnswerType aType, long[] options, Filter filter) {
+		this.question = question;
+		this.aType = aType;
+		this.options = options;
+		this.filter = filter;
+	}
+
+	public QuestionDTO() {
+	}
+
+//	public QuestionDTO(String question2, pt.upacademy.coreFinalProject.models.Question.AnswerType getaType,
+//			long[] options2, pt.upacademy.coreFinalProject.models.Question.Filter filter2) {
+//		// TODO Auto-generated constructor stub
+//	}
+
 	public String getQuestion() {
 		return question;
 	}
@@ -40,12 +51,6 @@ public class Question extends Entity_{
 	}
 	public void setaType(AnswerType aType) {
 		this.aType = aType;
-	}
-	public long getRightAnswer() {
-		return rightAnswer;
-	}
-	public void setRightAnswer(long rightAnswer) {
-		this.rightAnswer = rightAnswer;
 	}
 	public long[] getOptions() {
 		return options;
@@ -60,8 +65,5 @@ public class Question extends Entity_{
 		this.filter = filter;
 	}
 
-	
-	
 
-	
 }
