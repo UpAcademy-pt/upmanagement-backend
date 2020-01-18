@@ -7,14 +7,12 @@ public class ModuleRepository extends EntityRepository<Module, ModuleDTO> {
 
 	@Override
 	protected Class<Module> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Module.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return Module.GET_ALL_MODULES;
 	}
 
 }

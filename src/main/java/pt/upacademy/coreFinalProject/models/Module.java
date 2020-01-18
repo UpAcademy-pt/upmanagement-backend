@@ -1,11 +1,21 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class Module extends EntityRoot implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@Entity
+@NamedQueries({
+	@NamedQuery(name = Module.GET_ALL_MODULES, query = "SELECT m FROM Module m")
+})
+
+public class Module extends EntityRoot {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL_MODULES = "getAllModules";
 
 	private List<Evaluation> evaluation;
 	private List<String> themes;

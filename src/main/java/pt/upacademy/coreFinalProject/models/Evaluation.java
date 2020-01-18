@@ -1,30 +1,43 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class Evaluation extends EntityRoot implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+
+@Entity
+@NamedQueries({
+	@NamedQuery(name = Evaluation.GET_ALL_EVALUATIONS, query = "SELECT e FROM Evaluation e")
+})		
+
+public class Evaluation extends EntityRoot {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL_EVALUATIONS = "getAllEvaluations";
 
 	private long userId;
-	private Map<String, Integer> grades = new HashMap<String, Integer> ();
+	@OneToMany
+	@OrderBy("sdgsdg")
+	private List<Grade> grades;
 	private String comment;
 	
 	public Evaluation() {}
 	
-	public Evaluation(long userId, Map<String, Integer> grades, String comment) {
+	public Evaluation(long userId, List<Grade> grades, String comment) {
 		this.userId = userId;
 		this.grades = grades;
 		this.comment = comment;
 	}
 
-	public Map<String, Integer> getGrades() {
+	public List<Grade> getGrades() {
 		return grades;
 	}
 
-	public void setGrades(Map<String, Integer> grades) {
+	public void setGrades(List<Grade> grades) {
 		this.grades = grades;
 	}
 
