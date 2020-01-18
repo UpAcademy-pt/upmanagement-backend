@@ -1,28 +1,21 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-public class QuestionDTO {
+import pt.upacademy.coreFinalProject.models.AnswerType;
+import pt.upacademy.coreFinalProject.models.Role;
 
-	public enum AnswerType {
-		multiple,
-		open,
-		singleOption
-	}
-	
-	public enum Filter {
-		academy,
-		trainer,
-		student
-	}
+public class QuestionDTO extends EntityDTO {
+
+
 	
 	private String question;
 	private AnswerType aType;
-	private long[] options;
-	private Filter filter;
+	private String[] options;
+	private Role filter;
 	
 	
 
 	
-	public QuestionDTO(String question, AnswerType aType, long[] options, Filter filter) {
+	public QuestionDTO(String question, AnswerType aType, String[] options, Role filter) {
 		this.question = question;
 		this.aType = aType;
 		this.options = options;
@@ -49,16 +42,16 @@ public class QuestionDTO {
 	public void setaType(AnswerType aType) {
 		this.aType = aType;
 	}
-	public long[] getOptions() {
+	public String[] getOptions() {
 		return options;
 	}
-	public void setOptions(long[] options) {
+	public void setOptions(String[] options) {
 		this.options = options;
 	}
-	public Filter getFilter() {
+	public Role getFilter() {
 		return filter;
 	}
-	public void setFilter(Filter filter) {
+	public void setFilter(Role filter) {
 		this.filter = filter;
 	}
 	

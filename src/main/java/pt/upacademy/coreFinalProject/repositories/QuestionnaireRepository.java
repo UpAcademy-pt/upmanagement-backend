@@ -1,11 +1,11 @@
-package pt.upacademy.coreFinalProject.Repositories;
+package pt.upacademy.coreFinalProject.repositories;
 
 import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.Questionnaire;
 
 @RequestScoped
-public class QuestionnaireRepository extends EntityRepository_<Questionnaire>{
+public class QuestionnaireRepository extends EntityRepository<Questionnaire>{
 
 	@Override
 	protected Class<Questionnaire> getEntityClass() {

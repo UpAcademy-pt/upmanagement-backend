@@ -4,7 +4,7 @@ import java.util.List;
 
 import pt.upacademy.coreFinalProject.models.DTOS.EntityDTO;
 
-public class QuestionnaireDTO {
+public class QuestionnaireDTO extends EntityDTO{
 
 	private List<QuestionDTO> questionList;
 	private String name;

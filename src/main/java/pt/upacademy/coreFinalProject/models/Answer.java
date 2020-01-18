@@ -11,12 +11,6 @@ public class Answer extends EntityRoot{
 	public static final String GET_ALL_ANSWERS = "getAllAnswers";
 	private static final long serialVersionUID = 1L;
 	
-	private enum AnswerType {
-		multiple,
-		open,
-		singleOption
-	}
-	
 	private String answer;
 	private AnswerType rtype;
 	private long questionId;

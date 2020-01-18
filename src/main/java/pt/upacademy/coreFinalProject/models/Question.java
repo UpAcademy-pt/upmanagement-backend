@@ -6,28 +6,17 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = Question.GET_ALL_QUESTIONS, query = "SELECT q FROM Question q")})
-public class Question extends Entity_{
+public class Question extends EntityRoot {
 
 	public static final String GET_ALL_QUESTIONS = "getAllQuestion";
 	private static final long serialVersionUID = 1L;
 	
-	public enum AnswerType {
-		multiple,
-		open,
-		singleOption
-	}
-	
-	public enum Filter {
-		academy,
-		trainer,
-		student
-	}
 	
 	private String question;
 	private AnswerType aType;
 	private long rightAnswer;
-	private long[] options;
-	private Filter filter;
+	private String[] options;
+	private Role filter;
 	
 	public String getQuestion() {
 		return question;
@@ -47,16 +36,16 @@ public class Question extends Entity_{
 	public void setRightAnswer(long rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
-	public long[] getOptions() {
+	public String[] getOptions() {
 		return options;
 	}
-	public void setOptions(long[] options) {
+	public void setOptions(String[] options) {
 		this.options = options;
 	}
-	public Filter getFilter() {
+	public Role getFilter() {
 		return filter;
 	}
-	public void setFilter(Filter filter) {
+	public void setFilter(Role filter) {
 		this.filter = filter;
 	}
 

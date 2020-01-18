@@ -13,10 +13,6 @@ public class AnsweredQuestions extends EntityRoot {
 	public static final String GET_ALL_ANSWEREDQUESTIONS = "getAllAnsweredQuestions";
 	private static final long serialVersionUID = 1L;
 	
-	private enum Qtype {
-		quiz,
-		evaluation
-	}
 	
 	private Account accountId;
 	//private List<Question> questionsList;
