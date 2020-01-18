@@ -10,7 +10,7 @@ public class AccountDTO extends EntityDTO {
 	private int age;
 	private List<Long> academies = new ArrayList<Long>();
 	private String academicDegree;
-	private String academicBackgroung;
+	private String academicBackground;
 	private String photoLink;
 	private int mobilePhone;
 	private String linkedInAdress;
@@ -18,7 +18,7 @@ public class AccountDTO extends EntityDTO {
 	private List<String> themes = new ArrayList<String>();
 	//evaluations so vai ter valores para formandos
 	private List<String> evaluations= new ArrayList<String>();
-	private List<LocalDate> missedDays = new ArrayList<LocalDate>();
+	private List<String> missedDays;
 	
 	
 	
@@ -26,15 +26,36 @@ public class AccountDTO extends EntityDTO {
 
 
 
-	public AccountDTO(long userId, int age, String academicDegree, String academicBackgroung, String photoLink,
+	public AccountDTO(long userId, int age, String academicDegree, String academicBackground, String photoLink,
 			int mobilePhone, String linkedInAdress) {
 		this.userId = userId;
 		this.age = age;
 		this.academicDegree = academicDegree;
-		this.academicBackgroung = academicBackgroung;
+		this.academicBackground = academicBackground;
 		this.photoLink = photoLink;
 		this.mobilePhone = mobilePhone;
 		this.linkedInAdress = linkedInAdress;
+	}
+	
+	
+
+
+
+	public AccountDTO(long userId, int age, List<Long> academies, String academicDegree, String academicBackground,
+			String photoLink, int mobilePhone, String linkedInAdress, List<String> themes, List<String> evaluations,
+			List<String> missedDays) {
+		super();
+		this.userId = userId;
+		this.age = age;
+		this.academies = academies;
+		this.academicDegree = academicDegree;
+		this.academicBackground = academicBackground;
+		this.photoLink = photoLink;
+		this.mobilePhone = mobilePhone;
+		this.linkedInAdress = linkedInAdress;
+		this.themes = themes;
+		this.evaluations = evaluations;
+		this.missedDays = missedDays;
 	}
 
 
@@ -88,13 +109,13 @@ public class AccountDTO extends EntityDTO {
 
 
 	public String getAcademicBackgroung() {
-		return academicBackgroung;
+		return academicBackground;
 	}
 
 
 
 	public void setAcademicBackgroung(String academicBackgroung) {
-		this.academicBackgroung = academicBackgroung;
+		this.academicBackground = academicBackgroung;
 	}
 
 
@@ -159,13 +180,13 @@ public class AccountDTO extends EntityDTO {
 
 
 
-	public List<LocalDate> getMissedDays() {
+	public List<String> getMissedDays() {
 		return missedDays;
 	}
 
 
 
-	public void setMissedDays(List<LocalDate> missedDays) {
+	public void setMissedDays(List<String> missedDays) {
 		this.missedDays = missedDays;
 	}
 	

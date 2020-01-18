@@ -1,8 +1,11 @@
 package pt.upacademy.coreFinalProject.repositories;
 
+import javax.enterprise.context.RequestScoped;
+
 import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 
+@RequestScoped
 public class AccountRepository extends EntityRepository<Account,AccountDTO> {
 
 	@Override
