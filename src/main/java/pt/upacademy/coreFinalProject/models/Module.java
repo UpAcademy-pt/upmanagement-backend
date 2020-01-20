@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
@@ -17,14 +18,17 @@ public class Module extends EntityRoot {
 	
 	public static final String GET_ALL_MODULES = "getAllModules";
 
+	@OneToMany
 	private List<Evaluation> evaluation;
-	private List<String> themes;
+	@OneToMany
+	private List<Theme> themes;
 	private String name;
+	@OneToMany
 	private List<User> teachers;
 
 	public Module() {}
 	
-	public Module(List<Evaluation> evaluation, List<String> themes, String name, List<User> teachers) {
+	public Module(List<Evaluation> evaluation, List<Theme> themes, String name, List<User> teachers) {
 		this.evaluation = evaluation;
 		this.themes = themes;
 		this.name = name;
@@ -47,11 +51,11 @@ public class Module extends EntityRoot {
 		this.evaluation = evaluation;
 	}
 
-	public List<String> getThemes() {
+	public List<Theme> getThemes() {
 		return themes;
 	}
 
-	public void setThemes(List<String> themes) {
+	public void setThemes(List<Theme> themes) {
 		this.themes = themes;
 	}
 

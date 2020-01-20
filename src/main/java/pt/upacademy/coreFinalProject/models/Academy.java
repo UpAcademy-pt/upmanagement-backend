@@ -3,6 +3,10 @@ package pt.upacademy.coreFinalProject.models;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Academy extends EntityRoot {
    
 	private static final long serialVersionUID = 1L;
@@ -10,11 +14,16 @@ public class Academy extends EntityRoot {
     private LocalDate startDate;
     private LocalDate endDate;
     private String edName;
-    private List<String> modules;
-    private List<Long> students;
+    @OneToMany
+    private List<Module> modules;
+    @OneToMany
+    private List<User> students;
     
-    public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
-		List<String> modules, List<Long> students) {
+    public Academy() {}
+
+
+	public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
+		List<Module> modules, List<User> students) {
 
 	this.setClient(client);
 	this.setStartDate(startDate);
@@ -58,24 +67,26 @@ public class Academy extends EntityRoot {
 
 	}
 
-	public List<String> getModules() {
+
+	public List<Module> getModules() {
 		return modules;
 	}
 
-	public void setModules(List<String> modules) {
+
+	public void setModules(List<Module> modules) {
 		this.modules = modules;
 	}
 
-	public List<Long> getStudents() {
+
+	public List<User> getStudents() {
 		return students;
 	}
 
-	/**
-	 * @param students the students to set
-	 */
-	public void setStudents(List<Long> students) {
+
+	public void setStudents(List<User> students) {
 		this.students = students;
 	}
+
 }
 
 	
