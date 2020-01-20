@@ -12,7 +12,7 @@ import pt.upacademy.coreFinalProject.repositories.UserRepository;
 import pt.upacademy.coreFinalProject.utils.PasswordUtils;
 
 @RequestScoped
-public class UserService extends EntityService<UserRepository, User, UserDTO>{
+public class UserService extends EntityService<UserRepository, User>{
 	
 	@Inject
 	protected UserRepository userRep;
@@ -26,16 +26,8 @@ public class UserService extends EntityService<UserRepository, User, UserDTO>{
 		return result;
 	}
 	
-//	public String randomStringGenerator() {
-//	    byte[] array = new byte[7]; // length is bounded by 7
-//	    new Random().nextBytes(array);
-//	    String generatedString = new String(array, Charset.forName("UTF-8"));
-//	 
-//	    return generatedString;
-//	}
-	
 	public String randomStringGenerator() {
-	    int leftLimit = 48; // numeral '0'
+		int leftLimit = 48; // numeral '0'
 	    int rightLimit = 122; // letter 'z'
 	    int targetStringLength = 10;
 	    Random random = new Random();
@@ -50,7 +42,10 @@ public class UserService extends EntityService<UserRepository, User, UserDTO>{
 	}
 	
 	public void createUser(UserDTO userDto) {
-		
+//		User user = getUserByEmail(userDto.getEmail());
+		if (emailExists(userDto) == true) {
+			throw new BadRequestException("The Email account you provided already exists!") ;
+		}
 		User newUser = new User();
 		
 		String password = randomStringGenerator();
@@ -63,13 +58,19 @@ public class UserService extends EntityService<UserRepository, User, UserDTO>{
 		newUser.setSalt(hashCode[1]);
 		newUser.setRole(userDto.getRole());
 		System.out.println("Estive aqui!");
-		userRep.addUser(newUser);
-		
+		create(newUser);
+//		userRep.addUser(newUser);
+	}
+	
+//	attempt to fix redundancy
+	@Override
+	public void create(User user) {
+		userRep.addEntity(user);
 	}
 
 	public User checkedValidUser(UserDTO userDTO) {
 		User user = getUserByEmail(userDTO.getEmail());
-		if ( user == null) {
+		if (emailExists(userDTO) == false) {
 			throw new BadRequestException("Email - Password combination is invalid!") ;
 		}
 		
@@ -87,15 +88,12 @@ public class UserService extends EntityService<UserRepository, User, UserDTO>{
 		
 	}
 	
-
-//	public Collection<User> getUser() {
-//		return userRep.getUser();
-//		
-//	}
-
-
+	public boolean emailExists(UserDTO userDTO) {
+		User user = getUserByEmail(userDTO.getEmail());
+		if ( user == null) {
+			return false;
+		}
+		else { return true;}
+	}
 	
-//	public void deleteUserById(long id) {
-//		userRep.removeUser(id);
-//	}
 }
