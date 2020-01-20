@@ -1,13 +1,10 @@
-package pt.upacademy.coreFinalProject.models;
+package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.time.LocalDate;
 import java.util.List;
-import javax.persistence.Entity;
 
-@Entity
-public class Academy extends EntityRoot{
-   
-	private static final long serialVersionUID = 1L;
+public class AcademyDTO extends EntityDTO {
+
     private String client;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -15,9 +12,7 @@ public class Academy extends EntityRoot{
     private List<String> modules;
     private List<Long> students;
     
-    public Academy () {}
-    
-    public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
+    public void Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
 		List<String> modules, List<Long> students) {
 
 	this.setClient(client);
