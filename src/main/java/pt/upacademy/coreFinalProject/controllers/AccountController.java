@@ -16,7 +16,7 @@ import pt.upacademy.coreFinalProject.services.AccountService;
 
 
 @RequestScoped
-@Path (" ")
+@Path ("account")
 public class AccountController extends EntityController <AccountService, AccountRepository, Account>{
 	
 
