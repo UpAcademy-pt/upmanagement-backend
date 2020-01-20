@@ -24,22 +24,24 @@ public class Module extends EntityRoot {
 	private List<Theme> themes;
 	private String name;
 	@OneToMany
-	private List<User> teachers;
+	private List<Account> teachers;
+	private String evaluationSubjects;
 
 	public Module() {}
 	
-	public Module(List<Evaluation> evaluation, List<Theme> themes, String name, List<User> teachers) {
+	public Module(List<Evaluation> evaluation, List<Theme> themes, String name, List<Account> teachers, String evaluationSubjects) {
 		this.evaluation = evaluation;
 		this.themes = themes;
 		this.name = name;
 		this.teachers = teachers;
+		this.evaluationSubjects = evaluationSubjects;
 	}
 
-	public List<User> getTeachers() {
+	public List<Account> getTeachers() {
 		return teachers;
 	}
 
-	public void setTeachers(List<User> teachers) {
+	public void setTeachers(List<Account> teachers) {
 		this.teachers = teachers;
 	}
 
@@ -65,5 +67,13 @@ public class Module extends EntityRoot {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getEvaluationSubjects() {
+		return evaluationSubjects;
+	}
+
+	public void setEvaluationSubjects(String evaluationSubjects) {
+		this.evaluationSubjects = evaluationSubjects;
 	}
 }

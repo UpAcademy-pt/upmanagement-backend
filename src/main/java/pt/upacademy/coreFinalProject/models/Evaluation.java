@@ -19,7 +19,7 @@ public class Evaluation extends EntityRoot {
 	
 	public static final String GET_ALL_EVALUATIONS = "getAllEvaluations";
 
-	private long userId;
+	private Account account;
 	@OneToMany
 	@OrderBy("sdgsdg")
 	private List<Grade> grades;
@@ -27,8 +27,8 @@ public class Evaluation extends EntityRoot {
 	
 	public Evaluation() {}
 	
-	public Evaluation(long userId, List<Grade> grades, String comment) {
-		this.userId = userId;
+	public Evaluation(Account account, List<Grade> grades, String comment) {
+		this.account = account;
 		this.grades = grades;
 		this.comment = comment;
 	}
@@ -41,12 +41,12 @@ public class Evaluation extends EntityRoot {
 		this.grades = grades;
 	}
 
-	public long getUserId() {
-		return userId;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public String getComment() {

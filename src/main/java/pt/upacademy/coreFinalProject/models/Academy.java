@@ -16,12 +16,12 @@ public class Academy extends EntityRoot {
     @OneToMany
     private List<Module> modules;
     @OneToMany
-    private List<User> students;
+    private List<Account> students;
     
     public Academy() {}
     
     public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
-		List<Module> modules, List<User> students) {
+		List<Module> modules, List<Account> students) {
 
 		this.setClient(client);
 		this.setStartDate(startDate);
@@ -76,12 +76,12 @@ public class Academy extends EntityRoot {
 	}
 
 
-	public List<User> getStudents() {
+	public List<Account> getStudents() {
 		return students;
 	}
 
 
-	public void setStudents(List<User> students) {
+	public void setStudents(List<Account> students) {
 		this.students = students;
 	}
 
