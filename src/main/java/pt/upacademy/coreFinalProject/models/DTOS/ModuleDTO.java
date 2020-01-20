@@ -2,48 +2,36 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.List;
 
-import pt.upacademy.coreFinalProject.models.Evaluation;
-import pt.upacademy.coreFinalProject.models.User;
-
 public class ModuleDTO extends EntityDTO {
 
-	private List<Evaluation> evaluation;
-	private List<Long> themes;
+	private List<Long> evaluationIds;
+	private List<Long> themesIds;
 	private String name;
-	private List<User> teachers;
+	private List<Long> teachersIds;
 	
 	public ModuleDTO() {}
 
-	public ModuleDTO(List<Evaluation> evaluation, List<Long> themes, String name, List<User> teachers) {
-		super();
-		this.evaluation = evaluation;
-		this.themes = themes;
+	public ModuleDTO(List<Long> evaluationIds, List<Long> themesIds, String name, List<Long> teachersIds) {
+		this.evaluationIds = evaluationIds;
+		this.themesIds = themesIds;
 		this.name = name;
-		this.teachers = teachers;
+		this.teachersIds = teachersIds;
 	}
 
-	public List<User> getTeachers() {
-		return teachers;
+	public List<Long> getEvaluationIds() {
+		return evaluationIds;
 	}
 
-	public void setTeachers(List<User> teachers) {
-		this.teachers = teachers;
+	public void setEvaluationIds(List<Long> evaluationIds) {
+		this.evaluationIds = evaluationIds;
 	}
 
-	public List<Evaluation> getEvaluation() {
-		return evaluation;
+	public List<Long> getThemesIds() {
+		return themesIds;
 	}
 
-	public void setEvaluation(List<Evaluation> evaluation) {
-		this.evaluation = evaluation;
-	}
-
-	public List<Long> getThemes() {
-		return themes;
-	}
-
-	public void setThemes(List<Long> themes) {
-		this.themes = themes;
+	public void setThemesIds(List<Long> themesIds) {
+		this.themesIds = themesIds;
 	}
 
 	public String getName() {
@@ -52,6 +40,14 @@ public class ModuleDTO extends EntityDTO {
 
 	public void setName(String name) {
 		this.name = name;
-	}	
+	}
+
+	public List<Long> getTeachersIds() {
+		return teachersIds;
+	}
+
+	public void setTeachersIds(List<Long> teachersIds) {
+		this.teachersIds = teachersIds;
+	}
 	
 }

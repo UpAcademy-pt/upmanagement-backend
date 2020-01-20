@@ -9,20 +9,17 @@ public class AcademyDTO extends EntityDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private String edName;
-    private List<String> modules;
-    private List<Long> students;
+    private List<Long> modulesIds;
+    private List<Long> studentsIds;
     
-    public void Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
-		List<String> modules, List<Long> students) {
-
-	this.setClient(client);
-	this.setStartDate(startDate);
-	this.setEndDate(endDate);
-	this.setEdName(edName);
-	this.setModules(modules);
-	this.setStudents(students);
+    public void Academy(String client, LocalDate startDate, LocalDate endDate, String edName, List<Long> modulesIds, List<Long> studentsIds) {
+		this.setClient(client);
+		this.setStartDate(startDate);
+		this.setEndDate(endDate);
+		this.setEdName(edName);
+		this.setModulesIds(modulesIds);
+		this.setStudentsIds(studentsIds);
     }
-    
 
 	public String getClient() {
 		return client;
@@ -54,27 +51,24 @@ public class AcademyDTO extends EntityDTO {
 
 	public void setEdName(String edName) {
 		this.edName = edName;
-
 	}
 
-	public List<String> getModules() {
-		return modules;
+	public List<Long> getModulesIds() {
+		return modulesIds;
 	}
 
-	public void setModules(List<String> modules) {
-		this.modules = modules;
+	public void setModulesIds(List<Long> modulesIds) {
+		this.modulesIds = modulesIds;
 	}
 
-	public List<Long> getStudents() {
-		return students;
+	public List<Long> getStudentsIds() {
+		return studentsIds;
 	}
 
-	/**
-	 * @param students the students to set
-	 */
-	public void setStudents(List<Long> students) {
-		this.students = students;
+	public void setStudentsIds(List<Long> studentsIds) {
+		this.studentsIds = studentsIds;
 	}
+    
 }
 
 	

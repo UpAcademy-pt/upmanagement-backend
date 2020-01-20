@@ -1,37 +1,35 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.List;
-import pt.upacademy.coreFinalProject.models.Grade;
 
 public class EvaluationDTO extends EntityDTO {
 
-	private long userId;
-	private List<Grade> grades;
+	private Long accountId;
+	private List<Long> gradesIds;
 	private String comment;
 	
 	public EvaluationDTO() {}
 	
-	public EvaluationDTO(long userId, List<Grade> grades, String comment) {
-		super();
-		this.userId = userId;
-		this.grades = grades;
+	public EvaluationDTO(Long accountId, List<Long> gradesIds, String comment) {
+		this.accountId = accountId;
+		this.gradesIds = gradesIds;
 		this.comment = comment;
 	}
 
-	public long getUserId() {
-		return userId;
+	public Long getAccountId() {
+		return accountId;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
 	}
 
-	public List<Grade> getGrades() {
-		return grades;
+	public List<Long> getGradesIds() {
+		return gradesIds;
 	}
 
-	public void setGrades(List<Grade> grades) {
-		this.grades = grades;
+	public void setGradesIds(List<Long> gradesIds) {
+		this.gradesIds = gradesIds;
 	}
 
 	public String getComment() {
