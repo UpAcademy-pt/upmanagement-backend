@@ -65,9 +65,14 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String create(UserDTO userDTO) {
-		service.createUser(userDTO);
-		return "Create Done!";
+	public Response create(UserDTO userDTO) {
+		try {
+			service.createUser(userDTO);
+			return Response.ok().build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
 	}
 	
 	@PUT
@@ -76,5 +81,13 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	public String update(UserDTO userDTO) {
 		service.update(converter.toEntity(userDTO));
 		return "Update Done!";
-	}	
+	}
+	
+	@PUT
+	@Path("/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String delete(@PathParam("id") long id) {
+		service.update(converter.toNullUser(service.get(id)));
+		return "Delete Done!";
+	}
 }
