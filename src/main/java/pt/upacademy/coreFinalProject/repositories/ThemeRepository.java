@@ -2,13 +2,13 @@ package pt.upacademy.coreFinalProject.repositories;
 
 import javax.enterprise.context.RequestScoped;
 
-import pt.upacademy.coreFinalProject.models.Account;
+import pt.upacademy.coreFinalProject.models.Theme;
 
 @RequestScoped
-public class AccountRepository extends EntityRepository<Account> {
+public class ThemeRepository extends EntityRepository<Theme> {
 
 	@Override
-	protected Class<Account> getEntityClass() {
+	protected Class<Theme> getEntityClass() {
 		// TODO Auto-generated method stub
 		return null;
 	}

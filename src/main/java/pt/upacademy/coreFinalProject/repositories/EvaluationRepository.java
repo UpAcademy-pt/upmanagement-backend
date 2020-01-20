@@ -1,9 +1,11 @@
 package pt.upacademy.coreFinalProject.repositories;
 
-import pt.upacademy.coreFinalProject.models.Evaluation;
-import pt.upacademy.coreFinalProject.models.DTOS.EvaluationDTO;
+import javax.enterprise.context.RequestScoped;
 
-public class EvaluationRepository extends EntityRepository<Evaluation, EvaluationDTO> {
+import pt.upacademy.coreFinalProject.models.Evaluation;
+
+@RequestScoped
+public class EvaluationRepository extends EntityRepository<Evaluation> {
 
 	@Override
 	protected Class<Evaluation> getEntityClass() {
