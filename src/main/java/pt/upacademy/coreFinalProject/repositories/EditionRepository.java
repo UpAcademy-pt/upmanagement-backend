@@ -4,12 +4,11 @@ package pt.upacademy.coreFinalProject.repositories;
 import javax.enterprise.context.ApplicationScoped;
 
 import pt.upacademy.coreFinalProject.models.Edition;
-import pt.upacademy.coreFinalProject.models.DTOS.EditionDTO;
 
 
 
 @ApplicationScoped
-public class EditionRepository extends EntityRepository <Edition, EditionDTO>{
+public class EditionRepository extends EntityRepository <Edition>{
 
 	@Override
 	protected Class<Edition> getEntityClass() {

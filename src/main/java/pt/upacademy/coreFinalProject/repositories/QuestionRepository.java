@@ -3,11 +3,10 @@ package pt.upacademy.coreFinalProject.repositories;
 import javax.enterprise.context.ApplicationScoped;
 
 import pt.upacademy.coreFinalProject.models.QuestionForum;
-import pt.upacademy.coreFinalProject.models.DTOS.QuestionForumDTO;
 
 
 @ApplicationScoped
-public class QuestionRepository extends EntityRepository <QuestionForum, QuestionForumDTO> {
+public class QuestionRepository extends EntityRepository <QuestionForum> {
 
 	@Override
 	protected Class<QuestionForum> getEntityClass() {

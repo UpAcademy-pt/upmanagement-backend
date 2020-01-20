@@ -9,6 +9,6 @@ import pt.upacademy.coreFinalProject.repositories.EditionRepository;
 
 
 @RequestScoped
-public class EditionService extends  EntityService <EditionRepository, Edition, EditionDTO>{
+public class EditionService extends  EntityService <EditionRepository, Edition>{
 
 }

@@ -20,7 +20,7 @@ import pt.upacademy.coreFinalProject.services.NoteService;
 
 @RequestScoped
 @Path("notes")
-public class NoteController extends EntityController<NoteService, NoteRepository, NoteConverter, Note, NoteDTO>{
+public class NoteController extends EntityController<NoteService, NoteRepository, Note>{
 
 	@Inject
 	protected NoteService NS;

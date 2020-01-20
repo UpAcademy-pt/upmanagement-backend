@@ -3,11 +3,10 @@ package pt.upacademy.coreFinalProject.repositories;
 import javax.enterprise.context.ApplicationScoped;
 
 import pt.upacademy.coreFinalProject.models.Event;
-import pt.upacademy.coreFinalProject.models.DTOS.EventDTO;
 
 
 @ApplicationScoped
-public class EventRepository extends EntityRepository <Event, EventDTO>{
+public class EventRepository extends EntityRepository <Event>{
 
 	@Override
 	protected Class<Event> getEntityClass() {

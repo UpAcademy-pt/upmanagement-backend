@@ -3,11 +3,10 @@ package pt.upacademy.coreFinalProject.repositories;
 import javax.enterprise.context.ApplicationScoped;
 
 import pt.upacademy.coreFinalProject.models.Lesson;
-import pt.upacademy.coreFinalProject.models.DTOS.LessonDTO;
 
 
 @ApplicationScoped
-public class LessonRepository extends EntityRepository <Lesson, LessonDTO> {
+public class LessonRepository extends EntityRepository <Lesson> {
 
 	@Override
 	protected Class<Lesson> getEntityClass() {

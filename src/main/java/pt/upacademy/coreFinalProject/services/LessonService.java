@@ -8,6 +8,6 @@ import pt.upacademy.coreFinalProject.repositories.LessonRepository;
 
 
 @RequestScoped
-public class LessonService extends EntityService <LessonRepository, Lesson, LessonDTO> {
+public class LessonService extends EntityService <LessonRepository, Lesson> {
 
 }
