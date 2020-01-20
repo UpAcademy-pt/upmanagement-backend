@@ -15,13 +15,33 @@ public class Grade extends EntityRoot {
 	
 	public static final String GET_ALL_GRADES = "getAllGrades";
 	
-	private Integer teste;
+	private String subject;
 	
-	public Integer getTeste() {
-		return teste;
+	private int mark;
+	
+	
+
+	public Grade() {}
+
+	public Grade(String subject, int mark) {
+		this.subject = subject;
+		this.mark = mark;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public int getMark() {
+		return mark;
+	}
+
+	public void setMark(int mark) {
+		this.mark = mark;
 	}
 	
-	public void setTeste(Integer teste) {
-		this.teste = teste;
-	}
 }
