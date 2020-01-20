@@ -19,7 +19,7 @@ import pt.upacademy.coreFinalProject.services.AccountService;
 
 @Path("accounts")
 @RequestScoped
-public class AccountController extends EntityController<AccountService,AccountRepository,AccountConverter,Account,AccountDTO> {
+public class AccountController extends EntityControllerDTO<AccountService,AccountRepository,AccountConverter,Account,AccountDTO> {
 
 	@Override
 	@POST
