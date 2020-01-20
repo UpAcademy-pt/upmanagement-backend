@@ -1,22 +1,46 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class Module extends EntityRoot implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+@Entity
+@NamedQueries({
+	@NamedQuery(name = Module.GET_ALL_MODULES, query = "SELECT m FROM Module m")
+})
+
+public class Module extends EntityRoot {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL_MODULES = "getAllModules";
 
+	@OneToMany
 	private List<Evaluation> evaluation;
-	private List<String> themes;
+	@OneToMany
+	private List<Theme> themes;
 	private String name;
+	@OneToMany
+	private List<User> teachers;
 
 	public Module() {}
 	
-	public Module(List<Evaluation> evaluation, List<String> themes, String name) {
+	public Module(List<Evaluation> evaluation, List<Theme> themes, String name, List<User> teachers) {
 		this.evaluation = evaluation;
 		this.themes = themes;
 		this.name = name;
+		this.teachers = teachers;
+	}
+
+	public List<User> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(List<User> teachers) {
+		this.teachers = teachers;
 	}
 
 	public List<Evaluation> getEvaluation() {
@@ -27,11 +51,11 @@ public class Module extends EntityRoot implements Serializable {
 		this.evaluation = evaluation;
 	}
 
-	public List<String> getThemes() {
+	public List<Theme> getThemes() {
 		return themes;
 	}
 
-	public void setThemes(List<String> themes) {
+	public void setThemes(List<Theme> themes) {
 		this.themes = themes;
 	}
 
