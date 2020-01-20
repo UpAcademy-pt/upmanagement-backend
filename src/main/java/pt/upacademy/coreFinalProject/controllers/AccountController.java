@@ -12,7 +12,7 @@ import pt.upacademy.coreFinalProject.services.AccountService;
 
 @RequestScoped
 @Path (" ")
-public class AccountController extends EntityController <AccountService, AccountRepository, AccountConverter, Account, AccountDTO>{
+public class AccountController extends EntityController <AccountService, AccountRepository, Account>{
 
 
 	

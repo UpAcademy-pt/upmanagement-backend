@@ -3,10 +3,9 @@ package pt.upacademy.coreFinalProject.repositories;
 import javax.enterprise.context.ApplicationScoped;
 
 import pt.upacademy.coreFinalProject.models.Account;
-import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 
 @ApplicationScoped
-public class AccountRepository extends EntityRepository <Account, AccountDTO>{
+public class AccountRepository extends EntityRepository <Account>{
 
 	@Override
 	protected Class<Account> getEntityClass() {

@@ -6,12 +6,11 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.TypedQuery;
 
 import pt.upacademy.coreFinalProject.models.Note;
-import pt.upacademy.coreFinalProject.models.DTOS.NoteDTO;
 
 
 
 @ApplicationScoped
-public class NoteRepository extends EntityRepository<Note, NoteDTO>{
+public class NoteRepository extends EntityRepository<Note>{
 
 	@Override
 	protected Class<Note> getEntityClass() {

@@ -9,6 +9,6 @@ import pt.upacademy.coreFinalProject.repositories.QuestionRepository;
 
 
 @RequestScoped
-public class QuestionService extends EntityService <QuestionRepository, QuestionForum, QuestionForumDTO>{
+public class QuestionService extends EntityService <QuestionRepository, QuestionForum>{
 
 }

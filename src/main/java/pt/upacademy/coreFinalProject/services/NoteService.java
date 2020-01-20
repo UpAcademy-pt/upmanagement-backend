@@ -13,7 +13,7 @@ import pt.upacademy.coreFinalProject.repositories.NoteRepository;
 
 
 @RequestScoped
-public class NoteService extends EntityService <NoteRepository, Note, NoteDTO>{
+public class NoteService extends EntityService <NoteRepository, Note>{
 
 	@Inject NoteConverter converter;
 	

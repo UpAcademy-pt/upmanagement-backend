@@ -7,6 +7,6 @@ import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 
 @RequestScoped
-public class AccountService extends EntityService<AccountRepository, Account, AccountDTO> {
+public class AccountService extends EntityService<AccountRepository, Account> {
 
 }

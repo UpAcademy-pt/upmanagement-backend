@@ -8,6 +8,6 @@ import pt.upacademy.coreFinalProject.repositories.EventRepository;
 
 
 @RequestScoped
-public class EventService extends EntityService <EventRepository, Event, EventDTO>{
+public class EventService extends EntityService <EventRepository, Event>{
 
 }
