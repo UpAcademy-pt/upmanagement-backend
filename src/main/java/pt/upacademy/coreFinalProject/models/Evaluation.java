@@ -3,6 +3,7 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -19,6 +20,7 @@ public class Evaluation extends EntityRoot {
 	
 	public static final String GET_ALL_EVALUATIONS = "getAllEvaluations";
 
+	@ManyToOne
 	private Account account;
 	@OneToMany
 	@OrderBy("sdgsdg")

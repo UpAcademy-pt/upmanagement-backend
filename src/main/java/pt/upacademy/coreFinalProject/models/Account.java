@@ -3,6 +3,7 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -12,7 +13,7 @@ public class Account extends EntityRoot {
 	
 	private long userId;
 	private int age;
-	@OneToMany
+	@ManyToMany
 	private List<Academy> academies;
 	private String academicDegree;
 	private String academicBackground;

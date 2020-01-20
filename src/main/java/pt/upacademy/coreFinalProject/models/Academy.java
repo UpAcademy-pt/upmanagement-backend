@@ -3,6 +3,7 @@ package pt.upacademy.coreFinalProject.models;
 import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,7 +16,7 @@ public class Academy extends EntityRoot {
     private String edName;
     @OneToMany
     private List<Module> modules;
-    @OneToMany
+    @ManyToMany
     private List<Account> students;
     
     public Academy() {}
