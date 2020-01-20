@@ -1,6 +1,5 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,17 +7,17 @@ public class AccountDTO extends EntityDTO {
 	
 	private long userId;
 	private int age;
-	private List<Long> academies = new ArrayList<Long>();
+	private List<Long> academyIds = new ArrayList<Long>();
 	private String academicDegree;
 	private String academicBackground;
 	private String photoLink;
 	private int mobilePhone;
 	private String linkedInAdress;
 	//themes so vai ter valores para formadores
-	private List<String> themes = new ArrayList<String>();
+	private List<Long> themeIds = new ArrayList<Long>();
 	//evaluations so vai ter valores para formandos
-	private List<String> evaluations= new ArrayList<String>();
-	private List<String> missedDays;
+	private List<Long> evaluationIds= new ArrayList<Long>();
+	private String missedDays;
 	
 	
 	
@@ -41,20 +40,20 @@ public class AccountDTO extends EntityDTO {
 
 
 
-	public AccountDTO(long userId, int age, List<Long> academies, String academicDegree, String academicBackground,
-			String photoLink, int mobilePhone, String linkedInAdress, List<String> themes, List<String> evaluations,
-			List<String> missedDays) {
+	public AccountDTO(long userId, int age, List<Long> academyIds, String academicDegree, String academicBackground,
+			String photoLink, int mobilePhone, String linkedInAdress, List<Long> themeIds, List<Long> evaluationIds,
+			String missedDays) {
 		super();
 		this.userId = userId;
 		this.age = age;
-		this.academies = academies;
+		this.academyIds = academyIds;
 		this.academicDegree = academicDegree;
 		this.academicBackground = academicBackground;
 		this.photoLink = photoLink;
 		this.mobilePhone = mobilePhone;
 		this.linkedInAdress = linkedInAdress;
-		this.themes = themes;
-		this.evaluations = evaluations;
+		this.themeIds = themeIds;
+		this.evaluationIds = evaluationIds;
 		this.missedDays = missedDays;
 	}
 
@@ -84,14 +83,14 @@ public class AccountDTO extends EntityDTO {
 
 
 
-	public List<Long> getAcademies() {
-		return academies;
+	public List<Long> getAcademyIds() {
+		return academyIds;
 	}
 
 
 
-	public void setAcademies(List<Long> academies) {
-		this.academies = academies;
+	public void setAcademyIds(List<Long> academyIds) {
+		this.academyIds = academyIds;
 	}
 
 
@@ -156,37 +155,37 @@ public class AccountDTO extends EntityDTO {
 
 
 
-	public List<String> getThemes() {
-		return themes;
+	public List<Long> getThemeIds() {
+		return themeIds;
 	}
 
 
 
-	public void setThemes(List<String> themes) {
-		this.themes = themes;
+	public void setThemeIds(List<Long> themeIds) {
+		this.themeIds = themeIds;
 	}
 
 
 
-	public List<String> getEvaluations() {
-		return evaluations;
+	public List<Long> getEvaluationIds() {
+		return evaluationIds;
 	}
 
 
 
-	public void setEvaluations(List<String> evaluations) {
-		this.evaluations = evaluations;
+	public void setEvaluationIds(List<Long> evaluationIds) {
+		this.evaluationIds = evaluationIds;
 	}
 
 
 
-	public List<String> getMissedDays() {
+	public String getMissedDays() {
 		return missedDays;
 	}
 
 
 
-	public void setMissedDays(List<String> missedDays) {
+	public void setMissedDays(String missedDays) {
 		this.missedDays = missedDays;
 	}
 	

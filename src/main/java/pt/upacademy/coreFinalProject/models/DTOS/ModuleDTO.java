@@ -8,13 +8,13 @@ import pt.upacademy.coreFinalProject.models.User;
 public class ModuleDTO extends EntityDTO {
 
 	private List<Evaluation> evaluation;
-	private List<String> themes;
+	private List<Long> themes;
 	private String name;
 	private List<User> teachers;
 	
 	public ModuleDTO() {}
 
-	public ModuleDTO(List<Evaluation> evaluation, List<String> themes, String name, List<User> teachers) {
+	public ModuleDTO(List<Evaluation> evaluation, List<Long> themes, String name, List<User> teachers) {
 		super();
 		this.evaluation = evaluation;
 		this.themes = themes;
@@ -38,11 +38,11 @@ public class ModuleDTO extends EntityDTO {
 		this.evaluation = evaluation;
 	}
 
-	public List<String> getThemes() {
+	public List<Long> getThemes() {
 		return themes;
 	}
 
-	public void setThemes(List<String> themes) {
+	public void setThemes(List<Long> themes) {
 		this.themes = themes;
 	}
 

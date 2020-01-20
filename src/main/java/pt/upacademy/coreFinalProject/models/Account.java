@@ -1,7 +1,5 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,6 +20,7 @@ public class Account extends EntityRoot {
 	private int mobilePhone;
 	private String linkedInAdress;
 	//themes so vai ter valores para formadores
+	@OneToMany
 	private List<Theme> themes;
 	//evaluations e missedDays so vai ter valores para formandos
 	@OneToMany
