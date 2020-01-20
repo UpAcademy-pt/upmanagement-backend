@@ -1,8 +1,11 @@
 package pt.upacademy.coreFinalProject.repositories;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import pt.upacademy.coreFinalProject.models.User;
 import pt.upacademy.coreFinalProject.models.DTOS.UserDTO;
 
+@ApplicationScoped
 public class UserRepository extends EntityRepository<User, UserDTO> {
 
 	public void addUser(User newUser) {

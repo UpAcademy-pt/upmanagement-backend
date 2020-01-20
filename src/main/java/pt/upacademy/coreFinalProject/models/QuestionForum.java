@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.xml.registry.infomodel.User;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = QuestionForum.GET_ALL_QF, query = "SELECT q FROM QuestionForum q"),
@@ -20,9 +19,9 @@ public class QuestionForum extends EntityRoot  {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-	private List<User> usersIds;
+//	private List<User> usersIds;
 //	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "question", fetch = FetchType.EAGER)
-	private List<AnswerForum> answers;
+//	private List<AnswerForum> answers;
 	private LocalDateTime createAt = LocalDateTime.now();
 
 	public long getId() {
@@ -33,20 +32,20 @@ public class QuestionForum extends EntityRoot  {
 		this.id = id;
 	}
 
-	public List<User> getUsersIds() {
-		return usersIds;
-	}
+//	public List<User> getUsersIds() {
+//		return usersIds;
+//	}
+//
+//	public void setUsersIds(List<User> usersIds) {
+//		this.usersIds = usersIds;
+//	}
 
-	public void setUsersIds(List<User> usersIds) {
-		this.usersIds = usersIds;
-	}
-
-	public List<AnswerForum> getAnswers() {
-		return answers;
-	}
-
-	public void setAnswers(List<AnswerForum> answers) {
-		this.answers = answers;
-	}
+//	public List<AnswerForum> getAnswers() {
+//		return answers;
+//	}
+//
+//	public void setAnswers(List<AnswerForum> answers) {
+//		this.answers = answers;
+//	}
 
 }
