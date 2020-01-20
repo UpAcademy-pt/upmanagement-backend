@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
+import pt.upacademy.coreFinalProject.services.AcademyService;
 import pt.upacademy.coreFinalProject.services.EvaluationService;
 import pt.upacademy.coreFinalProject.services.ThemeService;
 
@@ -16,6 +17,9 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 	
 	@Inject
 	protected EvaluationService evalService;
+	
+	@Inject
+	protected AcademyService academyService;
 
 	@Override
 	public Account toEntity(AccountDTO dto) {
@@ -31,7 +35,7 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 		account.setMobilePhone(dto.getMobilePhone());
 		account.setPhotoLink(dto.getPhotoLink());
 		account.setUserId(dto.getUserId());
-		//account.setAcademies(dto.getAcademyIds().map(academyId -> academyService.get(academyId)).collect(Collectors.toList()));
+		account.setAcademies(dto.getAcademyIds().stream().map(academyId -> academyService.get(academyId)).collect(Collectors.toList()));
 		account.setThemes(dto.getThemeIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toList()));
 		account.setEvaluations(dto.getEvaluationIds().stream().map(evalId -> evalService.get(evalId)).collect(Collectors.toList()));
 		return account;
