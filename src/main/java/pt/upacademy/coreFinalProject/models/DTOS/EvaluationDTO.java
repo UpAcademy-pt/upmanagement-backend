@@ -1,17 +1,17 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import pt.upacademy.coreFinalProject.models.Grade;
 
 public class EvaluationDTO extends EntityDTO {
 
 	private long userId;
-	private Map<String, Integer> grades = new HashMap<String, Integer> ();
+	private List<Grade> grades;
 	private String comment;
 	
 	public EvaluationDTO() {}
 	
-	public EvaluationDTO(long userId, Map<String, Integer> grades, String comment) {
+	public EvaluationDTO(long userId, List<Grade> grades, String comment) {
 		super();
 		this.userId = userId;
 		this.grades = grades;
@@ -26,11 +26,11 @@ public class EvaluationDTO extends EntityDTO {
 		this.userId = userId;
 	}
 
-	public Map<String, Integer> getGrades() {
+	public List<Grade> getGrades() {
 		return grades;
 	}
 
-	public void setGrades(Map<String, Integer> grades) {
+	public void setGrades(List<Grade> grades) {
 		this.grades = grades;
 	}
 

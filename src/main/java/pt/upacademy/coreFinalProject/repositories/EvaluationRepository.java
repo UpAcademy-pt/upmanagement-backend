@@ -7,14 +7,12 @@ public class EvaluationRepository extends EntityRepository<Evaluation, Evaluatio
 
 	@Override
 	protected Class<Evaluation> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Evaluation.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return Evaluation.GET_ALL_EVALUATIONS;
 	}
 
 }
