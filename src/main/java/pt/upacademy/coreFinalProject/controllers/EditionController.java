@@ -8,9 +8,6 @@ import pt.upacademy.coreFinalProject.models.converters.EditionConverter;
 import pt.upacademy.coreFinalProject.repositories.EditionRepository;
 import pt.upacademy.coreFinalProject.services.EditionService;
 
-
-
-
 @RequestScoped
 public class EditionController extends EntityController <EditionService, EditionRepository, Edition> {
 
