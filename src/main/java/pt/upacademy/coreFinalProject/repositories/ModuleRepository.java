@@ -1,7 +1,10 @@
 package pt.upacademy.coreFinalProject.repositories;
 
+import javax.enterprise.context.RequestScoped;
+
 import pt.upacademy.coreFinalProject.models.Module;
 
+@RequestScoped
 public class ModuleRepository extends EntityRepository<Module> {
 
 	@Override
