@@ -11,6 +11,6 @@ import pt.upacademy.coreFinalProject.services.EvaluationService;
 
 @Path("evaluations")
 @RequestScoped
-public class EvaluationController extends EntityController<EvaluationService, EvaluationRepository, EvaluationConverter, Evaluation, EvaluationDTO> {
+public class EvaluationController extends EntityControllerDTO<EvaluationService, EvaluationRepository, EvaluationConverter, Evaluation, EvaluationDTO> {
 
 }

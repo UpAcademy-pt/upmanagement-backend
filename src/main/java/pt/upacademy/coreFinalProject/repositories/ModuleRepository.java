@@ -1,9 +1,8 @@
 package pt.upacademy.coreFinalProject.repositories;
 
 import pt.upacademy.coreFinalProject.models.Module;
-import pt.upacademy.coreFinalProject.models.DTOS.ModuleDTO;
 
-public class ModuleRepository extends EntityRepository<Module, ModuleDTO> {
+public class ModuleRepository extends EntityRepository<Module> {
 
 	@Override
 	protected Class<Module> getEntityClass() {

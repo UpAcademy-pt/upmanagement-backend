@@ -11,6 +11,6 @@ import pt.upacademy.coreFinalProject.services.ModuleService;
 
 @Path("modules")
 @RequestScoped
-public class ModuleController extends EntityController<ModuleService, ModuleRepository, ModuleConverter, Module, ModuleDTO> {
+public class ModuleController extends EntityControllerDTO<ModuleService, ModuleRepository, ModuleConverter, Module, ModuleDTO> {
 
 }
