@@ -9,6 +9,7 @@ import javax.ws.rs.BadRequestException;
 import pt.upacademy.coreFinalProject.models.User;
 import pt.upacademy.coreFinalProject.models.DTOS.UserDTO;
 import pt.upacademy.coreFinalProject.repositories.UserRepository;
+import pt.upacademy.coreFinalProject.utils.EmailUtils;
 import pt.upacademy.coreFinalProject.utils.PasswordUtils;
 
 @RequestScoped
@@ -26,16 +27,8 @@ public class UserService extends EntityService<UserRepository, User>{
 		return result;
 	}
 	
-//	public String randomStringGenerator() {
-//	    byte[] array = new byte[7]; // length is bounded by 7
-//	    new Random().nextBytes(array);
-//	    String generatedString = new String(array, Charset.forName("UTF-8"));
-//	 
-//	    return generatedString;
-//	}
-	
 	public String randomStringGenerator() {
-	    int leftLimit = 48; // numeral '0'
+		int leftLimit = 48; // numeral '0'
 	    int rightLimit = 122; // letter 'z'
 	    int targetStringLength = 10;
 	    Random random = new Random();
@@ -50,8 +43,8 @@ public class UserService extends EntityService<UserRepository, User>{
 	}
 	
 	public void createUser(UserDTO userDto) {
-		User user = getUserByEmail(userDto.getEmail());
-		if (user != null) {
+//		User user = getUserByEmail(userDto.getEmail());
+		if (emailExists(userDto) == true) {
 			throw new BadRequestException("The Email account you provided already exists!") ;
 		}
 		User newUser = new User();
@@ -60,7 +53,11 @@ public class UserService extends EntityService<UserRepository, User>{
 		System.out.println(password);
 		String[] hashCode = passwordToHashcode(password);
 		
-		newUser.setUsername(userDto.getUsername());
+		newUser.setName(userDto.getName());
+		EmailUtils eUtils = new EmailUtils();
+		if (eUtils.validEmailAdress(userDto.getEmail()) == false) {
+			throw new BadRequestException("The Email account you provided is not valid!") ;
+		}
 		newUser.setEmail(userDto.getEmail());
 		newUser.setHashcode(hashCode[0]);
 		newUser.setSalt(hashCode[1]);
@@ -68,17 +65,25 @@ public class UserService extends EntityService<UserRepository, User>{
 		System.out.println("Estive aqui!");
 		create(newUser);
 //		userRep.addUser(newUser);
-		
 	}
 	
 	@Override
+	public void update (User user) {
+		User currentUser = get(user.getId());
+		System.out.println(currentUser);
+		currentUser.setEmail(user.getEmail());
+		currentUser.setName(user.getName());
+	} 
+	
+//	attempt to fix redundancy
+	@Override
 	public void create(User user) {
-		userRep.addUser(user);
+		userRep.addEntity(user);
 	}
 
 	public User checkedValidUser(UserDTO userDTO) {
 		User user = getUserByEmail(userDTO.getEmail());
-		if ( user == null) {
+		if (emailExists(userDTO) == false) {
 			throw new BadRequestException("Email - Password combination is invalid!") ;
 		}
 		
@@ -96,20 +101,12 @@ public class UserService extends EntityService<UserRepository, User>{
 		
 	}
 	
-//	public User get(long id) {
-//		userRep.get
-//		return null;
-//	}
+	public boolean emailExists(UserDTO userDTO) {
+		User user = getUserByEmail(userDTO.getEmail());
+		if ( user == null) {
+			return false;
+		}
+		else { return true;}
+	}
 	
-
-//	public Collection<User> getUser() {
-//		return userRep.getUser();
-//		
-//	}
-
-
-	
-//	public void deleteUserById(long id) {
-//		userRep.removeUser(id);
-//	}
 }

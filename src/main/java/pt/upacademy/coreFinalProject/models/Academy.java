@@ -25,11 +25,12 @@ public class Academy extends EntityRoot {
     private List<Module> modules;
     @ManyToMany
     private List<Account> students;
+    private Status status;
     
     public Academy() {}
     
     public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
-		List<Module> modules, List<Account> students) {
+		List<Module> modules, List<Account> students, Status status) {
 
 		this.setClient(client);
 		this.setStartDate(startDate);
@@ -37,8 +38,17 @@ public class Academy extends EntityRoot {
 		this.setEdName(edName);
 		this.setModules(modules);
 		this.setStudents(students);
+		this.setStatus(status);
     }
     
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public String getClient() {
 		return client;

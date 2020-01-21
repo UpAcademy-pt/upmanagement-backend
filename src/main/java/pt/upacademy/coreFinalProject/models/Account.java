@@ -27,11 +27,12 @@ public class Account extends EntityRoot {
 	@OneToMany
 	private List<Evaluation> evaluations;
 	private String missedDays;
+	private long nif;
 	
 	public Account() {}
 
 	public Account(Long userId, int age, String academicDegree, String academicBackground,
-			String photoLink, int mobilePhone, String linkedInAdress) {
+			String photoLink, int mobilePhone, String linkedInAdress, long nif) {
 		this.userId = userId;
 		this.age = age;
 		this.academicDegree = academicDegree;
@@ -39,6 +40,15 @@ public class Account extends EntityRoot {
 		this.photoLink = photoLink;
 		this.mobilePhone = mobilePhone;
 		this.linkedInAdress = linkedInAdress;
+		this.nif = nif;
+	}
+
+	public long getNif() {
+		return nif;
+	}
+
+	public void setNif(long nif) {
+		this.nif = nif;
 	}
 
 	public long getUserId() {

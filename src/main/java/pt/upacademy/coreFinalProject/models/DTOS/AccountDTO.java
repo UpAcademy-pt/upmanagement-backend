@@ -18,7 +18,7 @@ public class AccountDTO extends EntityDTO {
 	//evaluations so vai ter valores para formandos
 	private List<Long> evaluationIds= new ArrayList<Long>();
 	private String missedDays;
-	
+	private long nif;
 	
 	
 	public AccountDTO() {}
@@ -26,7 +26,7 @@ public class AccountDTO extends EntityDTO {
 
 
 	public AccountDTO(long userId, int age, String academicDegree, String academicBackground, String photoLink,
-			int mobilePhone, String linkedInAdress) {
+			int mobilePhone, String linkedInAdress, long nif) {
 		this.userId = userId;
 		this.age = age;
 		this.academicDegree = academicDegree;
@@ -34,15 +34,13 @@ public class AccountDTO extends EntityDTO {
 		this.photoLink = photoLink;
 		this.mobilePhone = mobilePhone;
 		this.linkedInAdress = linkedInAdress;
+		this.nif = nif;
 	}
 	
 	
-
-
-
 	public AccountDTO(long userId, int age, List<Long> academyIds, String academicDegree, String academicBackground,
 			String photoLink, int mobilePhone, String linkedInAdress, List<Long> themeIds, List<Long> evaluationIds,
-			String missedDays) {
+			String missedDays, long nif) {
 		super();
 		this.userId = userId;
 		this.age = age;
@@ -55,12 +53,25 @@ public class AccountDTO extends EntityDTO {
 		this.themeIds = themeIds;
 		this.evaluationIds = evaluationIds;
 		this.missedDays = missedDays;
+		this.nif = nif;
 	}
 
 
 
 	public long getUserId() {
 		return userId;
+	}
+
+
+
+	public long getNif() {
+		return nif;
+	}
+
+
+
+	public void setNif(long nif) {
+		this.nif = nif;
 	}
 
 

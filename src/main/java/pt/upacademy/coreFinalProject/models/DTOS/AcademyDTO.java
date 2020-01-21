@@ -1,7 +1,8 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.time.LocalDate;
 import java.util.List;
+
+import pt.upacademy.coreFinalProject.models.Status;
 
 public class AcademyDTO extends EntityDTO {
 
@@ -11,17 +12,25 @@ public class AcademyDTO extends EntityDTO {
     private String edName;
     private List<Long> modulesIds;
     private List<Long> studentsIds;
+    private Status status;
     
-    
- 
-    public void Academy(String client, String startDate, String endDate, String edName, List<Long> modulesIds, List<Long> studentsIds) {
+    public void Academy(String client, String startDate, String endDate, String edName, List<Long> modulesIds, List<Long> studentsIds, Status status) {
 		this.setClient(client);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
 		this.setEdName(edName);
 		this.setModulesIds(modulesIds);
 		this.setStudentsIds(studentsIds);
+		this.setStatus(status);
     }
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public String getClient() {
 		return client;
