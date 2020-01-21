@@ -7,26 +7,24 @@ public class EditionDTO extends EntityDTO {
 
 	private String name;
 	private String type;
-	private long accountId;
+	private List <Long>  accountIds = new ArrayList<Long>();
 	private List <Long>  lessonsIds = new ArrayList<Long>();
 	private List <Long> notesIds = new ArrayList<Long>();
 	private List <Long> questionsIds = new ArrayList<Long>();
-	private List <Long>  answersIds = new ArrayList<Long>();
 	private List <Long>  eventsIds = new ArrayList<Long>();
 	
 	
 	
 	public EditionDTO() {
 	}
-	public EditionDTO(String name, String type, long accountId, List<Long> lessonsIds, List<Long> notesIds,
-			List<Long> questionsIds, List<Long> answersIds, List<Long> eventsIds) {
+	public EditionDTO(String name, String type, List <Long>  accountIds, List<Long> lessonsIds, List<Long> notesIds,
+			List<Long> questionsIds, List<Long> eventsIds) {
 		this.name = name;
 		this.type = type;
-		this.accountId = accountId;
+		this.accountIds = accountIds;
 		this.lessonsIds = lessonsIds;
 		this.notesIds = notesIds;
 		this.questionsIds = questionsIds;
-		this.answersIds = answersIds;
 		this.eventsIds = eventsIds;
 	}
 	
@@ -42,11 +40,12 @@ public class EditionDTO extends EntityDTO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public long getAccountId() {
-		return accountId;
+
+	public List<Long> getAccountIds() {
+		return accountIds;
 	}
-	public void setAccountId(long accountId) {
-		this.accountId = accountId;
+	public void setAccountIds(List<Long> accountIds) {
+		this.accountIds = accountIds;
 	}
 	public List<Long> getLessonsIds() {
 		return lessonsIds;
@@ -66,12 +65,7 @@ public class EditionDTO extends EntityDTO {
 	public void setQuestionsIds(List<Long> questionsIds) {
 		this.questionsIds = questionsIds;
 	}
-	public List<Long> getAnswersIds() {
-		return answersIds;
-	}
-	public void setAnswersIds(List<Long> answersIds) {
-		this.answersIds = answersIds;
-	}
+	
 	public List<Long> getEventsIds() {
 		return eventsIds;
 	}
@@ -82,8 +76,8 @@ public class EditionDTO extends EntityDTO {
 	
 	@Override
 	public String toString() {
-		return "EditionDTO [name=" + name + ", type=" + type + ", accountId"+ accountId + ", lessonsIds=" + lessonsIds + ", notesIds=" + notesIds 
-				+ ", questionsIds=" + questionsIds +", answersIds=" + answersIds + ", eventsIds=" + eventsIds + "]";
+		return "EditionDTO [name=" + name + ", type=" + type + ", accountIds"+ accountIds + ", lessonsIds=" + lessonsIds + ", notesIds=" + notesIds 
+				+ ", questionsIds=" + questionsIds + ", eventsIds=" + eventsIds + "]";
 	}
 	
 	

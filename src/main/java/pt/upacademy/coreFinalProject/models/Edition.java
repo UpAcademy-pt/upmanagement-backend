@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = Edition.GET_ALL_EDITIONS, query = "SELECT e FROM Edition e")
@@ -20,8 +19,8 @@ public class Edition extends EntityRoot  {
 	private String name;
 	private String type;
 	
-	@OneToOne
-	private Account account;
+	@OneToMany
+	private List <Account> accounts;
 	
 	@OneToMany ()
 	private List <Lesson> lessons;
@@ -32,9 +31,7 @@ public class Edition extends EntityRoot  {
 	@OneToMany ()
 	private List <QuestionForum> questions;
 	
-	@OneToMany()
-	private List <AnswerForum> answers;
-	
+
 	@OneToMany ()
 	private List <Event> events;
 	
@@ -54,13 +51,12 @@ public class Edition extends EntityRoot  {
 		this.type = type;
 	}
 
-	
-	public Account getAccount() {
-		return account;
+	public List<Account> getAccounts() {
+		return accounts;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 
 	public List<Lesson> getLessons() {
@@ -87,14 +83,6 @@ public class Edition extends EntityRoot  {
 		this.questions = questions;
 	}
 
-	public List<AnswerForum> getAnswers() {
-		return answers;
-	}
-
-	public void setAnswers(List<AnswerForum> answers) {
-		this.answers = answers;
-	}
-
 	public List<Event> getEvents() {
 		return events;
 	}
@@ -105,8 +93,8 @@ public class Edition extends EntityRoot  {
 
 	@Override
 	public String toString() {
-		return "Edition [name=" + name  + ", type=" + type + "account=" + account +", lessons=" + lessons 
-				+ ", notes=" + notes + ", questions=" + questions +", answers=" + answers + ", events=" + events + "]";
+		return "Edition [name=" + name  + ", type=" + type + "accounts=" + accounts +", lessons=" + lessons 
+				+ ", notes=" + notes + ", questions=" + questions + ", events=" + events + "]";
 	}
 	
 	
