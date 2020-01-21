@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 	@NamedQuery(name = Account.GET_ALL_ACCOUNT_IDs, query = "SELECT a.id FROM Account a"),
 	@NamedQuery(name = Account.GET_ACCOUNT_COUNT, query = "SELECT COUNT(a.id) FROM Account a"), 
 	@NamedQuery (name = Account.GET_ACCOUNT_BY_USERID, query = "SELECT a FROM Account a WHERE a.user.id = :userId")})
-//SELECT s FROM Shelf s WHERE s.produto.ID = :productId
+
 
 public class Account extends EntityRoot  {
 	

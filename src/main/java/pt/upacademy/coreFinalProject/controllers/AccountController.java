@@ -13,6 +13,9 @@ import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.User;
+import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
+import pt.upacademy.coreFinalProject.models.converters.AccountConverter;
+import pt.upacademy.coreFinalProject.models.converters.UserConverter;
 import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 import pt.upacademy.coreFinalProject.services.AccountService;
 import pt.upacademy.coreFinalProject.services.UserService;
@@ -20,13 +23,19 @@ import pt.upacademy.coreFinalProject.services.UserService;
 
 @RequestScoped
 @Path ("account")
-public class AccountController extends EntityController <AccountService, AccountRepository, Account>{
+public class AccountController extends EntityControllerDTO <AccountService, AccountRepository,AccountConverter, Account, AccountDTO>{
 
+	@Inject
+	protected AccountConverter converter;
+	
+	
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Account getAccountByUserById (@PathParam("id") long userId) {
-		return service.getAccountByUserById(userId);
+	public AccountDTO getAccountByUserById (@PathParam("id") long userId) {
+		Account account = service.getAccountByUserById(userId);
+		return converter.toDTO(account);
+	
 	}
 
 	
