@@ -9,8 +9,7 @@ public class AcademyRepository extends EntityRepository<Academy> {
 
 	@Override
 	protected Class<Academy> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Academy.class;
 	}
 
 	@Override

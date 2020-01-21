@@ -9,8 +9,7 @@ public class AccountRepository extends EntityRepository<Account> {
 
 	@Override
 	protected Class<Account> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Account.class;
 	}
 
 	@Override

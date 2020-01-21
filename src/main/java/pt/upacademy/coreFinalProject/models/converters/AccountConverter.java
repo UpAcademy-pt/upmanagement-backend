@@ -35,9 +35,9 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 		account.setMobilePhone(dto.getMobilePhone());
 		account.setPhotoLink(dto.getPhotoLink());
 		account.setUserId(dto.getUserId());
-		account.setAcademies(dto.getAcademyIds().stream().map(academyId -> academyService.get(academyId)).collect(Collectors.toList()));
-		account.setThemes(dto.getThemeIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toList()));
-		account.setEvaluations(dto.getEvaluationIds().stream().map(evalId -> evalService.get(evalId)).collect(Collectors.toList()));
+		account.setAcademies(dto.getAcademyIds().stream().map(academyId -> academyService.get(academyId)).collect(Collectors.toSet()));
+		account.setThemes(dto.getThemeIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toSet()));
+		account.setEvaluations(dto.getEvaluationIds().stream().map(evalId -> evalService.get(evalId)).collect(Collectors.toSet()));
 		account.setNif(dto.getNif());
 		return account;
 	}
