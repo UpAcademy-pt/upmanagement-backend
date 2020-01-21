@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.services;
 
+import java.util.Collection;
 import java.util.Random;
 
 import javax.enterprise.context.RequestScoped;
@@ -50,7 +51,7 @@ public class UserService extends EntityService<UserRepository, User>{
 		User newUser = new User();
 		
 		String password = randomStringGenerator();
-		System.out.println(password);
+		System.out.println("Password:" + password);
 		String[] hashCode = passwordToHashcode(password);
 		
 		newUser.setName(userDto.getName());
@@ -107,6 +108,10 @@ public class UserService extends EntityService<UserRepository, User>{
 			return false;
 		}
 		else { return true;}
+	}
+
+	public Collection<User> requestFilter(String str) {
+		return userRep.getUsersByFilter(str);
 	}
 	
 }
