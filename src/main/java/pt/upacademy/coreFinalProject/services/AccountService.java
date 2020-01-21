@@ -9,4 +9,9 @@ import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 @RequestScoped
 public class AccountService extends EntityService<AccountRepository, Account> {
 
+	public Account getAccountByUserById(long userId) {
+		return repository.getAccountByUserById(userId);
+		
+	}
+	
 }
