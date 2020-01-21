@@ -55,7 +55,8 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO> {
 
 	@Override
 	public AccountDTO toDTO(Account ent) {
-		AccountDTO accountDTO = new AccountDTO(				
+		AccountDTO accountDTO = new AccountDTO(
+				ent.getId(),
 				(ent.getUser() == null) ? 0 :ent.getUser().getId(), 
 				ent.getEditions().stream().map(Edition::getId).collect(Collectors.toList()));
 
