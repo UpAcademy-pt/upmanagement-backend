@@ -4,9 +4,16 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+/*
+@NamedQueries({
+	@NamedQuery(name = Academy.GET_ALL_ACADEMIES, query = "SELECT a FROM ACADEMIES a")
+})
+*/
 public class Academy extends EntityRoot {
    
 	private static final long serialVersionUID = 1L;

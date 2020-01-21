@@ -12,6 +12,8 @@ public class AcademyDTO extends EntityDTO {
     private List<Long> modulesIds;
     private List<Long> studentsIds;
     
+    
+ 
     public void Academy(String client, String startDate, String endDate, String edName, List<Long> modulesIds, List<Long> studentsIds) {
 		this.setClient(client);
 		this.setStartDate(startDate);
