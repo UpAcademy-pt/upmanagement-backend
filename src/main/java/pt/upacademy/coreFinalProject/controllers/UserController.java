@@ -12,6 +12,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -65,9 +66,14 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String create(UserDTO userDTO) {
-		service.createUser(userDTO);
-		return "Create Done!";
+	public Response create(UserDTO userDTO) {
+		try {
+			service.createUser(userDTO);
+			return Response.ok().build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
 	}
 	
 	@PUT
@@ -76,5 +82,53 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	public String update(UserDTO userDTO) {
 		service.update(converter.toEntity(userDTO));
 		return "Update Done!";
-	}	
+	}
+	
+	@PUT
+	@Path("/edit")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String updateByAdmin(UserDTO userDTO) {
+		User temporaryUser = service.get(userDTO.getId());
+		System.out.println(temporaryUser.toString());
+		temporaryUser.setEmail(userDTO.getEmail());
+		temporaryUser.setName(userDTO.getName());
+		temporaryUser.setRole(userDTO.getRole());
+		service.update(temporaryUser);
+		return "Update Done!";
+	}
+	
+	
+	@PUT
+	@Path("/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String delete(@PathParam("id") long id) {
+		service.update(converter.toNullUser(service.get(id)));
+		return "Delete Done!";
+	}
+	
+//	@GET
+//	@Path("/q")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Collection<UserDTO> getAdminFilter (
+//			@QueryParam("paramName") String name,
+//			@QueryParam("paramRole") String role,
+//			@QueryParam("paramEmail") String email) {
+//		StringBuilder query = new StringBuilder();
+//		query.append("SELECT u FROM User u WHERE ");
+//		int counter = 0;
+//		
+//		for (int i = 1; i < 3; i++) {
+//			
+//		}
+//		if (name.equals("") == false) {
+//			query.append("u.name = :name");
+//			
+//		} if (role.equals("") == false) {
+//			query.append(b);
+//		}
+//		return null;
+//	}
+	
+//	https://www.logicbig.com/tutorials/java-ee-tutorial/jax-rs/filters.html
 }
