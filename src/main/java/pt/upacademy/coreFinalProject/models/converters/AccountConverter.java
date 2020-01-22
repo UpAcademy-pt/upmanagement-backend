@@ -27,7 +27,7 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 		if(dto.getId() != 0) {
 			account.setId(dto.getId());
 		}
-		account.setAcademicBackgroung(dto.getAcademicBackgroung());
+		account.setAcademicBackground(dto.getAcademicBackground());
 		account.setAcademicDegree(dto.getAcademicDegree());
 		account.setAge(dto.getAge());
 		account.setLinkedInAdress(dto.getLinkedInAdress());
@@ -49,7 +49,7 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 				entity.getAge(),
 				entity.getAcademies().stream().map(academy -> academy.getId()).collect(Collectors.toList()),
 				entity.getAcademicDegree(),
-				entity.getAcademicBackgroung(),
+				entity.getAcademicBackground(),
 				entity.getPhotoLink(),
 				entity.getMobilePhone(),
 				entity.getLinkedInAdress(),

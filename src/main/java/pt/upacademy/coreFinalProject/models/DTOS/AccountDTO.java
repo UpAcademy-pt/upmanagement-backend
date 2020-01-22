@@ -118,13 +118,13 @@ public class AccountDTO extends EntityDTO {
 
 
 
-	public String getAcademicBackgroung() {
+	public String getAcademicBackground() {
 		return academicBackground;
 	}
 
 
 
-	public void setAcademicBackgroung(String academicBackgroung) {
+	public void setAcademicBackground(String academicBackgroung) {
 		this.academicBackground = academicBackgroung;
 	}
 

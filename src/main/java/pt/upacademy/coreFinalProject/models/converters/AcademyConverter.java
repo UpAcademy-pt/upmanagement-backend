@@ -24,10 +24,14 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		Academy academy = new Academy();
 		academy.setClient(dto.getClient());
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		if(dto.getStartDate() != null) {
 		LocalDate localDate = LocalDate.parse(dto.getStartDate(),dateTimeFormatter);
 		academy.setStartDate(localDate);
+		}
+		if(dto.getEndDate() != null) {
 		LocalDate localDate1 = LocalDate.parse(dto.getEndDate(),dateTimeFormatter);
 		academy.setEndDate(localDate1);
+		}
 		academy.setEdName(dto.getEdName());
 		academy.setModules(dto.getModulesIds().stream().map(moduleId -> moduleService.get(moduleId)).collect(Collectors.toSet()));
 		academy.setStudents(dto.getStudentsIds().stream().map(studentId -> studentService.get(studentId)).collect(Collectors.toSet()));
@@ -42,10 +46,14 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		AcademyDTO academyDTO = new AcademyDTO();
 		academyDTO.setClient(entity.getClient());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		if(entity.getStartDate() != null) {
 		String startDateString = entity.getStartDate().format(formatter);
 		academyDTO.setStartDate (startDateString);
+		}
+		if(entity.getEndDate() != null) {
 		String endDateString = entity.getEndDate().format(formatter);
 		academyDTO.setEndDate(endDateString);
+		}
 		academyDTO.setEdName(entity.getEdName());
 		academyDTO.setStatus(entity.getStatus());
 		academyDTO.setModulesIds(entity.getModules().stream().map(modules -> modules.getId()).collect(Collectors.toList()));

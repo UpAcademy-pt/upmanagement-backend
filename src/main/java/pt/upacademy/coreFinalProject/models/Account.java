@@ -24,7 +24,7 @@ public class Account extends EntityRoot {
 	
 	private long userId;
 	private int age;
-	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Academy> academies;
 	private String academicDegree;
 	private String academicBackground;
@@ -94,12 +94,12 @@ public class Account extends EntityRoot {
 		this.academicDegree = academicDegree;
 	}
 
-	public String getAcademicBackgroung() {
+	public String getAcademicBackground() {
 		return academicBackground;
 	}
 
-	public void setAcademicBackgroung(String academicBackgroung) {
-		this.academicBackground = academicBackgroung;
+	public void setAcademicBackground(String academicBackground) {
+		this.academicBackground = academicBackground;
 	}
 
 	public String getPhotoLink() {

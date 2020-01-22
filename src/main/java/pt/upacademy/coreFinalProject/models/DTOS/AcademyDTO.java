@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pt.upacademy.coreFinalProject.models.Status;
@@ -10,8 +11,8 @@ public class AcademyDTO extends EntityDTO {
     private String startDate;
     private String endDate;
     private String edName;
-    private List<Long> modulesIds;
-    private List<Long> studentsIds;
+    private List<Long> modulesIds = new ArrayList<Long>();
+    private List<Long> studentsIds = new ArrayList<Long>();
     private Status status;
     
     public void Academy(String client, String startDate, String endDate, String edName, List<Long> modulesIds, List<Long> studentsIds, Status status) {
