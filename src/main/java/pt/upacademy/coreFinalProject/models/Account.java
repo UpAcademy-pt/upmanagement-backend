@@ -7,12 +7,21 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a"),
+	@NamedQuery(name = Account.GET_ACCOUNTS_BY_USER_IDS, query = "SELECT a FROM Account a WHERE a.userId in :usersIds")
+})
 public class Account extends EntityRoot {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL_ACCOUNTS = "getAllAccounts";
+	public static final String GET_ACCOUNTS_BY_USER_IDS = "getAccountsByUserIds";
 	
 	private long userId;
 	private int age;

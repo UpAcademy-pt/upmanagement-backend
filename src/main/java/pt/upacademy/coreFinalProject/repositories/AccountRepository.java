@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.repositories;
 
+import java.util.Collection;
+
 import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.Account;
@@ -14,8 +16,11 @@ public class AccountRepository extends EntityRepository<Account> {
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return Account.GET_ALL_ACCOUNTS;
+	}
+	
+	public Collection<Account> getByUserIds(Collection<Long> userIds) {
+		return entityManager.createNamedQuery(Account.GET_ACCOUNTS_BY_USER_IDS, getEntityClass()).setParameter("usersIds", userIds).getResultList();
 	}
 
 }
