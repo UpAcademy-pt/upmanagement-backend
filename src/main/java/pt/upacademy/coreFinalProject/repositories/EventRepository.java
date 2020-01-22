@@ -10,14 +10,12 @@ public class EventRepository extends EntityRepository <Event>{
 
 	@Override
 	protected Class<Event> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Event.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return Event.GET_ALL_EVENTS;
 	}
 
 	protected String getAllEntitiesIds() {
