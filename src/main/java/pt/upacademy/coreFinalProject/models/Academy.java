@@ -11,14 +11,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-/*
 @NamedQueries({
-	@NamedQuery(name = Academy.GET_ALL_ACADEMIES, query = "SELECT a FROM ACADEMIES a")
+	@NamedQuery(name = Academy.GET_ALL_ACADEMIES, query = "SELECT a FROM Academy a")
 })
-*/
+
 public class Academy extends EntityRoot {
    
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL_ACADEMIES = "getAllAcademies";
+	
     private String client;
     private LocalDate startDate;
     private LocalDate endDate;

@@ -14,8 +14,7 @@ public class AcademyRepository extends EntityRepository<Academy> {
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return Academy.GET_ALL_ACADEMIES;
 	}
 
 }
