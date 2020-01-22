@@ -59,4 +59,21 @@ public class EditionController extends EntityControllerDTO <EditionService, Edit
 		EditionDTO ent = converter.toDTO(service.get(id));
 		return "entity retrieved : " +  ent;
 	}
+	
+	@PUT
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String update(@PathParam("id") long id, EditionDTO user) {
+		service.update(converter.toEntity(user));
+		return "Update Done!";
+	}
+	
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String delete(@PathParam("id") long id) {
+		service.delete(id);
+		return "Delete Done!";
+	}
 }
