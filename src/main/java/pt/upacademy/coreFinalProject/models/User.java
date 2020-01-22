@@ -8,39 +8,39 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name = User.GET_ALL_USERS, query = "SELECT u FROM User u"),
-	@NamedQuery(name = User.GET_USER_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :userEmail")
-})
+@NamedQueries({ @NamedQuery(name = User.GET_ALL_USERS, query = "SELECT u FROM User u"),
+		@NamedQuery(name = User.GET_USER_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :userEmail") })
 public class User extends EntityRoot {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final String GET_ALL_USERS = "getAllUsers";
 	public static final String GET_USER_BY_EMAIL = "getUserByEmail";
-	
-	private String username;
+
+	private String name;
+	@Column(nullable = true, unique = true)
 	private String email;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	private String hashcode;
 	private String salt;
+	private Boolean validatedEmail;
 
-	public Role getRole() {
-		return role;
+	public Boolean getValidatedEmail() {
+		return validatedEmail;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setValidatedEmail(Boolean validatedEmail) {
+		this.validatedEmail = validatedEmail;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -49,6 +49,14 @@ public class User extends EntityRoot {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	public String getHashcode() {
@@ -69,9 +77,8 @@ public class User extends EntityRoot {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", email=" + email + ", role=" + role + ", hashcode=" + hashcode
-				+ ", salt=" + salt + "]";
+		return "User [name=" + name + ", email=" + email + ", role=" + role + ", hashcode=" + hashcode + ", salt="
+				+ salt + "]";
 	}
 
-	
 }
