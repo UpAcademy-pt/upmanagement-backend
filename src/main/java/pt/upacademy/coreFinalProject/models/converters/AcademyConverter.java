@@ -8,9 +8,16 @@ import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Academy;
 import pt.upacademy.coreFinalProject.models.DTOS.AcademyDTO;
+import pt.upacademy.coreFinalProject.services.AccountService;
+import pt.upacademy.coreFinalProject.services.ModuleService;
 
 public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 	
+	@Inject
+	protected ModuleService moduleService;
+	
+	@Inject
+	protected AccountService studentService;
 	
 	@Override
 	public Academy toEntity(AcademyDTO dto) {
@@ -22,8 +29,9 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		LocalDate localDate1 = LocalDate.parse(dto.getEndDate(),dateTimeFormatter);
 		academy.setEndDate(localDate1);
 		academy.setEdName(dto.getEdName());
-		academy.setModules(dto.getModulesIds());
-		academy.setStudents(dto.getStudentsIds());
+		academy.setModules(dto.getModulesIds().stream().map(moduleId -> moduleService.get(moduleId)).collect(Collectors.toList()));
+		academy.setStudents(dto.getStudentsIds().stream().map(studentId -> studentService.get(studentId)).collect(Collectors.toList()));
+		academy.setStatus(dto.getStatus());
 		return academy;
 		
 		
@@ -31,8 +39,20 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 
 	@Override
 	public AcademyDTO toDTO(Academy entity) {
-		// TODO Auto-generated method stub
-		return null;
+		AcademyDTO academyDTO = new AcademyDTO();
+		academyDTO.setClient(entity.getClient());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String startDateString = entity.getStartDate().format(formatter);
+		academyDTO.setStartDate (startDateString);
+		String endDateString = entity.getEndDate().format(formatter);
+		academyDTO.setEndDate(endDateString);
+		academyDTO.setEdName(entity.getEdName());
+		academyDTO.setStatus(entity.getStatus());
+		academyDTO.setModulesIds(entity.getModules().stream().map(modules -> modules.getId()).collect(Collectors.toList()));
+		academyDTO.setStudentsIds(entity.getStudents().stream().map(students -> students.getId()).collect(Collectors.toList()));
+		return academyDTO;
+		
+	
 	}
 
 }

@@ -1,0 +1,9 @@
+diff a/src/main/java/pt/upacademy/coreFinalProject/controllers/ModuleController.java b/src/main/java/pt/upacademy/coreFinalProject/controllers/ModuleController.java	(rejected hunks)
+@@ -42,6 +42,7 @@
+  //		System.out.println("created");
+  //		return "created!";
+  //	}
+++>>>>>>> 56e2e7c0b3e9f91e544a2e07e85f0c0e93ee0fad
+  	
+  	@Override
+  	@POST

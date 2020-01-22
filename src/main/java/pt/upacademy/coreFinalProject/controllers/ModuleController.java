@@ -20,6 +20,15 @@ import pt.upacademy.coreFinalProject.services.ModuleService;
 @RequestScoped
 public class ModuleController extends EntityControllerDTO<ModuleService, ModuleRepository, ModuleConverter, Module, ModuleDTO> {
 
+	/*@Override
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String create (ModuleDTO module) {
+		System.out.println("created");
+		return "created!";
+	}*/
+	
 //	@Override
 //	@POST
 //	@Consumes(MediaType.APPLICATION_JSON)
@@ -28,7 +37,6 @@ public class ModuleController extends EntityControllerDTO<ModuleService, ModuleR
 //		System.out.println("created");
 //		return "created!";
 //	}
-	
 	@Override
 	@POST
 	@Path("/{id}")
