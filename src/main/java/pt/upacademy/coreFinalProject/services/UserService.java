@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.services;
 
+import java.util.Collection;
 import java.util.Random;
 
 import javax.enterprise.context.RequestScoped;
@@ -8,6 +9,7 @@ import javax.ws.rs.BadRequestException;
 
 import pt.upacademy.coreFinalProject.models.User;
 import pt.upacademy.coreFinalProject.models.DTOS.UserDTO;
+import pt.upacademy.coreFinalProject.models.converters.UserConverter;
 import pt.upacademy.coreFinalProject.repositories.UserRepository;
 import pt.upacademy.coreFinalProject.utils.EmailUtils;
 import pt.upacademy.coreFinalProject.utils.PasswordUtils;
@@ -17,6 +19,9 @@ public class UserService extends EntityService<UserRepository, User>{
 	
 	@Inject
 	protected UserRepository userRep;
+	
+	@Inject
+	protected UserConverter converter;
 
 // ------------------------------ PASSWORD TO HASHCODE -----------------------------------
 
@@ -50,7 +55,7 @@ public class UserService extends EntityService<UserRepository, User>{
 		User newUser = new User();
 		
 		String password = randomStringGenerator();
-		System.out.println(password);
+		System.out.println("Password:" + password);
 		String[] hashCode = passwordToHashcode(password);
 		
 		newUser.setName(userDto.getName());
@@ -62,6 +67,7 @@ public class UserService extends EntityService<UserRepository, User>{
 		newUser.setHashcode(hashCode[0]);
 		newUser.setSalt(hashCode[1]);
 		newUser.setRole(userDto.getRole());
+		newUser.setValidatedEmail(true);
 		System.out.println("Estive aqui!");
 		create(newUser);
 //		userRep.addUser(newUser);
@@ -107,6 +113,37 @@ public class UserService extends EntityService<UserRepository, User>{
 			return false;
 		}
 		else { return true;}
+	}
+
+	public Collection<User> requestFilter(String str) {
+		return userRep.getUsersByFilter(str);
+	}
+
+	public void updatePassword(UserDTO userDto, String newPass) {
+		User frontUser = converter.toEntity(userDto);
+		User backUser = get(userDto.getId());
+		if (frontUser.getHashcode() == backUser.getHashcode() && frontUser.getSalt() == backUser.getSalt()) {
+			String[] hashCode = UserService.passwordToHashcode(newPass);
+			backUser.setHashcode(hashCode[0]);
+			backUser.setSalt(hashCode[1]);
+			update(backUser);
+			
+		} else {
+			throw new BadRequestException("Current password does not match!");
+		}
+		
+	}
+
+	public void validateEmail(UserDTO userDto) {
+		User backUser = get(userDto.getId());
+		if (backUser.getEmail() == userDto.getEmail()) {
+			backUser.setValidatedEmail(true);
+			update(backUser);
+			
+		} else {
+			throw new BadRequestException("Current Email doesn't match!");
+		}
+		
 	}
 	
 }

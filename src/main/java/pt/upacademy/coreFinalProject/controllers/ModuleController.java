@@ -29,6 +29,14 @@ public class ModuleController extends EntityControllerDTO<ModuleService, ModuleR
 		return "created!";
 	}*/
 	
+//	@Override
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.TEXT_PLAIN)
+//	public String create (ModuleDTO module) {
+//		System.out.println("created");
+//		return "created!";
+//	}
 	@Override
 	@POST
 	@Path("/{id}")

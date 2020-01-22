@@ -1,8 +1,11 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.List;
+//import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -13,19 +16,19 @@ public class Account extends EntityRoot {
 	
 	private long userId;
 	private int age;
-	@ManyToMany
-	private List<Academy> academies;
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+	private Set<Academy> academies;
 	private String academicDegree;
 	private String academicBackground;
 	private String photoLink;
 	private int mobilePhone;
 	private String linkedInAdress;
 	//themes so vai ter valores para formadores
-	@OneToMany
-	private List<Theme> themes;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<Theme> themes;
 	//evaluations e missedDays so vai ter valores para formandos
-	@OneToMany
-	private List<Evaluation> evaluations;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<Evaluation> evaluations;
 	private String missedDays;
 	private long nif;
 	
@@ -67,11 +70,11 @@ public class Account extends EntityRoot {
 		this.age = age;
 	}
 
-	public List<Academy> getAcademies() {
+	public Set<Academy> getAcademies() {
 		return academies;
 	}
 
-	public void setAcademies(List<Academy> academies) {
+	public void setAcademies(Set<Academy> academies) {
 		this.academies = academies;
 	}
 
@@ -115,19 +118,19 @@ public class Account extends EntityRoot {
 		this.linkedInAdress = linkedInAdress;
 	}
 
-	public List<Theme> getThemes() {
+	public Set<Theme> getThemes() {
 		return themes;
 	}
 
-	public void setThemes(List<Theme> themes) {
+	public void setThemes(Set<Theme> themes) {
 		this.themes = themes;
 	}
 	
-	public List<Evaluation> getEvaluations() {
+	public Set<Evaluation> getEvaluations() {
 		return evaluations;
 	}
 
-	public void setEvaluations(List<Evaluation> evaluations) {
+	public void setEvaluations(Set<Evaluation> evaluations) {
 		this.evaluations = evaluations;
 	}
 
