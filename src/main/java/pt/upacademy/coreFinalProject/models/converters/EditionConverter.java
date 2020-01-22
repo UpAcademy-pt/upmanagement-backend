@@ -85,6 +85,7 @@ public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 	@Override
 	public EditionDTO toDTO(Edition ent) {
 		EditionDTO editionDTO = new EditionDTO (
+				ent.getId(),
 				ent.getName(),
 				ent.getType(),
 				ent.getAccounts().stream().map(Account :: getId).collect(Collectors.toList())

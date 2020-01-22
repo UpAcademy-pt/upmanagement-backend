@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditionDTO extends EntityDTO {
-
+	
+	private long editionId;
 	private String name;
 	private String type;
 	private List <Long>  accountIds = new ArrayList<Long>();
@@ -17,8 +18,9 @@ public class EditionDTO extends EntityDTO {
 	
 	public EditionDTO() {
 	}
-	public EditionDTO(String name, String type, List <Long>  accountIds, List<Long> lessonsIds, List<Long> notesIds,
+	public EditionDTO(long editionId, String name, String type, List <Long>  accountIds, List<Long> lessonsIds, List<Long> notesIds,
 			List<Long> questionsIds, List<Long> eventsIds) {
+		this.editionId = editionId;
 		this.name = name;
 		this.type = type;
 		this.accountIds = accountIds;
@@ -26,6 +28,24 @@ public class EditionDTO extends EntityDTO {
 		this.notesIds = notesIds;
 		this.questionsIds = questionsIds;
 		this.eventsIds = eventsIds;
+	}
+	
+	
+	public EditionDTO(long editionId, String name, String type, List<Long> accountIds) {
+		super();
+		this.editionId = editionId;
+		this.name = name;
+		this.type = type;
+		this.accountIds = accountIds;
+	}
+	
+	
+	
+	public long getEditionId() {
+		return editionId;
+	}
+	public void setEditionId(long editionId) {
+		this.editionId = editionId;
 	}
 	
 	public String getName() {
