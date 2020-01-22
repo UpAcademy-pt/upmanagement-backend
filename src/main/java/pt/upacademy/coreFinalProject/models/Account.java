@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 	@NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a"),
 	@NamedQuery(name = Account.GET_ALL_ACCOUNT_IDs, query = "SELECT a.id FROM Account a"),
 	@NamedQuery(name = Account.GET_ACCOUNT_COUNT, query = "SELECT COUNT(a.id) FROM Account a"), 
-	@NamedQuery (name = Account.GET_ACCOUNT_BY_USERID, query = "SELECT a FROM Account a WHERE a.user.id = :userId")})
+	@NamedQuery (name = Account.GET_ACCOUNT_BY_USERID, query = "SELECT a FROM Account a WHERE a.userId = :userId")})
 
 
 public class Account extends EntityRoot  {
@@ -30,29 +30,29 @@ public class Account extends EntityRoot  {
 	public static final String GET_ACCOUNT_COUNT = "getAccountCount";
 	public static final String GET_ACCOUNT_BY_USERID = "getAccountByUserId";
 	
-	@OneToOne
-	private User user;
+	private long userId;
 	
-
 	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List <Edition>  editions;
 
-	
-	public Account(User user, List<Edition> editions) {
-		this.user = user;
+		
+	public Account(long userId, List<Edition> editions) {
+		this.userId = userId;
 		this.editions = editions;
-		}
-	
+	}
+
+
 	public Account() {
 	}
 
 
-	public User getUser() {
-		return user;
+	public long getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
+
 	public List<Edition> getEditions() {
 		return editions;
 	}
@@ -62,7 +62,7 @@ public class Account extends EntityRoot  {
 	
 	@Override
 	public String toString() {
-		return "Account [user=" + user + ", editions=" + editions + "]";
+		return "Account [userId=" + userId + ", editions=" + editions + "]";
 	}
 	
 
