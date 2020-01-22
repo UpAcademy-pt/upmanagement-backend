@@ -18,13 +18,22 @@ public class User extends EntityRoot {
 	public static final String GET_USER_BY_EMAIL = "getUserByEmail";
 
 	private String name;
-	@Column(nullable = false, unique = true)
+	@Column(nullable = true, unique = true)
 	private String email;
 	@Column(nullable = true)
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	private String hashcode;
 	private String salt;
+	private Boolean validatedEmail;
+
+	public Boolean getValidatedEmail() {
+		return validatedEmail;
+	}
+
+	public void setValidatedEmail(Boolean validatedEmail) {
+		this.validatedEmail = validatedEmail;
+	}
 
 	public String getName() {
 		return name;

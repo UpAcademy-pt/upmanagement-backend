@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -107,7 +108,7 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	@Path("/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String delete(@PathParam("id") long id) {
-		service.update(converter.toNullUser(service.get(id)));
+		service.updateToNull(converter.toNullUser(service.get(id)));
 		return "Delete Done!";
 	}
 	
@@ -140,7 +141,11 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 			specificSearch = searchValues[i-1].toString();
 			specificSearch = specificSearch.substring(1, specificSearch.length() - 1);
 			String temp = iter.next();
-			sb[counter] = "u."+ temp + " like '%"+specificSearch+"%'";
+			if (!temp.equals("role")) {
+			sb[counter] = "u."+ temp + " like '%"+specificSearch+"%'";}
+			else if(temp.equals("role")) {
+			sb[counter] = "u."+ temp + " like '"+specificSearch+"%'";
+			}
 			counter += 2;
 		}
 		
@@ -154,5 +159,19 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 		
 		Collection<User> returnCollection = service.requestFilter(str);
 		return returnCollection.stream().map(E -> converter.toDTO(E)).collect(Collectors.toList());
+	}
+	
+	@PUT
+	@Path("/validate")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updatePassword(UserDTO userDto, @QueryParam("newPass")String newPass) {
+		try {
+		service.updatePassword(userDto, newPass);
+		service.validateEmail(userDto);
+		return Response.ok().build(); 
+		} catch (BadRequestException e) {
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
 	}
 }
