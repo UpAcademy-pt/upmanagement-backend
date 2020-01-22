@@ -1,8 +1,10 @@
 package pt.upacademy.coreFinalProject.models;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -21,16 +23,16 @@ public class Academy extends EntityRoot {
     private LocalDate startDate;
     private LocalDate endDate;
     private String edName;
-    @OneToMany
-    private List<Module> modules;
-    @ManyToMany
-    private List<Account> students;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Module> modules;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Account> students;
     private Status status;
     
     public Academy() {}
     
     public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
-		List<Module> modules, List<Account> students, Status status) {
+    	Set<Module> modules, Set<Account> students, Status status) {
 
 		this.setClient(client);
 		this.setStartDate(startDate);
@@ -84,22 +86,22 @@ public class Academy extends EntityRoot {
 	}
 
 
-	public List<Module> getModules() {
+	public Set<Module> getModules() {
 		return modules;
 	}
 
 
-	public void setModules(List<Module> modules) {
+	public void setModules(Set<Module> modules) {
 		this.modules = modules;
 	}
 
 
-	public List<Account> getStudents() {
+	public Set<Account> getStudents() {
 		return students;
 	}
 
 
-	public void setStudents(List<Account> students) {
+	public void setStudents(Set<Account> students) {
 		this.students = students;
 	}
 

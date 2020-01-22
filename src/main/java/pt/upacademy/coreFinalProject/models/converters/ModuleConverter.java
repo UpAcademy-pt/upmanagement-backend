@@ -21,8 +21,8 @@ public class ModuleConverter extends EntityConverter<Module, ModuleDTO> {
 	public Module toEntity(ModuleDTO dto) {
 		Module moduleEntity = new Module();
 		moduleEntity.setId(dto.getId());
-		moduleEntity.setEvaluation(dto.getEvaluationIds().stream().map(evaluationId -> evalService.get(evaluationId)).collect(Collectors.toList()));
-		moduleEntity.setThemes(dto.getThemesIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toList()));
+		moduleEntity.setEvaluation(dto.getEvaluationIds().stream().map(evaluationId -> evalService.get(evaluationId)).collect(Collectors.toSet()));
+		moduleEntity.setThemes(dto.getThemesIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toSet()));
 		moduleEntity.setName(dto.getName());
 		return moduleEntity;
 	}

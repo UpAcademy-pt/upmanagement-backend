@@ -1,8 +1,9 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -18,18 +19,18 @@ public class Module extends EntityRoot {
 	
 	public static final String GET_ALL_MODULES = "getAllModules";
 
-	@OneToMany
-	private List<Evaluation> evaluation;
-	@OneToMany
-	private List<Theme> themes;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<Evaluation> evaluation;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<Theme> themes;
 	private String name;
-	@OneToMany
-	private List<Account> teachers;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<Account> teachers;
 	private String evaluationSubjects;
 
 	public Module() {}
 	
-	public Module(List<Evaluation> evaluation, List<Theme> themes, String name, List<Account> teachers, String evaluationSubjects) {
+	public Module(Set<Evaluation> evaluation, Set<Theme> themes, String name, Set<Account> teachers, String evaluationSubjects) {
 		this.evaluation = evaluation;
 		this.themes = themes;
 		this.name = name;
@@ -37,27 +38,27 @@ public class Module extends EntityRoot {
 		this.evaluationSubjects = evaluationSubjects;
 	}
 
-	public List<Account> getTeachers() {
+	public Set<Account> getTeachers() {
 		return teachers;
 	}
 
-	public void setTeachers(List<Account> teachers) {
+	public void setTeachers(Set<Account> teachers) {
 		this.teachers = teachers;
 	}
 
-	public List<Evaluation> getEvaluation() {
+	public Set<Evaluation> getEvaluation() {
 		return evaluation;
 	}
 
-	public void setEvaluation(List<Evaluation> evaluation) {
+	public void setEvaluation(Set<Evaluation> evaluation) {
 		this.evaluation = evaluation;
 	}
 
-	public List<Theme> getThemes() {
+	public Set<Theme> getThemes() {
 		return themes;
 	}
 
-	public void setThemes(List<Theme> themes) {
+	public void setThemes(Set<Theme> themes) {
 		this.themes = themes;
 	}
 

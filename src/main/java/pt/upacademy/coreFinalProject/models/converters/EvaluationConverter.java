@@ -21,7 +21,7 @@ public class EvaluationConverter extends EntityConverter<Evaluation, EvaluationD
 		Evaluation evaluationEntity = new Evaluation();
 		evaluationEntity.setId(dto.getId());
 		evaluationEntity.setAccount(accService.get(dto.getAccountId()));
-		evaluationEntity.setGrades(dto.getGradesIds().stream().map(gradesIds -> gradeService.get(gradesIds)).collect(Collectors.toList()));
+		evaluationEntity.setGrades(dto.getGradesIds().stream().map(gradesIds -> gradeService.get(gradesIds)).collect(Collectors.toSet()));
 		evaluationEntity.setComment(dto.getComment());
 		return evaluationEntity;
 	}

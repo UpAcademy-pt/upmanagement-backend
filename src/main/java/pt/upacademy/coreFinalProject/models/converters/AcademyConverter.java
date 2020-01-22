@@ -29,8 +29,8 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		LocalDate localDate1 = LocalDate.parse(dto.getEndDate(),dateTimeFormatter);
 		academy.setEndDate(localDate1);
 		academy.setEdName(dto.getEdName());
-		academy.setModules(dto.getModulesIds().stream().map(moduleId -> moduleService.get(moduleId)).collect(Collectors.toList()));
-		academy.setStudents(dto.getStudentsIds().stream().map(studentId -> studentService.get(studentId)).collect(Collectors.toList()));
+		academy.setModules(dto.getModulesIds().stream().map(moduleId -> moduleService.get(moduleId)).collect(Collectors.toSet()));
+		academy.setStudents(dto.getStudentsIds().stream().map(studentId -> studentService.get(studentId)).collect(Collectors.toSet()));
 		academy.setStatus(dto.getStatus());
 		return academy;
 		

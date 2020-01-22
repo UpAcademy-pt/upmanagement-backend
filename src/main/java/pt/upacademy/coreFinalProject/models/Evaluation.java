@@ -1,8 +1,9 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,24 +23,24 @@ public class Evaluation extends EntityRoot {
 
 	@ManyToOne
 	private Account account;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@OrderBy("sdgsdg")
-	private List<Grade> grades;
+	private Set<Grade> grades;
 	private String comment;
 	
 	public Evaluation() {}
 	
-	public Evaluation(Account account, List<Grade> grades, String comment) {
+	public Evaluation(Account account, Set<Grade> grades, String comment) {
 		this.account = account;
 		this.grades = grades;
 		this.comment = comment;
 	}
 
-	public List<Grade> getGrades() {
+	public Set<Grade> getGrades() {
 		return grades;
 	}
 
-	public void setGrades(List<Grade> grades) {
+	public void setGrades(Set<Grade> grades) {
 		this.grades = grades;
 	}
 
