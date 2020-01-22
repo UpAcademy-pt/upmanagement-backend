@@ -5,6 +5,7 @@ import java.util.List;
 
 public class AccountDTO extends EntityDTO {
 	
+	private long id;
 	private long userId;
 	private List <Long>  editionsIds = new ArrayList<Long>();
 	
@@ -12,11 +13,21 @@ public class AccountDTO extends EntityDTO {
 	public AccountDTO() {
 		}
 		
-	public AccountDTO(long userId, List<Long> editionsIds) {
+	public AccountDTO(long id, long userId, List<Long> editionsIds) {
+		super();
+		this.id = id;
 		this.userId = userId;
 		this.editionsIds = editionsIds;
 	}
 
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public long getUserId() {
 		return userId;
