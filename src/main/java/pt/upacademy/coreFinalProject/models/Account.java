@@ -32,7 +32,7 @@ public class Account extends EntityRoot  {
 	
 	private long userId;
 	
-	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany (mappedBy = "accounts", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List <Edition>  editions;
 
 		
