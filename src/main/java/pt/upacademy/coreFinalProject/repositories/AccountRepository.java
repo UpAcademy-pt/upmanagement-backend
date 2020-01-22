@@ -1,9 +1,6 @@
 package pt.upacademy.coreFinalProject.repositories;
 
-import java.util.List;
-
 import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.TypedQuery;
 
 import pt.upacademy.coreFinalProject.models.Account;
 
@@ -33,10 +30,15 @@ public class AccountRepository extends EntityRepository <Account>{
 		return Account.GET_ACCOUNT_BY_USERID;
 	}
 	
+//	public Account getAccountByUserById(long id) {
+//		TypedQuery<Account> query = entityManager.createNamedQuery(Account.GET_ACCOUNT_BY_USERID, Account.class);
+//		query.setParameter("userId", id);
+//		return query.getSingleResult();
+//	}
+	
 	public Account getAccountByUserById(long id) {
-		TypedQuery<Account> query = entityManager.createNamedQuery(Account.GET_ACCOUNT_BY_USERID, Account.class);
-		query.setParameter("userId", id);
-		return query.getSingleResult();
+	return entityManager.createNamedQuery(Account.GET_ACCOUNT_BY_USERID, Account.class).setParameter("userId", id).getResultList().stream().findFirst().orElse(null);
+		
 	}
 
 }

@@ -58,7 +58,8 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO> {
 		AccountDTO accountDTO = new AccountDTO(
 				ent.getId(),
 				ent.getUserId(), 
-				(ent.getEditions() == null) ? null : ent.getEditions().stream().map(Edition::getId).collect(Collectors.toList()));
+				//(ent.getEditions() == null) ? null : 
+				ent.getEditions().stream().map(Edition::getId).collect(Collectors.toList()));
 
 		return accountDTO;
 		
