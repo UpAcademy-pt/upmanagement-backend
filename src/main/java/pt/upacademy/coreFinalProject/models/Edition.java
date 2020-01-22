@@ -2,39 +2,75 @@ package pt.upacademy.coreFinalProject.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+
+
+
 @Entity
-@NamedQueries({ @NamedQuery(name = Edition.GET_ALL_EDITIONS, query = "SELECT e FROM Edition e")
+@NamedQueries({ 
+	@NamedQuery(name = Edition.GET_ALL_EDITIONS, query = "SELECT e FROM Edition e"),
+	@NamedQuery (name = Edition.GET_ALL_EDITIONS_IDS, query = "SELECT e.id FROM Edition e"),
+	@NamedQuery (name = Edition.GET_ALL_EDITIONS_COUNT, query = "SELECT COUNT(e.id) FROM Edition e")
 })
+
 public class Edition extends EntityRoot  {
 	
 	public static final String GET_ALL_EDITIONS = "getAllEditions";
+	public static final String GET_ALL_EDITIONS_IDS = "getAllEditionsIds";
+	public static final String GET_ALL_EDITIONS_COUNT = "getAllEditionsCount";
+
 		
 	private static final long serialVersionUID = 1L;
+	
 	
 	private String name;
 	private String type;
 	
-	@OneToMany
+	@ManyToMany (mappedBy = "editions", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List <Account> accounts;
 	
-	@OneToMany ()
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List <Lesson> lessons;
 
-	@OneToMany ()
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List <Note> notes;
 	
-	@OneToMany ()
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List <QuestionForum> questions;
 	
 
-	@OneToMany ()
+	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List <Event> events;
 	
+	
+	
+	public Edition(String name, String type, List<Account> accounts, List<Lesson> lessons, List<Note> notes,
+			List<QuestionForum> questions, List<Event> events) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.accounts = accounts;
+		this.lessons = lessons;
+		this.notes = notes;
+		this.questions = questions;
+		this.events = events;
+	}
+	
+	
+
+	public Edition() {
+		super();
+	}
+
+
+
 	public String getName() {
 		return name;
 	}
