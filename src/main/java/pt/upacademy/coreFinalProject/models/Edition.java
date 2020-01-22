@@ -33,7 +33,7 @@ public class Edition extends EntityRoot  {
 	private String name;
 	private String type;
 	
-	@ManyToMany (mappedBy = "editions", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List <Account> accounts;
 	
 	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)

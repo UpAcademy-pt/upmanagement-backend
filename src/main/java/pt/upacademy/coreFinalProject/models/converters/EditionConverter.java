@@ -87,11 +87,11 @@ public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 		EditionDTO editionDTO = new EditionDTO (
 				ent.getName(),
 				ent.getType(),
-				ent.getAccounts().stream().map(Account :: getId).collect(Collectors.toList()),
-				ent.getLessons().stream().map(Lesson :: getId).collect(Collectors.toList()),
-				ent.getNotes().stream().map(Note :: getId).collect(Collectors.toList()),
-				ent.getQuestions().stream().map(QuestionForum :: getId).collect(Collectors.toList()),
-				ent.getEvents().stream().map(Event :: getId).collect(Collectors.toList())
+				ent.getAccounts().stream().map(Account :: getId).collect(Collectors.toList())
+//				ent.getLessons().stream().map(Lesson :: getId).collect(Collectors.toList()), 
+//				ent.getNotes().stream().map(Note :: getId).collect(Collectors.toList()),
+//				ent.getQuestions().stream().map(QuestionForum :: getId).collect(Collectors.toList()),
+//				ent.getEvents().stream().map(Event :: getId).collect(Collectors.toList())
 				);
 		
 		return editionDTO;
