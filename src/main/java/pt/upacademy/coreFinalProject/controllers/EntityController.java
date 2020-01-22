@@ -1,7 +1,6 @@
 package pt.upacademy.coreFinalProject.controllers;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -15,56 +14,50 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.models.EntityRoot;
-import pt.upacademy.coreFinalProject.models.DTOS.EntityDTO;
-import pt.upacademy.coreFinalProject.models.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.repositories.EntityRepository;
 import pt.upacademy.coreFinalProject.services.EntityService;
 
 
-public abstract class EntityController<S extends EntityService<R, E, D>, R extends EntityRepository<E, D>, C extends EntityConverter< E, D>, E extends EntityRoot, D extends EntityDTO>{
+public abstract class EntityController<S extends EntityService<R, E>, R extends EntityRepository<E>, E extends EntityRoot>{
 
 	
 	@Inject
 	protected S service;
 	
-	@Inject
-	protected C converter;
-	
+		
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<D> get() {
-		return service.get().stream().map(E -> converter.toDTO(E)).collect(Collectors.toList());
+	public Collection<E> get() {
+		return service.get();
 	}
 	
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public D get(@PathParam("id") long id) {
-		return converter.toDTO(service.get(id));
+	public E get(@PathParam("id") long id) {
+		return service.get(id);
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String create(D user) {
-		service.create(converter.toEntity(user));
+	public String create(E entity) {
+		service.create(entity);
 		return "Create Done!";
 	}
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String update(D user) {
-		service.update(converter.toEntity(user));
-		return "Update Done!";
+	public void update(E entity) {
+		service.update(entity);
 	}
 	
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String delete(@PathParam("id") long id) {
+	public void delete(@PathParam("id") long id) {
 		service.delete(id);
-		return "Delete Done!";
 	}
 	
 }

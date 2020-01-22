@@ -1,14 +1,15 @@
 package pt.upacademy.coreFinalProject.repositories;
 
+import java.util.Collection;
+
 import pt.upacademy.coreFinalProject.models.User;
-import pt.upacademy.coreFinalProject.models.DTOS.UserDTO;
 
-public class UserRepository extends EntityRepository<User, UserDTO> {
+public class UserRepository extends EntityRepository<User> {
 
-	public void addUser(User newUser) {
-		addEntity(newUser);
-		
-	}
+//	public void addUser(User newUser) {
+//		addEntity(newUser);
+//		
+//	}
 
 //	public Collection<User> getUser() {
 //		return getEntity();
@@ -29,13 +30,12 @@ public class UserRepository extends EntityRepository<User, UserDTO> {
 		return entityManager.createNamedQuery(User.GET_USER_BY_EMAIL, getEntityClass()).setParameter("userEmail", email).getResultList().stream().findFirst().orElse(null);
 	}
 
-
-
-//	public void removeUser(long id) {
-//		User user = entityManager.find(entityClass, id);
-//		
-//	}
+	public Collection<User> getUsersByFilter(String str) {
+		return entityManager.createQuery(str,getEntityClass()).getResultList();
+	}
 	
-	
+	public Collection<User> getUsersByRole(String str) {
+		return entityManager.createQuery(str,getEntityClass()).getResultList();
+	}
 
 }

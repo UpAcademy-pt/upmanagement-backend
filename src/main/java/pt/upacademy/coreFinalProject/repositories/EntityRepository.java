@@ -7,16 +7,15 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import pt.upacademy.coreFinalProject.models.EntityRoot;
-import pt.upacademy.coreFinalProject.models.DTOS.EntityDTO;
 
 @Transactional
-public abstract class EntityRepository<E extends EntityRoot, D extends EntityDTO> {
+public abstract class EntityRepository<E extends EntityRoot> {
 
 	@PersistenceContext(unitName = "database")
 	protected EntityManager entityManager;
 
-	public void addEntity(E entity) {
-		entityManager.merge(entity);
+	public long addEntity(E entity) {
+		return entityManager.merge(entity).getId();
 	}
 
 	protected abstract Class<E> getEntityClass();
@@ -42,5 +41,6 @@ public abstract class EntityRepository<E extends EntityRoot, D extends EntityDTO
 
 	}
 	
+
 
 }
