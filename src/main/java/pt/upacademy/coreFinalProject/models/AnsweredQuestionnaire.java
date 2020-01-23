@@ -7,8 +7,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = AnsweredQuestions.GET_ALL_ANSWEREDQUESTIONS, query = "SELECT a FROM AnsweredQuestions a")})
-public class AnsweredQuestions extends EntityRoot {
+@NamedQueries({ @NamedQuery(name = AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS, query = "SELECT a FROM AnsweredQuestionnaire a")})
+public class AnsweredQuestionnaire extends EntityRoot {
 	
 	public static final String GET_ALL_ANSWEREDQUESTIONS = "getAllAnsweredQuestions";
 	private static final long serialVersionUID = 1L;

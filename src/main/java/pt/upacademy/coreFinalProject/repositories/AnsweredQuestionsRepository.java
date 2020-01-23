@@ -2,19 +2,19 @@ package pt.upacademy.coreFinalProject.repositories;
 
 import javax.enterprise.context.RequestScoped;
 
-import pt.upacademy.coreFinalProject.models.AnsweredQuestions;
+import pt.upacademy.coreFinalProject.models.AnsweredQuestionnaire;
 
 @RequestScoped
-public class AnsweredQuestionsRepository extends EntityRepository<AnsweredQuestions>{
+public class AnsweredQuestionsRepository extends EntityRepository<AnsweredQuestionnaire>{
 
 	@Override
-	protected Class<AnsweredQuestions> getEntityClass() {
-		return AnsweredQuestions.class;
+	protected Class<AnsweredQuestionnaire> getEntityClass() {
+		return AnsweredQuestionnaire.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		return AnsweredQuestions.GET_ALL_ANSWEREDQUESTIONS;
+		return AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS;
 	}
 
 }

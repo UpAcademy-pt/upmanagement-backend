@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.models;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,20 +16,20 @@ public class Account extends EntityRoot {
 	private static final long serialVersionUID = 1L;
 
 	
-	//private List<Long> userAcademies;
+	private Collection<Long> userAcademies;
 	private String permissions;
 	private long userId;
-	private String email;
-	private String name;
-	//private AnsweredQuestions data;
+	
+	private List<Questionnaire> pendingQuestionnaires;
+	private List<AnsweredQuestionnaire> answeredQuestionnaires;
 
-//	public List<Long> getUserAcademies() {
-//		return userAcademies;
-//	}
-//
-//	public void setUserAcademies(List<Long> userAcademies) {
-//		this.userAcademies = userAcademies;
-//	}
+	public Collection<Long> getUserAcademies() {
+		return userAcademies;
+	}
+
+	public void setUserAcademies(Collection<Long> userAcademies) {
+		this.userAcademies = userAcademies;
+	}
 
 	public String getPermissions() {
 		return permissions;
