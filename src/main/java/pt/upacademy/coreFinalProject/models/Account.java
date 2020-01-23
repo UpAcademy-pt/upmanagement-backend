@@ -31,14 +31,12 @@ public class Account extends EntityRoot  {
 	public static final String GET_ACCOUNT_BY_USERID = "getAccountByUserId";
 	
 	private long userId;
-	
-	@ManyToMany (mappedBy = "accounts", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List <Edition>  editions;
+
 
 		
-	public Account(long userId, List<Edition> editions) {
+	public Account(long userId) {
 		this.userId = userId;
-		this.editions = editions;
+		
 	}
 
 
@@ -53,17 +51,12 @@ public class Account extends EntityRoot  {
 		this.userId = userId;
 	}
 
-	public List<Edition> getEditions() {
-		return editions;
-	}
-	public void setEditions(List<Edition> editions) {
-		this.editions = editions;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Account [userId=" + userId + ", editions=" + editions + "]";
+		return "Account [userId=" + userId + "]";
 	}
-	
+
+
 
 }
