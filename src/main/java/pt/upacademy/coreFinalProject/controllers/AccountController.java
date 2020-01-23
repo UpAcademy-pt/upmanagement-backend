@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -25,6 +26,13 @@ public class AccountController extends EntityControllerDTO<AccountService,Accoun
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<AccountDTO> getByUserRole(@QueryParam("role") String role) {
 		return service.getByUserRole(role).stream().map(account -> converter.toDTO(account)).collect(Collectors.toList());
+	}
+	
+	@GET
+	@Path("/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public AccountDTO getByUserId(@PathParam("userId") long userId) {
+		return null;
 	}
 
 }

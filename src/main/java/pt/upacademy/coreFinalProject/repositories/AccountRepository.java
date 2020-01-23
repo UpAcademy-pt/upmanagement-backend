@@ -22,5 +22,9 @@ public class AccountRepository extends EntityRepository<Account> {
 	public Collection<Account> getByUserIds(Collection<Long> userIds) {
 		return entityManager.createNamedQuery(Account.GET_ACCOUNTS_BY_USER_IDS, getEntityClass()).setParameter("usersIds", userIds).getResultList();
 	}
+	
+	public Account getByUserId(long userId) {
+		return null;
+	}
 
 }

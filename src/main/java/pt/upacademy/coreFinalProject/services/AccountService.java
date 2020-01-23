@@ -22,4 +22,8 @@ public class AccountService extends EntityService<AccountRepository,Account> {
 		Collection<Long> userIdsByRole = usersByRole.stream().map(user -> user.getId()).collect(Collectors.toList());
 		return repository.getByUserIds(userIdsByRole);
 	}
+	
+	public Account getByUserId(long userId) {
+		return null;
+	}
 }
