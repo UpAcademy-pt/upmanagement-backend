@@ -3,82 +3,108 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditionDTO extends EntityDTO {
+import pt.upacademy.coreFinalProject.models.Account;
+import pt.upacademy.coreFinalProject.models.Lesson;
+import pt.upacademy.coreFinalProject.models.Note;
+import pt.upacademy.coreFinalProject.models.QuestionForum;
 
+public class EditionDTO extends EntityDTO {
+	
+	private long editionId;
 	private String name;
 	private String type;
-	private List <Long>  accountIds = new ArrayList<Long>();
-	private List <Long>  lessonsIds = new ArrayList<Long>();
-	private List <Long> notesIds = new ArrayList<Long>();
-	private List <Long> questionsIds = new ArrayList<Long>();
-	private List <Long>  eventsIds = new ArrayList<Long>();
-	
+	private List <LessonDTO>  lessonsDtos = new ArrayList<LessonDTO>();
+	private List <AccountDTO> accountsDtos = new ArrayList <AccountDTO> ();
 	
 	
 	public EditionDTO() {
+		super();
 	}
-	public EditionDTO(String name, String type, List <Long>  accountIds, List<Long> lessonsIds, List<Long> notesIds,
-			List<Long> questionsIds, List<Long> eventsIds) {
+
+
+	public EditionDTO(long editionId, String name, String type, List<LessonDTO> lessonsDtos,
+			List<AccountDTO> accountsDtos) {
+		super();
+		this.editionId = editionId;
 		this.name = name;
 		this.type = type;
-		this.accountIds = accountIds;
-		this.lessonsIds = lessonsIds;
-		this.notesIds = notesIds;
-		this.questionsIds = questionsIds;
-		this.eventsIds = eventsIds;
+		this.lessonsDtos = lessonsDtos;
+		this.accountsDtos = accountsDtos;
 	}
-	
+
+
+	public long getEditionId() {
+		return editionId;
+	}
+
+
+	public void setEditionId(long editionId) {
+		this.editionId = editionId;
+	}
+
+
 	public String getName() {
 		return name;
 	}
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 	public String getType() {
 		return type;
 	}
+
+
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	public List<Long> getAccountIds() {
-		return accountIds;
+
+	public List<LessonDTO> getLessonsDtos() {
+		return lessonsDtos;
 	}
-	public void setAccountIds(List<Long> accountIds) {
-		this.accountIds = accountIds;
+
+
+	public void setLessonsDtos(List<LessonDTO> lessonsDtos) {
+		this.lessonsDtos = lessonsDtos;
 	}
-	public List<Long> getLessonsIds() {
-		return lessonsIds;
+
+
+	public List<AccountDTO> getAccountsDtos() {
+		return accountsDtos;
 	}
-	public void setLessonsIds(List<Long> lessonsIds) {
-		this.lessonsIds = lessonsIds;
+
+
+	public void setAccountsDtos(List<AccountDTO> accountsDtos) {
+		this.accountsDtos = accountsDtos;
 	}
-	public List<Long> getNotesIds() {
-		return notesIds;
-	}
-	public void setNotesIds(List<Long> notesIds) {
-		this.notesIds = notesIds;
-	}
-	public List<Long> getQuestionsIds() {
-		return questionsIds;
-	}
-	public void setQuestionsIds(List<Long> questionsIds) {
-		this.questionsIds = questionsIds;
-	}
-	
-	public List<Long> getEventsIds() {
-		return eventsIds;
-	}
-	public void setEventsIds(List<Long> eventsIds) {
-		this.eventsIds = eventsIds;
-	}
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "EditionDTO [name=" + name + ", type=" + type + ", accountIds"+ accountIds + ", lessonsIds=" + lessonsIds + ", notesIds=" + notesIds 
-				+ ", questionsIds=" + questionsIds + ", eventsIds=" + eventsIds + "]";
+		return "EditionDTO [editionId=" + editionId + ", name=" + name + ", type=" + type + ", lessonsDtos="
+				+ lessonsDtos + ", accountsDtos=" + accountsDtos + "]";
 	}
+	
+	
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
 	
 	
 }

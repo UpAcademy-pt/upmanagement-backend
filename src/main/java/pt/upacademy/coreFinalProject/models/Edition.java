@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,107 +33,75 @@ public class Edition extends EntityRoot  {
 	
 	private String name;
 	private String type;
-	
-	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List <Account> accounts;
-	
-	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List <Lesson> lessons;
-
-	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List <Note> notes;
-	
-	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List <QuestionForum> questions;
-	
-
-	@OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List <Event> events;
+	private List <Long> listAccount;
+ 	private Date createDate;
+	private Date updateDate;
 	
 	
 	
-	public Edition(String name, String type, List<Account> accounts, List<Lesson> lessons, List<Note> notes,
-			List<QuestionForum> questions, List<Event> events) {
-		super();
-		this.name = name;
-		this.type = type;
-		this.accounts = accounts;
-		this.lessons = lessons;
-		this.notes = notes;
-		this.questions = questions;
-		this.events = events;
-	}
-	
-	
-
 	public Edition() {
 		super();
 	}
 
 
+	
+	public Edition(String name, String type, List<Long> listAccount, Date createDate,
+			Date updateDate) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.listAccount = listAccount;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+	}
+
 
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getType() {
 		return type;
 	}
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public List<Account> getAccounts() {
-		return accounts;
+	public List<Long> getListAccount() {
+		return listAccount;
+	}
+	public void setListAccount(List<Long> listAccount) {
+		this.listAccount = listAccount;
+	}
+	
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
 
-	public List<Lesson> getLessons() {
-		return lessons;
-	}
 
-	public void setLessons(List<Lesson> lessons) {
-		this.lessons = lessons;
-	}
-
-	public List<Note> getNotes() {
-		return notes;
-	}
-
-	public void setNotes(List<Note> notes) {
-		this.notes = notes;
-	}
-
-	public List<QuestionForum> getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(List<QuestionForum> questions) {
-		this.questions = questions;
-	}
-
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
-	}
 
 	@Override
 	public String toString() {
-		return "Edition [name=" + name  + ", type=" + type + "accounts=" + accounts +", lessons=" + lessons 
-				+ ", notes=" + notes + ", questions=" + questions + ", events=" + events + "]";
+		return "Edition [name=" + name + ", type=" + type + ", listAccount=" + listAccount  + ", createDate=" + createDate + ", updateDate=" + updateDate + "]";
 	}
 	
 	
+	
+	
+	
 
+	
+	
 }
