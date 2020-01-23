@@ -14,8 +14,12 @@ public class AcademyDTO extends EntityDTO {
     private List<Long> modulesIds = new ArrayList<Long>();
     private List<Long> studentsIds = new ArrayList<Long>();
     private Status status;
+    private String warning;			 //GONÇALO
+    private String usefulInfo;		 //GONÇALO
+    private String academyType;		 //GONÇALO
     
-    public void Academy(String client, String startDate, String endDate, String edName, List<Long> modulesIds, List<Long> studentsIds, Status status) {
+    public void Academy(String client, String startDate, String endDate, String edName, List<Long> modulesIds, List<Long> studentsIds, Status status, String warning, 
+    		String usefulInfo) {
 		this.setClient(client);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
@@ -23,6 +27,9 @@ public class AcademyDTO extends EntityDTO {
 		this.setModulesIds(modulesIds);
 		this.setStudentsIds(studentsIds);
 		this.setStatus(status);
+		this.setWarning(warning);			//GONÇALO
+		this.setUsefulInfo(usefulInfo);		//GONÇALO
+		this.setAcademyType(usefulInfo);    //GONÇALO
     }
 
 	public Status getStatus() {
@@ -81,6 +88,29 @@ public class AcademyDTO extends EntityDTO {
 		this.studentsIds = studentsIds;
 	}
     
+	public String getWarning() {
+		return warning;
+	}  	//GONÇALO
+
+	public void setWarning(String warning) {
+		this.warning = warning;
+	}   //GONÇALO
+
+	public String getUsefulInfo() {
+		return usefulInfo;
+	}	//GONÇALO
+
+	public void setUsefulInfo(String usefulInfo) {
+		this.usefulInfo = usefulInfo;
+	}	//GONÇALO
+
+	public String getAcademyType() {
+		return academyType;
+	}	//GONÇALO
+
+	public void setAcademyType(String academyType) {
+		this.academyType = academyType;
+	}	//GONÇALO
 }
 
 	

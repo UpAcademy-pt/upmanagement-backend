@@ -37,7 +37,7 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 		account.setUserId(dto.getUserId());
 		account.setAcademies(dto.getAcademyIds().stream().map(academyId -> academyService.get(academyId)).collect(Collectors.toSet()));
 		account.setThemes(dto.getThemeIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toSet()));
-		account.setEvaluations(dto.getEvaluationIds().stream().map(evalId -> evalService.get(evalId)).collect(Collectors.toSet()));
+//		account.setEvaluations(dto.getEvaluationIds().stream().map(evalId -> evalService.get(evalId)).collect(Collectors.toSet()));       //GONCALO
 		account.setNif(dto.getNif());
 		return account;
 	}
@@ -54,7 +54,7 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 				entity.getMobilePhone(),
 				entity.getLinkedInAdress(),
 				entity.getThemes().stream().map(theme -> theme.getId()).collect(Collectors.toList()),
-				entity.getEvaluations().stream().map(evaluation -> evaluation.getId()).collect(Collectors.toList()),
+//				entity.getEvaluations().stream().map(evaluation -> evaluation.getId()).collect(Collectors.toList()),        //GONCALO
 				entity.getMissedDays(),
 				entity.getNif()
 				);
