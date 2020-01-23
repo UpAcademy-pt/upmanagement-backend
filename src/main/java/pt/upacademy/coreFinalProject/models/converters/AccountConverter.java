@@ -6,20 +6,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Account;
-import pt.upacademy.coreFinalProject.models.AnswerForum;
-import pt.upacademy.coreFinalProject.models.Edition;
-import pt.upacademy.coreFinalProject.models.Event;
-import pt.upacademy.coreFinalProject.models.Lesson;
-import pt.upacademy.coreFinalProject.models.Note;
-import pt.upacademy.coreFinalProject.models.QuestionForum;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
-import pt.upacademy.coreFinalProject.services.AnswerService;
 import pt.upacademy.coreFinalProject.services.EditionService;
-import pt.upacademy.coreFinalProject.services.EventService;
-import pt.upacademy.coreFinalProject.services.LessonService;
-import pt.upacademy.coreFinalProject.services.NoteService;
-import pt.upacademy.coreFinalProject.services.QuestionService;
-import pt.upacademy.coreFinalProject.services.UserService;
+
 
 @RequestScoped
 public class AccountConverter extends EntityConverter<Account, AccountDTO> {
@@ -28,8 +17,8 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO> {
 	private EditionService editionBus;
 
 
-	@Inject
-	private UserService userBus;
+	@Inject 
+	protected EditionConverter converter;
 
 
 
@@ -42,11 +31,6 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO> {
 			account.setId(dto.getId());
 		}
 
-		account.setEditions(dto.getEditionsIds().stream().map(entityId -> {
-			Edition edition = editionBus.get(entityId);
-			return edition;
-		}).collect(Collectors.toList()));
-
 		account.setUserId(dto.getUserId());
 
 		return account;
@@ -58,8 +42,8 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO> {
 		AccountDTO accountDTO = new AccountDTO(
 				ent.getId(),
 				ent.getUserId(), 
-				//(ent.getEditions() == null) ? null : 
-				ent.getEditions().stream().map(Edition::getId).collect(Collectors.toList()));
+				editionBus.get().stream().map(edition -> converter.toDTO(edition)).collect(Collectors.toList())
+				);
 
 		return accountDTO;
 		
