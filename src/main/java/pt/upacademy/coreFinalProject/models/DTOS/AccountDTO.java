@@ -7,16 +7,15 @@ public class AccountDTO extends EntityDTO {
 	
 	private long id;
 	private long userId;
-	private List <EditionDTO>  editionsDtos = new ArrayList<EditionDTO>();
 	
 	
 	public AccountDTO() {
 		}
 		
-	public AccountDTO(long id, long userId, List<EditionDTO> editionsDtos) {
+	public AccountDTO(long id, long userId) {
+		super();
 		this.id = id;
 		this.userId = userId;
-		this.editionsDtos = editionsDtos;
 	}
 
 
@@ -36,17 +35,11 @@ public class AccountDTO extends EntityDTO {
 		this.userId = userId;
 	}
 
-	public List<EditionDTO> getEditionsDtos() {
-		return editionsDtos;
-	}
-
-	public void setEditionsDtos(List<EditionDTO> editionsDtos) {
-		this.editionsDtos = editionsDtos;
-	}
-
 	@Override
 	public String toString() {
-		return "AccountDTO [userId=" + userId + ", editionsDtos=" + editionsDtos + "]";
+		return "AccountDTO [id=" + id + ", userId=" + userId + "]";
 	}
+
 	
+
 }
