@@ -13,7 +13,8 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a"),
-	@NamedQuery(name = Account.GET_ACCOUNTS_BY_USER_IDS, query = "SELECT a FROM Account a WHERE a.userId in :usersIds")
+	@NamedQuery(name = Account.GET_ACCOUNTS_BY_USER_IDS, query = "SELECT a FROM Account a WHERE a.userId in :usersIds"),
+	@NamedQuery(name = Account.GET_ACCOUNT_BY_USER_ID, query = "SELECT a FROM Account a WHERE a.userId = :userId")
 })
 public class Account extends EntityRoot {
 	
@@ -21,6 +22,7 @@ public class Account extends EntityRoot {
 	
 	public static final String GET_ALL_ACCOUNTS = "getAllAccounts";
 	public static final String GET_ACCOUNTS_BY_USER_IDS = "getAccountsByUserIds";
+	public static final String GET_ACCOUNT_BY_USER_ID = "getAccountByUserId";
 	
 	private long userId;
 	private int age;

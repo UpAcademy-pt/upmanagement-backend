@@ -24,6 +24,6 @@ public class AccountService extends EntityService<AccountRepository,Account> {
 	}
 	
 	public Account getByUserId(long userId) {
-		return null;
+		return repository.getByUserId(userId).iterator().next();
 	}
 }

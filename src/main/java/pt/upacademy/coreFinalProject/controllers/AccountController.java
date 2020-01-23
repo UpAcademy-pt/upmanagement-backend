@@ -32,7 +32,7 @@ public class AccountController extends EntityControllerDTO<AccountService,Accoun
 	@Path("/{userId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public AccountDTO getByUserId(@PathParam("userId") long userId) {
-		return null;
+		return converter.toDTO(service.getByUserId(userId));
 	}
 
 }
