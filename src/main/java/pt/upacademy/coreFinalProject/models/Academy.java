@@ -30,11 +30,14 @@ public class Academy extends EntityRoot {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Account> students;
     private Status status;
+    private String warning;    		 //GONÇALO
+    private String usefulInfo;       //GONÇALO
+    private String academyType;		 //GONÇALO
     
     public Academy() {}
     
     public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
-    	Set<Module> modules, Set<Account> students, Status status) {
+    	Set<Module> modules, Set<Account> students, Status status, String warning, String usefulInfo) {
 
 		this.setClient(client);
 		this.setStartDate(startDate);
@@ -43,6 +46,10 @@ public class Academy extends EntityRoot {
 		this.setModules(modules);
 		this.setStudents(students);
 		this.setStatus(status);
+		this.setWarning(warning);  			//GONÇALO
+		this.setUsefulInfo(usefulInfo);		//GONÇALO
+		this.setAcademyType(usefulInfo);    //GONÇALO
+		
     }
     
 
@@ -84,14 +91,11 @@ public class Academy extends EntityRoot {
 
 	public void setEdName(String edName) {
 		this.edName = edName;
-
 	}
-
 
 	public Set<Module> getModules() {
 		return modules;
 	}
-
 
 	public void setModules(Set<Module> modules) {
 		this.modules = modules;
@@ -102,10 +106,33 @@ public class Academy extends EntityRoot {
 		return students;
 	}
 
-
 	public void setStudents(Set<Account> students) {
 		this.students = students;
 	}
+
+	public String getWarning() {
+		return warning;
+	}   //GONÇALO
+
+	public void setWarning(String warning) {
+		this.warning = warning;
+	}   //GONÇALO
+
+	public String getUsefulInfo() {
+		return usefulInfo;
+	}	//GONÇALO
+
+	public void setUsefulInfo(String usefulInfo) {
+		this.usefulInfo = usefulInfo;
+	}	//GONÇALO
+
+	public String getAcademyType() {
+		return academyType;
+	}	//GONÇALO
+
+	public void setAcademyType(String academyType) {
+		this.academyType = academyType;
+	}	//GONÇALO
 
 }
 

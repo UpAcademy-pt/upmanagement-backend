@@ -2,7 +2,7 @@ package pt.upacademy.coreFinalProject.models;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -34,9 +34,9 @@ public class Account extends EntityRoot {
 	//themes so vai ter valores para formadores
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Theme> themes;
-	//evaluations e missedDays so vai ter valores para formandos
-	@OneToMany(fetch = FetchType.EAGER)
-	private Set<Evaluation> evaluations;
+	//evaluations(vai ser retirado) e missedDays so vai ter valores para formandos
+//	@OneToMany(fetch = FetchType.EAGER)			 *GONÇALO
+//  private Set<Evaluation> evaluations;         *GONÇALO*
 	private String missedDays;
 	private long nif;
 	
@@ -134,13 +134,13 @@ public class Account extends EntityRoot {
 		this.themes = themes;
 	}
 	
-	public Set<Evaluation> getEvaluations() {
-		return evaluations;
-	}
+//	public Set<Evaluation> getEvaluations() {
+//		return evaluations;									*GONÇALO*
+//	}
 
-	public void setEvaluations(Set<Evaluation> evaluations) {
-		this.evaluations = evaluations;
-	}
+//	public void setEvaluations(Set<Evaluation> evaluations) {
+//		this.evaluations = evaluations;						*GONÇALO*
+//	}
 
 	public String getMissedDays() {
 		return missedDays;
