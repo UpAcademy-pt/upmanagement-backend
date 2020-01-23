@@ -22,6 +22,19 @@ public class Lesson extends EntityRoot {
 //	private List<String> listUrls = new ArrayList<String>();
 //	private List<Note> listNotes = new ArrayList<Note>();
 //	private List<String> listCode = new ArrayList<String>();
+	private long editionId;
+	
+	
+
+	public long getEditionIds() {
+		return editionId;
+	}
+
+	public void setEditionId(long editionId) {
+		this.editionId = editionId;
+	}
+
+
 
 	public Lesson() {
 
