@@ -1,10 +1,12 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,21 +19,22 @@ public class Questionnaire extends EntityRoot{
 	public static final String GET_ALL_QUESTIONNAIRES = "getAllQuestionnaire";
 	private static final long serialVersionUID = 1L;
 		
-	// CascadeType.MERGE => Automatically updates Question after Questionnaire is updated
-	// CascadeType.PERSIST => Automatically creates Question after Questionnaire is created with Questions
-	// FetchType.EAGER => loads questionList when Questionnaire is loaded
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private Set<Question> questionList;
 	private String name;
 	private long[] accountIdList;
 	private Qtype qType;
-	private Role[] editPrivacy;
-	private Role[] viewPrivacy;
+	@ElementCollection(targetClass = Role.class)
+	@Enumerated(EnumType.STRING)
+	private Set<Role> editPrivacy;
+	@ElementCollection(targetClass = Role.class)
+	@Enumerated(EnumType.STRING)
+	private Set<Role> viewPrivacy;
 	
 	public Questionnaire() {}
 
-	public Questionnaire(long id, Set<Question> questionList, String name, long[] accountIdList, Qtype qType, Role[] editPrivacy,
-			Role[] viewPrivacy) {
+	public Questionnaire(long id, Set<Question> questionList, String name, long[] accountIdList, Qtype qType, Set<Role> editPrivacy,
+			Set<Role> viewPrivacy) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -73,19 +76,19 @@ public class Questionnaire extends EntityRoot{
 		this.qType = qType;
 	}
 
-	public Role[] getEditPrivacy() {
+	public Set<Role> getEditPrivacy() {
 		return editPrivacy;
 	}
 
-	public void setEditPrivacy(Role[] editPrivacy) {
+	public void setEditPrivacy(Set<Role> editPrivacy) {
 		this.editPrivacy = editPrivacy;
 	}
 
-	public Role[] getViewPrivacy() {
+	public Set<Role> getViewPrivacy() {
 		return viewPrivacy;
 	}
 
-	public void setViewPrivacy(Role[] viewPrivacy) {
+	public void setViewPrivacy(Set<Role> viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
 	}
 	

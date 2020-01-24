@@ -2,6 +2,10 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.Set;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import pt.upacademy.coreFinalProject.models.Qtype;
 import pt.upacademy.coreFinalProject.models.Role;
 
@@ -11,13 +15,17 @@ public class QuestionnaireDTO extends EntityDTO{
 	private String name;
 	private long[] accountIdList;
 	private Qtype qType;
-	private Role[] editPrivacy;
-	private Role[] viewPrivacy;
+	@ElementCollection(targetClass = Role.class)
+	@Enumerated(EnumType.STRING)
+	private Set<Role> editPrivacy;
+	@ElementCollection(targetClass = Role.class)
+	@Enumerated(EnumType.STRING)
+	private Set<Role> viewPrivacy;
 	
 	public QuestionnaireDTO() {}
 
 	public QuestionnaireDTO(long id, Set<QuestionDTO> questionList, String name, long[] accountIdList, Qtype qType,
-			Role[] editPrivacy, Role[] viewPrivacy) {
+			Set<Role> editPrivacy, Set<Role> viewPrivacy) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -59,19 +67,19 @@ public class QuestionnaireDTO extends EntityDTO{
 		this.qType = qType;
 	}
 
-	public Role[] getEditPrivacy() {
+	public Set<Role> getEditPrivacy() {
 		return editPrivacy;
 	}
 
-	public void setEditPrivacy(Role[] editPrivacy) {
+	public void setEditPrivacy(Set<Role> editPrivacy) {
 		this.editPrivacy = editPrivacy;
 	}
 
-	public Role[] getViewPrivacy() {
+	public Set<Role> getViewPrivacy() {
 		return viewPrivacy;
 	}
 
-	public void setViewPrivacy(Role[] viewPrivacy) {
+	public void setViewPrivacy(Set<Role> viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
 	}
 	
