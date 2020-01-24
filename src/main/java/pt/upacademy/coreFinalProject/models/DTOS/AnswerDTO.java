@@ -1,11 +1,20 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-public class AnswerDTO {
+public class AnswerDTO extends EntityDTO{
 
 	private long answeredQuestionaireId;
 	private String answer;
 	private long questionId;
-	
+
+	public AnswerDTO() {}
+
+	public AnswerDTO(long id, long answeredQuestionaireId, String answer, long questionId) {
+		setId(id);
+		this.answeredQuestionaireId = answeredQuestionaireId;
+		this.answer = answer;
+		this.questionId = questionId;
+	}
+
 	public long getAnsweredQuestionaireId() {
 		return answeredQuestionaireId;
 	}

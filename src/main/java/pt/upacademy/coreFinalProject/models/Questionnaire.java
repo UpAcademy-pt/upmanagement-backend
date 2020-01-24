@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.models;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,59 +21,73 @@ public class Questionnaire extends EntityRoot{
 	// CascadeType.PERSIST => Automatically creates Question after Questionnaire is created with Questions
 	// FetchType.EAGER => loads questionList when Questionnaire is loaded
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
-	private List<Question> questionList;
+	private Set<Question> questionList;
 	private String name;
-	private Long[] accountIdList;
+	private long[] accountIdList;
 	private Qtype qType;
-//	private List<Role> editPrivacy;
-//	private List<Role> viewPrivacy;
+	private Role[] editPrivacy;
+	private Role[] viewPrivacy;
 	
-	public Long[] getAccountIdList() {
-		return accountIdList;
-	}
+	public Questionnaire() {}
 
-	public void setAccountIdList(Long[] accountIdList) {
+	public Questionnaire(long id, Set<Question> questionList, String name, long[] accountIdList, Qtype qType, Role[] editPrivacy,
+			Role[] viewPrivacy) {
+		setId(id);
+		this.questionList = questionList;
+		this.name = name;
 		this.accountIdList = accountIdList;
+		this.qType = qType;
+		this.editPrivacy = editPrivacy;
+		this.viewPrivacy = viewPrivacy;
 	}
 
-//	public List<Role> getEditPrivacy() {
-//		return editPrivacy;
-//	}
-//
-//	public void setEditPrivacy(List<Role> editPrivacy) {
-//		this.editPrivacy = editPrivacy;
-//	}
-//
-//	public List<Role> getViewPrivacy() {
-//		return viewPrivacy;
-//	}
-//
-//	public void setViewPrivacy(List<Role> viewPrivacy) {
-//		this.viewPrivacy = viewPrivacy;
-//	}
-
-	public List<Question> getQuestionList() {
+	public Set<Question> getQuestionList() {
 		return questionList;
 	}
-	
-	public void setQuestionList(List<Question> questionList) {
+
+	public void setQuestionList(Set<Question> questionList) {
 		this.questionList = questionList;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public long[] getAccountIdList() {
+		return accountIdList;
+	}
+
+	public void setAccountIdList(long[] accountIdList) {
+		this.accountIdList = accountIdList;
 	}
 
 	public Qtype getqType() {
 		return qType;
 	}
-	
+
 	public void setqType(Qtype qType) {
 		this.qType = qType;
 	}
+
+	public Role[] getEditPrivacy() {
+		return editPrivacy;
+	}
+
+	public void setEditPrivacy(Role[] editPrivacy) {
+		this.editPrivacy = editPrivacy;
+	}
+
+	public Role[] getViewPrivacy() {
+		return viewPrivacy;
+	}
+
+	public void setViewPrivacy(Role[] viewPrivacy) {
+		this.viewPrivacy = viewPrivacy;
+	}
+	
 
 }

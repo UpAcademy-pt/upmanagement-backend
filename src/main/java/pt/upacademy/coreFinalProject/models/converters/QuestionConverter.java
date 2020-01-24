@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Question;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionDTO;
-import pt.upacademy.coreFinalProject.services.QuestionService;
 import pt.upacademy.coreFinalProject.services.QuestionnaireService;
 
 
@@ -12,7 +11,7 @@ public class QuestionConverter extends EntityConverter<Question, QuestionDTO> {
 
 	@Inject
 	QuestionnaireService QUESTIONNAIRE_SERVICE;
-	
+
 	@Override
 	public Question toEntity(QuestionDTO dto) {
 		Question question = new Question();

@@ -1,7 +1,5 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.util.List;
-
 import pt.upacademy.coreFinalProject.models.AnswerType;
 
 public class QuestionDTO extends EntityDTO {
@@ -9,9 +7,20 @@ public class QuestionDTO extends EntityDTO {
 	private long questionnarieId;
 	private String question;
 	private AnswerType aType;
-	private List<String> options; // nao colocar este atributo qd converter toDTO
-	private int rightAnswer;
+	private String[] options;
+	private int[] rightAnswer;
 	
+	public QuestionDTO() {}
+
+	public QuestionDTO(long id, long questionnarieId, String question, AnswerType aType, String[] options, int[] rightAnswer) {
+		setId(id);
+		this.questionnarieId = questionnarieId;
+		this.question = question;
+		this.aType = aType;
+		this.options = options;
+		this.rightAnswer = rightAnswer;
+	}
+
 	public String getQuestion() {
 		return question;
 	}
@@ -28,19 +37,19 @@ public class QuestionDTO extends EntityDTO {
 		this.aType = aType;
 	}
 	
-	public List<String> getOptions() {
+	public String[] getOptions() {
 		return options;
 	}
 
-	public void setOptions(List<String> options) {
+	public void setOptions(String[] options) {
 		this.options = options;
 	}
 
-	public int getRightAnswer() {
+	public int[] getRightAnswer() {
 		return rightAnswer;
 	}
 	
-	public void setRightAnswer(int rightAnswer) {
+	public void setRightAnswer(int[] rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
 	

@@ -1,7 +1,5 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -14,32 +12,46 @@ public class Account extends EntityRoot {
 	private static final long serialVersionUID = 1L;
 
 	private long userId;
-	private List<Long> pendingQuentionnairesIds;
-	private List<Long> userAcademies;
+	private long[] pendingQuentionnairesIds;
+	private long[] userAcademies;
 
-	public List<Long> getPendingQuentionnaires() {
-		return pendingQuentionnairesIds;
-	}
+	public Account() {}
 
-	public void setPendingQuentionnaires(List<Long> pendingQuestionnaires) {
-		this.pendingQuentionnairesIds = pendingQuestionnaires;
-	}
-
-	//jkewgbjkbewjkgb
-	public List<Long> getUserAcademies() {
-		return userAcademies;
-	}
-
-	public void setUserAcademies(List<Long> userAcademies) {
+	public Account(long id, long userId, long[] pendingQuentionnairesIds, long[] userAcademies) {
+		setId(id);
+		this.userId = userId;
+		this.pendingQuentionnairesIds = pendingQuentionnairesIds;
 		this.userAcademies = userAcademies;
 	}
 
-	public Long getUserId() {
+	public long getUserId() {
 		return userId;
 	}
-
-	public void setUserId(Long userId) {
+	
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
+	
+	public long[] getPendingQuentionnairesIds() {
+		return pendingQuentionnairesIds;
+	}
+	
+	public void setPendingQuentionnairesIds(long[] pendingQuentionnairesIds) {
+		this.pendingQuentionnairesIds = pendingQuentionnairesIds;
+	}
+	
+	public long[] getUserAcademies() {
+		return userAcademies;
+	}
+	
+	public void setUserAcademies(long[] userAcademies) {
+		this.userAcademies = userAcademies;
+	}
+	
+	
+	
+	
+
+	
 
 }

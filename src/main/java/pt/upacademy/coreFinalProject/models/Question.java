@@ -1,7 +1,5 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -19,8 +17,19 @@ public class Question extends EntityRoot {
 	private String question;
 	private AnswerType aType;
 	private String [] options;
-	private int rightAnswer;
-	
+	private int[] rightAnswer;
+
+	public Question() {}
+
+	public Question(long id, Questionnaire questionnaire, String question, AnswerType aType, String[] options, int[] rightAnswer) {
+		setId(id);
+		this.questionnaire = questionnaire;
+		this.question = question;
+		this.aType = aType;
+		this.options = options;
+		this.rightAnswer = rightAnswer;
+	}
+
 	public Questionnaire getQuestionnaire() {
 		return questionnaire;
 	}
@@ -54,11 +63,11 @@ public class Question extends EntityRoot {
 		this.options = list;
 	}
 
-	public int getRightAnswer() {
+	public int[] getRightAnswer() {
 		return rightAnswer;
 	}
 	
-	public void setRightAnswer(int rightAnswer) {
+	public void setRightAnswer(int[] rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
 
