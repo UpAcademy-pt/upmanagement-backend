@@ -1,4 +1,4 @@
-package pt.upacademy.coreFinalProject.controllers;
+package pt.upacademy.coreFinalProject.controllers.academyManager;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -11,13 +11,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.models.converters.AccountConverter;
 import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 import pt.upacademy.coreFinalProject.services.AccountService;
 
-@Path("accounts")
+@Path("academy-manager/accounts")
 @RequestScoped
 public class AccountController extends EntityControllerDTO<AccountService,AccountRepository,AccountConverter,Account,AccountDTO> {
 	
