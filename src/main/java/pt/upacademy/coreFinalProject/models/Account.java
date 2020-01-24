@@ -25,6 +25,7 @@ public class Account extends EntityRoot {
 		this.pendingQuentionnairesIds = pendingQuestionnaires;
 	}
 
+	//jkewgbjkbewjkgb
 	public List<Long> getUserAcademies() {
 		return userAcademies;
 	}
