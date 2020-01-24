@@ -23,7 +23,7 @@ public class Note extends EntityRoot{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+//	@ManyToOne(fetch = FetchType.LAZY)
 	private Lesson lesson;
 	private Date dateOfNote;
 	private User user;

@@ -1,61 +1,45 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.Arrays;
+import java.util.Collection;
 
 public class LessonDTO extends EntityDTO {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private List <Long> listEditions = new ArrayList <Long> ();
-	private List <String> listUrls = new ArrayList <String> ();
-	private List <Long> listNotes = new ArrayList <Long> ();
-	private List <String> listCode = new ArrayList <String> ();
-	
-	
-	public LessonDTO() {
-		
+
+	private String title;
+	private String description;
+	private String[] studyMaterial;
+	private Collection<Long> notesIds;
+
+	public String getTitle() {
+		return title;
 	}
 
-	public LessonDTO(List<Long> listEditions, List<String> listUrls, List<Long> listNotes, List<String> listCode) {
-		this.listEditions = listEditions;
-		this.listUrls = listUrls;
-		this.listNotes = listNotes;
-		this.listCode = listCode;
-	}
-	
-	public List<Long> getListEditions() {
-		return listEditions;
-	}
-	public void setListEditions(List<Long> listEditions) {
-		this.listEditions = listEditions;
-	}
-	public List<String> getListUrls() {
-		return listUrls;
-	}
-	public void setListUrls(List<String> listUrls) {
-		this.listUrls = listUrls;
-	}
-	public List<Long> getListNotes() {
-		return listNotes;
-	}
-	public void setListNotes(List<Long> listNotes) {
-		this.listNotes = listNotes;
-	}
-	public List<String> getListCode() {
-		return listCode;
-	}
-	public void setListCode(List<String> listCode) {
-		this.listCode = listCode;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	@Override
-	public String toString() {
-		return "ClassDTO [listEditions=" + listEditions + ", listUrls=" + listUrls + ", listNotes=" + listNotes
-				+ ", listCode=" + listCode + "]";
-	} 
+	public String getDescription() {
+		return description;
+	}
 
-	
-	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String[] getStudyMaterial() {
+		return studyMaterial;
+	}
+
+	public void setStudyMaterial(String[] studyMaterial) {
+		this.studyMaterial = studyMaterial;
+	}
+
+	public Collection<Long> getNotesIds() {
+		return notesIds;
+	}
+
+	public void setNotesIds(Collection<Long> notesIds) {
+		this.notesIds = notesIds;
+	}
+
 }
