@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Questionnaire;
+import pt.upacademy.coreFinalProject.models.Template;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnaireDTO;
 import pt.upacademy.coreFinalProject.services.QuestionService;
@@ -20,7 +21,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 	public Questionnaire toEntity(QuestionnaireDTO dto) {
 		Questionnaire questionnaire = new Questionnaire();
 		questionnaire.setId(dto.getId());
-		questionnaire.setQuestionList(dto.getQuestionList().stream().map(e -> QUESTION_SERVICE.get(e.getId())).collect(Collectors.toList()));
+		questionnaire.setQuestionList(dto.getQuestionList().stream().map(e -> QUESTION_SERVICE.get(e.getId())).collect(Collectors.toSet()));
 		questionnaire.setName(dto.getName());
 		questionnaire.setAccountIdList(dto.getAccountIdList());
 		questionnaire.setqType(dto.getqType());
@@ -43,7 +44,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 			questionDTO.setOptions(e.getOptions());
 			questionDTO.setRightAnswer(e.getRightAnswer());			
 			return questionDTO;
-		}).collect(Collectors.toList()));
+		}).collect(Collectors.toSet()));
 		questionnaireDTO.setName(entity.getName());
 		questionnaireDTO.setAccountIdList(entity.getAccountIdList());
 		questionnaireDTO.setqType(entity.getqType());
@@ -53,4 +54,25 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		return questionnaireDTO;
 	}
 	
+	public QuestionnaireDTO toDTO(Template template) {
+		QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO();
+		questionnaireDTO.setId(template.getId());
+		questionnaireDTO.setQuestionList(template.getQuestionList().stream().map(e -> {
+			QuestionDTO questionDTO = new QuestionDTO();
+			questionDTO.setId(e.getId());
+			questionDTO.setQuestionnarieId(e.getQuestionnaire().getId());
+			questionDTO.setQuestion(e.getQuestion());
+			questionDTO.setaType(e.getaType());
+			questionDTO.setOptions(e.getOptions());
+			questionDTO.setRightAnswer(e.getRightAnswer());
+			return questionDTO;
+		}).collect(Collectors.toSet()));
+		questionnaireDTO.setName(template.getName());
+		questionnaireDTO.setqType(template.getqType());
+		questionnaireDTO.setEditPrivacy(template.getEditPrivacy());
+		questionnaireDTO.setViewPrivacy(template.getViewPrivacy());
+
+		return questionnaireDTO;
+
+	}
 }
