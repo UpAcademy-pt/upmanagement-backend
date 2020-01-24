@@ -1,6 +1,6 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.Arrays;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
@@ -21,8 +21,8 @@ public class Lesson extends EntityRoot {
 	private String title;
 	private String description;
 	private long editionId;
-	private long[] materialIds;
-	private String[] studyMaterial;
+	private Set<Long> materialIds;
+	private Set<Long> studyMaterials;
 
 	public String getTitle() {
 		return title;
@@ -48,26 +48,26 @@ public class Lesson extends EntityRoot {
 		this.editionId = editionId;
 	}
 
-	public long[] getMaterialIds() {
+	public Set<Long> getMaterialIds() {
 		return materialIds;
 	}
 
-	public void setMaterialIds(long[] materialIds) {
+	public void setMaterialIds(Set<Long> materialIds) {
 		this.materialIds = materialIds;
 	}
 
-	public String[] getStudyMaterial() {
-		return studyMaterial;
+	public Set<Long> getStudyMaterials() {
+		return studyMaterials;
 	}
 
-	public void setStudyMaterial(String[] studyMaterial) {
-		this.studyMaterial = studyMaterial;
+	public void setStudyMaterials(Set<Long> studyMaterials) {
+		this.studyMaterials = studyMaterials;
 	}
 
 	@Override
 	public String toString() {
 		return "Lesson [title=" + title + ", description=" + description + ", editionId=" + editionId + ", materialIds="
-				+ Arrays.toString(materialIds) + ", studyMaterial=" + Arrays.toString(studyMaterial) + "]";
+				+ materialIds + ", studyMaterial=" + studyMaterials + "]";
 	}
 
 }
