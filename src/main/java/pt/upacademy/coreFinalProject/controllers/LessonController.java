@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import pt.upacademy.coreFinalProject.models.DTOS.LessonDTO;
 import pt.upacademy.coreFinalProject.models.converters.LessonConverter;
 
-@Path("lessons")
+@Path("/aulas/lessons")
 @RequestScoped
 public class LessonController {
 

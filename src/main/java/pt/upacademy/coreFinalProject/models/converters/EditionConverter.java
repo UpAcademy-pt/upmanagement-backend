@@ -78,24 +78,31 @@ public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 		return edition;
 	}
 
+
+	@Override
+	public EditionDTO toDTO(Edition entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 
 	
-	@Override
-	public EditionDTO toDTO(Edition ent) {
-		EditionDTO editionDTO = new EditionDTO (
-				ent.getName(),
-				ent.getType(),
-				ent.getAccounts().stream().map(Account :: getId).collect(Collectors.toList())
-//				ent.getLessons().stream().map(Lesson :: getId).collect(Collectors.toList()), 
-//				ent.getNotes().stream().map(Note :: getId).collect(Collectors.toList()),
-//				ent.getQuestions().stream().map(QuestionForum :: getId).collect(Collectors.toList()),
-//				ent.getEvents().stream().map(Event :: getId).collect(Collectors.toList())
-				);
-		
-		return editionDTO;
-		
-	}
+//	@Override
+//	public EditionDTO toDTO(Edition ent) {
+//		EditionDTO editionDTO = new EditionDTO (
+//				ent.getName(),
+//				ent.getType(),
+//				ent.getAccounts().stream().map(Account :: getId).collect(Collectors.toList())
+////				ent.getLessons().stream().map(Lesson :: getId).collect(Collectors.toList()), 
+////				ent.getNotes().stream().map(Note :: getId).collect(Collectors.toList()),
+////				ent.getQuestions().stream().map(QuestionForum :: getId).collect(Collectors.toList()),
+////				ent.getEvents().stream().map(Event :: getId).collect(Collectors.toList())
+//				);
+//		
+//		return editionDTO;
+//		
+//	}
 
 }

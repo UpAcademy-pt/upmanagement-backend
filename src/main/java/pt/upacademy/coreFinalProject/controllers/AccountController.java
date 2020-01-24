@@ -19,7 +19,7 @@ import pt.upacademy.coreFinalProject.services.AccountService;
 
 
 @RequestScoped
-@Path ("account")
+@Path ("/aulas/account")
 public class AccountController extends EntityControllerDTO <AccountService, AccountRepository,AccountConverter, Account, AccountDTO>{
 
 	@Inject

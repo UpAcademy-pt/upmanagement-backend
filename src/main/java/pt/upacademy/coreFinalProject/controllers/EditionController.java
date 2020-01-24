@@ -25,7 +25,7 @@ import pt.upacademy.coreFinalProject.services.EditionService;
 
 
 @RequestScoped
-@Path ("edition")
+@Path ("/aulas/edition")
 public class EditionController extends EntityControllerDTO <EditionService, EditionRepository, EditionConverter, Edition, EditionDTO> {
 	
 	@Inject
