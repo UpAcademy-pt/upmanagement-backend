@@ -15,34 +15,64 @@ public class Questionnaire extends EntityRoot{
 
 	public static final String GET_ALL_QUESTIONNAIRES = "getAllQuestionnaire";
 	private static final long serialVersionUID = 1L;
-	
-	@OneToMany
+		
+	// CascadeType.MERGE => Automatically updates Question after Questionnaire is updated
+	// CascadeType.PERSIST => Automatically creates Question after Questionnaire is created with Questions
+	// FetchType.EAGER => loads questionList when Questionnaire is loaded
+	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private List<Question> questionList;
 	private String name;
-	private boolean template;
+	private List<Long> accountIdList;
+	private Qtype qType;
+	private List<Role> editPrivacy;
+	private List<Role> viewPrivacy;
 	
+	public List<Long> getAccountIdList() {
+		return accountIdList;
+	}
+
+	public void setAccountIdList(List<Long> accountIdList) {
+		this.accountIdList = accountIdList;
+	}
+
+	public List<Role> getEditPrivacy() {
+		return editPrivacy;
+	}
+
+	public void setEditPrivacy(List<Role> editPrivacy) {
+		this.editPrivacy = editPrivacy;
+	}
+
+	public List<Role> getViewPrivacy() {
+		return viewPrivacy;
+	}
+
+	public void setViewPrivacy(List<Role> viewPrivacy) {
+		this.viewPrivacy = viewPrivacy;
+	}
+
 	public List<Question> getQuestionList() {
 		return questionList;
 	}
+	
 	public void setQuestionList(List<Question> questionList) {
 		this.questionList = questionList;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean isTemplate() {
-		return template;
-	}
-	public void setTemplate(boolean template) {
-		this.template = template;
+
+	public Qtype getqType() {
+		return qType;
 	}
 	
-	
-	
-	
-	
-	
+	public void setqType(Qtype qType) {
+		this.qType = qType;
+	}
+
 }

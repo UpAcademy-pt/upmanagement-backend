@@ -1,26 +1,19 @@
-package pt.upacademy.coreFinalProject.models.DTOS;
+package pt.upacademy.coreFinalProject.models;
 
 import java.util.List;
 
-import pt.upacademy.coreFinalProject.models.Qtype;
-import pt.upacademy.coreFinalProject.models.Role;
+import javax.persistence.Entity;
 
-public class QuestionnaireDTO extends EntityDTO{
-
-	private List<QuestionDTO> questionList;
+@Entity
+public class Template extends EntityRoot {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
-	private List<Long> accountIdList;
 	private Qtype qType;
+	private List<Question> questionList;
 	private List<Role> editPrivacy;
 	private List<Role> viewPrivacy;
-	
-	public List<QuestionDTO> getQuestionList() {
-		return questionList;
-	}
-	
-	public void setQuestionList(List<QuestionDTO> questionList) {
-		this.questionList = questionList;
-	}
 	
 	public String getName() {
 		return name;
@@ -30,20 +23,20 @@ public class QuestionnaireDTO extends EntityDTO{
 		this.name = name;
 	}
 	
-	public List<Long> getAccountIdList() {
-		return accountIdList;
-	}
-	
-	public void setAccountIdList(List<Long> accountIdList) {
-		this.accountIdList = accountIdList;
-	}
-	
 	public Qtype getqType() {
 		return qType;
 	}
 	
 	public void setqType(Qtype qType) {
 		this.qType = qType;
+	}
+	
+	public List<Question> getQuestionList() {
+		return questionList;
+	}
+	
+	public void setQuestionList(List<Question> questionList) {
+		this.questionList = questionList;
 	}
 	
 	public List<Role> getEditPrivacy() {
@@ -61,5 +54,5 @@ public class QuestionnaireDTO extends EntityDTO{
 	public void setViewPrivacy(List<Role> viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
 	}
-	
+
 }

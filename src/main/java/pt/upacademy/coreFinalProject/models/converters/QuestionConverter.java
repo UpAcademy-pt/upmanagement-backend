@@ -1,33 +1,41 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
+import javax.inject.Inject;
+
 import pt.upacademy.coreFinalProject.models.Question;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionDTO;
+import pt.upacademy.coreFinalProject.services.QuestionService;
+import pt.upacademy.coreFinalProject.services.QuestionnaireService;
 
 
 public class QuestionConverter extends EntityConverter<Question, QuestionDTO> {
 
+	@Inject
+	QuestionnaireService QUESTIONNAIRE_SERVICE;
+	
 	@Override
 	public Question toEntity(QuestionDTO dto) {
-		Question Question = new Question();
-		Question.setId(dto.getId());
-		Question.setQuestion(dto.getQuestion());
-		Question.setaType(dto.getaType());
-		Question.setOptions(dto.getOptions());
-		Question.setFilter(dto.getFilter());
+		Question question = new Question();
+		question.setId(dto.getId());
+		question.setQuestionnaire(QUESTIONNAIRE_SERVICE.get(dto.getQuestionnarieId()));
+		question.setQuestion(dto.getQuestion());
+		question.setaType(dto.getaType());
+		question.setOptions(dto.getOptions());
+		question.setRightAnswer(dto.getRightAnswer());		
 		
-		
-		return Question;
+		return question;
 	}
 	
 	@Override
 	public QuestionDTO toDTO(Question entity) {
-		QuestionDTO QuestionDTO = new QuestionDTO();
-		QuestionDTO.setId(entity.getId());
-		QuestionDTO.setQuestion(entity.getQuestion());
-		QuestionDTO.setaType(entity.getaType());
-		QuestionDTO.setOptions(entity.getOptions());
-		QuestionDTO.setFilter(entity.getFilter());
+		QuestionDTO questionDTO = new QuestionDTO();
+		questionDTO.setId(entity.getId());
+		questionDTO.setQuestionnarieId(entity.getQuestionnaire().getId());
+		questionDTO.setQuestion(entity.getQuestion());
+		questionDTO.setaType(entity.getaType());
+		questionDTO.setOptions(entity.getOptions());
+		questionDTO.setRightAnswer(entity.getRightAnswer());
 		
-		return QuestionDTO;
+		return questionDTO;
 	}
 }
