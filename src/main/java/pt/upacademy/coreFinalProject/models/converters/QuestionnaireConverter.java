@@ -14,8 +14,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 	@Inject
 	QuestionService QUESTION_SERVICE;
 	
-	//Se calhar aqui nao podemos fazer o cruzamento entre QuestionnaireConverter e Question Service
-	//Talvez seja melhor criar o intermedio QuestionnaireService
+	
 
 	@Override
 	public Questionnaire toEntity(QuestionnaireDTO dto) {
