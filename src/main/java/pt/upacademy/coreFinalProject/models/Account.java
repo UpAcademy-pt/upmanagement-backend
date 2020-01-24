@@ -2,9 +2,14 @@ package pt.upacademy.coreFinalProject.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -26,14 +31,18 @@ public class Account extends EntityRoot  {
 	public static final String GET_ACCOUNT_BY_USERID = "getAccountByUserId";
 	
 	private long userId;
-	
+
+
+		
+	public Account(long userId) {
+		this.userId = userId;
+		
+	}
+
+
 	public Account() {
 	}
-	
-	public Account(long userId, List<Edition> editions) {
-		this.userId = userId;
-	}
-	
+
 
 	public long getUserId() {
 		return userId;
@@ -42,11 +51,12 @@ public class Account extends EntityRoot  {
 		this.userId = userId;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "Account [userId=" + userId + "]";
 	}
-	
+
+
 
 }
