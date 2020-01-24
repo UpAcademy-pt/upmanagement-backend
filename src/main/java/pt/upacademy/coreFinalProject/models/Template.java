@@ -3,17 +3,20 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Template extends EntityRoot {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
 	private String name;
 	private Qtype qType;
+	@OneToMany
 	private List<Question> questionList;
-	private List<Role> editPrivacy;
-	private List<Role> viewPrivacy;
+//	private Role[] editPrivacy;
+//	private Role[] viewPrivacy;
 	
 	public String getName() {
 		return name;
@@ -38,21 +41,23 @@ public class Template extends EntityRoot {
 	public void setQuestionList(List<Question> questionList) {
 		this.questionList = questionList;
 	}
+
+//	public Role[] getEditPrivacy() {
+//		return editPrivacy;
+//	}
+//
+//	public void setEditPrivacy(Role[] editPrivacy) {
+//		this.editPrivacy = editPrivacy;
+//	}
+//
+//	public Role[] getViewPrivacy() {
+//		return viewPrivacy;
+//	}
+//
+//	public void setViewPrivacy(Role[] viewPrivacy) {
+//		this.viewPrivacy = viewPrivacy;
+//	}
 	
-	public List<Role> getEditPrivacy() {
-		return editPrivacy;
-	}
 	
-	public void setEditPrivacy(List<Role> editPrivacy) {
-		this.editPrivacy = editPrivacy;
-	}
-	
-	public List<Role> getViewPrivacy() {
-		return viewPrivacy;
-	}
-	
-	public void setViewPrivacy(List<Role> viewPrivacy) {
-		this.viewPrivacy = viewPrivacy;
-	}
 
 }

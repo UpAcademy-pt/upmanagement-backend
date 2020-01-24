@@ -22,34 +22,34 @@ public class Questionnaire extends EntityRoot{
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private List<Question> questionList;
 	private String name;
-	private List<Long> accountIdList;
+	private Long[] accountIdList;
 	private Qtype qType;
-	private List<Role> editPrivacy;
-	private List<Role> viewPrivacy;
+//	private List<Role> editPrivacy;
+//	private List<Role> viewPrivacy;
 	
-	public List<Long> getAccountIdList() {
+	public Long[] getAccountIdList() {
 		return accountIdList;
 	}
 
-	public void setAccountIdList(List<Long> accountIdList) {
+	public void setAccountIdList(Long[] accountIdList) {
 		this.accountIdList = accountIdList;
 	}
 
-	public List<Role> getEditPrivacy() {
-		return editPrivacy;
-	}
-
-	public void setEditPrivacy(List<Role> editPrivacy) {
-		this.editPrivacy = editPrivacy;
-	}
-
-	public List<Role> getViewPrivacy() {
-		return viewPrivacy;
-	}
-
-	public void setViewPrivacy(List<Role> viewPrivacy) {
-		this.viewPrivacy = viewPrivacy;
-	}
+//	public List<Role> getEditPrivacy() {
+//		return editPrivacy;
+//	}
+//
+//	public void setEditPrivacy(List<Role> editPrivacy) {
+//		this.editPrivacy = editPrivacy;
+//	}
+//
+//	public List<Role> getViewPrivacy() {
+//		return viewPrivacy;
+//	}
+//
+//	public void setViewPrivacy(List<Role> viewPrivacy) {
+//		this.viewPrivacy = viewPrivacy;
+//	}
 
 	public List<Question> getQuestionList() {
 		return questionList;

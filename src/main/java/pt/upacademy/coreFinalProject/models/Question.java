@@ -18,7 +18,7 @@ public class Question extends EntityRoot {
 	private Questionnaire questionnaire;
 	private String question;
 	private AnswerType aType;
-	private List<String> options;
+	private String [] options;
 	private int rightAnswer;
 	
 	public Questionnaire getQuestionnaire() {
@@ -45,12 +45,13 @@ public class Question extends EntityRoot {
 		this.aType = aType;
 	}
 
-	public List<String> getOptions() {
+	
+	public String[] getOptions() {
 		return options;
 	}
 
-	public void setOptions(List<String> options) {
-		this.options = options;
+	public void setOptions(String[] list) {
+		this.options = list;
 	}
 
 	public int getRightAnswer() {
