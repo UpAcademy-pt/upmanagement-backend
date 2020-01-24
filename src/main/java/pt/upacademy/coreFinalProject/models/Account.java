@@ -30,7 +30,7 @@ public class Account extends EntityRoot  {
 	public Account() {
 	}
 	
-	public Account(long userId, List<Edition> editions) {
+	public Account(long userId) {
 		this.userId = userId;
 	}
 	
