@@ -21,7 +21,6 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO> {
 	protected EditionConverter converter;
 
 
-
 	@Override
 	public Account toEntity(AccountDTO dto) {
 
