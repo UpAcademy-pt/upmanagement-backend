@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.repositories;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 
@@ -23,8 +24,8 @@ public class AccountRepository extends EntityRepository<Account> {
 		return entityManager.createNamedQuery(Account.GET_ACCOUNTS_BY_USER_IDS, getEntityClass()).setParameter("usersIds", userIds).getResultList();
 	}
 	
-	public Collection<Account> getByUserId(long userId) {
-		return entityManager.createNamedQuery(Account.GET_ACCOUNT_BY_USER_ID, getEntityClass()).setParameter("usersId", userId).getResultList();
+	public List<Account> getByUserId(long userId) {
+		return entityManager.createNamedQuery(Account.GET_ACCOUNT_BY_USER_ID, getEntityClass()).setParameter("userId", userId).getResultList();
 	}
 
 }

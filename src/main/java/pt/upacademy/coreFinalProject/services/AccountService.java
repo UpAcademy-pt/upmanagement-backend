@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.services;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.enterprise.context.RequestScoped;
@@ -24,6 +25,13 @@ public class AccountService extends EntityService<AccountRepository,Account> {
 	}
 	
 	public Account getByUserId(long userId) {
-		return repository.getByUserId(userId).iterator().next();
+		Optional<Account> account = repository.getByUserId(userId).stream().findFirst();
+		if (account.isPresent()) {
+			return account.get();
+		} else {
+			//throw new IllegalArgumentException(String.format("Account with user id %d doesn't exist", userId));
+			return null;
+		}
+		
 	}
 }

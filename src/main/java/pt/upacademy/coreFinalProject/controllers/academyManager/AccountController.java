@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.Account;
@@ -33,7 +34,16 @@ public class AccountController extends EntityControllerDTO<AccountService,Accoun
 	@Path("/user-id/{userId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public AccountDTO getByUserId(@PathParam("userId") long userId) {
-		return converter.toDTO(service.getByUserId(userId));
+		//try {
+		Account account = service.getByUserId(userId);
+		if(account != null) {
+			return converter.toDTO(service.getByUserId(userId));
+		}
+		return null;
+//			return Response.status(200).entity(dto).build();
+//		} catch (IllegalArgumentException e){
+//			return Response.status(400).entity(e.getMessage()).build();
+//		}
 	}
 
 }
