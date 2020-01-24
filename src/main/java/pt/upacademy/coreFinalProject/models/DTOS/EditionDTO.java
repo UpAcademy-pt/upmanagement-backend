@@ -2,18 +2,14 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.Lesson;
-import pt.upacademy.coreFinalProject.models.Note;
-import pt.upacademy.coreFinalProject.models.QuestionForum;
 
 public class EditionDTO extends EntityDTO {
 	
 	private long editionId;
 	private String name;
 	private String type;
-	private List <LessonDTO>  lessonsDtos = new ArrayList<LessonDTO>();
+	private List <Lesson>  lessons = new ArrayList<Lesson>();
 	private List <AccountDTO> accountsDtos = new ArrayList <AccountDTO> ();
 	
 	
@@ -22,15 +18,15 @@ public class EditionDTO extends EntityDTO {
 	}
 
 
-	public EditionDTO(long editionId, String name, String type, List<LessonDTO> lessonsDtos,
-			List<AccountDTO> accountsDtos) {
+	public EditionDTO(long editionId, String name, String type, List<Lesson> lessons, List<AccountDTO> accountsDtos) {
 		super();
 		this.editionId = editionId;
 		this.name = name;
 		this.type = type;
-		this.lessonsDtos = lessonsDtos;
+		this.lessons = lessons;
 		this.accountsDtos = accountsDtos;
 	}
+
 
 
 	public long getEditionId() {
@@ -62,34 +58,25 @@ public class EditionDTO extends EntityDTO {
 		this.type = type;
 	}
 
-
-	public List<LessonDTO> getLessonsDtos() {
-		return lessonsDtos;
-	}
-
-
-	public void setLessonsDtos(List<LessonDTO> lessonsDtos) {
-		this.lessonsDtos = lessonsDtos;
-	}
-
-
 	public List<AccountDTO> getAccountsDtos() {
 		return accountsDtos;
 	}
-
 
 	public void setAccountsDtos(List<AccountDTO> accountsDtos) {
 		this.accountsDtos = accountsDtos;
 	}
 
 
-	@Override
-	public String toString() {
-		return "EditionDTO [editionId=" + editionId + ", name=" + name + ", type=" + type + ", lessonsDtos="
-				+ lessonsDtos + ", accountsDtos=" + accountsDtos + "]";
+	public List<Lesson> getLessons() {
+		return lessons;
 	}
+
+	public void setLessons(List<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+
 	
-	
+
 
 
 	

@@ -2,7 +2,6 @@ package pt.upacademy.coreFinalProject.models.converters;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,7 +12,6 @@ import pt.upacademy.coreFinalProject.models.Edition;
 import pt.upacademy.coreFinalProject.models.Lesson;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.EditionDTO;
-import pt.upacademy.coreFinalProject.models.DTOS.LessonDTO;
 import pt.upacademy.coreFinalProject.services.AccountService;
 import pt.upacademy.coreFinalProject.services.LessonService;
 
@@ -21,8 +19,6 @@ import pt.upacademy.coreFinalProject.services.LessonService;
 @RequestScoped
 public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 	
-	@Inject
-	private LessonConverter lessonConverter;
  	
 	@Inject 
 	private AccountConverter accountConverter;
@@ -55,7 +51,7 @@ public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 
 	@Override
 	public EditionDTO toDTO(Edition ent) {
-		List<LessonDTO> listLessons = getLessonByEditionId (ent.getId());
+		List<Lesson> listLessons = getLessonByEditionId (ent.getId());
 		EditionDTO editionDTO = new EditionDTO (
 				ent.getId(),
 				ent.getName(),
@@ -69,17 +65,16 @@ public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 				 	}
 	
 	
-	private List <LessonDTO> getLessonByEditionId (long id) {
+	private List <Lesson> getLessonByEditionId (long id) {
 		List <Lesson> listlessons = (List<Lesson>) lessonBus.get();
-		List <LessonDTO> listLessonDTO = new ArrayList <LessonDTO> ();
+		List <Lesson> listLessonWithEdition = new ArrayList <Lesson> ();
 		for (Lesson lesson : listlessons) {
 			long editionId = lesson.getEditionId();
 			if (editionId == id) {
-				LessonDTO lessonDto = lessonConverter.toDTO(lesson);
-				listLessonDTO.add(lessonDto);
+				listLessonWithEdition.add(lesson);
 		}
 	}
-	return listLessonDTO;
+	return listLessonWithEdition;
 		}
 	
 	

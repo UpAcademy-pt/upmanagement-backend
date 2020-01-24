@@ -33,7 +33,8 @@ public class Edition extends EntityRoot  {
 	
 	private String name;
 	private String type;
-	private List <Long> listAccount;
+	
+	private List<Account> listAccount;
  	private Date createDate;
 	private Date updateDate;
 	
@@ -68,10 +69,11 @@ public class Edition extends EntityRoot  {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public List<Long> getListAccount() {
+	
+	public Set<Long> getListAccount() {
 		return listAccount;
 	}
-	public void setListAccount(List<Long> listAccount) {
+	public void setListAccount(Set<Long> listAccount) {
 		this.listAccount = listAccount;
 	}
 	
