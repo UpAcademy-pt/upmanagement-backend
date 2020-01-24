@@ -27,7 +27,7 @@ import pt.upacademy.coreFinalProject.models.converters.UserConverter;
 import pt.upacademy.coreFinalProject.repositories.UserRepository;
 import pt.upacademy.coreFinalProject.services.UserService;
 
-@Path("users")
+@Path("/aulas/users")
 @RequestScoped
 public class UserController extends EntityControllerDTO<UserService, UserRepository, UserConverter, User, UserDTO> {
 	

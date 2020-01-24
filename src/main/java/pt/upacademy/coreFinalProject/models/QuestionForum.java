@@ -4,9 +4,12 @@ package pt.upacademy.coreFinalProject.models;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = QuestionForum.GET_ALL_QF, query = "SELECT q FROM QuestionForum q"),

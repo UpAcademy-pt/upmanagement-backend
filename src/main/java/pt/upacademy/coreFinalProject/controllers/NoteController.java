@@ -19,7 +19,7 @@ import pt.upacademy.coreFinalProject.services.NoteService;
 
 
 @RequestScoped
-@Path("notes")
+@Path("/aulas/notes")
 public class NoteController extends EntityController<NoteService, NoteRepository, Note>{
 
 	@Inject
