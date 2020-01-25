@@ -14,8 +14,6 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 
 	@Inject
 	QuestionService QUESTION_SERVICE;
-	
-	
 
 	@Override
 	public Questionnaire toEntity(QuestionnaireDTO dto) {
@@ -73,6 +71,5 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setViewPrivacy(template.getViewPrivacy());
 
 		return questionnaireDTO;
-
 	}
 }

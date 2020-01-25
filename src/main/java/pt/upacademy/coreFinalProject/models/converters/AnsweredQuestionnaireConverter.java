@@ -33,7 +33,12 @@ public class AnsweredQuestionnaireConverter extends EntityConverter<AnsweredQues
 		
 		return new AnsweredQuestionnaireDTO(
 			entity.getId(),
-			entity.getAnswerList().stream().map(answer -> new AnswerDTO(answer.getId(), answer.getAnsweredQuestionaire().getId(), answer.getAnswer(), answer.getQuestionId())).collect(Collectors.toSet()),
+			entity.getAnswerList().stream().map(answer -> new AnswerDTO(
+					answer.getId(),
+					answer.getAnsweredQuestionaire().getId(),
+					answer.getAnswer(),
+					answer.getQuestionId()
+					)).collect(Collectors.toSet()),
 			entity.getQuestionnaireId(),
 			entity.getAccountId(),
 			entity.getqType(),
