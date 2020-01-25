@@ -1,14 +1,15 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
+import pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO;
 import pt.upacademy.coreFinalProject.services.AccountService;
 import pt.upacademy.coreFinalProject.services.QuestionnaireService;
 
@@ -16,6 +17,7 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	
 	@Inject
 	AccountService ACCOUNT_SERVICE;
+	
 	@Inject
 	QuestionnaireService QUESTIONNAIRE_SERVICE;
 	
@@ -23,20 +25,21 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	public Account toEntity(AccountDTO dto) {
 		long[] userAcademies = {1, 2}; // Tem que ser removido depois
 		
-		return new Account(dto.getId(),
+		return new Account(
+				dto.getId(),
 				ACCOUNT_SERVICE.get(dto.getId()).getUserId(),
-				dto.getPendingQuentionnaires().keySet().stream().mapToLong(i -> i).toArray(),
+				dto.getPendingQuentionnaires().stream().mapToLong(pendingQuest -> pendingQuest.getId()).toArray(),
 				userAcademies);
 	}
 	
 	@Override
 	public AccountDTO toDTO(Account entity) {
-		Map<Long, String> pedindingQuestionnairesIds = new HashMap<Long, String>();
+		Set<QuestionnairePreviewDTO> pedindingQuestionnaires = new HashSet<QuestionnairePreviewDTO>();
 		Arrays.stream(entity.getPendingQuentionnairesIds()).forEach(id -> {
 			Questionnaire questionnaire = QUESTIONNAIRE_SERVICE.get(id);
-			pedindingQuestionnairesIds.put(questionnaire.getId(), questionnaire.getName());
+			pedindingQuestionnaires.add(new QuestionnairePreviewDTO(questionnaire.getId(), questionnaire.getName()));
 		});
-		return new AccountDTO(entity.getId(), pedindingQuestionnairesIds);
+		return new AccountDTO(entity.getId(), pedindingQuestionnaires);
 	}
 
 }

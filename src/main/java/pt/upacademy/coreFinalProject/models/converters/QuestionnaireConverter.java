@@ -2,25 +2,20 @@ package pt.upacademy.coreFinalProject.models.converters;
 
 import java.util.stream.Collectors;
 
-import javax.inject.Inject;
-
 import pt.upacademy.coreFinalProject.models.Question;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
 import pt.upacademy.coreFinalProject.models.Template;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnaireDTO;
-import pt.upacademy.coreFinalProject.services.QuestionService;
 
 public class QuestionnaireConverter extends EntityConverter<Questionnaire, QuestionnaireDTO>{
-
-	@Inject
-	QuestionService QUESTION_SERVICE;
 
 	@Override
 	public Questionnaire toEntity(QuestionnaireDTO dto) {
 		Questionnaire questionnaire = new Questionnaire();
-		questionnaire.setId(dto.getId());
-		//questionnaire.setQuestionList(dto.getQuestionList().stream().map(e -> QUESTION_SERVICE.get(e.getId())).collect(Collectors.toSet()));
+		if (dto.getId() > 0) {
+			questionnaire.setId(dto.getId());
+		}
 		questionnaire.setQuestionList(
 				dto.getQuestionList().stream().map(e -> new Question(
 				questionnaire, e.getQuestion(), e.getaType(), e.getOptions(), e.getRightAnswer()
@@ -30,7 +25,6 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaire.setqType(dto.getqType());
 		questionnaire.setEditPrivacy(dto.getEditPrivacy());
 		questionnaire.setViewPrivacy(dto.getViewPrivacy());
-		
 		return questionnaire;
 	}
 
@@ -53,7 +47,6 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setqType(entity.getqType());
 		questionnaireDTO.setEditPrivacy(entity.getEditPrivacy());
 		questionnaireDTO.setViewPrivacy(entity.getViewPrivacy());
-
 		return questionnaireDTO;
 	}
 	
@@ -74,7 +67,6 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setqType(template.getqType());
 		questionnaireDTO.setEditPrivacy(template.getEditPrivacy());
 		questionnaireDTO.setViewPrivacy(template.getViewPrivacy());
-
 		return questionnaireDTO;
 	}
 }

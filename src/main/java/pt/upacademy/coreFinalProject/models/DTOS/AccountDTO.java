@@ -1,24 +1,23 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.util.Map;
+import java.util.Set;
 
 public class AccountDTO extends EntityDTO{
 	
-	//private Set<QuestionnaireDTO> pendingQuentionnaires;
-	private Map<Long, String> pendingQuentionnaires;
- 
+	private Set<QuestionnairePreviewDTO> pendingQuentionnaires;
+	
 	public AccountDTO() {}
 
-	public AccountDTO(long id, Map<Long, String> pendingQuentionnaires) {
+	public AccountDTO(long id, Set<QuestionnairePreviewDTO> pendingQuentionnaires) {
 		setId(id);
 		this.pendingQuentionnaires = pendingQuentionnaires;
 	}
 
-	public Map<Long, String> getPendingQuentionnaires() {
+	public Set<QuestionnairePreviewDTO> getPendingQuentionnaires() {
 		return pendingQuentionnaires;
 	}
 
-	public void setPendingQuentionnaires(Map<Long, String> pendingQuentionnaires) {
+	public void setPendingQuentionnaires(Set<QuestionnairePreviewDTO> pendingQuentionnaires) {
 		this.pendingQuentionnaires = pendingQuentionnaires;
 	}
 
