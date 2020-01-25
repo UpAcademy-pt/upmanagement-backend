@@ -3,11 +3,14 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -24,10 +27,11 @@ public class Questionnaire extends EntityRoot{
 	private String name;
 	private long[] accountIdList;
 	private Qtype qType;
-	@ElementCollection(targetClass = Role.class)
+	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
 	private Set<Role> editPrivacy;
-	@ElementCollection(targetClass = Role.class)
+    
+	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
 	private Set<Role> viewPrivacy;
 	
