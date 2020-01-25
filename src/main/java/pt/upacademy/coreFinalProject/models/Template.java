@@ -3,11 +3,14 @@ package pt.upacademy.coreFinalProject.models;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,10 +22,10 @@ public class Template extends EntityRoot {
 	private Set<Question> questionList;
 	private String name;
 	private Qtype qType;
-	@ElementCollection(targetClass = Role.class)
+	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
 	private Set<Role> editPrivacy;
-	@ElementCollection(targetClass = Role.class)
+	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
 	private Set<Role> viewPrivacy;
 

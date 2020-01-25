@@ -11,7 +11,7 @@ import pt.upacademy.coreFinalProject.repositories.AnsweredQuestionnaireRepositor
 import pt.upacademy.coreFinalProject.services.AnsweredQuestionnaireService;
 
 
-@Path("questionnaire/answeredquestions")
+@Path("questionnaire/answeredquestionnaire")
 @RequestScoped
 public class AnsweredQuestionnaireController extends EntityControllerDTO<AnsweredQuestionnaireService, AnsweredQuestionnaireRepository, AnsweredQuestionnaireConverter, AnsweredQuestionnaire, AnsweredQuestionnaireDTO>{
 

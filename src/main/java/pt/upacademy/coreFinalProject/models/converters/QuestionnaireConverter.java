@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import pt.upacademy.coreFinalProject.models.Question;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
 import pt.upacademy.coreFinalProject.models.Template;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionDTO;
@@ -21,7 +22,11 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 	public Questionnaire toEntity(QuestionnaireDTO dto) {
 		Questionnaire questionnaire = new Questionnaire();
 		questionnaire.setId(dto.getId());
-		questionnaire.setQuestionList(dto.getQuestionList().stream().map(e -> QUESTION_SERVICE.get(e.getId())).collect(Collectors.toSet()));
+		//questionnaire.setQuestionList(dto.getQuestionList().stream().map(e -> QUESTION_SERVICE.get(e.getId())).collect(Collectors.toSet()));
+		questionnaire.setQuestionList(
+				dto.getQuestionList().stream().map(e -> new Question(
+				questionnaire, e.getQuestion(), e.getaType(), e.getOptions(), e.getRightAnswer()
+				)).collect(Collectors.toSet()));
 		questionnaire.setName(dto.getName());
 		questionnaire.setAccountIdList(dto.getAccountIdList());
 		questionnaire.setqType(dto.getqType());

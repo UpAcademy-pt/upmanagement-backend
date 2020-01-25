@@ -15,11 +15,7 @@ public class QuestionnaireDTO extends EntityDTO{
 	private String name;
 	private long[] accountIdList;
 	private Qtype qType;
-	@ElementCollection(targetClass = Role.class)
-	@Enumerated(EnumType.STRING)
 	private Set<Role> editPrivacy;
-	@ElementCollection(targetClass = Role.class)
-	@Enumerated(EnumType.STRING)
 	private Set<Role> viewPrivacy;
 	
 	public QuestionnaireDTO() {}
