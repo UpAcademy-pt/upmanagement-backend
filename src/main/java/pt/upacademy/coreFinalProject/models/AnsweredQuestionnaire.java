@@ -12,16 +12,22 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS, query = "SELECT a FROM AnsweredQuestionnaire a")})
+@NamedQueries({
+		@NamedQuery(name = AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS, query = "SELECT a FROM AnsweredQuestionnaire a"),
+		@NamedQuery(name = AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS_ID, query = " SELECT a FROM AnsweredQuestionnaire a WHERE a.accountId =  :id") })
 public class AnsweredQuestionnaire extends EntityRoot {
-	
+
 	public static final String GET_ALL_ANSWEREDQUESTIONS = "getAllAnsweredQuestions";
-	private static final long serialVersionUID = 1L;	
-	
-	// CascadeType.MERGE => Automatically updates Question after Questionnaire is updated
-	// CascadeType.PERSIST => Automatically creates Question after Questionnaire is created with Questions
+	public static final String GET_ALL_ANSWEREDQUESTIONS_ID = "getAllAnsweredQuestionsByID";
+	private static final long serialVersionUID = 1L;
+
+	// CascadeType.MERGE => Automatically updates Question after Questionnaire is
+	// updated
+	// CascadeType.PERSIST => Automatically creates Question after Questionnaire is
+	// created with Questions
 	// FetchType.EAGER => loads questionList when Questionnaire is loaded
-	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "answeredQuestionaire", fetch = FetchType.EAGER)
+	@OneToMany(cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST }, mappedBy = "answeredQuestionaire", fetch = FetchType.EAGER)
 	private Set<Answer> answerList;
 	private long questionnaireId;
 	private long accountId;
@@ -29,10 +35,11 @@ public class AnsweredQuestionnaire extends EntityRoot {
 	private LocalDate date;
 	private int score;
 
-	public AnsweredQuestionnaire() {}
+	public AnsweredQuestionnaire() {
+	}
 
-	public AnsweredQuestionnaire(long id, Set<Answer> answerList, long questionnaireId, long accountId, Qtype qType, LocalDate date,
-			int score) {
+	public AnsweredQuestionnaire(long id, Set<Answer> answerList, long questionnaireId, long accountId, Qtype qType,
+			LocalDate date, int score) {
 		setId(id);
 		this.answerList = answerList;
 		this.questionnaireId = questionnaireId;
@@ -53,39 +60,39 @@ public class AnsweredQuestionnaire extends EntityRoot {
 	public long getQuestionnaireId() {
 		return questionnaireId;
 	}
-	
+
 	public void setQuestionnaireId(long questionnaireId) {
 		this.questionnaireId = questionnaireId;
 	}
-	
+
 	public long getAccountId() {
 		return accountId;
 	}
-	
+
 	public void setAccountId(long accountId) {
 		this.accountId = accountId;
 	}
-	
+
 	public Qtype getqType() {
 		return qType;
 	}
-	
+
 	public void setqType(Qtype qType) {
 		this.qType = qType;
 	}
-	
+
 	public LocalDate getDate() {
 		return date;
 	}
-	
+
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
+
 	public int getScore() {
 		return score;
 	}
-	
+
 	public void setScore(int score) {
 		this.score = score;
 	}
