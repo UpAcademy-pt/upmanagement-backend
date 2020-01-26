@@ -16,5 +16,9 @@ public class AnsweredQuestionnaireRepository extends EntityRepository<AnsweredQu
 	protected String getAllEntities() {
 		return AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS;
 	}
+	
+	public String getAllEntitiesId(long id) {
+		return AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS_ID;
+	}
 
 }
