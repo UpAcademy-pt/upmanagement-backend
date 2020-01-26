@@ -25,21 +25,29 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	public Account toEntity(AccountDTO dto) {
 		long[] userAcademies = {1, 2}; // Tem que ser removido depois
 		
-		return new Account(
-				dto.getId(),
-				ACCOUNT_SERVICE.get(dto.getId()).getUserId(),
-				dto.getPendingQuentionnaires().stream().mapToLong(pendingQuest -> pendingQuest.getId()).toArray(),
-				userAcademies);
+		Account account =  new Account();
+				if (dto.getId() > 0) {
+					account.setId(dto.getId());
+				}
+				account.setUserId(dto.getUserId());
+				if (dto.getPendingQuentionnaires() != null) {
+					account.setPendingQuentionnairesIds(dto.getPendingQuentionnaires().stream().mapToLong(pendingQuest -> pendingQuest.getId()).toArray());
+				}
+				account.setUserAcademies(userAcademies);
+		return account;
 	}
 	
 	@Override
 	public AccountDTO toDTO(Account entity) {
+		AccountDTO accountDTO =  new AccountDTO();
 		Set<QuestionnairePreviewDTO> pedindingQuestionnaires = new HashSet<QuestionnairePreviewDTO>();
 		Arrays.stream(entity.getPendingQuentionnairesIds()).forEach(id -> {
 			Questionnaire questionnaire = QUESTIONNAIRE_SERVICE.get(id);
 			pedindingQuestionnaires.add(new QuestionnairePreviewDTO(questionnaire.getId(), questionnaire.getName()));
 		});
-		return new AccountDTO(entity.getId(), pedindingQuestionnaires);
+		accountDTO.setId(entity.getId());
+		accountDTO.setPendingQuentionnaires(pedindingQuestionnaires);
+		return accountDTO;
 	}
 
 }
