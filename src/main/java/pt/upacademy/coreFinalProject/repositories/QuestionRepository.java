@@ -1,7 +1,8 @@
 package pt.upacademy.coreFinalProject.repositories;
 
-import javax.enterprise.context.ApplicationScoped;
+import java.util.Collection;
 
+import javax.enterprise.context.ApplicationScoped;
 import pt.upacademy.coreFinalProject.models.QuestionForum;
 
 
@@ -9,25 +10,21 @@ import pt.upacademy.coreFinalProject.models.QuestionForum;
 public class QuestionRepository extends EntityRepository <QuestionForum> {
 
 	@Override
-	protected Class<QuestionForum> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+	protected Class<QuestionForum> getEntityClass() {		
+		return QuestionForum.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return QuestionForum.GET_ALL_QUESTIONS;
 	}
 
-	protected String getAllEntitiesIds() {
-		// TODO Auto-generated method stub
-		return null;
+	protected String getQuestionsByEditionId() {
+		return QuestionForum.GET_QUESTIONS_BY_EDITION_ID;
 	}
-
-	protected String getEntitiesCount() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public Collection<QuestionForum> getQuestionsByEditionId(long id) {
+		return entityManager.createNamedQuery(QuestionForum.GET_QUESTIONS_BY_EDITION_ID, QuestionForum.class)
+				.setParameter("editionId", id).getResultList();
 	}
-
 }

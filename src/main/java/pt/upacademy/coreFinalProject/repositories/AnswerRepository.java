@@ -1,34 +1,27 @@
 package pt.upacademy.coreFinalProject.repositories;
 
+import java.util.Collection;
 import javax.enterprise.context.ApplicationScoped;
 
 import pt.upacademy.coreFinalProject.models.AnswerForum;
 
-
-
 @ApplicationScoped
-public class AnswerRepository extends EntityRepository <AnswerForum> {
+public class AnswerRepository extends EntityRepository<AnswerForum> {
 
 	@Override
 	protected Class<AnswerForum> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return AnswerForum.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return AnswerForum.GET_ALL_ANSWERS;
 	}
 
-	protected String getAllEntitiesIds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Collection<AnswerForum> getAnswersByQuestionId(long id) {
+		return entityManager.createNamedQuery(AnswerForum.GET_ANSWERS_BY_QUESTION_ID, AnswerForum.class)
+				.setParameter("questionId", id).getResultList();
 
-	protected String getEntitiesCount() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -1,54 +1,65 @@
 package pt.upacademy.coreFinalProject.models;
 
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = QuestionForum.GET_ALL_QF, query = "SELECT q FROM QuestionForum q"),
-		@NamedQuery(name = QuestionForum.GET_ALL_IDS, query = "SELECT q.id FROM QuestionForum q"), })
-public class QuestionForum extends EntityRoot  {
+@NamedQueries({ @NamedQuery(name = QuestionForum.GET_ALL_QUESTIONS, query = "SELECT q FROM QuestionForum q "),
+		@NamedQuery(name = QuestionForum.GET_QUESTIONS_BY_EDITION_ID, query = "SELECT q FROM QuestionForum q WHERE q.editionId = :editionId")
+})
+public class QuestionForum extends EntityRoot {
 
-	public static final String GET_ALL_QF = "getAllQuestionsForum";
-	public static final String GET_ALL_IDS = "getAllQuestionsIds";
-	// o que quisermos pedir a base de dados
+	public static final String GET_ALL_QUESTIONS = "getAllQuestions";
+	public static final String GET_QUESTIONS_BY_EDITION_ID = "getQuestionsByEditionId";
+
 	private static final long serialVersionUID = 1L;
 
-	private int id;
-//	private List<User> usersIds;
-//	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "question", fetch = FetchType.EAGER)
-//	private List<AnswerForum> answers;
-	private LocalDateTime createAt = LocalDateTime.now();
+	private String title;
+	private String description;
+	private long editionId;
+	private String nameOfUser;
 
-	public long getId() {
-		return id;
+	public static String getName() {
+		return "QuestionForum";
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getTitle() {
+		return title;
 	}
 
-//	public List<User> getUsersIds() {
-//		return usersIds;
-//	}
-//
-//	public void setUsersIds(List<User> usersIds) {
-//		this.usersIds = usersIds;
-//	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-//	public List<AnswerForum> getAnswers() {
-//		return answers;
-//	}
-//
-//	public void setAnswers(List<AnswerForum> answers) {
-//		this.answers = answers;
-//	}
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public long getEditionId() {
+		return editionId;
+	}
+
+	public void setEditionId(long editionId) {
+		this.editionId = editionId;
+	}
+
+	public String getNameOfUser() {
+		return nameOfUser;
+	}
+
+	public void setNameOfUser(String nameOfUser) {
+		this.nameOfUser = nameOfUser;
+	}
+
+	@Override
+	public String toString() {
+		return "QuestionForum [title=" + title + ", description=" + description + ", editionId=" + editionId
+				+ ", nameOfUser=" + nameOfUser + "]";
+	}
 
 }
