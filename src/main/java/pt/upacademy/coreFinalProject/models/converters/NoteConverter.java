@@ -13,6 +13,7 @@ public class NoteConverter extends EntityConverter<Note, NoteDTO>{
 	@Inject
 	LessonService LB;
 	UserService UB;
+	
 	@Override
 	public Note toEntity(NoteDTO dto) {
 		// TODO Auto-generated method stub
