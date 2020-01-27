@@ -1,6 +1,14 @@
 package pt.upacademy.coreFinalProject.models;
 
+import java.util.Collection;
+import java.util.HashSet;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -16,6 +24,10 @@ public class Lesson extends EntityRoot {
 	public static final String GET_ALL_LESSONS_IDS = "getAllLessonsIds";
 	public static final String GET_LESSONS_COUNT = "getLessonsCount";
 
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinTable(name = "Lesson_Materials", joinColumns = { @JoinColumn(name = "lesson_id", referencedColumnName = "id") }, inverseJoinColumns = {
+			@JoinColumn(name = "materials_id", referencedColumnName = "id") })
+	private Collection<Materials> materials = new HashSet<>();
 	private String title;
 	private String description;
 	private long editionId;
