@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.models;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 //import javax.persistence.CascadeType;
@@ -25,7 +26,7 @@ public class Account extends EntityRoot {
 	public static final String GET_ACCOUNT_BY_USER_ID = "getAccountByUserId";
 	
 	private long userId;
-	private int age;
+	private LocalDate age;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Academy> academies;
 	private String academicDegree;
@@ -39,12 +40,12 @@ public class Account extends EntityRoot {
 	//evaluations(vai ser retirado) e missedDays so vai ter valores para formandos
 //	@OneToMany(fetch = FetchType.EAGER)			 *GONÇALO
 //  private Set<Evaluation> evaluations;         *GONÇALO*
-	private String missedDays;
+//	private String missedDays;
 	private long nif;
 	
 	public Account() {}
 
-	public Account(Long userId, int age, String academicDegree, String academicBackground,
+	public Account(Long userId, LocalDate age, String academicDegree, String academicBackground,
 			String photoLink, int mobilePhone, String linkedInAdress, long nif) {
 		this.userId = userId;
 		this.age = age;
@@ -72,11 +73,11 @@ public class Account extends EntityRoot {
 		this.userId = userId;
 	}
 
-	public int getAge() {
+	public LocalDate getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(LocalDate age) {
 		this.age = age;
 	}
 
@@ -144,13 +145,13 @@ public class Account extends EntityRoot {
 //		this.evaluations = evaluations;						*GONÇALO*
 //	}
 
-	public String getMissedDays() {
-		return missedDays;
-	}
-
-	public void setMissedDays(String missedDays) {
-		this.missedDays = missedDays;
-	}
+//	public String getMissedDays() {
+//		return missedDays;
+//	}
+//
+//	public void setMissedDays(String missedDays) {
+//		this.missedDays = missedDays;
+//	}
 	
 	
 }

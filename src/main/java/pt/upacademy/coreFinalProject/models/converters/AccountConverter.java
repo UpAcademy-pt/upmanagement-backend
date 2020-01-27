@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -24,14 +26,17 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 	@Override
 	public Account toEntity(AccountDTO dto) {
 		Account account = new Account();
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if(dto.getId() != 0) {
 			account.setId(dto.getId());
 		}
 		account.setAcademicBackground(dto.getAcademicBackground());
 		account.setAcademicDegree(dto.getAcademicDegree());
-		account.setAge(dto.getAge());
+		if(dto.getAge() != null) {
+		LocalDate localDate1 = LocalDate.parse(dto.getAge(),dateTimeFormatter);
+		account.setAge(localDate1);}
 		account.setLinkedInAdress(dto.getLinkedInAdress());
-		account.setMissedDays(dto.getMissedDays());
+//		account.setMissedDays(dto.getMissedDays());
 		account.setMobilePhone(dto.getMobilePhone());
 		account.setPhotoLink(dto.getPhotoLink());
 		account.setUserId(dto.getUserId());
@@ -44,9 +49,15 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 
 	@Override
 	public AccountDTO toDTO(Account entity) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String startDateString;
+		if(entity.getAge() != null) {
+		startDateString = entity.getAge().format(formatter);
+		}
+		else {startDateString = null;}
 		AccountDTO dto = new AccountDTO(
 				entity.getUserId(),
-				entity.getAge(),
+				startDateString,
 				entity.getAcademies().stream().map(academy -> academy.getId()).collect(Collectors.toList()),
 				entity.getAcademicDegree(),
 				entity.getAcademicBackground(),
@@ -55,7 +66,7 @@ public class AccountConverter extends EntityConverter<Account,AccountDTO> {
 				entity.getLinkedInAdress(),
 				entity.getThemes().stream().map(theme -> theme.getId()).collect(Collectors.toList()),
 //				entity.getEvaluations().stream().map(evaluation -> evaluation.getId()).collect(Collectors.toList()),        //GONCALO
-				entity.getMissedDays(),
+//				entity.getMissedDays(),
 				entity.getNif()
 				);
 		if(entity.getId() != 0) {

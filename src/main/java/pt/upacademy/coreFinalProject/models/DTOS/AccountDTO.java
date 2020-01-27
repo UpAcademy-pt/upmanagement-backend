@@ -1,12 +1,13 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDTO extends EntityDTO {
 	
 	private long userId;
-	private int age;
+	private String age;
 	private List<Long> academyIds = new ArrayList<Long>();
 	private String academicDegree;
 	private String academicBackground;
@@ -17,7 +18,7 @@ public class AccountDTO extends EntityDTO {
 	private List<Long> themeIds = new ArrayList<Long>();
 	//evaluations so vai ter valores para formandos
 //	private List<Long> evaluationIds= new ArrayList<Long>();     *GONÇALO*
-	private String missedDays;
+//	private String missedDays;
 	private long nif;
 	
 	
@@ -25,7 +26,7 @@ public class AccountDTO extends EntityDTO {
 
 
 
-	public AccountDTO(long userId, int age, String academicDegree, String academicBackground, String photoLink,
+	public AccountDTO(long userId, String age, String academicDegree, String academicBackground, String photoLink,
 			int mobilePhone, String linkedInAdress, long nif) {
 		this.userId = userId;
 		this.age = age;
@@ -38,8 +39,8 @@ public class AccountDTO extends EntityDTO {
 	}
 	
 	
-	public AccountDTO(long userId, int age, List<Long> academyIds, String academicDegree, String academicBackground,
-			String photoLink, int mobilePhone, String linkedInAdress, List<Long> themeIds, String missedDays, 
+	public AccountDTO(long userId, String age, List<Long> academyIds, String academicDegree, String academicBackground,
+			String photoLink, int mobilePhone, String linkedInAdress, List<Long> themeIds, 
 			long nif) {
 		super();
 		this.userId = userId;
@@ -52,7 +53,7 @@ public class AccountDTO extends EntityDTO {
 		this.linkedInAdress = linkedInAdress;
 		this.themeIds = themeIds;
 //		this.evaluationIds = evaluationIds;       *GONÇALO*
-		this.missedDays = missedDays;
+//		this.missedDays = missedDays;
 		this.nif = nif;
 	}   /* retirei o "List<Long> evaluationIds," e comentei o this */
 
@@ -76,11 +77,11 @@ public class AccountDTO extends EntityDTO {
 	}
 
 	
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 
@@ -157,12 +158,12 @@ public class AccountDTO extends EntityDTO {
 //	}
 
 	
-	public String getMissedDays() {
-		return missedDays;
-	}
-
-	public void setMissedDays(String missedDays) {
-		this.missedDays = missedDays;
-	}
+//	public String getMissedDays() {
+//		return missedDays;
+//	}
+//
+//	public void setMissedDays(String missedDays) {
+//		this.missedDays = missedDays;
+//	}
 	
 }
