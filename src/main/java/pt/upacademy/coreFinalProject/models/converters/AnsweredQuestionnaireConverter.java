@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import pt.upacademy.coreFinalProject.models.Answer;
@@ -59,4 +60,23 @@ public class AnsweredQuestionnaireConverter extends EntityConverter<AnsweredQues
 				);
 	}
 
+	public List<AnsweredQuestionnaireDTO> listToDTO(List<AnsweredQuestionnaire> entity){
+		return entity.stream()
+				.map(quest -> new AnsweredQuestionnaireDTO(
+						quest.getId(),
+						quest.getAnswerList().stream().map(answer -> new AnswerDTO(
+								answer.getId(),
+								answer.getAnsweredQuestionaire().getId(),
+								answer.getAnswer(),
+								answer.getQuestionId()
+								)).collect(Collectors.toSet()),
+						quest.getQuestionnaireId(),
+						quest.getAccountId(),
+						quest.getqType(),
+						quest.getDate(),
+						quest.getScore()
+						)
+						).collect(Collectors.toList());
+	}
+	
 }

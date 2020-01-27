@@ -6,6 +6,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.AnsweredQuestionnaire;
@@ -20,13 +23,15 @@ import pt.upacademy.coreFinalProject.services.AnsweredQuestionnaireService;
 public class AnsweredQuestionnaireController extends EntityControllerDTO<AnsweredQuestionnaireService, AnsweredQuestionnaireRepository, AnsweredQuestionnaireConverter, AnsweredQuestionnaire, AnsweredQuestionnaireDTO>{
     
 	@Inject
-	AnsweredQuestionnaireService answeredQuestionnaire_Service;
+	AnsweredQuestionnaireService ANSWEREDQUESTIONNAIRE_SERVICE;
 	
 	
 	@GET
     @Path("/account/{id}")
-    public String getQuestsByAccId(long id) {
-    	return answeredQuestionnaire_Service.getQuestFromAcc(id);
+	@Produces(MediaType.APPLICATION_JSON)
+    public List<AnsweredQuestionnaireDTO> getQuestsByAccId(@PathParam("id") long id) {
+    	
+		return converter.listToDTO(ANSWEREDQUESTIONNAIRE_SERVICE.getQuestFromAcc(id));
     }
     
 }

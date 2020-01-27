@@ -4,11 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+
 @Entity
 @NamedQueries({ @NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a")})
+@NamedQuery(name = Account.ADD_PENDING_QUESTIONNAIRE, query="UPDATE Account a SET a.pendingQuentionnairesIds = i WHERE a.id = :accountId")
+
 public class Account extends EntityRoot {
+	
 
 	public static final String GET_ALL_ACCOUNTS = "getAllAccounts";
+	public static final String ADD_PENDING_QUESTIONNAIRE = "addpendingquestionnaire";
 	private static final long serialVersionUID = 1L;
 
 	private long userId;

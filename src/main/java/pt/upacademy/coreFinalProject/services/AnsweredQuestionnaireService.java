@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.services;
 
+
+
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -12,10 +14,10 @@ import pt.upacademy.coreFinalProject.repositories.AnsweredQuestionnaireRepositor
 public class AnsweredQuestionnaireService extends EntityService<AnsweredQuestionnaireRepository, AnsweredQuestionnaire>{
     
 	@Inject
-	AnsweredQuestionnaireRepository AnsweredQuestionnaire_Repository;
+	AnsweredQuestionnaireRepository ANSWEREDQUESTIONNAIRE_REPOSITORY;
 	
-	public String getQuestFromAcc(long id) {
-		return AnsweredQuestionnaire_Repository.getAllEntitiesId(id);
+	public List<AnsweredQuestionnaire> getQuestFromAcc(long id) {
+		return ANSWEREDQUESTIONNAIRE_REPOSITORY.getAllEntitiesId(id);
 	}
     
 }

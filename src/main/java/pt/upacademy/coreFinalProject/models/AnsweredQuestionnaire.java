@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS, query = "SELECT a FROM AnsweredQuestionnaire a"),
-		@NamedQuery(name = AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS_ID, query = " SELECT a FROM AnsweredQuestionnaire a WHERE a.accountId =  :id") })
+		@NamedQuery(name = AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS_ID, query = " SELECT a FROM AnsweredQuestionnaire a WHERE a.accountId = :id") })
 public class AnsweredQuestionnaire extends EntityRoot {
 
 	public static final String GET_ALL_ANSWEREDQUESTIONS = "getAllAnsweredQuestions";

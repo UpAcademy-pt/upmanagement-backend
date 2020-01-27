@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.repositories;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.AnsweredQuestionnaire;
@@ -17,8 +19,8 @@ public class AnsweredQuestionnaireRepository extends EntityRepository<AnsweredQu
 		return AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS;
 	}
 	
-	public String getAllEntitiesId(long id) {
-		return AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS_ID;
+	public List<AnsweredQuestionnaire> getAllEntitiesId(long id) {
+		return entityManager.createNamedQuery(AnsweredQuestionnaire.GET_ALL_ANSWEREDQUESTIONS_ID, AnsweredQuestionnaire.class).setParameter("id", id).getResultList();
 	}
 
 }
