@@ -1,12 +1,10 @@
 package pt.upacademy.coreFinalProject.controllers;
 
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -16,7 +14,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import pt.upacademy.coreFinalProject.models.Account;
-import pt.upacademy.coreFinalProject.models.Edition;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.models.converters.AccountConverter;
 import pt.upacademy.coreFinalProject.repositories.AccountRepository;
@@ -54,7 +51,7 @@ public class AccountController extends EntityControllerDTO <AccountService, Acco
 		try {
 		AccountDTO account = converter.toDTO(service.getAccountByUserById(userId));
 		 
-		 return Response.ok().entity(account.getId()).build(); 
+		 return Response.ok().entity(account).build(); 
 		}
 		 catch (Exception e) {
 			e.printStackTrace();
@@ -64,6 +61,21 @@ public class AccountController extends EntityControllerDTO <AccountService, Acco
 	
 	}
 	
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response deleteAcountById (@PathParam("id") long id) {
+		
+		try {
+			service.deleteAcountById(id);
+			 
+			 return Response.ok().build(); 
+			}
+			 catch (Exception e) {
+				e.printStackTrace();
+				return Response.status(400).entity(e.getMessage()).build(); 
+			}
+	}
 
 
 	

@@ -41,4 +41,10 @@ public class AccountRepository extends EntityRepository <Account>{
 		
 	}
 
+	public void deleteAccountById(long id) {
+		Account acc = entityManager.find(getEntityClass(), id);
+		entityManager.remove(acc);
+		
+	}
+
 }

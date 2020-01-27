@@ -74,6 +74,7 @@ public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 		EditionDTO editionDTO = new EditionDTO ();
 		editionDTO.setId(ent.getId());
 		editionDTO.setName(ent.getName());
+		editionDTO.setType(ent.getType());
 		editionDTO.setAccountsIds(ent.getAccounts().stream().map(acc -> acc.getId()).collect(Collectors.toList()));
 		
 		return editionDTO;

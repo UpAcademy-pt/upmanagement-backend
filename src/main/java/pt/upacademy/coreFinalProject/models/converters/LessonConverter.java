@@ -4,7 +4,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Lesson;
-import pt.upacademy.coreFinalProject.models.Note;
 import pt.upacademy.coreFinalProject.models.DTOS.LessonDTO;
 import pt.upacademy.coreFinalProject.services.NoteService;
 
@@ -33,8 +32,14 @@ public class LessonConverter extends EntityConverter <Lesson, LessonDTO> {
 
 	@Override
 	public LessonDTO toDTO(Lesson ent) {
-		// TODO Auto-generated method stub
-		return null;
+		LessonDTO lessonDto = new LessonDTO();
+		lessonDto.setId(ent.getId());
+		lessonDto.setEditionId(ent.getEditionId());
+		lessonDto.setTitle(ent.getTitle());
+		lessonDto.setDescription(ent.getDescription());
+//		lessonDto.setNoteIdByLesson();
+//		lessonDto.setMaterialsIdByLesson();
+		return lessonDto;
 	}
 
 }

@@ -30,6 +30,12 @@ public class NoteController extends EntityController<NoteService, NoteRepository
 		return NS.getNotesByLessonId(id);
 	}
 
+//	@Post
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Note createNote (Note note) {
+//		service.createNote(note);
+//	}
 	
 	
 	

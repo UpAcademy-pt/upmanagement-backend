@@ -1,7 +1,5 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;

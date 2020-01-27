@@ -24,8 +24,7 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO> {
 	protected EditionConverter converter;
 	
 	@Inject 
-	SubscriptionService SS;
-
+	protected SubscriptionService SS;
 
 
 	@Override

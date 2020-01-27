@@ -1,20 +1,30 @@
-//package pt.upacademy.coreFinalProject.models.converters;
-//
-//
-//import javax.inject.Inject;
-//
-//import pt.upacademy.coreFinalProject.models.Note;
-//import pt.upacademy.coreFinalProject.models.DTOS.NoteDTO;
-//import pt.upacademy.coreFinalProject.services.LessonService;
-//import pt.upacademy.coreFinalProject.services.UserService;
-//
-//public class NoteConverter extends EntityConverter<Note, NoteDTO>{
-//
-//	@Inject
-//	LessonService LB;
-//	UserService UB;
-//	
-//	
+package pt.upacademy.coreFinalProject.models.converters;
+
+
+import javax.inject.Inject;
+
+import pt.upacademy.coreFinalProject.models.Note;
+import pt.upacademy.coreFinalProject.models.DTOS.NoteDTO;
+import pt.upacademy.coreFinalProject.services.LessonService;
+import pt.upacademy.coreFinalProject.services.UserService;
+
+public class NoteConverter extends EntityConverter<Note, NoteDTO>{
+
+	@Inject
+	LessonService LB;
+	UserService UB;
+	@Override
+	public Note toEntity(NoteDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public NoteDTO toDTO(Note entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 //	@Override
 //	public Note toEntity(NoteDTO noteDTO) {
 //		Note note = new Note();
@@ -33,14 +43,14 @@
 //	@Override
 //	public NoteDTO toDTO(Note note) {
 //		
-//		return new NoteDTO(
-//				(note.getLesson()==null) ? 0 : note.getLesson().getId(),
-//				note.getDateOfNote(),
-//				(note.getUser()==null) ? 0 : note.getUser().getId()
-//				);
+////		return new NoteDTO(
+////				(note.getLesson()==null) ? 0 : note.getLesson().getId(),
+////				note.getDateOfNote(),
+////				(note.getUser()==null) ? 0 : note.getUser().getId()
+////				);
 //				
 //		
 //		
 //	}
-//
-//}
+
+}

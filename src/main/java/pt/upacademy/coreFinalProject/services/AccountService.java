@@ -10,6 +10,8 @@ import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 @RequestScoped
 public class AccountService extends EntityService<AccountRepository, Account> {
 
+//	@Inject
+//	protected 
 	
 	public Account getAccountByUserById(long userId) {
 	
@@ -31,5 +33,8 @@ public class AccountService extends EntityService<AccountRepository, Account> {
 		return account;
 	}
 	
-	
+	public void deleteAcountById(long id) {
+		repository.deleteAccountById(id);
+		
+	}
 }
