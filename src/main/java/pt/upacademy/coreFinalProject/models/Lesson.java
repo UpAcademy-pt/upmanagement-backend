@@ -21,8 +21,6 @@ public class Lesson extends EntityRoot {
 	private String title;
 	private String description;
 	private long editionId;
-	private Set<Long> materialIds;
-	private Set<Long> studyMaterials;
 
 	public String getTitle() {
 		return title;
@@ -48,26 +46,9 @@ public class Lesson extends EntityRoot {
 		this.editionId = editionId;
 	}
 
-	public Set<Long> getMaterialIds() {
-		return materialIds;
-	}
-
-	public void setMaterialIds(Set<Long> materialIds) {
-		this.materialIds = materialIds;
-	}
-
-	public Set<Long> getStudyMaterials() {
-		return studyMaterials;
-	}
-
-	public void setStudyMaterials(Set<Long> studyMaterials) {
-		this.studyMaterials = studyMaterials;
-	}
-
 	@Override
 	public String toString() {
-		return "Lesson [title=" + title + ", description=" + description + ", editionId=" + editionId + ", materialIds="
-				+ materialIds + ", studyMaterial=" + studyMaterials + "]";
+		return "Lesson [title=" + title + ", description=" + description + ", editionId=" + editionId + "]";
 	}
 
 }

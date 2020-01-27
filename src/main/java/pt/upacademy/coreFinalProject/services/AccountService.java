@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.services;
 
+import java.util.Collection;
+
 import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.Account;
@@ -23,5 +25,11 @@ public class AccountService extends EntityService<AccountRepository, Account> {
 		return repository.getAccountByUserById(userId);
 		}
 	}
+	
+	public Account createAccount (Account account) {
+		repository.addEntity(account);
+		return account;
+	}
+	
 	
 }
