@@ -1,95 +1,101 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.Edition;
-import pt.upacademy.coreFinalProject.models.Lesson;
-import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.EditionDTO;
 import pt.upacademy.coreFinalProject.services.AccountService;
 import pt.upacademy.coreFinalProject.services.LessonService;
+import pt.upacademy.coreFinalProject.services.NoteService;
+import pt.upacademy.coreFinalProject.services.QuestionService;
 
 
 @RequestScoped
 public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
 	
- 	
-	@Inject 
-	private AccountConverter accountConverter;
-	
 	@Inject
+	private AccountService accountBus;
+	
+	@Inject 
 	private LessonService lessonBus;
 	
 	@Inject 
-	private AccountService accountBus;
+	private QuestionService questionBus;
 	
- 
- 
- 	@Override
+	@Inject
+	private NoteService noteBus;
+	
+	@Inject
+	private AccountConverter converter;
 
 
+	@Override
 	public Edition toEntity(EditionDTO dto) {
- 		Edition edition = new Edition ();
-		if (dto.getId() > 0) {
-			edition.setId(dto.getId());
-		}
-		edition.setListAccount(dto.getAccountsDtos().stream().map(accountDto ->{
-			return accountConverter.toEntity(accountDto).getId();
-			}).collect(Collectors.toList()));
-		edition.setName(dto.getName());
-		edition.setType (dto.getType());
+		Edition edition = new Edition ();
+//		if (dto.getId() > 0) {
+//			edition.setId(dto.getId());
+//		}
+//		
+//		edition.setName(dto.getName());
+//		edition.setType(dto.getType());
+//		edition.setAccounts(dto.getAccountIds().stream().map(entityId -> {
+//			Account account = accountBus.get(entityId);
+//			return account;
+//		}).collect(Collectors.toList()));
+//
+//		edition.setLessons((List<Lesson>) dto.getLessonsIds().stream().map(lessonId ->   {
+//			return lessonBus.get(lessonId);
+//		}).collect(Collectors.toList()));
+//		
+//		
+//		edition.setQuestions(dto.getQuestionsIds().stream().map(questionId -> {
+//			return questionBus.get(questionId);
+//	}).collect(Collectors.toList()));
+//				
+//		
+//		edition.setEvents(dto.getEventsIds().stream().map(entId -> {
+//			return eventBus.get(entId);
+//		}).collect(Collectors.toList()));
+//		
+//		
+//		edition.setNotes(dto.getNotesIds().stream().map( noteId -> {
+//			return noteBus.get(noteId);
+//		}).collect(Collectors.toList()));
+		
 		return edition;
 	}
 
 
-
 	@Override
 	public EditionDTO toDTO(Edition ent) {
-		List<Lesson> listLessons = getLessonByEditionId (ent.getId());
-		EditionDTO editionDTO = new EditionDTO (
-				ent.getId(),
-				ent.getName(),
-				ent.getType(),
-				listLessons,
-				this.getAccountDTO(ent)
-				 				);
-				 		
-				 		return editionDTO;
-				 		
-				 	}
-	
-	
-	private List <Lesson> getLessonByEditionId (long id) {
-		List <Lesson> listlessons = (List<Lesson>) lessonBus.get();
-		List <Lesson> listLessonWithEdition = new ArrayList <Lesson> ();
-		for (Lesson lesson : listlessons) {
-			long editionId = lesson.getEditionId();
-			if (editionId == id) {
-				listLessonWithEdition.add(lesson);
-		}
+		EditionDTO editionDTO = new EditionDTO ();
+		editionDTO.setId(ent.getId());
+		editionDTO.setName(ent.getName());
+		editionDTO.setAccountsIds(ent.getAccounts().stream().map(acc -> acc.getId()).collect(Collectors.toList()));
+		
+		return editionDTO;
+		
 	}
-	return listLessonWithEdition;
-		}
 	
+
 	
-	private List <AccountDTO> getAccountDTO (Edition ent) {
-		List <AccountDTO> listAccountsDtos = new ArrayList <AccountDTO> ();
-		List <Account> listAccounts = ent.getListAccount().stream().map(accountId -> {
-				return accountBus.get(accountId);
-		}).collect(Collectors.toList());
-		for (Account account : listAccounts) {
-			listAccountsDtos.add(accountConverter.toDTO(account));
-
-		}
-		return listAccountsDtos;
-	}
-
-
+//	@Override
+//	public EditionDTO toDTO(Edition ent) {
+//		EditionDTO editionDTO = new EditionDTO (
+//				ent.getName(),
+//				ent.getType(),
+//				ent.getAccounts().stream().map(Account :: getId).collect(Collectors.toList()),
+//				ent.getLessons().stream().map(Lesson :: getId).collect(Collectors.toList()), 
+//				ent.getNotes().stream().map(Note :: getId).collect(Collectors.toList()),
+//				ent.getQuestions().stream().map(QuestionForum :: getId).collect(Collectors.toList()),
+//				ent.getEvents().stream().map(Event :: getId).collect(Collectors.toList())
+//				);
+//		
+//		return editionDTO;
+//		
+//	}
 
 }

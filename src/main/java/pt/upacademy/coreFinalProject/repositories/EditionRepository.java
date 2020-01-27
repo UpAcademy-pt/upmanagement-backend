@@ -1,6 +1,8 @@
 package pt.upacademy.coreFinalProject.repositories;
 
 
+import java.util.Collection;
+
 import javax.enterprise.context.ApplicationScoped;
 
 import pt.upacademy.coreFinalProject.models.Edition;
@@ -27,6 +29,11 @@ public class EditionRepository extends EntityRepository <Edition>{
 
 	protected String getEntitiesCount() {
 		return Edition.GET_ALL_EDITIONS_COUNT;
+	}
+
+	public Collection<Edition> getbyAccountId(long id) {
+		return entityManager.createNamedQuery(Edition.GET_EDITION_ACCOUNT_ID, getEntityClass()).setParameter("accountId", id).getResultList();
+		
 	}
 
 

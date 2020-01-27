@@ -1,6 +1,5 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.util.Collection;
 import java.util.Set;
 
 public class LessonDTO extends EntityDTO {

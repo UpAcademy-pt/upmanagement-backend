@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.controllers;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 import pt.upacademy.coreFinalProject.models.Edition;
 import pt.upacademy.coreFinalProject.models.DTOS.EditionDTO;
 import pt.upacademy.coreFinalProject.models.converters.EditionConverter;
@@ -35,8 +37,8 @@ public class EditionController extends EntityControllerDTO <EditionService, Edit
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String create(EditionDTO user) {
-			service.create(converter.toEntity(user));
+	public String create(Edition user) {
+			service.create(user);
 			return "edition created";
 			
 	}
@@ -54,6 +56,14 @@ public class EditionController extends EntityControllerDTO <EditionService, Edit
 	public String get(@PathParam("id") long id) {
 		EditionDTO ent = converter.toDTO(service.get(id));
 		return "entity retrieved : " +  ent;
+	}
+	
+	@GET
+	@Path("/account/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<EditionDTO> getbyAccountId(@PathParam("id") long id) {
+		Collection<EditionDTO> ent = service.getbyAccountId(id);
+		return ent;
 	}
 	
 	@PUT
