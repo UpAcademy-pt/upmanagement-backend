@@ -1,10 +1,7 @@
 package pt.upacademy.coreFinalProject.models;
 
-import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -12,7 +9,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({ @NamedQuery(name = Note.GET_ALL_NOTES, query = "SELECT n FROM Note n"),
 	@NamedQuery(name = Note.GET_ALL_NOTES_IDS, query = "SELECT n.id FROM Note n"),
 	@NamedQuery(name = Note.GET_NOTES_COUNT, query = "SELECT COUNT(n.id) FROM Note n"),
-	@NamedQuery(name = Note.GET_NOTES_BY_LESSONS_IDS, query = "SELECT n FROM Note n WHERE n.lesson.id = :lessonId")
+	@NamedQuery(name = Note.GET_NOTES_BY_LESSONS_IDS, query = "SELECT n FROM Note n WHERE n.lessonId = :lessonId") // verificar
 	 })
 public class Note extends EntityRoot{
 	
@@ -23,10 +20,11 @@ public class Note extends EntityRoot{
 	
 	private static final long serialVersionUID = 1L;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-	private Lesson lesson;
-	private Date dateOfNote;
-	private User user;
+
+	private long lessonId;
+	private long editionId; 
+	private long accountId;
+	private String noteText;
 	
 	
 	public static String getClassName() {
@@ -35,44 +33,50 @@ public class Note extends EntityRoot{
 	
 	public Note() {
 	}
-
-	public Note(Lesson lesson, Date dateOfNote, User user) {
+	
+	public Note(long lessonId, long editionId, long accountId, String noteText) {
 		super();
-		this.lesson = lesson;
-		this.dateOfNote = dateOfNote;
-		this.user = user;
+		this.lessonId = lessonId;
+		this.editionId = editionId;
+		this.accountId = accountId;
+		this.noteText = noteText;
 	}
 
-	public Lesson getLesson() {
-		return lesson;
+	public long getLessonId() {
+		return lessonId;
 	}
 
-	public void setLesson(Lesson lesson) {
-		this.lesson = lesson;
+	public void setLessonId(long lessonId) {
+		this.lessonId = lessonId;
 	}
 
-	public Date getDateOfNote() {
-		return dateOfNote;
+	public long getEditionId() {
+		return editionId;
 	}
 
-	public void setDateOfNote(Date dateOfNote) {
-		this.dateOfNote = dateOfNote;
+	public void setEditionId(long editionId) {
+		this.editionId = editionId;
 	}
 
-
-	public User getUser() {
-		return user;
+	public long getAccountId() {
+		return accountId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
+	}
+	
+	public String getNoteText() {
+		return noteText;
 	}
 
-
+	public void setNoteText(String noteText) {
+		this.noteText = noteText;
+	}
 
 	@Override
 	public String toString() {
-		return "Note [lesson=" + lesson + ", dateOfNote=" + dateOfNote + ", user=" + user + "]";
+		return "Note [lessonId=" + lessonId + ", editionId=" + editionId + ", accountId=" + accountId + "]";
 	}
 	
 	

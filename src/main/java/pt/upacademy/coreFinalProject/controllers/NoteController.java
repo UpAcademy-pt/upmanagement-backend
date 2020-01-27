@@ -11,8 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.models.Note;
-import pt.upacademy.coreFinalProject.models.DTOS.NoteDTO;
-import pt.upacademy.coreFinalProject.models.converters.NoteConverter;
 import pt.upacademy.coreFinalProject.repositories.NoteRepository;
 import pt.upacademy.coreFinalProject.services.NoteService;
 
@@ -26,9 +24,9 @@ public class NoteController extends EntityController<NoteService, NoteRepository
 	protected NoteService NS;
 	
 	@GET
-	@Path("/notes/{id}")
+	@Path("/lesson/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<NoteDTO> getNotesByLessonId(@PathParam("id") long id) {
+	public List<Note> getNotesByLessonId(@PathParam("id") long id) {
 		return NS.getNotesByLessonId(id);
 	}
 

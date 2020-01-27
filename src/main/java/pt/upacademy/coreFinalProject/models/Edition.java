@@ -2,6 +2,7 @@ package pt.upacademy.coreFinalProject.models;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -33,71 +34,44 @@ public class Edition extends EntityRoot  {
 	
 	private String name;
 	private String type;
-	
-	private List<Account> listAccount;
- 	private Date createDate;
-	private Date updateDate;
-	
-	
-	
-	public Edition() {
-		super();
-	}
-
-
-	
-	public Edition(String name, String type, List<Long> listAccount, Date createDate,
-			Date updateDate) {
-		super();
-		this.name = name;
-		this.type = type;
-		this.listAccount = listAccount;
-		this.createDate = createDate;
-		this.updateDate = updateDate;
-	}
-
+	@OneToMany(mappedBy = "edition")
+	private Set<Subscription> subscriptions;
+		
 
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	public Set<Long> getListAccount() {
-		return listAccount;
-	}
-	public void setListAccount(Set<Long> listAccount) {
-		this.listAccount = listAccount;
-	}
-	
-	
-	public Date getCreateDate() {
-		return createDate;
-	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+
+	public Set<Subscription> getSubscriptions() {
+		return subscriptions;
 	}
 
-
-
+	public void setSubscriptions(Set<Subscription> subscriptions) {
+		this.subscriptions = subscriptions;
+	}
 
 	@Override
 	public String toString() {
-		return "Edition [name=" + name + ", type=" + type + ", listAccount=" + listAccount  + ", createDate=" + createDate + ", updateDate=" + updateDate + "]";
+		return "Edition [name=" + name + ", type=" + type + ", subscriptions=" + subscriptions + "]";
 	}
+
+	
+	
+	
+
+
 	
 	
 	
