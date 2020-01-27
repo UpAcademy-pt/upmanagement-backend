@@ -8,7 +8,9 @@ import javax.persistence.NamedQuery;
 @NamedQueries({ @NamedQuery(name = Note.GET_ALL_NOTES, query = "SELECT n FROM Note n"),
 		@NamedQuery(name = Note.GET_ALL_NOTES_IDS, query = "SELECT n.id FROM Note n"),
 		@NamedQuery(name = Note.GET_NOTES_COUNT, query = "SELECT COUNT(n.id) FROM Note n"),
-		@NamedQuery(name = Note.GET_NOTES_BY_LESSONS_IDS, query = "SELECT n FROM Note n WHERE n.lessonId = :lessonId") })
+		@NamedQuery(name = Note.GET_NOTES_BY_LESSONS_IDS, query = "SELECT n FROM Note n WHERE n.lessonId = :lessonId"),
+		@NamedQuery(name = Note.GET_NOTES_BY_ACCOUNT_ID, query = "SELECT n FROM Note n WHERE n.accountId = :accountId")
+})
 
 public class Note extends EntityRoot {
 
@@ -16,6 +18,7 @@ public class Note extends EntityRoot {
 	public static final String GET_ALL_NOTES_IDS = "getAllNotesIds";
 	public static final String GET_NOTES_COUNT = "getNotesCount";
 	public static final String GET_NOTES_BY_LESSONS_IDS = "getNotesByLessonsIds";
+	public static final String GET_NOTES_BY_ACCOUNT_ID = "getNotesByAccountId";
 	
 	private static final long serialVersionUID = 1L;
 	
