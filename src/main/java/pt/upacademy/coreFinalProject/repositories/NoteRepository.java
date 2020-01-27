@@ -3,7 +3,6 @@ package pt.upacademy.coreFinalProject.repositories;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.TypedQuery;
 
 import pt.upacademy.coreFinalProject.models.Note;
 

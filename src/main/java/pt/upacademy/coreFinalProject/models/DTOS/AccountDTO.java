@@ -48,4 +48,5 @@ public class AccountDTO extends EntityDTO {
 	public String toString() {
 		return "AccountDTO [userId=" + userId + ", editionsDtos=" + editionsDtos + "]";
 	}
+	
 }
