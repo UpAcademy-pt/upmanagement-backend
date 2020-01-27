@@ -34,11 +34,7 @@ public class NoteRepository extends EntityRepository<Note>{
 	
 	
 	public List <Note> getNotesByLessonsIds(long id) {
-		TypedQuery<Note> query = entityManager.createNamedQuery(Note.GET_NOTES_BY_LESSONS_IDS, Note.class);
-		query.setParameter("lessonId", id);
-		return query.getResultList();	
-		
-		
+		return entityManager.createNamedQuery(Note.GET_NOTES_BY_LESSONS_IDS, Note.class).setParameter("lessonId", id).getResultList();
 	}
 	
 }

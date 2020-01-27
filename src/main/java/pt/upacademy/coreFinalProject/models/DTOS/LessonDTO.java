@@ -4,18 +4,18 @@ import java.util.Set;
 
 public class LessonDTO extends EntityDTO {
 
-	private long id;
+	private long editionId;
 	private String title;
 	private String description;
 	private Set<Long> noteIdByLesson;
 	private Set<Long> materialsIdByLesson;
 
-	public long getId() {
-		return id;
+	public long getEditionId() {
+		return editionId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setEditionId(long editionId) {
+		this.editionId = editionId;
 	}
 
 	public String getTitle() {

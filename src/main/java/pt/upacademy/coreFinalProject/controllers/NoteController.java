@@ -26,12 +26,18 @@ public class NoteController extends EntityController<NoteService, NoteRepository
 	protected NoteService NS;
 	
 	@GET
-	@Path("/notes/{id}")
+	@Path("/lesson/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<NoteDTO> getNotesByLessonId(@PathParam("id") long id) {
 		return NS.getNotesByLessonId(id);
 	}
 
+//	@Post
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Note createNote (Note note) {
+//		service.createNote(note);
+//	}
 	
 	
 	
