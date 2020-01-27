@@ -2,13 +2,15 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.Set;
 
+import pt.upacademy.coreFinalProject.models.Note;
+
 public class LessonDTO extends EntityDTO {
 
 	private long editionId;
 	private String title;
 	private String description;
-	private Set<Long> noteIdByLesson;
-	private Set<Long> materialsIdByLesson;
+	private Set<Note> notes;
+	private Set<MaterialsDTO> materialsIdByLesson;
 
 	public long getEditionId() {
 		return editionId;
@@ -34,19 +36,19 @@ public class LessonDTO extends EntityDTO {
 		this.description = description;
 	}
 
-	public Set<Long> getNoteIdByLesson() {
-		return noteIdByLesson;
+	public Set<Note> getNotes() {
+		return notes;
 	}
 
-	public void setNoteIdByLesson(Set<Long> noteIdByLesson) {
-		this.noteIdByLesson = noteIdByLesson;
+	public void setNotes(Set<Note> notes) {
+		this.notes = notes;
 	}
 
-	public Set<Long> getMaterialsIdByLesson() {
+	public Set<MaterialsDTO> getMaterialsIdByLesson() {
 		return materialsIdByLesson;
 	}
 
-	public void setMaterialsIdByLesson(Set<Long> materialsIdByLesson) {
+	public void setMaterialsIdByLesson(Set<MaterialsDTO> materialsIdByLesson) {
 		this.materialsIdByLesson = materialsIdByLesson;
 	}
 

@@ -13,6 +13,9 @@ public class Materials extends EntityRoot {
 
 	private static final long serialVersionUID = 1L;
 
+	private String title;
+	private String type;
+	private String url;
 	@ManyToMany(mappedBy = "materials", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Collection<Lesson> lessons = new HashSet<>();
 
@@ -47,8 +50,4 @@ public class Materials extends EntityRoot {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-	private String title;
-	private String type;
-	private String url;
 }
