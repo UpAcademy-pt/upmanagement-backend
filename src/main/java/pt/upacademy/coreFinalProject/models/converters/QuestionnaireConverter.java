@@ -1,11 +1,10 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
+import pt.upacademy.coreFinalProject.models.Answer;
 import pt.upacademy.coreFinalProject.models.Question;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
 import pt.upacademy.coreFinalProject.models.Template;
@@ -30,11 +29,14 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaire.setqType(dto.getqType());
 		questionnaire.setEditPrivacy(dto.getEditPrivacy());
 		questionnaire.setViewPrivacy(dto.getViewPrivacy());
-		//questionnaire.setAnswerList(dto.getAnswerList());
+		questionnaire.setAnswerList(
+				dto.getAnswerList().stream().map(a -> new Answer(
+				questionnaire, a.getAnswer(), a.getQuestionId()
+				)).collect(Collectors.toSet()));
 		questionnaire.setScore(dto.getScore());
 		return questionnaire;
 	}
-
+	
 	@Override
 	public QuestionnaireDTO toDTO(Questionnaire entity) {
 		QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO();
@@ -54,11 +56,18 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setqType(entity.getqType());
 		questionnaireDTO.setEditPrivacy(entity.getEditPrivacy());
 		questionnaireDTO.setViewPrivacy(entity.getViewPrivacy());
-		//questionnaireDTO.setAnswerList(entity.getAnswerList());
+		questionnaireDTO.setAnswerList(entity.getAnswerList().stream().map(a -> {
+			AnswerDTO answerDTO = new AnswerDTO();
+			answerDTO.setId(a.getId());
+			answerDTO.setQuestionaireId(a.getQuestionaire().getId());
+			answerDTO.setAnswer(a.getAnswer());
+			answerDTO.setQuestionId(a.getQuestionId());
+			return answerDTO;
+		}).collect(Collectors.toSet()));
 		questionnaireDTO.setScore(entity.getScore());
 		return questionnaireDTO;
 	}
-	
+	//long id, long questionaireId, String answer, long questionId)
 	public QuestionnaireDTO toDTO(Template template) {
 		QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO();
 		questionnaireDTO.setId(template.getId());
@@ -107,7 +116,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 						quest.getScore()
 						)
 						).collect(Collectors.toList());
-	
 	}
+	
 	
 }

@@ -19,8 +19,15 @@ public class Answer extends EntityRoot{
 
 	public Answer() {}
 
-	public Answer(long id, Questionnaire questionaire, String answer, long questionId) {
+	public Answer(long id, Questionnaire questionnaire, String answer, long questionId) {
 		setId(id);
+		this.questionnaire = questionnaire;
+		this.answer = answer;
+		this.questionId = questionId;
+	}
+	
+	public Answer(Questionnaire questionnaire, String answer, long questionId) {
+		this.questionnaire = questionnaire;
 		this.answer = answer;
 		this.questionId = questionId;
 	}

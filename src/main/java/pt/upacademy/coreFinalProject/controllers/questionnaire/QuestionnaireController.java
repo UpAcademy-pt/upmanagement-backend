@@ -11,7 +11,9 @@ import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
+import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnaireDTO;
+import pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO;
 import pt.upacademy.coreFinalProject.models.converters.QuestionnaireConverter;
 import pt.upacademy.coreFinalProject.repositories.QuestionnaireRepository;
 import pt.upacademy.coreFinalProject.services.QuestionnaireService;
@@ -37,5 +39,11 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
 //		return converter.listToDTO(service.getEmptyQuestionnairesByAccountId(id));
 //    }
 //	
-	
+	@GET
+    @Path("/account/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+    public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(@PathParam("id") long id) {
+		return service.getAnsweredQuestionnairesByAccountId(id);
+			
+    }
 }

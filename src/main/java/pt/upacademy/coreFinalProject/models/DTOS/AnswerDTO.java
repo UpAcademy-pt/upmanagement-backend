@@ -8,9 +8,9 @@ public class AnswerDTO extends EntityDTO{
 
 	public AnswerDTO() {}
 
-	public AnswerDTO(long id, long answeredQuestionaireId, String answer, long questionId) {
+	public AnswerDTO(long id, long questionaireId, String answer, long questionId) {
 		setId(id);
-		this.questionaireId = answeredQuestionaireId;
+		this.questionaireId = questionaireId;
 		this.answer = answer;
 		this.questionId = questionId;
 	}
@@ -19,8 +19,8 @@ public class AnswerDTO extends EntityDTO{
 		return questionaireId;
 	}
 	
-	public void setQuestionaireId(long answeredQuestionaireId) {
-		this.questionaireId = answeredQuestionaireId;
+	public void setQuestionaireId(long questionaireId) {
+		this.questionaireId = questionaireId;
 	}
 	
 	public String getAnswer() {
