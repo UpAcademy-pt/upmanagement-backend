@@ -13,41 +13,41 @@ public class Answer extends EntityRoot{
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	private AnsweredQuestionnaire answeredQuestionaire;
+	private Questionnaire questionnaire;
 	private String answer;
 	private long questionId;
 
 	public Answer() {}
 
-	public Answer(long id, AnsweredQuestionnaire answeredQuestionaire, String answer, long questionId) {
+	public Answer(long id, Questionnaire questionaire, String answer, long questionId) {
 		setId(id);
-		this.answeredQuestionaire = answeredQuestionaire;
 		this.answer = answer;
 		this.questionId = questionId;
 	}
 
-	public AnsweredQuestionnaire getAnsweredQuestionaire() {
-		return answeredQuestionaire;
+	public Questionnaire getQuestionaire() {
+		return questionnaire;
 	}
-	
-	public void setAnsweredQuestionaire(AnsweredQuestionnaire answeredQuestionaire) {
-		this.answeredQuestionaire = answeredQuestionaire;
+
+	public void setQuestionaire(Questionnaire questionnaire) {
+		this.questionnaire = questionnaire;
 	}
-	
+
 	public String getAnswer() {
 		return answer;
 	}
-	
+
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	
+
 	public long getQuestionId() {
 		return questionId;
 	}
-	
+
 	public void setQuestionId(long questionId) {
 		this.questionId = questionId;
 	}
 
+	
 }

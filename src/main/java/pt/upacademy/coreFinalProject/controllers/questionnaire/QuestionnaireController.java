@@ -1,7 +1,13 @@
 package pt.upacademy.coreFinalProject.controllers.questionnaire;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
@@ -23,6 +29,13 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
 //	}
 	
 	
-	
+//	@GET
+//    @Path("/account/empty/{id}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//    public List<QuestionnaireDTO> getEmptyQuestionnairesByAccountId(@PathParam("id") long id) {
+//    	
+//		return converter.listToDTO(service.getEmptyQuestionnairesByAccountId(id));
+//    }
+//	
 	
 }

@@ -7,7 +7,8 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a")})
-@NamedQuery(name = Account.ADD_PENDING_QUESTIONNAIRE, query="UPDATE Account a SET a.pendingQuentionnairesIds = i WHERE a.id = :accountId")
+
+//NamedQuery(name = Account.ADD_PENDING_QUESTIONNAIRE, query="UPDATE Account a SET a.pendingQuentionnairesIds = :questionnaireId WHERE a.id IN (:accountIds)")
 
 public class Account extends EntityRoot {
 	
@@ -17,15 +18,13 @@ public class Account extends EntityRoot {
 	private static final long serialVersionUID = 1L;
 
 	private long userId;
-	private long[] pendingQuentionnairesIds;
 	private long[] userAcademies;
 
 	public Account() {}
 
-	public Account(long id, long userId, long[] pendingQuentionnairesIds, long[] userAcademies) {
+	public Account(long id, long userId, long[] userAcademies) {
 		setId(id);
 		this.userId = userId;
-		this.pendingQuentionnairesIds = pendingQuentionnairesIds;
 		this.userAcademies = userAcademies;
 	}
 
@@ -37,14 +36,6 @@ public class Account extends EntityRoot {
 		this.userId = userId;
 	}
 	
-	public long[] getPendingQuentionnairesIds() {
-		return pendingQuentionnairesIds;
-	}
-	
-	public void setPendingQuentionnairesIds(long[] pendingQuentionnairesIds) {
-		this.pendingQuentionnairesIds = pendingQuentionnairesIds;
-	}
-	
 	public long[] getUserAcademies() {
 		return userAcademies;
 	}
@@ -53,10 +44,4 @@ public class Account extends EntityRoot {
 		this.userAcademies = userAcademies;
 	}
 	
-	
-	
-	
-
-	
-
 }

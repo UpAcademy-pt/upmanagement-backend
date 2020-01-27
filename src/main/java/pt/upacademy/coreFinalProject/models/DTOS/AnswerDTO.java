@@ -2,7 +2,7 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 
 public class AnswerDTO extends EntityDTO{
 
-	private long answeredQuestionaireId;
+	private long questionaireId;
 	private String answer;
 	private long questionId;
 
@@ -10,17 +10,17 @@ public class AnswerDTO extends EntityDTO{
 
 	public AnswerDTO(long id, long answeredQuestionaireId, String answer, long questionId) {
 		setId(id);
-		this.answeredQuestionaireId = answeredQuestionaireId;
+		this.questionaireId = answeredQuestionaireId;
 		this.answer = answer;
 		this.questionId = questionId;
 	}
 
-	public long getAnsweredQuestionaireId() {
-		return answeredQuestionaireId;
+	public long getQuestionaireId() {
+		return questionaireId;
 	}
 	
-	public void setAnsweredQuestionaireId(long answeredQuestionaireId) {
-		this.answeredQuestionaireId = answeredQuestionaireId;
+	public void setQuestionaireId(long answeredQuestionaireId) {
+		this.questionaireId = answeredQuestionaireId;
 	}
 	
 	public String getAnswer() {

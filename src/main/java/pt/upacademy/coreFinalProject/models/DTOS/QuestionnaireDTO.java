@@ -6,6 +6,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import pt.upacademy.coreFinalProject.models.Answer;
 import pt.upacademy.coreFinalProject.models.Qtype;
 import pt.upacademy.coreFinalProject.models.Role;
 
@@ -13,22 +14,26 @@ public class QuestionnaireDTO extends EntityDTO{
 
 	private Set<QuestionDTO> questionList;
 	private String name;
-	private long[] accountIdList;
+	private long accountId;
 	private Qtype qType;
 	private Set<Role> editPrivacy;
 	private Set<Role> viewPrivacy;
+	private Set<AnswerDTO> answerList;
+	private int score;
 	
 	public QuestionnaireDTO() {}
 
-	public QuestionnaireDTO(long id, Set<QuestionDTO> questionList, String name, long[] accountIdList, Qtype qType,
-			Set<Role> editPrivacy, Set<Role> viewPrivacy) {
+	public QuestionnaireDTO(long id, Set<QuestionDTO> questionList, String name, long accountId, Qtype qType,
+			Set<Role> editPrivacy, Set<Role> viewPrivacy, Set<AnswerDTO> answerList, int score) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
-		this.accountIdList = accountIdList;
+		this.accountId = accountId;
 		this.qType = qType;
 		this.editPrivacy = editPrivacy;
 		this.viewPrivacy = viewPrivacy;
+		this.answerList = answerList;
+		this.score = score;
 	}
 
 	public Set<QuestionDTO> getQuestionList() {
@@ -47,12 +52,12 @@ public class QuestionnaireDTO extends EntityDTO{
 		this.name = name;
 	}
 
-	public long[] getAccountIdList() {
-		return accountIdList;
+	public long getAccountId() {
+		return accountId;
 	}
 
-	public void setAccountIdList(long[] accountIdList) {
-		this.accountIdList = accountIdList;
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
 	}
 
 	public Qtype getqType() {
@@ -78,5 +83,23 @@ public class QuestionnaireDTO extends EntityDTO{
 	public void setViewPrivacy(Set<Role> viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
 	}
+
+	public Set<AnswerDTO> getAnswerList() {
+		return answerList;
+	}
+
+	public void setAnswerList(Set<AnswerDTO> answerList) {
+		this.answerList = answerList;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	
 	
 }

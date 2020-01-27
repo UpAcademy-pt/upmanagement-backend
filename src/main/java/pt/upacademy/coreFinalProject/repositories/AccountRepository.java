@@ -3,8 +3,6 @@ package pt.upacademy.coreFinalProject.repositories;
 import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.Account;
-import pt.upacademy.coreFinalProject.models.AnsweredQuestionnaire;
-
 @RequestScoped
 public class AccountRepository extends EntityRepository<Account>{
 
@@ -18,8 +16,8 @@ public class AccountRepository extends EntityRepository<Account>{
 		return Account.GET_ALL_ACCOUNTS;
 	}
 
-	public String addPendingQuestionnaireToAccount(long id) {
-		return Account.ADD_PENDING_QUESTIONNAIRE;
+	public void addPendingQuestionnaireToAccount(long questionnaireId, long[] accountIds) {
+		entityManager.createNamedQuery(Account.ADD_PENDING_QUESTIONNAIRE).setParameter("questionnaireId", questionnaireId).setParameter("id", accountIds);
 	}
 	
 }

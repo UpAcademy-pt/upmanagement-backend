@@ -16,33 +16,39 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q")})
+@NamedQueries({ 
+	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q"),
+	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, query = "SELECT NEW pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO(q.id, q.name) FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS EMPTY")
+	})
 public class Questionnaire extends EntityRoot{
 
 	public static final String GET_ALL_QUESTIONNAIRES = "getAllQuestionnaire";
+	public static final String GET_ALL_QUESTIONNAIRES_NOT_ANSWERED = "getAllQuestionnaireNotAnswered";
 	private static final long serialVersionUID = 1L;
 		
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private Set<Question> questionList;
 	private String name;
-	private long[] accountIdList;
+	private long accountId;
+	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
+	private Set<Answer> answerList;
 	private Qtype qType;
 	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
 	private Set<Role> editPrivacy;
-    
 	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
 	private Set<Role> viewPrivacy;
+	private int score;
 	
 	public Questionnaire() {}
 
-	public Questionnaire(long id, Set<Question> questionList, String name, long[] accountIdList, Qtype qType, Set<Role> editPrivacy,
+	public Questionnaire(long id, Set<Question> questionList, String name, long accountId, Qtype qType, Set<Role> editPrivacy,
 			Set<Role> viewPrivacy) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
-		this.accountIdList = accountIdList;
+		this.accountId = accountId;
 		this.qType = qType;
 		this.editPrivacy = editPrivacy;
 		this.viewPrivacy = viewPrivacy;
@@ -64,12 +70,20 @@ public class Questionnaire extends EntityRoot{
 		this.name = name;
 	}
 
-	public long[] getAccountIdList() {
-		return accountIdList;
+	public long getAccountId() {
+		return accountId;
 	}
 
-	public void setAccountIdList(long[] accountIdList) {
-		this.accountIdList = accountIdList;
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
+	}
+
+	public Set<Answer> getAnswerList() {
+		return answerList;
+	}
+
+	public void setAnswerList(Set<Answer> answerList) {
+		this.answerList = answerList;
 	}
 
 	public Qtype getqType() {
@@ -95,6 +109,14 @@ public class Questionnaire extends EntityRoot{
 	public void setViewPrivacy(Set<Role> viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
 	}
-	
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
 
 }
