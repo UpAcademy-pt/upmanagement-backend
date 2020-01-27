@@ -1,10 +1,14 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
+import java.util.stream.Collectors;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Lesson;
+import pt.upacademy.coreFinalProject.models.Note;
 import pt.upacademy.coreFinalProject.models.DTOS.LessonDTO;
+import pt.upacademy.coreFinalProject.services.MaterialsService;
 import pt.upacademy.coreFinalProject.services.NoteService;
 
 
@@ -13,6 +17,9 @@ public class LessonConverter extends EntityConverter <Lesson, LessonDTO> {
 	
 	@Inject
 	protected NoteService NS;
+	
+	@Inject
+	protected MaterialsService MS;
 	
 	@Override
 	public Lesson toEntity(LessonDTO dto) {
@@ -37,8 +44,8 @@ public class LessonConverter extends EntityConverter <Lesson, LessonDTO> {
 		lessonDto.setEditionId(ent.getEditionId());
 		lessonDto.setTitle(ent.getTitle());
 		lessonDto.setDescription(ent.getDescription());
-//		lessonDto.setNoteIdByLesson();
-//		lessonDto.setMaterialsIdByLesson();
+		lessonDto.setNotesIds(NS.getNotesByLessonId(ent.getId()).stream().map(Note :: getId).collect(Collectors.toList()));
+//		lessonDto.setMaterialsIds(MS.getMaterialsByLessonId());;
 		return lessonDto;
 	}
 

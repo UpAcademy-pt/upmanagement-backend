@@ -7,11 +7,21 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = Materials.GET_ALL_MATERIALS, query = "SELECT m FROM Materials m"),
+	@NamedQuery(name = Materials.GET_ALL_MATERIALS_IDS, query = "SELECT m.id FROM Materials m"),
+	@NamedQuery(name = Materials.GET_MATERIALS_BY_LESSON_ID, query = "SELECT m FROM Materials m inner join m.lessons lessons WHERE lessons.id in :lessonId") })
 public class Materials extends EntityRoot {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL_MATERIALS = "getAllMaterials";
+	public static final String GET_ALL_MATERIALS_IDS = "getAllMaterialsIds";
+	public static final String GET_MATERIALS_BY_LESSON_ID = "getMaterialsByLessonsIds";
+
 
 	private String title;
 	private String type;

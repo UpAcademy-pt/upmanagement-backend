@@ -1,55 +1,47 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.util.Set;
-
-import pt.upacademy.coreFinalProject.models.Note;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class LessonDTO extends EntityDTO {
 
 	private long editionId;
 	private String title;
 	private String description;
-	private Set<Note> notes;
-	private Set<MaterialsDTO> materialsIdByLesson;
-
+	private Collection<Long> notesIds = new ArrayList<Long>();
+	private Collection<Long> materialsIds = new ArrayList<Long>();
 	public long getEditionId() {
 		return editionId;
 	}
-
 	public void setEditionId(long editionId) {
 		this.editionId = editionId;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public Set<Note> getNotes() {
-		return notes;
+	public Collection<Long> getNotesIds() {
+		return notesIds;
+	}
+	public void setNotesIds(Collection<Long> notesIds) {
+		this.notesIds = notesIds;
+	}
+	public Collection<Long> getMaterialsIds() {
+		return materialsIds;
+	}
+	public void setMaterialsIds(Collection<Long> materialsIds) {
+		this.materialsIds = materialsIds;
 	}
 
-	public void setNotes(Set<Note> notes) {
-		this.notes = notes;
-	}
-
-	public Set<MaterialsDTO> getMaterialsIdByLesson() {
-		return materialsIdByLesson;
-	}
-
-	public void setMaterialsIdByLesson(Set<MaterialsDTO> materialsIdByLesson) {
-		this.materialsIdByLesson = materialsIdByLesson;
-	}
+	
 
 }

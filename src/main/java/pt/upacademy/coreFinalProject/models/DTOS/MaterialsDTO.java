@@ -1,11 +1,15 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MaterialsDTO extends EntityDTO {
 
 	private long id;
 	private String title;
 	private String type;
 	private String url;
+	private List<Long> lessonsIds = new ArrayList<Long>();
 
 	public long getId() {
 		return id;
@@ -37,6 +41,14 @@ public class MaterialsDTO extends EntityDTO {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public List<Long> getLessonsIds() {
+		return lessonsIds;
+	}
+
+	public void setLessonsIds(List<Long> lessonsIds) {
+		this.lessonsIds = lessonsIds;
 	}
 
 }
