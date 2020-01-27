@@ -12,7 +12,7 @@ public class MissedClassConverter extends EntityConverter<MissedClass,MissedClas
 	public MissedClass toEntity(MissedClassDTO dto) {
 		MissedClass mclass = new MissedClass();
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		
+		mclass.setId(dto.getId());
 		mclass.setAccountId(dto.getAccountId());
 		mclass.setJustified(dto.getJustified());
 		if(dto.getData() != null) {
