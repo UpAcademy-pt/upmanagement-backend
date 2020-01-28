@@ -9,14 +9,12 @@ public class ThemeRepository extends EntityRepository<Theme> {
 
 	@Override
 	protected Class<Theme> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Theme.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return Theme.GET_ALL_THEMES;
 	}
 
 }
