@@ -11,8 +11,8 @@ public class MissedClassConverter extends EntityConverter<MissedClass,MissedClas
 	@Override
 	public MissedClass toEntity(MissedClassDTO dto) {
 		MissedClass mclass = new MissedClass();
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		mclass.setId(dto.getId());
 		mclass.setAccountId(dto.getAccountId());
 		mclass.setJustified(dto.getJustified());
 		if(dto.getData() != null) {
@@ -25,7 +25,7 @@ public class MissedClassConverter extends EntityConverter<MissedClass,MissedClas
 	@Override
 	public MissedClassDTO toDTO(MissedClass entity) {
 		MissedClassDTO mclass = new MissedClassDTO();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		mclass.setId(entity.getId());
 		mclass.setAccountId(entity.getAccountId());

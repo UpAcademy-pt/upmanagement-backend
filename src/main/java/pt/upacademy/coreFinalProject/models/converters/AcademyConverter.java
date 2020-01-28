@@ -24,7 +24,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		Academy academy = new Academy();
 		academy.setId(dto.getId());
 		academy.setClient(dto.getClient());
-		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if(dto.getStartDate() != null) {
 		LocalDate localDate = LocalDate.parse(dto.getStartDate(),dateTimeFormatter);
 		academy.setStartDate(localDate);
@@ -50,7 +50,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		AcademyDTO academyDTO = new AcademyDTO();
 		academyDTO.setId(entity.getId());
 		academyDTO.setClient(entity.getClient());
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if(entity.getStartDate() != null) {
 		String startDateString = entity.getStartDate().format(formatter);
 		academyDTO.setStartDate (startDateString);

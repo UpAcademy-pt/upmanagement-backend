@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -49,6 +50,15 @@ public class MissedClassController extends EntityControllerDTO<MissedClassServic
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<MissedClassDTO> getallbyId(@PathParam("id") int accountId) {
 		return service.getAllMissedById(accountId).stream().map(E -> converter.toDTO(E)).collect(Collectors.toList());
+	}
+	
+	@PUT
+	@Path("/justify")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String update(MissedClassDTO mclass) {
+		service.update(converter.toEntity(mclass));
+		return "Update Done!";
 	}
 	
 //	addMissedClass
