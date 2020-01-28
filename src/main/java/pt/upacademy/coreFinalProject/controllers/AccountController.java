@@ -1,12 +1,8 @@
 package pt.upacademy.coreFinalProject.controllers;
 
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -19,65 +15,24 @@ import pt.upacademy.coreFinalProject.models.converters.AccountConverter;
 import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 import pt.upacademy.coreFinalProject.services.AccountService;
 
-
-
 @RequestScoped
 @Path ("/aulas/account")
 public class AccountController extends EntityControllerDTO <AccountService, AccountRepository,AccountConverter, Account, AccountDTO>{
-
 	@Inject
 	protected AccountConverter converter;
-	
-	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createAccount(Account account) {
-		try {
-			Account newAccount = service.createAccount(account);
-			 
-			 return Response.ok().entity(account.getId()).build(); 
-			}
-			 catch (Exception e) {
-				e.printStackTrace();
-				return Response.status(400).entity(e.getMessage()).build(); 
-			}
-	}
-	
+
 	@GET
 	@Path("/user/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAccountByUserById (@PathParam("id") long userId) {
-		
 		try {
-		AccountDTO account = converter.toDTO(service.getAccountByUserById(userId));
-		 
-		 return Response.ok().entity(account).build(); 
+			AccountDTO account = converter.toDTO(service.getAccountByUserById(userId));
+
+			return Response.ok().entity(account).build(); 
 		}
-		 catch (Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 			return Response.status(400).entity(e.getMessage()).build(); 
 		}
-		
-	
 	}
-	
-	@DELETE
-	@Path("/{id}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response deleteAcountById (@PathParam("id") long id) {
-		
-		try {
-			service.deleteAcountById(id);
-			 
-			 return Response.ok().build(); 
-			}
-			 catch (Exception e) {
-				e.printStackTrace();
-				return Response.status(400).entity(e.getMessage()).build(); 
-			}
-	}
-
-
-	
-	
 }

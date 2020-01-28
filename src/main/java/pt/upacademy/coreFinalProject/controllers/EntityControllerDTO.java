@@ -31,18 +31,18 @@ public abstract class EntityControllerDTO<S extends EntityService<R, E>, R exten
 	@Inject
 	protected C converter;
 	
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Collection<D> get() {
-//		return service.get().stream().map(E -> converter.toDTO(E)).collect(Collectors.toList());
-//	}
-//	
-//	@GET
-//	@Path("/{id}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public D get(@PathParam("id") long id) {
-//		return converter.toDTO(service.get(id));
-//	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<D> get() {
+		return service.get().stream().map(E -> converter.toDTO(E)).collect(Collectors.toList());
+	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public D get(@PathParam("id") long id) {
+		return converter.toDTO(service.get(id));
+	}
 	
 //	@POST
 //	@Consumes(MediaType.APPLICATION_JSON)
@@ -52,34 +52,34 @@ public abstract class EntityControllerDTO<S extends EntityService<R, E>, R exten
 //		return "Create Done!";
 //	}
 	
-//	@POST
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.TEXT_PLAIN)
-//	public Response create(D user) {
-//		try {
-//			service.create(converter.toEntity(user));
-//			return Response.ok().build();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return Response.status(400).entity(e.getMessage()).build(); 
-//		}
-//	}
-//	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response create(D user) {
+		try {
+			service.create(converter.toEntity(user));
+			return Response.ok().build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
+	}
 	
-//	@PUT
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.TEXT_PLAIN)
-//	public String update(D user) {
-//		service.update(converter.toEntity(user));
-//		return "Update Done!";
-//	}
-//	
-//	@DELETE
-//	@Path("/{id}")
-//	@Produces(MediaType.TEXT_PLAIN)
-//	public String delete(@PathParam("id") long id) {
-//		service.delete(id);
-//		return "Delete Done!";
-//	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String update(D user) {
+		service.update(converter.toEntity(user));
+		return "Update Done!";
+	}
+	
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String delete(@PathParam("id") long id) {
+		service.delete(id);
+		return "Delete Done!";
+	}
 	
 }

@@ -1,28 +1,26 @@
 package pt.upacademy.coreFinalProject.controllers;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
+import pt.upacademy.coreFinalProject.models.Lesson;
 import pt.upacademy.coreFinalProject.models.DTOS.LessonDTO;
 import pt.upacademy.coreFinalProject.models.converters.LessonConverter;
+import pt.upacademy.coreFinalProject.repositories.LessonRepository;
+import pt.upacademy.coreFinalProject.services.LessonService;
 
 @Path("/aulas/lessons")
 @RequestScoped
-public class LessonController {
+public class LessonController extends EntityControllerDTO <LessonService, LessonRepository,LessonConverter, Lesson, LessonDTO> {
 
-	@Inject
-	protected LessonConverter converter;
-	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String create(LessonDTO lessonDto) {
-		return "Create works!";
-	}
+//	@Inject
+//	protected LessonConverter converter;
+//	
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.TEXT_PLAIN)
+//	public String create(LessonDTO lessonDto) {
+//		return "Create works!";
+//	}
 	
 }
