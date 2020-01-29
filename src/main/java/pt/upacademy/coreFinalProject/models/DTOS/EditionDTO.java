@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class EditionDTO extends EntityDTO {
@@ -8,7 +9,7 @@ public class EditionDTO extends EntityDTO {
 	private String name;
 	private String type;
 //	private List<LessonDTO> lessonsDtos = new ArrayList<LessonDTO>();
-	private List<Long> accountsIds = new ArrayList<Long>();
+	private Collection<Long> accountsIds = new ArrayList<Long>();
 
 	public String getName() {
 		return name;
@@ -26,7 +27,7 @@ public class EditionDTO extends EntityDTO {
 		this.type = type;
 	}
 
-	public List<Long> getAccountsIds() {
+	public Collection<Long> getAccountsIds() {
 		return accountsIds;
 	}
 

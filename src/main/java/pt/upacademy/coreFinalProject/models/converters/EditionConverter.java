@@ -8,81 +8,37 @@ import javax.inject.Inject;
 import pt.upacademy.coreFinalProject.models.Edition;
 import pt.upacademy.coreFinalProject.models.DTOS.EditionDTO;
 import pt.upacademy.coreFinalProject.services.AccountService;
-import pt.upacademy.coreFinalProject.services.LessonService;
-import pt.upacademy.coreFinalProject.services.NoteService;
-import pt.upacademy.coreFinalProject.services.QuestionService;
-
 
 @RequestScoped
-public class EditionConverter extends EntityConverter <Edition, EditionDTO> {
-	
-	@Inject
-	private AccountService accountBus;
-	
-	@Inject 
-	private LessonService lessonBus;
-	
-	@Inject 
-	private QuestionService questionBus;
-	
-	@Inject
-	private NoteService noteBus;
-	
-	@Inject
-	private AccountConverter converter;
+public class EditionConverter extends EntityConverter<Edition, EditionDTO> {
 
+	@Inject
+	private AccountService AS;
 
 	@Override
 	public Edition toEntity(EditionDTO dto) {
-		Edition edition = new Edition ();
-//		if (dto.getId() > 0) {
-//			edition.setId(dto.getId());
-//		}
-//		
-//		edition.setName(dto.getName());
-//		edition.setType(dto.getType());
-//		edition.setAccounts(dto.getAccountIds().stream().map(entityId -> {
-//			Account account = accountBus.get(entityId);
-//			return account;
-//		}).collect(Collectors.toList()));
-//
-//		edition.setLessons((List<Lesson>) dto.getLessonsIds().stream().map(lessonId ->   {
-//			return lessonBus.get(lessonId);
-//		}).collect(Collectors.toList()));
-//		
-//		
-//		edition.setQuestions(dto.getQuestionsIds().stream().map(questionId -> {
-//			return questionBus.get(questionId);
-//	}).collect(Collectors.toList()));
-//				
-//		
-//		edition.setEvents(dto.getEventsIds().stream().map(entId -> {
-//			return eventBus.get(entId);
-//		}).collect(Collectors.toList()));
-//		
-//		
-//		edition.setNotes(dto.getNotesIds().stream().map( noteId -> {
-//			return noteBus.get(noteId);
-//		}).collect(Collectors.toList()));
-		
+		Edition edition = new Edition();
+		if (dto.getId() > 0) {
+			edition.setId(dto.getId());
+		}
+
+		edition.setName(dto.getName());
+		edition.setType(dto.getType());
+		edition.setAccounts(dto.getAccountsIds().stream().map(entityId -> AS.get(entityId)).collect(Collectors.toList()));
 		return edition;
 	}
 
-
 	@Override
 	public EditionDTO toDTO(Edition ent) {
-		EditionDTO editionDTO = new EditionDTO ();
+		EditionDTO editionDTO = new EditionDTO();
 		editionDTO.setId(ent.getId());
 		editionDTO.setName(ent.getName());
 		editionDTO.setType(ent.getType());
 		editionDTO.setAccountsIds(ent.getAccounts().stream().map(acc -> acc.getId()).collect(Collectors.toList()));
-		
 		return editionDTO;
-		
-	}
-	
 
-	
+	}
+
 //	@Override
 //	public EditionDTO toDTO(Edition ent) {
 //		EditionDTO editionDTO = new EditionDTO (

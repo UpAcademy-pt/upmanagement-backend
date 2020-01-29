@@ -56,7 +56,7 @@ public class Edition extends EntityRoot {
 		return accounts;
 	}
 
-	public void setAccounts(Set<Account> accounts) {
+	public void setAccounts(Collection<Account> accounts) {
 		this.accounts = accounts;
 	}
 
