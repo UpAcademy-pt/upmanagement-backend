@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,17 +16,26 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 	@Inject
 	AccountService ACCOUNT_SERVICE;
 	
-//	public long create(Questionnaire entity) {
-//		ACCOUNT_SERVICE.addPendingQuestionnaireToAccount(entity.getId(), entity.getAccountIdList());
-//		return repository.addEntity(entity);
-//	}
-	
 
-	public List<QuestionnairePreviewDTO> getEmptyQuestionnairesByAccountId(long id) {
+	public List<Questionnaire> getEmptyQuestionnairesByAccountId(long id) {
 		return repository.getEmptyQuestionnairesByAccountId(id);
 	}
     
-	public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(long id) {
+	public List<Questionnaire> getAnsweredQuestionnairesByAccountId(long id) {
 		return repository.getAnsweredQuestionnairesByAccountId(id);
 	}
+	
+	public void createWithAccountId(List<String> userIds, Questionnaire quest) {
+		System.out.println(userIds.toString());
+		List<Long> userIdsLong = userIds.stream().map(Long::valueOf).collect(Collectors.toList());
+		List<Long> accountIds = ACCOUNT_SERVICE.getAccountIdListByUserList(userIdsLong);
+		System.out.println(accountIds.toString());
+		accountIds.stream().forEach(id -> {
+			System.out.println(id);
+			quest.setAccountId(id);
+			create(quest);
+		});		
+	}
+	
+	
 }

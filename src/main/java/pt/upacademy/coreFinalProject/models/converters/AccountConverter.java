@@ -4,13 +4,12 @@ import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Account;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
-import pt.upacademy.coreFinalProject.services.AccountService;
 import pt.upacademy.coreFinalProject.services.QuestionnaireService;
 
 public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	
 	@Inject
-	AccountService ACCOUNT_SERVICE;
+	QuestionnaireConverter QUESTIONNAIRE_CONVERTER;
 	
 	@Inject
 	QuestionnaireService QUESTIONNAIRE_SERVICE;
@@ -35,7 +34,7 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	public AccountDTO toDTO(Account entity) {
 		AccountDTO accountDTO =  new AccountDTO();
 		accountDTO.setId(entity.getId());
-		accountDTO.setPendingQuestionnaires(QUESTIONNAIRE_SERVICE.getEmptyQuestionnairesByAccountId(entity.getId()));
+		accountDTO.setPendingQuestionnaires(QUESTIONNAIRE_CONVERTER.questListToPreviewDTO(QUESTIONNAIRE_SERVICE.getEmptyQuestionnairesByAccountId(entity.getId())));
 		accountDTO.setUserId(entity.getUserId());
 		return accountDTO;
 	}

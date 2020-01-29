@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.services;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -10,9 +12,11 @@ import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 public class AccountService extends EntityService<AccountRepository, Account>{
 	
 	
-	public void addPendingQuestionnaireToAccount(long questionnaireId, long[] accountIds) {
-		repository.addPendingQuestionnaireToAccount(questionnaireId, accountIds);
-	}
+//	public void addPendingQuestionnaireToAccount(long questionnaireId, long[] accountIds) {
+//		repository.addPendingQuestionnaireToAccount(questionnaireId, accountIds);
+//	}
+	
+	
 	
 	public Account getAccountByUserId(long userId) {
 		long[] userAcademies = new long[] {1, 2}; //Para apagar depois da integração dos projetos
@@ -23,6 +27,10 @@ public class AccountService extends EntityService<AccountRepository, Account>{
 			account = repository.getEntity(accountId);
 		}
 		return account;
+	}
+	
+	public List<Long> getAccountIdListByUserList(List<Long> ids){
+		return repository.getAccountIdListByUserList(ids);
 	}
 	
 }

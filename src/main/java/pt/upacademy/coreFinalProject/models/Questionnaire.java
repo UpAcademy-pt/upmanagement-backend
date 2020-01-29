@@ -1,25 +1,22 @@
 package pt.upacademy.coreFinalProject.models;
 
+
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q"),
-	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, query = "SELECT NEW pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO(q.id, q.name) FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS EMPTY"),
-	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT NEW pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO(q.id, q.name) FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY")
+	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS EMPTY"),
+	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY")
 })
 public class Questionnaire extends EntityRoot{
 
@@ -35,18 +32,14 @@ public class Questionnaire extends EntityRoot{
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private Set<Answer> answerList;
 	private Qtype qType;
-	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-	@Enumerated(EnumType.STRING)
-	private Set<Role> editPrivacy;
-	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-	@Enumerated(EnumType.STRING)
-	private Set<Role> viewPrivacy;
+	private String[] editPrivacy;
+	private String[] viewPrivacy;
 	private int score;
 	
 	public Questionnaire() {}
 
-	public Questionnaire(long id, Set<Question> questionList, String name, long accountId, Qtype qType, Set<Role> editPrivacy,
-			Set<Role> viewPrivacy) {
+	public Questionnaire(long id, Set<Question> questionList, String name, long accountId, Qtype qType, String[] editPrivacy,
+			String[] viewPrivacy) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -56,6 +49,14 @@ public class Questionnaire extends EntityRoot{
 		this.viewPrivacy = viewPrivacy;
 	}
 
+	public Questionnaire(long id, String name, Qtype qType, String[] viewPrivacy, LocalDate date) {
+		setId(id);
+		this.name = name;
+		this.qType = qType;
+		this.viewPrivacy = viewPrivacy;
+		setCreateDate(date);
+	}
+	
 	public Set<Question> getQuestionList() {
 		return questionList;
 	}
@@ -96,22 +97,6 @@ public class Questionnaire extends EntityRoot{
 		this.qType = qType;
 	}
 
-	public Set<Role> getEditPrivacy() {
-		return editPrivacy;
-	}
-
-	public void setEditPrivacy(Set<Role> editPrivacy) {
-		this.editPrivacy = editPrivacy;
-	}
-
-	public Set<Role> getViewPrivacy() {
-		return viewPrivacy;
-	}
-
-	public void setViewPrivacy(Set<Role> viewPrivacy) {
-		this.viewPrivacy = viewPrivacy;
-	}
-
 	public int getScore() {
 		return score;
 	}
@@ -120,5 +105,20 @@ public class Questionnaire extends EntityRoot{
 		this.score = score;
 	}
 
+	public String[] getEditPrivacy() {
+		return editPrivacy;
+	}
+
+	public void setEditPrivacy(String[] editPrivacy) {
+		this.editPrivacy = editPrivacy;
+	}
+
+	public String[] getViewPrivacy() {
+		return viewPrivacy;
+	}
+
+	public void setViewPrivacy(String[] viewPrivacy) {
+		this.viewPrivacy = viewPrivacy;
+	}
 
 }

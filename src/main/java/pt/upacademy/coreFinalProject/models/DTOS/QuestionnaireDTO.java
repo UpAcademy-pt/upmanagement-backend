@@ -16,15 +16,15 @@ public class QuestionnaireDTO extends EntityDTO{
 	private String name;
 	private long accountId;
 	private Qtype qType;
-	private Set<Role> editPrivacy;
-	private Set<Role> viewPrivacy;
+	private String[] editPrivacy;
+	private String[] viewPrivacy;
 	private Set<AnswerDTO> answerList;
 	private int score;
 	
 	public QuestionnaireDTO() {}
 
 	public QuestionnaireDTO(long id, Set<QuestionDTO> questionList, String name, long accountId, Qtype qType,
-			Set<Role> editPrivacy, Set<Role> viewPrivacy, Set<AnswerDTO> answerList, int score) {
+			String[] editPrivacy, String[] viewPrivacy, Set<AnswerDTO> answerList, int score) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -68,19 +68,19 @@ public class QuestionnaireDTO extends EntityDTO{
 		this.qType = qType;
 	}
 
-	public Set<Role> getEditPrivacy() {
+	public String[] getEditPrivacy() {
 		return editPrivacy;
 	}
 
-	public void setEditPrivacy(Set<Role> editPrivacy) {
+	public void setEditPrivacy(String[] editPrivacy) {
 		this.editPrivacy = editPrivacy;
 	}
 
-	public Set<Role> getViewPrivacy() {
+	public String[] getViewPrivacy() {
 		return viewPrivacy;
 	}
 
-	public void setViewPrivacy(Set<Role> viewPrivacy) {
+	public void setViewPrivacy(String[] viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
 	}
 

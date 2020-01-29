@@ -1,7 +1,7 @@
 package pt.upacademy.coreFinalProject.models;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +16,8 @@ public class EntityRoot implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private Date createData;
-	private Date modifiedData;
+	private LocalDate createDate;
+	private LocalDate lastModifiedDate;
 
 	public long getId() {
 		return id;
@@ -27,21 +27,20 @@ public class EntityRoot implements Serializable {
 		id = iD;
 	}
 
-	public Date getCreateData() {
-		return createData;
+	public LocalDate getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreateData(Date createData) {
-		this.createData = createData;
+	public void setCreateDate(LocalDate createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getModifiedData() {
-		return modifiedData;
+	public LocalDate getLastModifiedDate() {
+		return lastModifiedDate;
 	}
 
-	public void setModifiedData(Date modifiedData) {
-		this.modifiedData = modifiedData;
+	public void setLastModifiedDate(LocalDate lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
 	}
-	
 	
 }

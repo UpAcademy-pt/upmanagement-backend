@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import pt.upacademy.coreFinalProject.models.Answer;
+import pt.upacademy.coreFinalProject.models.Qtype;
 import pt.upacademy.coreFinalProject.models.Question;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
 import pt.upacademy.coreFinalProject.models.Template;
 import pt.upacademy.coreFinalProject.models.DTOS.AnswerDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnaireDTO;
+import pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO;
 
 public class QuestionnaireConverter extends EntityConverter<Questionnaire, QuestionnaireDTO>{
 
@@ -118,5 +120,18 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 						).collect(Collectors.toList());
 	}
 	
+	public List<QuestionnairePreviewDTO> questListToPreviewDTO(List<Questionnaire> entity){
+		return entity.stream().map(quest -> new QuestionnairePreviewDTO(
+				quest.getId(),
+				quest.getName(),
+				quest.getqType(),
+				quest.getEditPrivacy(),
+				quest.getViewPrivacy(),
+				quest.getCreateDate(),
+				quest.getLastModifiedDate()
+				)).collect(Collectors.toList());
+		
+		
+	}
 	
 }
