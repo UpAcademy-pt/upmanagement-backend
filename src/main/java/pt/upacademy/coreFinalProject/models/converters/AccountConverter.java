@@ -17,7 +17,7 @@ import pt.upacademy.coreFinalProject.services.QuestionnaireService;
 public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	
 	@Inject
-	AccountService ACCOUNT_SERVICE;
+	QuestionnaireConverter QUESTIONNAIRE_CONVERTER;
 	
 	@Inject
 	QuestionnaireService QUESTIONNAIRE_SERVICE;
@@ -42,7 +42,7 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	public AccountDTO toDTO(Account entity) {
 		AccountDTO accountDTO =  new AccountDTO();
 		accountDTO.setId(entity.getId());
-		accountDTO.setPendingQuentionnaires(QUESTIONNAIRE_SERVICE.getEmptyQuestionnairesByAccountId(entity.getId()));
+		accountDTO.setPendingQuentionnaires(QUESTIONNAIRE_CONVERTER.questListToPreviewDTO(QUESTIONNAIRE_SERVICE.getEmptyQuestionnairesByAccountId(entity.getId())));
 		accountDTO.setUserId(entity.getUserId());
 		return accountDTO;
 	}

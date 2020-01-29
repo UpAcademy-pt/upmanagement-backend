@@ -22,16 +22,12 @@ public class Template extends EntityRoot {
 	private Set<Question> questionList;
 	private String name;
 	private Qtype qType;
-	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-	@Enumerated(EnumType.STRING)
-	private Set<Role> editPrivacy;
-	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-	@Enumerated(EnumType.STRING)
-	private Set<Role> viewPrivacy;
+	private String[] editPrivacy;
+	private String[] viewPrivacy;
 
 	public Template() {}
 
-	public Template(long id, Set<Question> questionList, String name, Qtype qType, Set<Role> editPrivacy, Set<Role> viewPrivacy) {
+	public Template(long id, Set<Question> questionList, String name, Qtype qType, String[] editPrivacy, String[] viewPrivacy) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -64,19 +60,19 @@ public class Template extends EntityRoot {
 		this.questionList = questionList;
 	}
 
-	public Set<Role> getEditPrivacy() {
+	public String[] getEditPrivacy() {
 		return editPrivacy;
 	}
 
-	public void setEditPrivacy(Set<Role> editPrivacy) {
+	public void setEditPrivacy(String[] editPrivacy) {
 		this.editPrivacy = editPrivacy;
 	}
 
-	public Set<Role> getViewPrivacy() {
+	public String[] getViewPrivacy() {
 		return viewPrivacy;
 	}
 
-	public void setViewPrivacy(Set<Role> viewPrivacy) {
+	public void setViewPrivacy(String[] viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
 	}
 	

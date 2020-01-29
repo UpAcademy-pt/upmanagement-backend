@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.services;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -25,6 +27,10 @@ public class AccountService extends EntityService<AccountRepository, Account>{
 			account = repository.getEntity(accountId);
 		}
 		return account;
+	}
+	
+	public List<Long> getAccountIdListByUserList(List<Long> ids){
+		return repository.getAccountIdListByUserList(ids);
 	}
 	
 }

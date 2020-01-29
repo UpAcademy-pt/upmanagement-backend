@@ -52,22 +52,17 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String create(@QueryParam("id") List<String> ids, Questionnaire entity) {
-		String a = "a";
-		for (String s : ids) {
-			System.out.println("aqui estao os ids:" + ids);
-			a = a + s;
-			System.out.println(s);
-		}
-		return a;
-		//return service.create(entity);
+	public String create(@QueryParam("id") List<String> userIds, QuestionnaireDTO dto) {
+		
+		service.createWithAccountId(userIds, converter.toEntity(dto));
+		return "Done";
 	}
 	
 	@GET
     @Path("/account/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-    public List<Questionnaire> getAnsweredQuestionnairesByAccountId(@PathParam("id") long id) {
-		return service.getAnsweredQuestionnairesByAccountId(id);
+    public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(@PathParam("id") long id) {
+		return converter.questListToPreviewDTO(service.getAnsweredQuestionnairesByAccountId(id));
 			
     }
 }
