@@ -4,11 +4,9 @@ import java.util.Collection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import pt.upacademy.coreFinalProject.models.EntityRoot;
 
-@Transactional
 public abstract class EntityRepository<E extends EntityRoot> {
 
 	@PersistenceContext(unitName = "database")

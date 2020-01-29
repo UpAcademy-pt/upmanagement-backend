@@ -25,7 +25,7 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 		return repository.getEmptyQuestionnairesByAccountId(id);
 	}
     
-	public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(long id) {
+	public List<Questionnaire> getAnsweredQuestionnairesByAccountId(long id) {
 		return repository.getAnsweredQuestionnairesByAccountId(id);
 	}
 }

@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 @NamedQueries({ 
 	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q"),
 	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, query = "SELECT NEW pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO(q.id, q.name) FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS EMPTY"),
-	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT NEW pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO(q.id, q.name) FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY")
+	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT NEW pt.upacademy.coreFinalProject.models.Questionnaire(q.id, q.name, q.qType) FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY")
 })
 public class Questionnaire extends EntityRoot{
 
@@ -56,6 +56,12 @@ public class Questionnaire extends EntityRoot{
 		this.viewPrivacy = viewPrivacy;
 	}
 
+	public Questionnaire(long id, String name, Qtype qType) {
+		setId(id);
+		this.name = name;
+		this.qType = qType;
+	}
+	
 	public Set<Question> getQuestionList() {
 		return questionList;
 	}

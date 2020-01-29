@@ -10,8 +10,10 @@ import pt.upacademy.coreFinalProject.repositories.AccountRepository;
 public class AccountService extends EntityService<AccountRepository, Account>{
 	
 	
-	public void addPendingQuestionnaireToAccount(long questionnaireId, long[] accountIds) {
-		repository.addPendingQuestionnaireToAccount(questionnaireId, accountIds);
-	}
+//	public void addPendingQuestionnaireToAccount(long questionnaireId, long[] accountIds) {
+//		repository.addPendingQuestionnaireToAccount(questionnaireId, accountIds);
+//	}
+	
+	
 	
 }

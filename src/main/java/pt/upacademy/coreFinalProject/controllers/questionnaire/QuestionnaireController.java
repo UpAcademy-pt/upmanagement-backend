@@ -3,15 +3,17 @@ package pt.upacademy.coreFinalProject.controllers.questionnaire;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.Questionnaire;
-import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnaireDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO;
 import pt.upacademy.coreFinalProject.models.converters.QuestionnaireConverter;
@@ -39,10 +41,32 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
 //		return converter.listToDTO(service.getEmptyQuestionnairesByAccountId(id));
 //    }
 //	
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.TEXT_PLAIN)
+//	public long create(Questionnaire entity) {
+//		return service.create(entity);
+//	}
+	
+	@POST
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String create(@QueryParam("id") List<String> ids, Questionnaire entity) {
+		String a = "a";
+		for (String s : ids) {
+			System.out.println("aqui estao os ids:" + ids);
+			a = a + s;
+			System.out.println(s);
+		}
+		return a;
+		//return service.create(entity);
+	}
+	
 	@GET
     @Path("/account/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(@PathParam("id") long id) {
+    public List<Questionnaire> getAnsweredQuestionnairesByAccountId(@PathParam("id") long id) {
 		return service.getAnsweredQuestionnairesByAccountId(id);
 			
     }
