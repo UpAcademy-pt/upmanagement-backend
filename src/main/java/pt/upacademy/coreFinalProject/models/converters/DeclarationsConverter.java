@@ -12,24 +12,24 @@ public class DeclarationsConverter extends EntityConverter<Declarations,Declarat
 	public Declarations toEntity(DeclarationsDTO dto) {
 		Declarations declarations = new Declarations();
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate localDate1 = LocalDate.parse(dto.getDateSent(),dateTimeFormatter);
-		LocalDate localDate2 = LocalDate.parse(dto.getDateSent(),dateTimeFormatter);
+		
+		
 		
 		declarations.setId(dto.getId());
 		declarations.setAccountIdSender(dto.getAccountIdSender());
 		declarations.setAccountIdReceiver(dto.getAccountIdReceiver());
 		
 		if(dto.getDateSent() != null) {
-		
+	LocalDate localDate1 = LocalDate.parse(dto.getDateSent(),dateTimeFormatter);
 		declarations.setDateSent(localDate1);
 		}
-		else {localDate1 = null;}
+//		else {localDate1 = null;}
 		
 		if(dto.getDateReceived() != null) {
-			
+			LocalDate localDate2 = LocalDate.parse(dto.getDateReceived(),dateTimeFormatter);
 		declarations.setDateReceived(localDate2);
 		}
-		else {localDate2 = null;}
+//		else {localDate2 = null;}
 		
 		declarations.setFileUrlSent(dto.getFileUrlSent());
 		declarations.setFileUrlReturned(dto.getFileUrlReturned());
