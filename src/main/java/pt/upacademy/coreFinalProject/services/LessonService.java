@@ -14,5 +14,9 @@ public class LessonService extends EntityService <LessonRepository, Lesson> {
 	public Collection<Lesson> getLessonsByEditionId(long id) {
 		return repository.getLessonsByEditionId(id);
 	}
+	
+	public Collection<Lesson> getLessonByMaterialId(long id) {
+		return repository.getLessonByMaterialId(id);
+	}
 
 }
