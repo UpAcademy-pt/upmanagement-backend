@@ -11,4 +11,10 @@ public class AnswerService extends EntityService <AnswerRepository, AnswerForum>
 	public Collection<AnswerForum> getAnswersByQuestionId(long id) {
 		return repository.getAnswersByQuestionId(id);
 	}
+	
+	
+	
+	public void deleteAnswersByQuestionId (long id) {
+		repository.deleteAnswersByQuestionId(id);
+		}
 }

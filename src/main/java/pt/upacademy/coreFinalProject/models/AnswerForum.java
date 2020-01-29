@@ -7,13 +7,16 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name = AnswerForum.GET_ALL_ANSWERS, query = "SELECT a FROM AnswerForum a "),
-	@NamedQuery(name = AnswerForum.GET_ANSWERS_BY_QUESTION_ID, query = "SELECT a FROM AnswerForum a WHERE a.questionId = :questionId")
+	@NamedQuery(name = AnswerForum.GET_ANSWERS_BY_QUESTION_ID, query = "SELECT a FROM AnswerForum a WHERE a.questionId = :questionId"),
+	@NamedQuery(name = AnswerForum.DELETE_ANSWER_BY_QUESTION_ID, query = "DELETE FROM AnswerForum a WHERE a.questionId = :questionId")
+	
 })
 public class AnswerForum extends EntityRoot {
 
 	public static final String GET_ALL_ANSWERS = "getAllAnswers";
 	public static final String GET_ANSWERS_BY_QUESTION_ID = "getAnswersByQuestionId";
-
+	public static final String DELETE_ANSWER_BY_QUESTION_ID = "deleteAnswerByQuestionId";
+	
 	private static final long serialVersionUID = 1L;
 		
 	private long questionId;

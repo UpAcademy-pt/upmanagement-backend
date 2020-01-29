@@ -23,5 +23,10 @@ public class AnswerRepository extends EntityRepository<AnswerForum> {
 				.setParameter("questionId", id).getResultList();
 
 	}
+	
+	public void deleteAnswersByQuestionId (long id) {
+		entityManager.createNamedQuery(AnswerForum.DELETE_ANSWER_BY_QUESTION_ID)
+				.setParameter("questionId", id).executeUpdate();
+		}
 
 }
