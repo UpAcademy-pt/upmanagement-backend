@@ -9,6 +9,14 @@ import pt.upacademy.coreFinalProject.models.Theme;
 
 public class AccountDTO extends EntityDTO {
 	
+	@Override
+	public String toString() {
+		return "AccountDTO [userId=" + userId + ", age=" + age + ", academyIds=" + academyIds + ", academicDegree="
+				+ academicDegree + ", academicBackground=" + academicBackground + ", photoLink=" + photoLink
+				+ ", mobilePhone=" + mobilePhone + ", linkedInAdress=" + linkedInAdress + ", themes=" + themes
+				+ ", nif=" + nif + "]";
+	}
+
 	private long userId;
 	private String age;
 	private List<Long> academyIds = new ArrayList<Long>();
