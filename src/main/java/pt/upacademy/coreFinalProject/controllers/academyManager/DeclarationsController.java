@@ -51,8 +51,13 @@ public class DeclarationsController extends EntityControllerDTO<DeclarationsServ
 	@Path("/verify")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String update(DeclarationsDTO mclass) {
+	public Response update(DeclarationsDTO mclass) {
+		try {
 		service.update(converter.toEntity(mclass));
-		return "Update Done!";
+		return Response.ok().build();
+	} catch (Exception e) {
+		e.printStackTrace();
+		return Response.status(400).entity(e.getMessage()).build(); 
+	}
 	}
 }
