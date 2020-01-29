@@ -59,7 +59,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setAnswerList(entity.getAnswerList().stream().map(a -> {
 			AnswerDTO answerDTO = new AnswerDTO();
 			answerDTO.setId(a.getId());
-			answerDTO.setQuestionaireId(a.getQuestionaire().getId());
+			answerDTO.setQuestionnaireId(a.getQuestionaire().getId());
 			answerDTO.setAnswer(a.getAnswer());
 			answerDTO.setQuestionId(a.getQuestionId());
 			return answerDTO;

@@ -1,16 +1,9 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Account;
-import pt.upacademy.coreFinalProject.models.Questionnaire;
 import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
-import pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO;
 import pt.upacademy.coreFinalProject.services.AccountService;
 import pt.upacademy.coreFinalProject.services.QuestionnaireService;
 
@@ -42,7 +35,7 @@ public class AccountConverter extends EntityConverter<Account, AccountDTO>{
 	public AccountDTO toDTO(Account entity) {
 		AccountDTO accountDTO =  new AccountDTO();
 		accountDTO.setId(entity.getId());
-		accountDTO.setPendingQuentionnaires(QUESTIONNAIRE_SERVICE.getEmptyQuestionnairesByAccountId(entity.getId()));
+		accountDTO.setPendingQuestionnaires(QUESTIONNAIRE_SERVICE.getEmptyQuestionnairesByAccountId(entity.getId()));
 		accountDTO.setUserId(entity.getUserId());
 		return accountDTO;
 	}

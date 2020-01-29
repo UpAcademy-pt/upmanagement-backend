@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class AccountDTO extends EntityDTO{
 	private long userId;
-	private List<QuestionnairePreviewDTO> pendingQuentionnaires;
+	private List<QuestionnairePreviewDTO> pendingQuestionnaires;
 		  	
 	public AccountDTO() {}
 		  
@@ -13,7 +13,7 @@ public class AccountDTO extends EntityDTO{
 	public AccountDTO(long id, long userId, List<QuestionnairePreviewDTO> pendingQuentionnaires) {
 		 setId(id);
 		 this.userId = userId;
-		 this.pendingQuentionnaires = pendingQuentionnaires;
+		 this.pendingQuestionnaires = pendingQuentionnaires;
 	}
 		  
 	public long getUserId() {
@@ -25,13 +25,13 @@ public class AccountDTO extends EntityDTO{
 	}
 
 
-	public List<QuestionnairePreviewDTO> getPendingQuentionnaires() {
-		return pendingQuentionnaires;
+	public List<QuestionnairePreviewDTO> getPendingQuestionnaires() {
+		return pendingQuestionnaires;
 	}
 
 
-	public void setPendingQuentionnaires(List<QuestionnairePreviewDTO> pendingQuentionnaires) {
-		this.pendingQuentionnaires = pendingQuentionnaires;
+	public void setPendingQuestionnaires(List<QuestionnairePreviewDTO> pendingQuentionnaires) {
+		this.pendingQuestionnaires = pendingQuentionnaires;
 	}
 	
 	
