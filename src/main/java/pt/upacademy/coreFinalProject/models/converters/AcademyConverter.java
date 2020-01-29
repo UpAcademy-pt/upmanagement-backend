@@ -34,7 +34,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		academy.setEndDate(localDate1);
 		}
 		academy.setEdName(dto.getEdName());
-		academy.setModules(dto.getModulesIds().stream().map(moduleId -> moduleService.get(moduleId)).collect(Collectors.toSet()));
+		academy.setModules(dto.getModules());
 		academy.setStudents(dto.getStudentsIds().stream().map(studentId -> studentService.get(studentId)).collect(Collectors.toSet()));
 		academy.setStatus(dto.getStatus());
 		academy.setWarning(dto.getWarning());  		  		 //GONCALO
@@ -61,7 +61,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		}
 		academyDTO.setEdName(entity.getEdName());
 		academyDTO.setStatus(entity.getStatus());
-		academyDTO.setModulesIds(entity.getModules().stream().map(modules -> modules.getId()).collect(Collectors.toList()));
+		academyDTO.setModules(entity.getModules());
 		academyDTO.setStudentsIds(entity.getStudents().stream().map(students -> students.getId()).collect(Collectors.toList()));
 		academyDTO.setWarning(entity.getWarning());  		 	//GONCALO
 		academyDTO.setUsefulInfo(entity.getUsefulInfo());     	//GONCALO
