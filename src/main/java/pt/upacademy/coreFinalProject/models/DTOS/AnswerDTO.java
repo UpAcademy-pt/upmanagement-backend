@@ -3,12 +3,12 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 public class AnswerDTO extends EntityDTO{
 
 	private long questionaireId;
-	private String answer;
+	private String[] answer;
 	private long questionId;
 
 	public AnswerDTO() {}
 
-	public AnswerDTO(long id, long questionaireId, String answer, long questionId) {
+	public AnswerDTO(long id, long questionaireId, String[] answer, long questionId) {
 		setId(id);
 		this.questionaireId = questionaireId;
 		this.answer = answer;
@@ -23,11 +23,11 @@ public class AnswerDTO extends EntityDTO{
 		this.questionaireId = questionaireId;
 	}
 	
-	public String getAnswer() {
+	public String[] getAnswer() {
 		return answer;
 	}
 	
-	public void setAnswer(String answer) {
+	public void setAnswer(String[] answer) {
 		this.answer = answer;
 	}
 	

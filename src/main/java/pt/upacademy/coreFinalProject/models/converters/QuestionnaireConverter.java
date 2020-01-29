@@ -31,7 +31,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaire.setViewPrivacy(dto.getViewPrivacy());
 		questionnaire.setAnswerList(
 				dto.getAnswerList().stream().map(a -> new Answer(
-				questionnaire, a.getAnswer(), a.getQuestionId()
+				questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0
 				)).collect(Collectors.toSet()));
 		questionnaire.setScore(dto.getScore());
 		return questionnaire;

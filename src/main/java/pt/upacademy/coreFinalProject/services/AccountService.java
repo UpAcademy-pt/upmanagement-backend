@@ -16,4 +16,15 @@ public class AccountService extends EntityService<AccountRepository, Account>{
 	
 	
 	
+	public Account getAccountByUserId(long userId) {
+		long[] userAcademies = new long[] {1, 2}; //Para apagar depois da integração dos projetos
+		long accountId;
+		Account account = repository.getEntityByUserId(userId);
+		if (account == null) {
+			accountId = repository.addEntity(new Account(0, userId, userAcademies));
+			account = repository.getEntity(accountId);
+		}
+		return account;
+	}
+	
 }

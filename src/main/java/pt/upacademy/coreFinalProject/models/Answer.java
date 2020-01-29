@@ -14,19 +14,19 @@ public class Answer extends EntityRoot{
 	
 	@ManyToOne
 	private Questionnaire questionnaire;
-	private String answer;
+	private String[] answer;
 	private long questionId;
 
 	public Answer() {}
 
-	public Answer(long id, Questionnaire questionnaire, String answer, long questionId) {
+	public Answer(long id, Questionnaire questionnaire, String[] answer, long questionId) {
 		setId(id);
 		this.questionnaire = questionnaire;
 		this.answer = answer;
 		this.questionId = questionId;
 	}
 	
-	public Answer(Questionnaire questionnaire, String answer, long questionId) {
+	public Answer(Questionnaire questionnaire, String[] answer, long questionId) {
 		this.questionnaire = questionnaire;
 		this.answer = answer;
 		this.questionId = questionId;
@@ -40,11 +40,11 @@ public class Answer extends EntityRoot{
 		this.questionnaire = questionnaire;
 	}
 
-	public String getAnswer() {
+	public String[] getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(String[] answer) {
 		this.answer = answer;
 	}
 
