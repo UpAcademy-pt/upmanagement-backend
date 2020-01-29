@@ -1,6 +1,12 @@
 package pt.upacademy.coreFinalProject.models;
 
+import java.util.Collection;
+import java.util.HashSet;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -22,16 +28,16 @@ public class Materials extends EntityRoot {
 	private String type;
 	private String url;
 	
-//	@ManyToMany(mappedBy = "materials", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-//	private Collection<Lesson> lessons = new HashSet<>();
-//
-//	public Collection<Lesson> getLessons() {
-//		return lessons;
-//	}
-//
-//	public void setLessons(Collection<Lesson> lessons) {
-//		this.lessons = lessons;
-//	}
+	@ManyToMany(mappedBy = "materials", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	private Collection<Lesson> lessons = new HashSet<>();
+
+	public Collection<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public void setLessons(Collection<Lesson> lessons) {
+		this.lessons = lessons;
+	}
 
 	public String getTitle() {
 		return title;

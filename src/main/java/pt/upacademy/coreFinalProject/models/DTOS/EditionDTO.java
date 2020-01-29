@@ -2,13 +2,12 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class EditionDTO extends EntityDTO {
 
 	private String name;
 	private String type;
-//	private List<LessonDTO> lessonsDtos = new ArrayList<LessonDTO>();
+	private Collection<LessonDTO> lessonsDtos = new ArrayList<LessonDTO>();
 	private Collection<Long> accountsIds = new ArrayList<Long>();
 
 	public String getName() {
@@ -27,28 +26,20 @@ public class EditionDTO extends EntityDTO {
 		this.type = type;
 	}
 
+	public Collection<LessonDTO> getLessonsDtos() {
+		return lessonsDtos;
+	}
+
+	public void setLessonsDtos(Collection<LessonDTO> lessonsDtos) {
+		this.lessonsDtos = lessonsDtos;
+	}
+
 	public Collection<Long> getAccountsIds() {
 		return accountsIds;
 	}
 
-	public void setAccountsIds(List<Long> accountsIds) {
+	public void setAccountsIds(Collection<Long> accountsIds) {
 		this.accountsIds = accountsIds;
 	}
-
-//	public List<LessonDTO> getLessonsDtos() {
-//		return lessonsDtos;
-//	}
-//
-//	public void setLessonsDtos(List<LessonDTO> lessonsDtos) {
-//		this.lessonsDtos = lessonsDtos;
-//	}
-
-
-
-//	@Override
-//	public String toString() {
-//		return "EditionDTO [editionId=" + editionId + ", name=" + name + ", type=" + type + ", lessonsDtos="
-//				+ lessonsDtos + ", accountsDtos=" + accountsDtos + "]";
-//	}
 
 }

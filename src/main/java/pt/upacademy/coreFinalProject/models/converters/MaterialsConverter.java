@@ -10,16 +10,15 @@ public class MaterialsConverter extends EntityConverter<Materials, MaterialsDTO>
 
 	@Inject
 	protected LessonService LS;
-	
+
 	@Override
 	public Materials toEntity(MaterialsDTO dto) {
 		Materials materials = new Materials();
 		materials.setId(dto.getId());
-//		materials.setLessons(dto.getLessonsIds().stream().map(id -> LS.get(id)).collect(Collectors.toList()));
 		materials.setTitle(dto.getTitle());
 		materials.setType(dto.getType());
 		materials.setUrl(dto.getUrl());
-		
+
 		return materials;
 	}
 
@@ -30,8 +29,6 @@ public class MaterialsConverter extends EntityConverter<Materials, MaterialsDTO>
 		materialDto.setTitle(entity.getTitle());
 		materialDto.setType(entity.getType());
 		materialDto.setUrl(entity.getUrl());
-//		materialDto.setLessonsIds(entity.getLessons().stream().map(Lesson :: getId).collect(Collectors.toList()));
-		
 		return materialDto;
 	}
 

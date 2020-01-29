@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.controllers;
 
+import java.util.Collection;
+
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Path;
 
@@ -13,14 +15,8 @@ import pt.upacademy.coreFinalProject.services.LessonService;
 @RequestScoped
 public class LessonController extends EntityControllerDTO <LessonService, LessonRepository,LessonConverter, Lesson, LessonDTO> {
 
-//	@Inject
-//	protected LessonConverter converter;
-//	
-//	@POST
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.TEXT_PLAIN)
-//	public String create(LessonDTO lessonDto) {
-//		return "Create works!";
-//	}
+	public Collection<Lesson> getLessonsByEditionId(long id) {
+		return service.getLessonsByEditionId(id);
+	}
 	
 }
