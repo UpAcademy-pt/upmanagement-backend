@@ -32,11 +32,13 @@ public abstract class EntityRepository<E extends EntityRoot> {
 	}
 
 	public void editEntity(E entity) {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>" + entity.getClass() + entity + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		entityManager.merge(entity);
 	}
 
 	public void deleteEntity(long id) {
 		E entity = entityManager.find(getEntityClass(), id);
+		System.out.println("----------DDDDDD------------->" + entity + "<------------------DDDDD------------------");
 		entityManager.remove(entity);
 
 	}

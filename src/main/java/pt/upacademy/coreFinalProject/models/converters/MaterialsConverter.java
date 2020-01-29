@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.models.converters;
 
+import java.util.stream.Collectors;
+
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.Materials;
@@ -18,7 +20,7 @@ public class MaterialsConverter extends EntityConverter<Materials, MaterialsDTO>
 		materials.setTitle(dto.getTitle());
 		materials.setType(dto.getType());
 		materials.setUrl(dto.getUrl());
-
+		materials.setLessons(LS.getLessonByMaterialId(dto.getId()));
 		return materials;
 	}
 
@@ -29,6 +31,7 @@ public class MaterialsConverter extends EntityConverter<Materials, MaterialsDTO>
 		materialDto.setTitle(entity.getTitle());
 		materialDto.setType(entity.getType());
 		materialDto.setUrl(entity.getUrl());
+		materialDto.setLessonsIds(entity.getLessons().stream().map(ent -> ent.getId()).collect(Collectors.toList()));
 		return materialDto;
 	}
 

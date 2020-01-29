@@ -1,11 +1,15 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class MaterialsDTO extends EntityDTO {
 
 	private long id;
 	private String title;
 	private String type;
 	private String url;
+	private Collection<Long> lessonsIds = new ArrayList<Long>();
 
 	public long getId() {
 		return id;
@@ -39,12 +43,18 @@ public class MaterialsDTO extends EntityDTO {
 		this.url = url;
 	}
 
-//	public Collection<Long> getLessonsIds() {
-//		return lessonsIds;
-//	}
-//
-//	public void setLessonsIds(Collection<Long> lessonsIds) {
-//		this.lessonsIds = lessonsIds;
-//	}
+	public Collection<Long> getLessonsIds() {
+		return lessonsIds;
+	}
+
+	public void setLessonsIds(Collection<Long> lessonsIds) {
+		this.lessonsIds = lessonsIds;
+	}
+
+	@Override
+	public String toString() {
+		return "MaterialsDTO [id=" + id + ", title=" + title + ", type=" + type + ", url=" + url + ", lessonsIds="
+				+ lessonsIds + "]";
+	}
 
 }

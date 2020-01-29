@@ -62,4 +62,11 @@ public class Materials extends EntityRoot {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		return "Materials [title=" + title + ", type=" + type + ", url=" + url + ", lessons=" + lessons + "]";
+	}
+	
+	
 }
