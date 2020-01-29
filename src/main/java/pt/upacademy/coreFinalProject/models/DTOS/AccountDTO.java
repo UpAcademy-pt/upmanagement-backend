@@ -1,10 +1,22 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import pt.upacademy.coreFinalProject.models.Theme;
 
 public class AccountDTO extends EntityDTO {
 	
+	@Override
+	public String toString() {
+		return "AccountDTO [userId=" + userId + ", age=" + age + ", academyIds=" + academyIds + ", academicDegree="
+				+ academicDegree + ", academicBackground=" + academicBackground + ", photoLink=" + photoLink
+				+ ", mobilePhone=" + mobilePhone + ", linkedInAdress=" + linkedInAdress + ", themes=" + themes
+				+ ", nif=" + nif + "]";
+	}
+
 	private long userId;
 	private String age;
 	private List<Long> academyIds = new ArrayList<Long>();
@@ -14,7 +26,7 @@ public class AccountDTO extends EntityDTO {
 	private int mobilePhone;
 	private String linkedInAdress;
 	//themes so vai ter valores para formadores
-	private List<Long> themeIds = new ArrayList<Long>();
+	private Set<Theme> themes = new HashSet<Theme>();
 	//evaluations so vai ter valores para formandos
 //	private List<Long> evaluationIds= new ArrayList<Long>();     *GONÇALO*
 //	private String missedDays;
@@ -39,7 +51,7 @@ public class AccountDTO extends EntityDTO {
 	
 	
 	public AccountDTO(long userId, String age, List<Long> academyIds, String academicDegree, String academicBackground,
-			String photoLink, int mobilePhone, String linkedInAdress, List<Long> themeIds, 
+			String photoLink, int mobilePhone, String linkedInAdress, Set<Theme> themes, 
 			long nif) {
 		super();
 		this.userId = userId;
@@ -50,7 +62,7 @@ public class AccountDTO extends EntityDTO {
 		this.photoLink = photoLink;
 		this.mobilePhone = mobilePhone;
 		this.linkedInAdress = linkedInAdress;
-		this.themeIds = themeIds;
+		this.themes = themes;
 //		this.evaluationIds = evaluationIds;       *GONÇALO*
 //		this.missedDays = missedDays;
 		this.nif = nif;
@@ -139,12 +151,12 @@ public class AccountDTO extends EntityDTO {
 	}
 
 	
-	public List<Long> getThemeIds() {
-		return themeIds;
+	public Set<Theme> getThemes() {
+		return themes;
 	}
 
-	public void setThemeIds(List<Long> themeIds) {
-		this.themeIds = themeIds;
+	public void setThemes(Set<Theme> themes) {
+		this.themes = themes;
 	}
 
 	

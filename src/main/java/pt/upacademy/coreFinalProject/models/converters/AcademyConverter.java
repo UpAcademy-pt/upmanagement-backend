@@ -22,6 +22,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 	@Override
 	public Academy toEntity(AcademyDTO dto) {
 		Academy academy = new Academy();
+		academy.setId(dto.getId());
 		academy.setClient(dto.getClient());
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if(dto.getStartDate() != null) {
@@ -47,6 +48,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 	@Override
 	public AcademyDTO toDTO(Academy entity) {
 		AcademyDTO academyDTO = new AcademyDTO();
+		academyDTO.setId(entity.getId());
 		academyDTO.setClient(entity.getClient());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if(entity.getStartDate() != null) {

@@ -19,6 +19,14 @@ import javax.persistence.OneToMany;
 })
 public class Account extends EntityRoot {
 	
+	@Override
+	public String toString() {
+		return "Account [userId=" + userId + ", age=" + age + ", academies=" + academies + ", academicDegree="
+				+ academicDegree + ", academicBackground=" + academicBackground + ", photoLink=" + photoLink
+				+ ", mobilePhone=" + mobilePhone + ", linkedInAdress=" + linkedInAdress + ", themes=" + themes
+				+ ", nif=" + nif + "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	public static final String GET_ALL_ACCOUNTS = "getAllAccounts";

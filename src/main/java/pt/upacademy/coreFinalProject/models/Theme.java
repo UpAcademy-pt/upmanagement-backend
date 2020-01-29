@@ -1,11 +1,18 @@
 package pt.upacademy.coreFinalProject.models;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Theme.GET_ALL_THEMES, query = "SELECT t FROM Theme t")
+})
 public class Theme extends EntityRoot {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String GET_ALL_THEMES = "getAllThemes";
 	
 	private String name;
 	

@@ -56,9 +56,14 @@ public class MissedClassController extends EntityControllerDTO<MissedClassServic
 	@Path("/justify")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String update(MissedClassDTO mclass) {
-		service.update(converter.toEntity(mclass));
-		return "Update Done!";
+	public Response update(MissedClassDTO mclass) {
+		try {
+			service.update(converter.toEntity(mclass));
+			return Response.ok().build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
 	}
 	
 //	addMissedClass
