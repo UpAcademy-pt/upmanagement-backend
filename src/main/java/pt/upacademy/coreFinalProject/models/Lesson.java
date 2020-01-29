@@ -15,7 +15,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({ @NamedQuery(name = Lesson.GET_ALL_LESSONS, query = "SELECT l FROM Lesson l"),
 		@NamedQuery(name = Lesson.GET_LESSONS_BY_EDITION_ID, query = "SELECT l FROM Lesson l WHERE l.editionId = :editionId"),
-//		@NamedQuery(name = Lesson.GET_LESSONS_COUNT, query = "SELECT COUNT(l.id) FROM Lesson l"),
+		@NamedQuery(name = Lesson.GET_LESSONS_BY_MATERIAL_ID, query = "SELECT l FROM Lesson l inner join l.materials material WHERE material.id in :materialId"),
 })
 
 
@@ -25,9 +25,9 @@ public class Lesson extends EntityRoot {
 
 	public static final String GET_ALL_LESSONS = "getAllLessons";
 	public static final String GET_LESSONS_BY_EDITION_ID = "getLessonsByEditionId";
-//	public static final String GET_LESSONS_COUNT = "getLessonsCount";
+	public static final String GET_LESSONS_BY_MATERIAL_ID = "getLessonByMaterialId";
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "Lesson_Materials", joinColumns = { @JoinColumn(name = "lesson_id", referencedColumnName = "id") }, inverseJoinColumns = {
 			@JoinColumn(name = "materials_id", referencedColumnName = "id") })
 	private Collection<Materials> materials = new HashSet<>();

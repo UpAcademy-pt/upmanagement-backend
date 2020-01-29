@@ -23,5 +23,9 @@ public class LessonRepository extends EntityRepository<Lesson> {
 	public Collection<Lesson> getLessonsByEditionId(long id) {
 		return entityManager.createNamedQuery(Lesson.GET_LESSONS_BY_EDITION_ID, Lesson.class).setParameter("editionId", id).getResultList();
 	}
+	
+	public Collection<Lesson> getLessonByMaterialId(long id) {
+		return entityManager.createNamedQuery(Lesson.GET_LESSONS_BY_MATERIAL_ID, Lesson.class).setParameter("materialId", id).getResultList();
+	}
 
 }
