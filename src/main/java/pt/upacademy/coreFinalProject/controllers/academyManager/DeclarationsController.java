@@ -14,10 +14,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
+import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.academyManager.Declarations;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.DeclarationsDTO;
-import pt.upacademy.coreFinalProject.models.academyManager.DTOS.MissedClassDTO;
 import pt.upacademy.coreFinalProject.models.academyManager.converters.DeclarationsConverter;
 import pt.upacademy.coreFinalProject.repositories.academyManager.DeclarationsRepository;
 import pt.upacademy.coreFinalProject.services.academyManager.DeclarationsService;

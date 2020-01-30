@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Evaluation;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.EvaluationDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.services.academyManager.AccountService;
 import pt.upacademy.coreFinalProject.services.academyManager.GradeService;
 

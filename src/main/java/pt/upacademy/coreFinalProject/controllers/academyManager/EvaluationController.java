@@ -3,7 +3,7 @@ package pt.upacademy.coreFinalProject.controllers.academyManager;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Path;
 
-import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
+import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.academyManager.Evaluation;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.EvaluationDTO;
 import pt.upacademy.coreFinalProject.models.academyManager.converters.EvaluationConverter;

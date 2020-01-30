@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.models.academyManager.DTOS;
 
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+
 public class MissedClassDTO extends EntityDTO {
 
 	private int accountId;

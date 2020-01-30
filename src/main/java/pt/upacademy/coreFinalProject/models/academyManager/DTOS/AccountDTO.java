@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Theme;
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
 
 public class AccountDTO extends EntityDTO {
 	

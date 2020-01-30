@@ -6,6 +6,7 @@ import java.util.Set;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Module;
 import pt.upacademy.coreFinalProject.models.academyManager.Status;
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
 
 public class AcademyDTO extends EntityDTO {
 

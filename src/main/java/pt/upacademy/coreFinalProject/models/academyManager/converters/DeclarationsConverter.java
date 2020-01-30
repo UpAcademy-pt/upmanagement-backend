@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Declarations;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.DeclarationsDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 
 public class DeclarationsConverter extends EntityConverter<Declarations,DeclarationsDTO>{
 

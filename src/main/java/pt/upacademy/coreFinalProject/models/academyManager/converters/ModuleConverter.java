@@ -2,6 +2,7 @@ package pt.upacademy.coreFinalProject.models.academyManager.converters;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Module;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.ModuleDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.services.academyManager.EvaluationService;
 import pt.upacademy.coreFinalProject.services.academyManager.ThemeService;
 

@@ -2,6 +2,8 @@ package pt.upacademy.coreFinalProject.models.academyManager.DTOS;
 
 import java.util.List;
 
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+
 public class ModuleDTO extends EntityDTO {
 
 	private List<Long> evaluationIds;

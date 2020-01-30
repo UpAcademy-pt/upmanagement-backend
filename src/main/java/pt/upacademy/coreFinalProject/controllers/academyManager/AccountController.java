@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
+import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.academyManager.AccountAcademy;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.AccountDTO;
 import pt.upacademy.coreFinalProject.models.academyManager.converters.AccountConverter;

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.academyManager.AccountAcademy;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.AccountDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.services.academyManager.AcademyService;
 import pt.upacademy.coreFinalProject.services.academyManager.EvaluationService;
 import pt.upacademy.coreFinalProject.services.academyManager.ThemeService;

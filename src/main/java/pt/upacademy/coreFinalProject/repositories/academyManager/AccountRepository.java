@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.academyManager.AccountAcademy;
+import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
 
 @RequestScoped
 public class AccountRepository extends EntityRepository<AccountAcademy> {
@@ -17,15 +18,15 @@ public class AccountRepository extends EntityRepository<AccountAcademy> {
 
 	@Override
 	protected String getAllEntities() {
-		return AccountAcademy.GET_ALL_ACCOUNTS;
+		return AccountAcademy.GET_ALL_ACADEMY_ACCOUNTS;
 	}
 	
 	public Collection<AccountAcademy> getByUserIds(Collection<Long> userIds) {
-		return entityManager.createNamedQuery(AccountAcademy.GET_ACCOUNTS_BY_USER_IDS, getEntityClass()).setParameter("usersIds", userIds).getResultList();
+		return entityManager.createNamedQuery(AccountAcademy.GET_ACADEMY_ACCOUNTS_BY_USER_IDS, getEntityClass()).setParameter("usersIds", userIds).getResultList();
 	}
 	
 	public List<AccountAcademy> getByUserId(long userId) {
-		return entityManager.createNamedQuery(AccountAcademy.GET_ACCOUNT_BY_USER_ID, getEntityClass()).setParameter("userId", userId).getResultList();
+		return entityManager.createNamedQuery(AccountAcademy.GET_ACADEMY_ACCOUNT_BY_USER_ID, getEntityClass()).setParameter("userId", userId).getResultList();
 	}
 
 }

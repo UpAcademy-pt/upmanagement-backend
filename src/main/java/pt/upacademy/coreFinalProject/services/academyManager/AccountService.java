@@ -7,10 +7,11 @@ import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import pt.upacademy.coreFinalProject.controllers.UserController;
-import pt.upacademy.coreFinalProject.models.DTOS.UserDTO;
+import pt.upacademy.coreFinalProject.controllers.core.UserController;
 import pt.upacademy.coreFinalProject.models.academyManager.AccountAcademy;
+import pt.upacademy.coreFinalProject.models.core.DTOS.UserDTO;
 import pt.upacademy.coreFinalProject.repositories.academyManager.AccountRepository;
+import pt.upacademy.coreFinalProject.services.core.EntityService;
 
 @RequestScoped
 public class AccountService extends EntityService<AccountRepository,AccountAcademy> {

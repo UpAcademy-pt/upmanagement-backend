@@ -3,6 +3,7 @@ package pt.upacademy.coreFinalProject.repositories.academyManager;
 import java.util.Collection;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Declarations;
+import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
 
 public class DeclarationsRepository extends EntityRepository<Declarations>{
 

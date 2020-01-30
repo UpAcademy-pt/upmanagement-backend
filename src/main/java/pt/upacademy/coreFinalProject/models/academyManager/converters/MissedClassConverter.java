@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import pt.upacademy.coreFinalProject.models.academyManager.MissedClass;
 import pt.upacademy.coreFinalProject.models.academyManager.DTOS.MissedClassDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 
 public class MissedClassConverter extends EntityConverter<MissedClass,MissedClassDTO>{
 

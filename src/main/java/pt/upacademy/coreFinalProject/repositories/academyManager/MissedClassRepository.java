@@ -3,6 +3,7 @@ package pt.upacademy.coreFinalProject.repositories.academyManager;
 import java.util.List;
 
 import pt.upacademy.coreFinalProject.models.academyManager.MissedClass;
+import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
 
 public class MissedClassRepository extends EntityRepository<MissedClass> {
 

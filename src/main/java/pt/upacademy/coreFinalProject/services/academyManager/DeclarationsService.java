@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Declarations;
 import pt.upacademy.coreFinalProject.repositories.academyManager.DeclarationsRepository;
+import pt.upacademy.coreFinalProject.services.core.EntityService;
 
 @RequestScoped
 public class DeclarationsService extends EntityService<DeclarationsRepository,Declarations>{

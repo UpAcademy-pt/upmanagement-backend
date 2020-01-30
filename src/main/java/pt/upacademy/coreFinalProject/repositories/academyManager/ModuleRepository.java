@@ -3,6 +3,7 @@ package pt.upacademy.coreFinalProject.repositories.academyManager;
 import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Module;
+import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
 
 @RequestScoped
 public class ModuleRepository extends EntityRepository<Module> {

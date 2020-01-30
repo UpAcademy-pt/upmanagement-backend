@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 
 import pt.upacademy.coreFinalProject.models.academyManager.MissedClass;
 import pt.upacademy.coreFinalProject.repositories.academyManager.MissedClassRepository;
+import pt.upacademy.coreFinalProject.services.core.EntityService;
 
 @RequestScoped
 public class MissedClassService extends EntityService<MissedClassRepository,MissedClass>{
