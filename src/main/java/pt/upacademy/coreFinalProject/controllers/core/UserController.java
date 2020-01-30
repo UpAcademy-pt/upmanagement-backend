@@ -1,4 +1,4 @@
-package pt.upacademy.coreFinalProject.controllers;
+package pt.upacademy.coreFinalProject.controllers.core;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,11 +21,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import pt.upacademy.coreFinalProject.models.User;
-import pt.upacademy.coreFinalProject.models.DTOS.UserDTO;
-import pt.upacademy.coreFinalProject.models.converters.UserConverter;
-import pt.upacademy.coreFinalProject.repositories.UserRepository;
-import pt.upacademy.coreFinalProject.services.UserService;
+import pt.upacademy.coreFinalProject.models.core.User;
+import pt.upacademy.coreFinalProject.models.core.DTOS.UserDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.UserConverter;
+import pt.upacademy.coreFinalProject.repositories.core.UserRepository;
+import pt.upacademy.coreFinalProject.services.core.UserService;
 
 @Path("/aulas/users")
 @RequestScoped
@@ -51,9 +51,20 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	@GET
 	@Path("/email")
 	@Produces(MediaType.APPLICATION_JSON)
-	public UserDTO getUserByEmail (String email) {
-		return converter.toDTO(service.getUserByEmail(email));
+	public Response getUserByEmail (String email) {
+		try {
+		return Response.ok().entity(converter.toDTO(service.getUserByEmail(email))).build();
+		} catch (Exception e) {
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
 	}
+	
+//	@GET
+//	@Path("/email")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public UserDTO getUserByEmail (String email) {
+//		return converter.toDTO(service.getUserByEmail(email));
+//	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -61,12 +72,14 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 		return service.get().stream().map(E -> converter.toDTO(E)).collect(Collectors.toList());
 	}
 	
+	
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public UserDTO get(@PathParam("id") long id) {
 		return converter.toDTO(service.get(id));
 	}
+	
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -84,9 +97,14 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String update(UserDTO userDTO) {
+	public Response update(UserDTO userDTO) {
+		try {
 		service.update(converter.toEntity(userDTO));
-		return "Update Done!";
+		return Response.ok().build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}	
 	}
 	
 	@PUT
@@ -107,9 +125,14 @@ public class UserController extends EntityControllerDTO<UserService, UserReposit
 	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String delete(@PathParam("id") long id) {
+	public Response delete(@PathParam("id") long id) {
+		try {
 		service.updateToNull(converter.toNullUser(service.get(id)));
-		return "Delete Done!";
+		return Response.ok().build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
 	}
 	
 	@Context
