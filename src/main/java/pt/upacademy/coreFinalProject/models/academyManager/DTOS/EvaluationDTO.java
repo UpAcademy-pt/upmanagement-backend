@@ -1,20 +1,21 @@
 package pt.upacademy.coreFinalProject.models.academyManager.DTOS;
 
-import java.util.List;
+import java.util.Set;
 
+import pt.upacademy.coreFinalProject.models.academyManager.Grade;
 import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
 
 public class EvaluationDTO extends EntityDTO {
 
 	private Long accountId;
-	private List<Long> gradesIds;
+	private Set<Grade> grades;
 	private String comment;
 	
 	public EvaluationDTO() {}
 	
-	public EvaluationDTO(Long accountId, List<Long> gradesIds, String comment) {
+	public EvaluationDTO(Long accountId, Set<Grade> grades, String comment) {
 		this.accountId = accountId;
-		this.gradesIds = gradesIds;
+		this.grades = grades;
 		this.comment = comment;
 	}
 
@@ -26,12 +27,12 @@ public class EvaluationDTO extends EntityDTO {
 		this.accountId = accountId;
 	}
 
-	public List<Long> getGradesIds() {
-		return gradesIds;
+	public Set<Grade> getGrades() {
+		return grades;
 	}
 
-	public void setGradesIds(List<Long> gradesIds) {
-		this.gradesIds = gradesIds;
+	public void setGrades(Set<Grade> grades) {
+		this.grades = grades;
 	}
 
 	public String getComment() {
