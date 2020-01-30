@@ -1,7 +1,5 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import java.time.LocalDate;
-
 import pt.upacademy.coreFinalProject.models.Qtype;
 
 
@@ -10,20 +8,18 @@ public class QuestionnairePreviewDTO extends EntityDTO{
 	private Qtype qType;
 	private String[] editPrivacy;
 	private String[] viewPrivacy;
-	private LocalDate createDate;
-	private LocalDate lastModifiedDate;
 
 	public QuestionnairePreviewDTO() {}
 
 	public QuestionnairePreviewDTO(long id, String name, Qtype qType, String[] editPrivacy, String[] viewPrivacy,
-			LocalDate createDate, LocalDate lastModifiedDate) {
+			long createDate, long lastModifiedDate) {
 		setId(id);
+		setCreateDate(createDate);
+		setLastModifiedDate(lastModifiedDate);
 		this.name = name;
 		this.qType = qType;
 		this.editPrivacy = editPrivacy;
 		this.viewPrivacy = viewPrivacy;
-		this.createDate = createDate;
-		this.lastModifiedDate = createDate;
 	}
 
 	public String getName() {
@@ -56,22 +52,6 @@ public class QuestionnairePreviewDTO extends EntityDTO{
 
 	public void setViewPrivacy(String[] viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
-	}
-
-	public LocalDate getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(LocalDate createDate) {
-		this.createDate = createDate;
-	}
-
-	public LocalDate getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public void setLastModifiedDate(LocalDate lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
 	}
 	
 }

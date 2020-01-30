@@ -49,12 +49,11 @@ public class Questionnaire extends EntityRoot{
 		this.viewPrivacy = viewPrivacy;
 	}
 
-	public Questionnaire(long id, String name, Qtype qType, String[] viewPrivacy, LocalDate date) {
+	public Questionnaire(long id, String name, Qtype qType, String[] viewPrivacy) {
 		setId(id);
 		this.name = name;
 		this.qType = qType;
 		this.viewPrivacy = viewPrivacy;
-		setCreateDate(date);
 	}
 	
 	public Set<Question> getQuestionList() {

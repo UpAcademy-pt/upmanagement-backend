@@ -24,8 +24,10 @@ public class QuestionnaireDTO extends EntityDTO{
 	public QuestionnaireDTO() {}
 
 	public QuestionnaireDTO(long id, Set<QuestionDTO> questionList, String name, long accountId, Qtype qType,
-			String[] editPrivacy, String[] viewPrivacy, Set<AnswerDTO> answerList, int score) {
+			String[] editPrivacy, String[] viewPrivacy, Set<AnswerDTO> answerList, int score, long createDate, long lastModifiedDate) {
 		setId(id);
+		setCreateDate(createDate);
+		setLastModifiedDate(lastModifiedDate);
 		this.questionList = questionList;
 		this.name = name;
 		this.accountId = accountId;

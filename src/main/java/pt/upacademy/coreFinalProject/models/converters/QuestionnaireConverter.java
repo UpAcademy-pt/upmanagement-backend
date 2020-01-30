@@ -36,6 +36,8 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 				questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0
 				)).collect(Collectors.toSet()));
 		questionnaire.setScore(dto.getScore());
+		questionnaire.setCreateDate(dto.getCreateDate());
+		questionnaire.setLastModifiedDate(dto.getLastModifiedDate());
 		return questionnaire;
 	}
 	
@@ -67,6 +69,8 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 			return answerDTO;
 		}).collect(Collectors.toSet()));
 		questionnaireDTO.setScore(entity.getScore());
+		questionnaireDTO.setCreateDate(entity.getCreateDate());
+		questionnaireDTO.setLastModifiedDate(entity.getLastModifiedDate());
 		return questionnaireDTO;
 	}
 	//long id, long questionaireId, String answer, long questionId)
@@ -87,6 +91,8 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setqType(template.getqType());
 		questionnaireDTO.setEditPrivacy(template.getEditPrivacy());
 		questionnaireDTO.setViewPrivacy(template.getViewPrivacy());
+		questionnaireDTO.setCreateDate(template.getCreateDate());
+		questionnaireDTO.setLastModifiedDate(template.getLastModifiedDate());
 		return questionnaireDTO;
 	}
 	
@@ -115,7 +121,9 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 								answer.getAnswer(),
 								answer.getQuestionId()
 								)).collect(Collectors.toSet()),
-						quest.getScore()
+						quest.getScore(),
+						quest.getCreateDate(),
+						quest.getLastModifiedDate()
 						)
 						).collect(Collectors.toList());
 	}
@@ -130,8 +138,6 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 				quest.getCreateDate(),
 				quest.getLastModifiedDate()
 				)).collect(Collectors.toList());
-		
-		
 	}
 	
 }
