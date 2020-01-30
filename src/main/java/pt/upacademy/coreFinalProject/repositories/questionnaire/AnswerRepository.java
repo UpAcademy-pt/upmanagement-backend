@@ -1,8 +1,9 @@
-package pt.upacademy.coreFinalProject.repositories;
+package pt.upacademy.coreFinalProject.repositories.questionnaire;
 
 import javax.enterprise.context.RequestScoped;
 
-import pt.upacademy.coreFinalProject.models.Answer;
+import pt.upacademy.coreFinalProject.models.questionnaire.Answer;
+import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
 
 @RequestScoped
 public class AnswerRepository extends EntityRepository<Answer>{

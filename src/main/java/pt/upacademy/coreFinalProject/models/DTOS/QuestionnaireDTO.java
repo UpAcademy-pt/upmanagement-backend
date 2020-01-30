@@ -2,13 +2,8 @@ package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.Set;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
-import pt.upacademy.coreFinalProject.models.Answer;
-import pt.upacademy.coreFinalProject.models.Qtype;
-import pt.upacademy.coreFinalProject.models.Role;
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+import pt.upacademy.coreFinalProject.models.questionnaire.Qtype;
 
 public class QuestionnaireDTO extends EntityDTO{
 

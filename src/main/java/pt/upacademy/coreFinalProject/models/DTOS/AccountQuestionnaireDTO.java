@@ -1,16 +1,17 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
 import java.util.List;
-import java.util.Set;
 
-public class AccountDTO extends EntityDTO{
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+
+public class AccountQuestionnaireDTO extends EntityDTO{
 	private long userId;
 	private List<QuestionnairePreviewDTO> pendingQuestionnaires;
 		  	
-	public AccountDTO() {}
+	public AccountQuestionnaireDTO() {}
 		  
 	
-	public AccountDTO(long id, long userId, List<QuestionnairePreviewDTO> pendingQuentionnaires) {
+	public AccountQuestionnaireDTO(long id, long userId, List<QuestionnairePreviewDTO> pendingQuentionnaires) {
 		 setId(id);
 		 this.userId = userId;
 		 this.pendingQuestionnaires = pendingQuentionnaires;

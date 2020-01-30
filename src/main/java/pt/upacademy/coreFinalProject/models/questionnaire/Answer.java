@@ -1,9 +1,11 @@
-package pt.upacademy.coreFinalProject.models;
+package pt.upacademy.coreFinalProject.models.questionnaire;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+
+import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = Answer.GET_ALL_ANSWERS, query = "SELECT a FROM Answer a")})

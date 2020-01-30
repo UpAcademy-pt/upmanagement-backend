@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import pt.upacademy.coreFinalProject.models.AnswerType;
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+import pt.upacademy.coreFinalProject.models.questionnaire.AnswerType;
 
 public class QuestionDTO extends EntityDTO {
 

@@ -8,12 +8,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import pt.upacademy.coreFinalProject.controllers.EntityController;
-import pt.upacademy.coreFinalProject.models.Template;
+import pt.upacademy.coreFinalProject.controllers.core.EntityController;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnaireDTO;
 import pt.upacademy.coreFinalProject.models.converters.QuestionnaireConverter;
-import pt.upacademy.coreFinalProject.repositories.TemplateRepository;
-import pt.upacademy.coreFinalProject.services.TemplateService;
+import pt.upacademy.coreFinalProject.models.questionnaire.Template;
+import pt.upacademy.coreFinalProject.repositories.questionnaire.TemplateRepository;
+import pt.upacademy.coreFinalProject.services.questionnaire.TemplateService;
 
 @Path("questionnaire/template")
 @RequestScoped

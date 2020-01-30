@@ -4,15 +4,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import pt.upacademy.coreFinalProject.models.Answer;
-import pt.upacademy.coreFinalProject.models.Qtype;
-import pt.upacademy.coreFinalProject.models.Question;
-import pt.upacademy.coreFinalProject.models.Questionnaire;
-import pt.upacademy.coreFinalProject.models.Template;
 import pt.upacademy.coreFinalProject.models.DTOS.AnswerDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnaireDTO;
 import pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
+import pt.upacademy.coreFinalProject.models.questionnaire.Answer;
+import pt.upacademy.coreFinalProject.models.questionnaire.Question;
+import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
+import pt.upacademy.coreFinalProject.models.questionnaire.Template;
 
 public class QuestionnaireConverter extends EntityConverter<Questionnaire, QuestionnaireDTO>{
 

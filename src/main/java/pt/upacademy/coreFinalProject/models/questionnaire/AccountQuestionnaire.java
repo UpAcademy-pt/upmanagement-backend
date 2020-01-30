@@ -1,17 +1,19 @@
-package pt.upacademy.coreFinalProject.models;
+package pt.upacademy.coreFinalProject.models.questionnaire;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+import pt.upacademy.coreFinalProject.models.core.EntityRoot;
+
 
 @Entity
-@NamedQueries({ @NamedQuery(name = Account.GET_ALL_ACCOUNTS, query = "SELECT a FROM Account a"),
-				@NamedQuery(name = Account.GET_ACCOUNT_BY_USERID, query = "SELECT a FROM Account a WHERE a.userId = :id"),
-				@NamedQuery(name = Account.GET_ACCOUNT_ID_LIST_BY_USERID_LIST, query = "SELECT a.id FROM Account a WHERE a.userId IN (:ids)")})
+@NamedQueries({ @NamedQuery(name = AccountQuestionnaire.GET_ALL_ACCOUNTS, query = "SELECT a FROM AccountQuestionnaire a"),
+				@NamedQuery(name = AccountQuestionnaire.GET_ACCOUNT_BY_USERID, query = "SELECT a FROM AccountQuestionnaire a WHERE a.userId = :id"),
+				@NamedQuery(name = AccountQuestionnaire.GET_ACCOUNT_ID_LIST_BY_USERID_LIST, query = "SELECT a.id FROM AccountQuestionnaire a WHERE a.userId IN (:ids)")})
 
 
-public class Account extends EntityRoot {
+public class AccountQuestionnaire extends EntityRoot {
 	
 
 	public static final String GET_ALL_ACCOUNTS = "getAllAccounts";
@@ -22,9 +24,9 @@ public class Account extends EntityRoot {
 	private long userId;
 	private long[] userAcademies;
 
-	public Account() {}
+	public AccountQuestionnaire() {}
 
-	public Account(long id, long userId, long[] userAcademies) {
+	public AccountQuestionnaire(long id, long userId, long[] userAcademies) {
 		setId(id);
 		this.userId = userId;
 		this.userAcademies = userAcademies;

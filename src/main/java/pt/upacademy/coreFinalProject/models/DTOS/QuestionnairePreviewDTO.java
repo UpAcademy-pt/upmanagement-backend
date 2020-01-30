@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
-import pt.upacademy.coreFinalProject.models.Qtype;
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+import pt.upacademy.coreFinalProject.models.questionnaire.Qtype;
 
 
 public class QuestionnairePreviewDTO extends EntityDTO{

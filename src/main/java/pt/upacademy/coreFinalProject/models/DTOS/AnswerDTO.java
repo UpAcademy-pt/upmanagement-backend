@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.models.DTOS;
 
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+
 public class AnswerDTO extends EntityDTO{
 
 	private long questionnaireId;

@@ -1,11 +1,11 @@
-package pt.upacademy.coreFinalProject.repositories;
+package pt.upacademy.coreFinalProject.repositories.questionnaire;
 
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 
-import pt.upacademy.coreFinalProject.models.Questionnaire;
-import pt.upacademy.coreFinalProject.models.DTOS.QuestionnairePreviewDTO;
+import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
+import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
 
 @RequestScoped
 public class QuestionnaireRepository extends EntityRepository<Questionnaire>{
