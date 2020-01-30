@@ -1,15 +1,16 @@
 package pt.upacademy.coreFinalProject.models.academyManager.DTOS;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
 
 public class ModuleDTO extends EntityDTO {
 
-	private List<Long> evaluationIds;
-	private List<Long> themesIds;
+	private List<Long> evaluationIds = new ArrayList<>();
+	private List<Long> themesIds = new ArrayList<>();
 	private String name;
-	private List<Long> teachersIds;
+	private List<Long> teachersIds = new ArrayList<>();
 	
 	public ModuleDTO() {}
 
