@@ -23,7 +23,7 @@ public class AnswerController extends EntityController <AnswerService, AnswerRep
 	AnswerService AS;
 	
 	@GET
-	@Path("/edition/{id}")
+	@Path("/question/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<AnswerForum> getAnswersByQuestionId(@PathParam("id") long id) {
 		return AS.getAnswersByQuestionId(id);
