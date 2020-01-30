@@ -24,8 +24,8 @@ public class Question extends EntityRoot {
 
 	public Question() {}
 
-	public Question(Questionnaire questionnaire, String question, AnswerType aType, String[] options, int[] rightAnswer) {
-		//setId(id);
+	public Question(long id, Questionnaire questionnaire, String question, AnswerType aType, String[] options, int[] rightAnswer) {
+		setId(id);
 		this.questionnaire = questionnaire;
 		this.question = question;
 		this.aType = aType;
