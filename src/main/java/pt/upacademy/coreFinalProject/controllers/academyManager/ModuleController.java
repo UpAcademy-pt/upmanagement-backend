@@ -11,11 +11,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
-import pt.upacademy.coreFinalProject.models.Module;
-import pt.upacademy.coreFinalProject.models.DTOS.ModuleDTO;
-import pt.upacademy.coreFinalProject.models.converters.ModuleConverter;
-import pt.upacademy.coreFinalProject.repositories.ModuleRepository;
-import pt.upacademy.coreFinalProject.services.ModuleService;
+import pt.upacademy.coreFinalProject.models.academyManager.Module;
+import pt.upacademy.coreFinalProject.models.academyManager.DTOS.ModuleDTO;
+import pt.upacademy.coreFinalProject.models.academyManager.converters.ModuleConverter;
+import pt.upacademy.coreFinalProject.repositories.academyManager.ModuleRepository;
+import pt.upacademy.coreFinalProject.services.academyManager.ModuleService;
 
 @Path("academy-manager/modules")
 @RequestScoped

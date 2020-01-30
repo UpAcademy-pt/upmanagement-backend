@@ -12,15 +12,15 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
-import pt.upacademy.coreFinalProject.models.Account;
-import pt.upacademy.coreFinalProject.models.DTOS.AccountDTO;
-import pt.upacademy.coreFinalProject.models.converters.AccountConverter;
-import pt.upacademy.coreFinalProject.repositories.AccountRepository;
-import pt.upacademy.coreFinalProject.services.AccountService;
+import pt.upacademy.coreFinalProject.models.academyManager.AccountAcademy;
+import pt.upacademy.coreFinalProject.models.academyManager.DTOS.AccountDTO;
+import pt.upacademy.coreFinalProject.models.academyManager.converters.AccountConverter;
+import pt.upacademy.coreFinalProject.repositories.academyManager.AccountRepository;
+import pt.upacademy.coreFinalProject.services.academyManager.AccountService;
 
 @Path("academy-manager/accounts")
 @RequestScoped
-public class AccountController extends EntityControllerDTO<AccountService,AccountRepository,AccountConverter,Account,AccountDTO> {
+public class AccountController extends EntityControllerDTO<AccountService,AccountRepository,AccountConverter,AccountAcademy,AccountDTO> {
 	
 	@GET
 	@Path("/q")
@@ -34,7 +34,7 @@ public class AccountController extends EntityControllerDTO<AccountService,Accoun
 	@Produces(MediaType.APPLICATION_JSON)
 	public AccountDTO getByUserId(@PathParam("userId") long userId) {
 		//try {
-		Account account = service.getByUserId(userId);
+		AccountAcademy account = service.getByUserId(userId);
 		if(account != null) {
 			return converter.toDTO(service.getByUserId(userId));
 		}

@@ -15,11 +15,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import pt.upacademy.coreFinalProject.controllers.EntityControllerDTO;
-import pt.upacademy.coreFinalProject.models.MissedClass;
-import pt.upacademy.coreFinalProject.models.DTOS.MissedClassDTO;
-import pt.upacademy.coreFinalProject.models.converters.MissedClassConverter;
-import pt.upacademy.coreFinalProject.repositories.MissedClassRepository;
-import pt.upacademy.coreFinalProject.services.MissedClassService;
+import pt.upacademy.coreFinalProject.models.academyManager.MissedClass;
+import pt.upacademy.coreFinalProject.models.academyManager.DTOS.MissedClassDTO;
+import pt.upacademy.coreFinalProject.models.academyManager.converters.MissedClassConverter;
+import pt.upacademy.coreFinalProject.repositories.academyManager.MissedClassRepository;
+import pt.upacademy.coreFinalProject.services.academyManager.MissedClassService;
 
 @Path("academy-manager/missed")
 @RequestScoped
