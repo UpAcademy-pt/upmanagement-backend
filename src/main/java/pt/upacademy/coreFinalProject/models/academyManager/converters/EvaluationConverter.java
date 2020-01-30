@@ -1,7 +1,5 @@
 package pt.upacademy.coreFinalProject.models.academyManager.converters;
 
-import java.util.stream.Collectors;
-
 import javax.inject.Inject;
 
 import pt.upacademy.coreFinalProject.models.academyManager.Evaluation;
@@ -22,7 +20,7 @@ public class EvaluationConverter extends EntityConverter<Evaluation, EvaluationD
 		Evaluation evaluationEntity = new Evaluation();
 		evaluationEntity.setId(dto.getId());
 		evaluationEntity.setAccount(accService.get(dto.getAccountId()));
-		evaluationEntity.setGrades(dto.getGradesIds().stream().map(gradesIds -> gradeService.get(gradesIds)).collect(Collectors.toSet()));
+		evaluationEntity.setGrades(dto.getGrades());
 		evaluationEntity.setComment(dto.getComment());
 		return evaluationEntity;
 	}
@@ -32,7 +30,7 @@ public class EvaluationConverter extends EntityConverter<Evaluation, EvaluationD
 		EvaluationDTO evaluationDto = new EvaluationDTO();
 		evaluationDto.setId(entity.getId());
 		evaluationDto.setAccountId(entity.getAccount().getId());
-		evaluationDto.setGradesIds(entity.getGrades().parallelStream().map(grades -> grades.getId()).collect(Collectors.toList()));
+		evaluationDto.setGrades(entity.getGrades());
 		evaluationDto.setComment(entity.getComment());
 		return evaluationDto;
 	}
