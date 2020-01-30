@@ -1,11 +1,13 @@
-package pt.upacademy.coreFinalProject.repositories;
+package pt.upacademy.coreFinalProject.repositories.core;
 
+import java.time.Instant;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import pt.upacademy.coreFinalProject.models.EntityRoot;
+import pt.upacademy.coreFinalProject.models.core.EntityRoot;
+
 
 public abstract class EntityRepository<E extends EntityRoot> {
 
@@ -13,6 +15,7 @@ public abstract class EntityRepository<E extends EntityRoot> {
 	protected EntityManager entityManager;
 
 	public long addEntity(E entity) {
+		entity.setCreateDate(Instant.now().toEpochMilli());
 		return entityManager.merge(entity).getId();
 	}
 
@@ -30,6 +33,7 @@ public abstract class EntityRepository<E extends EntityRoot> {
 	}
 
 	public void editEntity(E entity) {
+		entity.setLastModifiedDate(Instant.now().toEpochMilli());
 		entityManager.merge(entity);
 	}
 

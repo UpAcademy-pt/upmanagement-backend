@@ -1,4 +1,4 @@
-package pt.upacademy.coreFinalProject.controllers;
+package pt.upacademy.coreFinalProject.controllers.core;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -15,11 +15,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import pt.upacademy.coreFinalProject.models.EntityRoot;
-import pt.upacademy.coreFinalProject.models.DTOS.EntityDTO;
-import pt.upacademy.coreFinalProject.models.converters.EntityConverter;
-import pt.upacademy.coreFinalProject.repositories.EntityRepository;
-import pt.upacademy.coreFinalProject.services.EntityService;
+import pt.upacademy.coreFinalProject.models.core.EntityRoot;
+import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
+import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
+import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
+import pt.upacademy.coreFinalProject.services.core.EntityService;
 
 
 public abstract class EntityControllerDTO<S extends EntityService<R, E>, R extends EntityRepository<E>, C extends EntityConverter< E, D>, E extends EntityRoot, D extends EntityDTO> {
@@ -30,6 +30,12 @@ public abstract class EntityControllerDTO<S extends EntityService<R, E>, R exten
 	
 	@Inject
 	protected C converter;
+	
+//	@GET
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Collection<D> get() {
+//		return service.get().stream().map(E -> converter.toDTO(E)).collect(Collectors.toList());
+//	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -69,17 +75,37 @@ public abstract class EntityControllerDTO<S extends EntityService<R, E>, R exten
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String update(D user) {
+	public Response update(D user) {
+		try {
 		service.update(converter.toEntity(user));
-		return "Update Done!";
+		return Response.ok().build();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
+		
 	}
 	
+//	@DELETE
+//	@Path("/{id}")
+//	@Produces(MediaType.TEXT_PLAIN)
+//	public String delete(@PathParam("id") long id) {
+//		service.delete(id);
+//		return "Delete Done!";
+//	}
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String delete(@PathParam("id") long id) {
+	public Response delete(@PathParam("id") long id) {
+		try {
 		service.delete(id);
-		return "Delete Done!";
+		return Response.ok().build();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return Response.status(400).entity(e.getMessage()).build(); 
+		}
 	}
 	
 }
