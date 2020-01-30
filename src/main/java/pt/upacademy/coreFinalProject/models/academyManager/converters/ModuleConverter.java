@@ -20,7 +20,9 @@ public class ModuleConverter extends EntityConverter<Module, ModuleDTO> {
 	@Override
 	public Module toEntity(ModuleDTO dto) {
 		Module moduleEntity = new Module();
-		moduleEntity.setId(dto.getId());
+		if(dto.getId() != 0) {
+			moduleEntity.setId(dto.getId());
+		}
 		moduleEntity.setEvaluation(dto.getEvaluationIds().stream().map(evaluationId -> evalService.get(evaluationId)).collect(Collectors.toSet()));
 		moduleEntity.setThemes(dto.getThemesIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toSet()));
 		moduleEntity.setName(dto.getName());
@@ -30,7 +32,9 @@ public class ModuleConverter extends EntityConverter<Module, ModuleDTO> {
 	@Override
 	public ModuleDTO toDTO(Module entity) {
 		ModuleDTO moduleDto = new ModuleDTO();
-		moduleDto.setId(entity.getId());
+		if(entity.getId() != 0) {
+			moduleDto.setId(entity.getId());
+		}
 		moduleDto.setEvaluationIds(entity.getEvaluation().stream().map(evaluation -> evaluation.getId()).collect(Collectors.toList()));
 		moduleDto.setThemesIds(entity.getThemes().stream().map(theme -> theme.getId()).collect(Collectors.toList()));
 		moduleDto.setName(entity.getName());
