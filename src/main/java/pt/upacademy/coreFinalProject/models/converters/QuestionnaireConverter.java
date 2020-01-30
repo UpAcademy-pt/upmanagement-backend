@@ -36,6 +36,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 				a.getId() > 0 ? a.getId() : 0, questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0
 				)).collect(Collectors.toSet()));
 		questionnaire.setScore(dto.getScore());
+		questionnaire.setTemplateId(dto.getTemplateId());
 		questionnaire.setCreateDate(dto.getCreateDate());
 		questionnaire.setLastModifiedDate(dto.getLastModifiedDate());
 		return questionnaire;
@@ -69,6 +70,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 			return answerDTO;
 		}).collect(Collectors.toSet()));
 		questionnaireDTO.setScore(entity.getScore());
+		questionnaireDTO.setTemplateId(entity.getTemplateId());
 		questionnaireDTO.setCreateDate(entity.getCreateDate());
 		questionnaireDTO.setLastModifiedDate(entity.getLastModifiedDate());
 		return questionnaireDTO;
@@ -96,9 +98,9 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		return questionnaireDTO;
 	}
 	
-	public List<QuestionnaireDTO> listToDTO(List<Questionnaire> entity){
+	public List<QuestionnaireDTO> listToDTO(List<Questionnaire> entities){
 		//Set<AnswerDTO> emptyAnswer = new HashSet<AnswerDTO>();
-		return entity.stream()
+		return entities.stream()
 				.map(quest -> new QuestionnaireDTO(
 						quest.getId(),
 						quest.getQuestionList().stream().map(question -> new QuestionDTO(
@@ -122,14 +124,15 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 								answer.getQuestionId()
 								)).collect(Collectors.toSet()),
 						quest.getScore(),
+						quest.getTemplateId(),
 						quest.getCreateDate(),
 						quest.getLastModifiedDate()
 						)
 						).collect(Collectors.toList());
 	}
 	
-	public List<QuestionnairePreviewDTO> questListToPreviewDTO(List<Questionnaire> entity){
-		return entity.stream().map(quest -> new QuestionnairePreviewDTO(
+	public List<QuestionnairePreviewDTO> questListToPreviewDTO(List<Questionnaire> entities){
+		return entities.stream().map(quest -> new QuestionnairePreviewDTO(
 				quest.getId(),
 				quest.getName(),
 				quest.getqType(),

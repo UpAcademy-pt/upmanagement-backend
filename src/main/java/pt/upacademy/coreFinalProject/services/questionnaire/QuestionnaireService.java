@@ -14,7 +14,7 @@ import pt.upacademy.coreFinalProject.services.core.EntityService;
 public class QuestionnaireService extends EntityService<QuestionnaireRepository, Questionnaire> {
 
 	@Inject
-	AccountQuestionnaireService ACCOUNT_SERVICE;
+	private AccountQuestionnaireService accountQuestionnaireService;
 	
 
 	public List<Questionnaire> getEmptyQuestionnairesByAccountId(long id) {
@@ -27,7 +27,7 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 	
 	public void createWithAccountId(List<String> userIds, Questionnaire quest) {
 		List<Long> userIdsLong = userIds.stream().map(Long::valueOf).collect(Collectors.toList());
-		List<Long> accountIds = ACCOUNT_SERVICE.getAccountIdListByUserList(userIdsLong);
+		List<Long> accountIds = accountQuestionnaireService.getAccountIdListByUserList(userIdsLong);
 		accountIds.stream().forEach(id -> {
 			quest.setAccountId(id);
 			create(quest);
