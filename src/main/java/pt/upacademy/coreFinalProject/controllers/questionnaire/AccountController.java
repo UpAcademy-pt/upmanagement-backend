@@ -24,7 +24,7 @@ public class AccountController extends EntityControllerDTO<AccountQuestionnaireS
 //	}
 	
 	@GET
-    @Path("/{id}")
+    @Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
     public AccountQuestionnaireDTO getAccountbyId(@PathParam("id") long id) {
 		
@@ -35,7 +35,7 @@ public class AccountController extends EntityControllerDTO<AccountQuestionnaireS
     }
 	
 	@GET
-    @Path("/user/{id}")
+    @Path("user/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
     public AccountQuestionnaireDTO getAccountByUserId(@PathParam("id") long userId) {
 		return converter.toDTO(service.getAccountByUserId(userId));

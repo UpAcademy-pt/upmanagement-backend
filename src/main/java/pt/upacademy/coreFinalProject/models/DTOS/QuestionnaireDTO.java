@@ -15,11 +15,14 @@ public class QuestionnaireDTO extends EntityDTO{
 	private String[] viewPrivacy;
 	private Set<AnswerDTO> answerList;
 	private int score;
+	private long templateId;
 	
+
 	public QuestionnaireDTO() {}
 
 	public QuestionnaireDTO(long id, Set<QuestionDTO> questionList, String name, long accountId, Qtype qType,
-			String[] editPrivacy, String[] viewPrivacy, Set<AnswerDTO> answerList, int score, long createDate, long lastModifiedDate) {
+			String[] editPrivacy, String[] viewPrivacy, Set<AnswerDTO> answerList, int score, long templateId, long createDate,
+			long lastModifiedDate) {
 		setId(id);
 		setCreateDate(createDate);
 		setLastModifiedDate(lastModifiedDate);
@@ -31,6 +34,7 @@ public class QuestionnaireDTO extends EntityDTO{
 		this.viewPrivacy = viewPrivacy;
 		this.answerList = answerList;
 		this.score = score;
+		this.templateId = templateId;
 	}
 
 	public Set<QuestionDTO> getQuestionList() {
@@ -97,6 +101,12 @@ public class QuestionnaireDTO extends EntityDTO{
 		this.score = score;
 	}
 
-	
+	public long getTemplateId() {
+		return templateId;
+	}
+
+	public void setTemplateId(long templateId) {
+		this.templateId = templateId;
+	}
 	
 }

@@ -36,11 +36,12 @@ public class Questionnaire extends EntityRoot{
 	private String[] editPrivacy;
 	private String[] viewPrivacy;
 	private int score;
+	private long templateId;
 	
 	public Questionnaire() {}
 
 	public Questionnaire(long id, Set<Question> questionList, String name, long accountId, Qtype qType, String[] editPrivacy,
-			String[] viewPrivacy) {
+			String[] viewPrivacy, long templateId) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -48,6 +49,7 @@ public class Questionnaire extends EntityRoot{
 		this.qType = qType;
 		this.editPrivacy = editPrivacy;
 		this.viewPrivacy = viewPrivacy;
+		this.templateId = templateId;
 	}
 
 	public Questionnaire(long id, String name, Qtype qType, String[] viewPrivacy) {
@@ -121,4 +123,11 @@ public class Questionnaire extends EntityRoot{
 		this.viewPrivacy = viewPrivacy;
 	}
 
+	public long getTemplateId() {
+		return templateId;
+	}
+
+	public void setTemplateId(long templateId) {
+		this.templateId = templateId;
+	}
 }
