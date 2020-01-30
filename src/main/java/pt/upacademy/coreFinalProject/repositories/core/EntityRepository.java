@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.repositories.core;
 
+import java.time.Instant;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ public abstract class EntityRepository<E extends EntityRoot> {
 	protected EntityManager entityManager;
 
 	public long addEntity(E entity) {
+		entity.setCreateDate(Instant.now().toEpochMilli());
 		return entityManager.merge(entity).getId();
 	}
 
@@ -31,13 +33,12 @@ public abstract class EntityRepository<E extends EntityRoot> {
 	}
 
 	public void editEntity(E entity) {
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>" + entity.getClass() + entity + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		entity.setLastModifiedDate(Instant.now().toEpochMilli());
 		entityManager.merge(entity);
 	}
 
 	public void deleteEntity(long id) {
 		E entity = entityManager.find(getEntityClass(), id);
-		System.out.println("----------DDDDDD------------->" + entity + "<------------------DDDDD------------------");
 		entityManager.remove(entity);
 
 	}
