@@ -1,33 +1,38 @@
 package pt.upacademy.coreFinalProject.controllers.questionnaire;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import pt.upacademy.coreFinalProject.controllers.core.EntityController;
-import pt.upacademy.coreFinalProject.models.questionnaire.Template;
+import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
+import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnaireDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.converters.QuestionnaireConverter;
-import pt.upacademy.coreFinalProject.repositories.questionnaire.TemplateRepository;
-import pt.upacademy.coreFinalProject.services.questionnaire.TemplateService;
+import pt.upacademy.coreFinalProject.repositories.questionnaire.QuestionnaireRepository;
+import pt.upacademy.coreFinalProject.services.questionnaire.QuestionnaireService;
+
 
 @Path("questionnaire/template")
 @RequestScoped
-public class TemplateController extends EntityController<TemplateService, TemplateRepository, Template>{
+public class TemplateController extends EntityControllerDTO<QuestionnaireService, QuestionnaireRepository, QuestionnaireConverter, Questionnaire, QuestionnaireDTO>{
 
-//	@Inject
-//	private QuestionnaireConverter questionnaireConverter;
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+    public List<QuestionnaireDTO> getAllTemplates() {
+		return converter.listToDTO(service.getAllTemplates());
+							
+    }
 	
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Template getQuestionnaireFromTemplate(@PathParam("id") long id) {
-		return service.get(id); 
-	}
-	
+    public QuestionnaireDTO getTemplateById(@PathParam("id") long id) {
+		return converter.toDTO(service.getTemplateById(id));
+    }
 }

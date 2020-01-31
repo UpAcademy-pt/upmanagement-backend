@@ -65,4 +65,6 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
 		return converter.questListToPreviewDTO(service.getAnsweredQuestionnairesByAccountId(id));
 			
     }
+	
+	
 }

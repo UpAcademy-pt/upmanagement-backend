@@ -15,7 +15,7 @@ public class AnswerRepository extends EntityRepository<Answer>{
 
 	@Override
 	protected String getAllEntities() {
-		return Answer.GET_ALL_ANSWERS;
+		return Answer.GET_ALL_ANSWERS_;
 	}
 
 }
