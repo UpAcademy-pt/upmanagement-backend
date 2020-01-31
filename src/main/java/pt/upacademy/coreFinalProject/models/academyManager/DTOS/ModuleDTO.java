@@ -13,13 +13,15 @@ public class ModuleDTO extends EntityDTO {
 	private List<Long> evaluationIds = new ArrayList<Long>();
 	private Set<Theme> themes = new HashSet<Theme>();
 	private String name;
+	private List<Long> teacherIds= new ArrayList<Long>();
 	
 	public ModuleDTO() {}
 
-	public ModuleDTO(List<Long> evaluationIds, Set<Theme> themes, String name) {
+	public ModuleDTO(List<Long> evaluationIds, Set<Theme> themes, String name, List<Long> teacherIds) {
 		this.evaluationIds = evaluationIds;
 		this.themes = themes;
 		this.name = name;
+		this.teacherIds = teacherIds;
 	}
 
 	public List<Long> getEvaluationIds() {
@@ -34,7 +36,7 @@ public class ModuleDTO extends EntityDTO {
 		return themes;
 	}
 
-	public void setThemesIds(Set<Theme> themes) {
+	public void setThemes(Set<Theme> themes) {
 		this.themes = themes;
 	}
 
@@ -45,5 +47,15 @@ public class ModuleDTO extends EntityDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<Long> getTeacherIds() {
+		return teacherIds;
+	}
+
+	public void setTeacherIds(List<Long> teacherIds) {
+		this.teacherIds = teacherIds;
+	}
+
+	
 
 }

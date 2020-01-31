@@ -41,7 +41,6 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		academy.setWarning(dto.getWarning());  		  		 //GONCALO
 		academy.setUsefulInfo(dto.getUsefulInfo());   		 //GONCALO
 		academy.setAcademyType(dto.getAcademyType());  		 //GONCALO
-		academy.setTeachers(dto.getTeachersIds().stream().map(teacherId -> accountService.get(teacherId)).collect(Collectors.toSet()));
 		return academy;
 		
 		
@@ -68,7 +67,6 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		academyDTO.setWarning(entity.getWarning());  		 	//GONCALO
 		academyDTO.setUsefulInfo(entity.getUsefulInfo());     	//GONCALO
 		academyDTO.setAcademyType(entity.getAcademyType());	  	//GONCALO
-		academyDTO.setTeachersIds(entity.getTeachers().stream().map(teacher -> teacher.getId()).collect(Collectors.toList()));
 		return academyDTO;
 		
 	

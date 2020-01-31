@@ -27,14 +27,25 @@ public class Module extends EntityRoot {
 	private Set<Theme> themes;
 	private String name;
 	private String evaluationSubjects;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Set<AccountAcademy> teachers;
 
 	public Module() {}
 	
-	public Module(Set<Evaluation> evaluation, Set<Theme> themes, String name, String evaluationSubjects) {
+	public Module(Set<Evaluation> evaluation, Set<Theme> themes, String name, String evaluationSubjects, Set<AccountAcademy> teachers) {
 		this.evaluation = evaluation;
 		this.themes = themes;
 		this.name = name;
 		this.evaluationSubjects = evaluationSubjects;
+		this.teachers = teachers;
+	}
+
+	public Set<AccountAcademy> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(Set<AccountAcademy> teachers) {
+		this.teachers = teachers;
 	}
 
 	public Set<Evaluation> getEvaluation() {

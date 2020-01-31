@@ -20,10 +20,9 @@ public class AcademyDTO extends EntityDTO {
     private String warning;			 //GONÇALO
     private String usefulInfo;		 //GONÇALO
     private String academyType;		 //GONÇALO
-    private List<Long> teachersIds = new ArrayList<Long>();
     
     public void Academy(String client, String startDate, String endDate, String edName, Set<Module> modules, List<Long> studentsIds, Status status, String warning, 
-    		String usefulInfo, List<Long> teachersIds) {
+    		String usefulInfo) {
 		this.setClient(client);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
@@ -34,16 +33,7 @@ public class AcademyDTO extends EntityDTO {
 		this.setWarning(warning);			//GONÇALO
 		this.setUsefulInfo(usefulInfo);		//GONÇALO
 		this.setAcademyType(usefulInfo);    //GONÇALO
-		this.setTeachersIds(teachersIds);
     }
-
-	public List<Long> getTeachersIds() {
-		return teachersIds;
-	}
-
-	public void setTeachersIds(List<Long> teachersIds) {
-		this.teachersIds = teachersIds;
-	}
 
 	public Status getStatus() {
 		return status;
