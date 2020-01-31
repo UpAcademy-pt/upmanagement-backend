@@ -24,7 +24,7 @@ public class ModuleConverter extends EntityConverter<Module, ModuleDTO> {
 			moduleEntity.setId(dto.getId());
 		}
 		moduleEntity.setEvaluation(dto.getEvaluationIds().stream().map(evaluationId -> evalService.get(evaluationId)).collect(Collectors.toSet()));
-		moduleEntity.setThemes(dto.getThemesIds().stream().map(themeId -> themeService.get(themeId)).collect(Collectors.toSet()));
+		moduleEntity.setThemes(dto.getThemes());
 		moduleEntity.setName(dto.getName());
 		return moduleEntity;
 	}
@@ -36,7 +36,7 @@ public class ModuleConverter extends EntityConverter<Module, ModuleDTO> {
 			moduleDto.setId(entity.getId());
 		}
 		moduleDto.setEvaluationIds(entity.getEvaluation().stream().map(evaluation -> evaluation.getId()).collect(Collectors.toList()));
-		moduleDto.setThemesIds(entity.getThemes().stream().map(theme -> theme.getId()).collect(Collectors.toList()));
+		moduleDto.setThemesIds(entity.getThemes());
 		moduleDto.setName(entity.getName());
 		return moduleDto;
 	}
