@@ -17,7 +17,7 @@ import pt.upacademy.coreFinalProject.repositories.lessons.AccountRepository;
 import pt.upacademy.coreFinalProject.services.lessons.AccountService;
 
 @RequestScoped
-@Path ("/aulas/account")
+@Path ("/aulas/accounts")
 public class AccountController extends EntityControllerDTO <AccountService, AccountRepository,AccountConverter, AccountLessons, AccountDTO>{
 	@Inject
 	protected AccountConverter converter;
