@@ -1,4 +1,4 @@
-package pt.upacademy.coreFinalProject.models.DTOS;
+package pt.upacademy.coreFinalProject.models.questionnaire.DTOs;
 
 import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.AnswerType;

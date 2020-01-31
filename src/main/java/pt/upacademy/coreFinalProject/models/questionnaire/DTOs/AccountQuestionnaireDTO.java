@@ -1,4 +1,4 @@
-package pt.upacademy.coreFinalProject.models.DTOS;
+package pt.upacademy.coreFinalProject.models.questionnaire.DTOs;
 
 import java.util.List;
 

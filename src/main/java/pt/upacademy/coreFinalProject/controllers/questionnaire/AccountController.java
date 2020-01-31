@@ -8,9 +8,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
-import pt.upacademy.coreFinalProject.models.DTOS.AccountQuestionnaireDTO;
-import pt.upacademy.coreFinalProject.models.converters.AccountQuestionnaireConverter;
 import pt.upacademy.coreFinalProject.models.questionnaire.AccountQuestionnaire;
+import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.AccountQuestionnaireDTO;
+import pt.upacademy.coreFinalProject.models.questionnaire.converters.AccountQuestionnaireConverter;
 import pt.upacademy.coreFinalProject.repositories.questionnaire.AccountQuestionnaireRepository;
 import pt.upacademy.coreFinalProject.services.questionnaire.AccountQuestionnaireService;
 

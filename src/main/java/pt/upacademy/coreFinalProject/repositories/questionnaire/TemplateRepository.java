@@ -15,7 +15,7 @@ public class TemplateRepository extends EntityRepository<Template> {
 
 	@Override
 	protected String getAllEntities() {
-		return "LOL"; //Template.GET_ALL_TEMPLATES;;
+		return Template.GET_ALL_TEMPLATES;
 	}
 
 }

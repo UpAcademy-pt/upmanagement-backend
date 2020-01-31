@@ -5,14 +5,18 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import pt.upacademy.coreFinalProject.models.core.EntityRoot;
+import pt.upacademy.coreFinalProject.models.core.User;
 
 @Entity
+@NamedQuery(name = Template.GET_ALL_TEMPLATES, query = "SELECT t FROM Template t")
 public class Template extends EntityRoot {
 	
 	private static final long serialVersionUID = 1L;
+	public static final String GET_ALL_TEMPLATES = "getAllTemplates";
 	
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private Set<Question> questionList;

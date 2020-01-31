@@ -1,10 +1,10 @@
-package pt.upacademy.coreFinalProject.models.converters;
+package pt.upacademy.coreFinalProject.models.questionnaire.converters;
 
 import javax.inject.Inject;
 
-import pt.upacademy.coreFinalProject.models.DTOS.AccountQuestionnaireDTO;
 import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.models.questionnaire.AccountQuestionnaire;
+import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.AccountQuestionnaireDTO;
 import pt.upacademy.coreFinalProject.services.questionnaire.QuestionnaireService;
 
 public class AccountQuestionnaireConverter extends EntityConverter<AccountQuestionnaire, AccountQuestionnaireDTO>{
