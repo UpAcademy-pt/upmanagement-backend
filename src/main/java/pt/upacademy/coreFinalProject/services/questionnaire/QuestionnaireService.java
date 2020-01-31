@@ -34,5 +34,12 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 		});		
 	}
 	
+	public List<Questionnaire> getAllTemplates() {
+		return repository.getAllTemplates();
 	
+	}
+	
+	public Questionnaire getTemplateById(long id) {
+		return repository.getTemplateById(id);
+	}
 }

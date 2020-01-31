@@ -29,4 +29,14 @@ public class QuestionnaireRepository extends EntityRepository<Questionnaire>{
 	
 	}
 	
+	public List<Questionnaire> getAllTemplates() {
+		return entityManager.createNamedQuery(Questionnaire.GET_ALL_TEMPLATES, Questionnaire.class).getResultList();
+	
+	}
+	
+	public Questionnaire getTemplateById(long id) {
+		return entityManager.createNamedQuery(Questionnaire.GET_ALL_TEMPLATES, Questionnaire.class).setParameter("id", id).getResultList().get(0);
+		
+	}
+	
 }

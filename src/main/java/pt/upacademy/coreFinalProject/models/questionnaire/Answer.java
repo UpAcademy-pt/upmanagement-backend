@@ -8,10 +8,10 @@ import javax.persistence.NamedQuery;
 import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = Answer.GET_ALL_ANSWERS, query = "SELECT a FROM Answer a")})
+@NamedQueries({ @NamedQuery(name = Answer.GET_ALL_ANSWERS_, query = "SELECT a FROM Answer a")})
 public class Answer extends EntityRoot{
 
-	public static final String GET_ALL_ANSWERS = "getAllAnswers";
+	public static final String GET_ALL_ANSWERS_ = "getAllAnswers";
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne

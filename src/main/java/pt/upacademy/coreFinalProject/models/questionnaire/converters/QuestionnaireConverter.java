@@ -8,7 +8,6 @@ import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.models.questionnaire.Answer;
 import pt.upacademy.coreFinalProject.models.questionnaire.Question;
 import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
-import pt.upacademy.coreFinalProject.models.questionnaire.Template;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.AnswerDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnaireDTO;
@@ -39,6 +38,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaire.setTemplateId(dto.getTemplateId());
 		questionnaire.setCreateDate(dto.getCreateDate());
 		questionnaire.setLastModifiedDate(dto.getLastModifiedDate());
+		questionnaire.setTemplate(dto.isTemplate());
 		return questionnaire;
 	}
 	
@@ -73,30 +73,10 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setTemplateId(entity.getTemplateId());
 		questionnaireDTO.setCreateDate(entity.getCreateDate());
 		questionnaireDTO.setLastModifiedDate(entity.getLastModifiedDate());
+		questionnaireDTO.setTemplate(entity.isTemplate());
 		return questionnaireDTO;
 	}
-	//long id, long questionaireId, String answer, long questionId)
-	public QuestionnaireDTO toDTO(Template template) {
-		QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO();
-		questionnaireDTO.setId(template.getId());
-		questionnaireDTO.setQuestionList(template.getQuestionList().stream().map(e -> {
-			QuestionDTO questionDTO = new QuestionDTO();
-			questionDTO.setId(e.getId());
-			questionDTO.setQuestionnarieId(e.getQuestionnaire().getId());
-			questionDTO.setQuestion(e.getQuestion());
-			questionDTO.setaType(e.getaType());
-			questionDTO.setOptions(e.getOptions());
-			questionDTO.setRightAnswer(e.getRightAnswer());
-			return questionDTO;
-		}).collect(Collectors.toSet()));
-		questionnaireDTO.setName(template.getName());
-		questionnaireDTO.setqType(template.getqType());
-		questionnaireDTO.setEditPrivacy(template.getEditPrivacy());
-		questionnaireDTO.setViewPrivacy(template.getViewPrivacy());
-		questionnaireDTO.setCreateDate(template.getCreateDate());
-		questionnaireDTO.setLastModifiedDate(template.getLastModifiedDate());
-		return questionnaireDTO;
-	}
+	
 	
 	public List<QuestionnaireDTO> listToDTO(List<Questionnaire> entities){
 		//Set<AnswerDTO> emptyAnswer = new HashSet<AnswerDTO>();
@@ -126,7 +106,8 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 						quest.getScore(),
 						quest.getTemplateId(),
 						quest.getCreateDate(),
-						quest.getLastModifiedDate()
+						quest.getLastModifiedDate(),
+						quest.isTemplate()
 						)
 						).collect(Collectors.toList());
 	}
