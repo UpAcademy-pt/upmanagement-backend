@@ -11,7 +11,7 @@ import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 @NamedQueries({ @NamedQuery(name = Answer.GET_ALL_ANSWERS_, query = "SELECT a FROM Answer a")})
 public class Answer extends EntityRoot{
 
-	public static final String GET_ALL_ANSWERS_ = "getAllAnswers";
+	public static final String GET_ALL_ANSWERS_ = "getAllAnswers_";
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
