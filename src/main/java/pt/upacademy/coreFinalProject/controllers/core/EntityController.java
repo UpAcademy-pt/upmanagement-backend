@@ -41,9 +41,9 @@ public abstract class EntityController<S extends EntityService<R, E>, R extends 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String create(E entity) {
+	public long create(E entity) {
 		service.create(entity);
-		return "Create Done!";
+		return entity.getId();
 	}
 	
 	@PUT
