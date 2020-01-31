@@ -7,14 +7,12 @@ public class GradeRepository extends EntityRepository<Grade> {
 
 	@Override
 	protected Class<Grade> getEntityClass() {
-		// TODO Auto-generated method stub
-		return null;
+		return Grade.class;
 	}
 
 	@Override
 	protected String getAllEntities() {
-		// TODO Auto-generated method stub
-		return null;
+		return Grade.GET_ALL_GRADES;
 	}
 
 }
