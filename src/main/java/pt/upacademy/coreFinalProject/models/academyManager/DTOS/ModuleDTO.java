@@ -1,24 +1,27 @@
 package pt.upacademy.coreFinalProject.models.academyManager.DTOS;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import pt.upacademy.coreFinalProject.models.academyManager.Theme;
 import pt.upacademy.coreFinalProject.models.core.DTOS.EntityDTO;
 
 public class ModuleDTO extends EntityDTO {
 
-	private List<Long> evaluationIds = new ArrayList<>();
-	private List<Long> themesIds = new ArrayList<>();
+	private List<Long> evaluationIds = new ArrayList<Long>();
+	private Set<Theme> themes = new HashSet<Theme>();
 	private String name;
-	private List<Long> teachersIds = new ArrayList<>();
+	private List<Long> teacherIds= new ArrayList<Long>();
 	
 	public ModuleDTO() {}
 
-	public ModuleDTO(List<Long> evaluationIds, List<Long> themesIds, String name, List<Long> teachersIds) {
+	public ModuleDTO(List<Long> evaluationIds, Set<Theme> themes, String name, List<Long> teacherIds) {
 		this.evaluationIds = evaluationIds;
-		this.themesIds = themesIds;
+		this.themes = themes;
 		this.name = name;
-		this.teachersIds = teachersIds;
+		this.teacherIds = teacherIds;
 	}
 
 	public List<Long> getEvaluationIds() {
@@ -29,12 +32,12 @@ public class ModuleDTO extends EntityDTO {
 		this.evaluationIds = evaluationIds;
 	}
 
-	public List<Long> getThemesIds() {
-		return themesIds;
+	public Set<Theme> getThemes() {
+		return themes;
 	}
 
-	public void setThemesIds(List<Long> themesIds) {
-		this.themesIds = themesIds;
+	public void setThemes(Set<Theme> themes) {
+		this.themes = themes;
 	}
 
 	public String getName() {
@@ -45,12 +48,14 @@ public class ModuleDTO extends EntityDTO {
 		this.name = name;
 	}
 
-	public List<Long> getTeachersIds() {
-		return teachersIds;
+	public List<Long> getTeacherIds() {
+		return teacherIds;
 	}
 
-	public void setTeachersIds(List<Long> teachersIds) {
-		this.teachersIds = teachersIds;
+	public void setTeacherIds(List<Long> teacherIds) {
+		this.teacherIds = teacherIds;
 	}
+
 	
+
 }

@@ -18,7 +18,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 	protected ModuleService moduleService;
 	
 	@Inject
-	protected AccountService studentService;
+	protected AccountService accountService;
 	
 	@Override
 	public Academy toEntity(AcademyDTO dto) {
@@ -36,7 +36,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		}
 		academy.setEdName(dto.getEdName());
 		academy.setModules(dto.getModules());
-		academy.setStudents(dto.getStudentsIds().stream().map(studentId -> studentService.get(studentId)).collect(Collectors.toSet()));
+		academy.setStudents(dto.getStudentsIds().stream().map(studentId -> accountService.get(studentId)).collect(Collectors.toSet()));
 		academy.setStatus(dto.getStatus());
 		academy.setWarning(dto.getWarning());  		  		 //GONCALO
 		academy.setUsefulInfo(dto.getUsefulInfo());   		 //GONCALO
@@ -63,7 +63,7 @@ public class AcademyConverter extends EntityConverter<Academy, AcademyDTO> {
 		academyDTO.setEdName(entity.getEdName());
 		academyDTO.setStatus(entity.getStatus());
 		academyDTO.setModules(entity.getModules());
-		academyDTO.setStudentsIds(entity.getStudents().stream().map(students -> students.getId()).collect(Collectors.toList()));
+		academyDTO.setStudentsIds(entity.getStudents().stream().map(student -> student.getId()).collect(Collectors.toList()));
 		academyDTO.setWarning(entity.getWarning());  		 	//GONCALO
 		academyDTO.setUsefulInfo(entity.getUsefulInfo());     	//GONCALO
 		academyDTO.setAcademyType(entity.getAcademyType());	  	//GONCALO

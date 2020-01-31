@@ -36,6 +36,7 @@ public class Academy extends EntityRoot {
     private String usefulInfo;       //GONÇALO
     private String academyType;		 //GONÇALO
     
+    
     public Academy() {}
     
     public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
