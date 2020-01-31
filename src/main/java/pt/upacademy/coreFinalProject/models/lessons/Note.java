@@ -1,5 +1,6 @@
 package pt.upacademy.coreFinalProject.models.lessons;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,6 +29,7 @@ public class Note extends EntityRoot {
 	private long accountId;
 	private long lessonId;
 	private String title;
+	@Column(length = 4000)
 	private String description;
 
 	public long getEditionId() {
