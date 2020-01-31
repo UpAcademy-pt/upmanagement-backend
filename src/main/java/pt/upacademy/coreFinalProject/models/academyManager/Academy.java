@@ -35,11 +35,13 @@ public class Academy extends EntityRoot {
     private String warning;    		 //GONÇALO
     private String usefulInfo;       //GONÇALO
     private String academyType;		 //GONÇALO
+    @OneToMany(fetch = FetchType.EAGER)
+	private Set<AccountAcademy> teachers;
     
     public Academy() {}
     
     public Academy(String client, LocalDate startDate, LocalDate endDate, String edName, 
-    	Set<Module> modules, Set<AccountAcademy> students, Status status, String warning, String usefulInfo) {
+    	Set<Module> modules, Set<AccountAcademy> students, Status status, String warning, String usefulInfo, Set<AccountAcademy> teachers) {
 
 		this.setClient(client);
 		this.setStartDate(startDate);
@@ -51,9 +53,18 @@ public class Academy extends EntityRoot {
 		this.setWarning(warning);  			//GONÇALO
 		this.setUsefulInfo(usefulInfo);		//GONÇALO
 		this.setAcademyType(usefulInfo);    //GONÇALO
+		this.setTeachers(teachers);
 		
     }
     
+
+	public Set<AccountAcademy> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(Set<AccountAcademy> teachers) {
+		this.teachers = teachers;
+	}
 
 	public Status getStatus() {
 		return status;
