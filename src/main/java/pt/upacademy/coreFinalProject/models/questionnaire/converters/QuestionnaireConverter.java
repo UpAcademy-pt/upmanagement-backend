@@ -24,7 +24,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		}
 		questionnaire.setQuestionList(
 				dto.getQuestionList().stream().map(e -> new Question(
-				questionnaire, e.getQuestion(), e.getaType(), e.getOptions(), e.getRightAnswer()
+				e.getId() > 0 ? e.getId() : 0, questionnaire, e.getQuestion(), e.getaType(), e.getOptions(), e.getRightAnswer()
 				)).collect(Collectors.toSet()));
 		questionnaire.setName(dto.getName());
 		questionnaire.setAccountId(dto.getAccountId());
@@ -33,7 +33,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaire.setViewPrivacy(dto.getViewPrivacy());
 		questionnaire.setAnswerList(
 				dto.getAnswerList().stream().map(a -> new Answer(
-				questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0
+				a.getId() > 0 ? a.getId() : 0, questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0
 				)).collect(Collectors.toSet()));
 		questionnaire.setScore(dto.getScore());
 		questionnaire.setTemplateId(dto.getTemplateId());
