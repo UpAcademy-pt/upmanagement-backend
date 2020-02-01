@@ -73,7 +73,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setTemplateId(entity.getTemplateId());
 		questionnaireDTO.setCreateDate(entity.getCreateDate());
 		questionnaireDTO.setLastModifiedDate(entity.getLastModifiedDate());
-		questionnaireDTO.setTemplate(entity.isTemplate());
+		questionnaireDTO.setTemplate(entity.getTemplate());
 		return questionnaireDTO;
 	}
 	
@@ -107,7 +107,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 						quest.getTemplateId(),
 						quest.getCreateDate(),
 						quest.getLastModifiedDate(),
-						quest.isTemplate()
+						quest.getTemplate()
 						)
 						).collect(Collectors.toList());
 	}

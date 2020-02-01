@@ -1,6 +1,7 @@
 package pt.upacademy.coreFinalProject.models.questionnaire;
 
 
+import java.util.Arrays;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -55,6 +56,7 @@ public class Questionnaire extends EntityRoot{
 		this.editPrivacy = editPrivacy;
 		this.viewPrivacy = viewPrivacy;
 		this.templateId = templateId;
+		this.template = template;
 	}
 
 	public Questionnaire(long id, String name, Qtype qType, String[] viewPrivacy) {
@@ -136,7 +138,7 @@ public class Questionnaire extends EntityRoot{
 		this.templateId = templateId;
 	}
 
-	public boolean isTemplate() {
+	public boolean getTemplate() {
 		return template;
 	}
 
@@ -144,6 +146,14 @@ public class Questionnaire extends EntityRoot{
 		this.template = template;
 	}
 
-	
+	public void calculateScore() {
+		double score = this.getAnswerList().stream().filter(answer -> {
+			int[] rightAnswer = this.getQuestionList().stream().filter(question -> question.getId() == answer.getQuestionId())
+					.findFirst().orElse(null).getRightAnswer();
+			return Arrays.equals(Arrays.stream(answer.getAnswer()).mapToInt(Integer::parseInt).toArray(), rightAnswer);
+		}).count() / (double)this.getAnswerList().size();
+		setScore((int)(score * 100.0));
+	}
+
 	
 }
