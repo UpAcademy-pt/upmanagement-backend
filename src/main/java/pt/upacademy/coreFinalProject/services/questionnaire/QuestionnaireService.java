@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import pt.upacademy.coreFinalProject.models.questionnaire.Qtype;
 import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
 import pt.upacademy.coreFinalProject.repositories.questionnaire.QuestionnaireRepository;
 import pt.upacademy.coreFinalProject.services.core.EntityService;
@@ -36,7 +37,9 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 	
 	@Override
 	public void update(Questionnaire questionnaire) {
-		questionnaire.calculateScore();
+		if (questionnaire.getqType().equals(Qtype.QUIZ)) {
+			questionnaire.calculateScore();
+		}
 		repository.editEntity(questionnaire);
 	}
 	
