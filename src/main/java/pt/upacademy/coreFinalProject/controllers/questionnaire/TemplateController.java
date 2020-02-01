@@ -19,14 +19,15 @@ import pt.upacademy.coreFinalProject.services.questionnaire.TemplateService;
 @RequestScoped
 public class TemplateController extends EntityController<TemplateService, TemplateRepository, Template>{
 
-	@Inject
-	private QuestionnaireConverter questionnaireConverter;
+//	@Inject
+//	private QuestionnaireConverter questionnaireConverter;
+	
 	
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public QuestionnaireDTO getQuestionnaireFromTemplate(@PathParam("id") long id) {
-		return questionnaireConverter.toDTO(service.get(id)); 
+	public Template getQuestionnaireFromTemplate(@PathParam("id") long id) {
+		return service.get(id); 
 	}
 	
 }
