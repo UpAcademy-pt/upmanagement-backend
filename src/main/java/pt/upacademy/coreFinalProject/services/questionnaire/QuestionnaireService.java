@@ -34,5 +34,10 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 		});		
 	}
 	
+	@Override
+	public void update(Questionnaire questionnaire) {
+		questionnaire.calculateScore();
+		repository.editEntity(questionnaire);
+	}
 	
 }
