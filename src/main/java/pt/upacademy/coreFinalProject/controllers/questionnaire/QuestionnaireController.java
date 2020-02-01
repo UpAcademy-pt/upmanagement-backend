@@ -49,12 +49,15 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
 //	}
 	
 	@POST
-	@Path("/{id}")
+	@Path("query")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String create(@QueryParam("id") List<String> userIds, QuestionnaireDTO dto) {
+	public String create(
+			@QueryParam("id") List<String> userIds,
+			@QueryParam("template") boolean template,
+			QuestionnaireDTO dto) {
 		
-		service.createWithAccountId(userIds, converter.toEntity(dto));
+		service.createWithAccountId(userIds, template, converter.toEntity(dto));
 		return "Done";
 	}
 	

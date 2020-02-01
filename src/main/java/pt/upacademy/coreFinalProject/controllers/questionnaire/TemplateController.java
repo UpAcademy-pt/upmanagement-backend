@@ -25,8 +25,7 @@ public class TemplateController extends EntityControllerDTO<QuestionnaireService
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
     public List<QuestionnaireDTO> getAllTemplates() {
-		return converter.listToDTO(service.getAllTemplates());
-							
+		return converter.listToDTO(service.getAllTemplates());					
     }
 	
 	@GET
