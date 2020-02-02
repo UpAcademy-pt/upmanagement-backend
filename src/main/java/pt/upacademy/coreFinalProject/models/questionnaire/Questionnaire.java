@@ -148,9 +148,9 @@ public class Questionnaire extends EntityRoot{
 
 	public void calculateScore() {
 		double score = this.getAnswerList().stream().filter(answer -> {
-			int[] rightAnswer = this.getQuestionList().stream().filter(question -> question.getId() == answer.getQuestionId())
+			String[] rightAnswer = this.getQuestionList().stream().filter(question -> question.getId() == answer.getQuestionId())
 					.findFirst().orElse(null).getRightAnswer();
-			return Arrays.equals(Arrays.stream(answer.getAnswer()).mapToInt(Integer::parseInt).toArray(), rightAnswer);
+			return Arrays.equals(answer.getAnswer(), rightAnswer);
 		}).count() / (double)this.getAnswerList().size();
 		setScore((int)(score * 100.0));
 	}

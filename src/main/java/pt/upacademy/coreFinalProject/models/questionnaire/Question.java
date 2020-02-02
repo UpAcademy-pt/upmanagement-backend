@@ -20,11 +20,11 @@ public class Question extends EntityRoot {
 	private String question;
 	private AnswerType aType;
 	private String [] options;
-	private int[] rightAnswer;
+	private String[] rightAnswer;
 
 	public Question() {}
 	
-	public Question(long id, Questionnaire questionnaire, String question, AnswerType aType, String[] options, int[] rightAnswer) {
+	public Question(long id, Questionnaire questionnaire, String question, AnswerType aType, String[] options, String[] rightAnswer) {
 		setId(id);
 		this.questionnaire = questionnaire;
 		this.question = question;
@@ -66,11 +66,11 @@ public class Question extends EntityRoot {
 		this.options = list;
 	}
 
-	public int[] getRightAnswer() {
+	public String[] getRightAnswer() {
 		return rightAnswer;
 	}
 	
-	public void setRightAnswer(int[] rightAnswer) {
+	public void setRightAnswer(String[] rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
 

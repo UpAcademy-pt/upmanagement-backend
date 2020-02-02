@@ -9,11 +9,11 @@ public class QuestionDTO extends EntityDTO {
 	private String question;
 	private AnswerType aType;
 	private String[] options;
-	private int[] rightAnswer;
+	private String[] rightAnswer;
 	
 	public QuestionDTO() {}
 
-	public QuestionDTO(long id, long questionnarieId, String question, AnswerType aType, String[] options, int[] rightAnswer) {
+	public QuestionDTO(long id, long questionnarieId, String question, AnswerType aType, String[] options, String[] rightAnswer) {
 		setId(id);
 		this.questionnarieId = questionnarieId;
 		this.question = question;
@@ -46,11 +46,11 @@ public class QuestionDTO extends EntityDTO {
 		this.options = options;
 	}
 
-	public int[] getRightAnswer() {
+	public String[] getRightAnswer() {
 		return rightAnswer;
 	}
 	
-	public void setRightAnswer(int[] rightAnswer) {
+	public void setRightAnswer(String[] rightAnswer) {
 		this.rightAnswer = rightAnswer;
 	}
 	
