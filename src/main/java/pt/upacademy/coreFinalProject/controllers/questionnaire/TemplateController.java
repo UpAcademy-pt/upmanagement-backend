@@ -12,9 +12,12 @@ import javax.ws.rs.core.MediaType;
 import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnaireDTO;
+import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnairePreviewDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.converters.QuestionnaireConverter;
 import pt.upacademy.coreFinalProject.repositories.questionnaire.QuestionnaireRepository;
 import pt.upacademy.coreFinalProject.services.questionnaire.QuestionnaireService;
+
+
 
 
 @Path("questionnaire/template")
@@ -24,8 +27,8 @@ public class TemplateController extends EntityControllerDTO<QuestionnaireService
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-    public List<QuestionnaireDTO> getAllTemplates() {
-		return converter.listToDTO(service.getAllTemplates());					
+    public List<QuestionnairePreviewDTO> getAllTemplates() {
+		return converter.questListToPreviewDTO(service.getAllTemplates());					
     }
 	
 	@GET
