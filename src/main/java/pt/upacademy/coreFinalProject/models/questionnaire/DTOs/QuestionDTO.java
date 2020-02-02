@@ -10,16 +10,18 @@ public class QuestionDTO extends EntityDTO {
 	private AnswerType aType;
 	private String[] options;
 	private int[] rightAnswer;
+	private int orderNumber;
 	
 	public QuestionDTO() {}
 
-	public QuestionDTO(long id, long questionnarieId, String question, AnswerType aType, String[] options, int[] rightAnswer) {
+	public QuestionDTO(long id, long questionnarieId, String question, AnswerType aType, String[] options, int[] rightAnswer, int orderNumber) {
 		setId(id);
 		this.questionnarieId = questionnarieId;
 		this.question = question;
 		this.aType = aType;
 		this.options = options;
 		this.rightAnswer = rightAnswer;
+		this.orderNumber = orderNumber;
 	}
 
 	public String getQuestion() {
@@ -60,6 +62,14 @@ public class QuestionDTO extends EntityDTO {
 	
 	public void setQuestionnarieId(long questionnarieId) {
 		this.questionnarieId = questionnarieId;
+	}
+
+	public int getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(int orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 	
 }

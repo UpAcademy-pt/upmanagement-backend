@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 
+import pt.upacademy.coreFinalProject.models.questionnaire.Qtype;
 import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
 import pt.upacademy.coreFinalProject.repositories.core.EntityRepository;
 
@@ -31,6 +32,11 @@ public class QuestionnaireRepository extends EntityRepository<Questionnaire>{
 	
 	public List<Questionnaire> getAllTemplates() {
 		return entityManager.createNamedQuery(Questionnaire.GET_ALL_TEMPLATES, Questionnaire.class).getResultList();
+	
+	}
+	
+	public List<Questionnaire> getAllQuizzesByAccountId(long id) {
+		return entityManager.createNamedQuery(Questionnaire.GET_ALL_QUIZZES, Questionnaire.class).setParameter("type", Qtype.QUIZ).setParameter("id", id).getResultList();
 	
 	}
 	
