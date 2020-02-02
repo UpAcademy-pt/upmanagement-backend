@@ -9,11 +9,12 @@ public class QuestionnairePreviewDTO extends EntityDTO{
 	private Qtype qType;
 	private String[] editPrivacy;
 	private String[] viewPrivacy;
+	private int score;
 
 	public QuestionnairePreviewDTO() {}
 
 	public QuestionnairePreviewDTO(long id, String name, Qtype qType, String[] editPrivacy, String[] viewPrivacy,
-			long createDate, long lastModifiedDate) {
+			long createDate, long lastModifiedDate, int score) {
 		setId(id);
 		setCreateDate(createDate);
 		setLastModifiedDate(lastModifiedDate);
@@ -21,6 +22,7 @@ public class QuestionnairePreviewDTO extends EntityDTO{
 		this.qType = qType;
 		this.editPrivacy = editPrivacy;
 		this.viewPrivacy = viewPrivacy;
+		this.score = score;
 	}
 
 	public String getName() {
@@ -53,6 +55,14 @@ public class QuestionnairePreviewDTO extends EntityDTO{
 
 	public void setViewPrivacy(String[] viewPrivacy) {
 		this.viewPrivacy = viewPrivacy;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 	
 }

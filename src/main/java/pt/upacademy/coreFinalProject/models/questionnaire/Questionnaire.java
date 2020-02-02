@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,7 +22,8 @@ import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS EMPTY"),
 	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY"),
 	@NamedQuery(name = Questionnaire.GET_ALL_TEMPLATES, query = "SELECT q FROM Questionnaire q WHERE q.template = true"),
-	@NamedQuery(name = Questionnaire.GET_TEMPLATE_BY_ID, query = "SELECT q FROM Questionnaire q WHERE q.template = true AND q.id = :id")
+	@NamedQuery(name = Questionnaire.GET_TEMPLATE_BY_ID, query = "SELECT q FROM Questionnaire q WHERE q.template = true AND q.id = :id"),
+	@NamedQuery(name = Questionnaire.GET_ALL_QUIZZES, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY AND q.qType = :type")
 })
 public class Questionnaire extends EntityRoot{
 
@@ -29,6 +32,7 @@ public class Questionnaire extends EntityRoot{
 	public static final String GET_ALL_ANSWERED_QUESTIONNAIRES = "getAllAnsweredQuestionnaires";
 	public static final String GET_ALL_TEMPLATES = "getAllTemplates";
 	public static final String GET_TEMPLATE_BY_ID = "getTemplateById";
+	public static final String GET_ALL_QUIZZES = "getAllQuizzes";
 	private static final long serialVersionUID = 1L;
 		
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
@@ -37,6 +41,7 @@ public class Questionnaire extends EntityRoot{
 	private long accountId;
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private Set<Answer> answerList;
+	@Enumerated(EnumType.STRING)
 	private Qtype qType;
 	private String[] editPrivacy;
 	private String[] viewPrivacy;

@@ -31,6 +31,11 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 	
 	}
 	
+	public List<Questionnaire> getAllQuizzesByAccountId(long id) {
+		return repository.getAllQuizzesByAccountId(id);
+	
+	}
+	
 	public Questionnaire getTemplateById(long id) {
 		return repository.getTemplateById(id);
 	}

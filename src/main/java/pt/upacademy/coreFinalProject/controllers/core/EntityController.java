@@ -28,6 +28,8 @@ public abstract class EntityController<S extends EntityService<R, E>, R extends 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Collection<E> get() {
+		System.out.println("ENTROUUU");
+
 		return service.get();
 	}
 	
@@ -42,6 +44,8 @@ public abstract class EntityController<S extends EntityService<R, E>, R extends 
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String create(E entity) {
+		System.out.println("ENTROUUU");
+
 		service.create(entity);
 		return "Create Done!";
 	}

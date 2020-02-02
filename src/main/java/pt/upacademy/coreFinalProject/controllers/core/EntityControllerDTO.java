@@ -47,6 +47,7 @@ public abstract class EntityControllerDTO<S extends EntityService<R, E>, R exten
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public D get(@PathParam("id") long id) {
+		System.out.println("ENTROUUU");
 		return converter.toDTO(service.get(id));
 	}
 	
@@ -63,6 +64,8 @@ public abstract class EntityControllerDTO<S extends EntityService<R, E>, R exten
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response create(D user) {
 		try {
+			System.out.println("ENTROUUU");
+
 			service.create(converter.toEntity(user));
 			return Response.ok().build();
 		} catch (Exception e) {
