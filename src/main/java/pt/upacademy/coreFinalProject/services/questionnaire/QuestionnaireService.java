@@ -25,7 +25,19 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 		return repository.getAnsweredQuestionnairesByAccountId(id);
 	}
 	
-	public void createWithAccountId(List<String> userIds, Questionnaire quest) {
+	public void createWithAccountId(List<String> userIds, boolean template, Questionnaire quest) {
+		
+		System.out.println(template);
+		System.out.println(template);
+		if (template) {
+			quest.setTemplate(true);
+			long templateId = create(quest);
+			System.out.println(templateId);
+			quest.setTemplateId(templateId);
+		}
+		quest.setTemplate(false);
+		
+		
 		List<Long> userIdsLong = userIds.stream().map(Long::valueOf).collect(Collectors.toList());
 		List<Long> accountIds = accountQuestionnaireService.getAccountIdListByUserList(userIdsLong);
 		accountIds.stream().forEach(id -> {

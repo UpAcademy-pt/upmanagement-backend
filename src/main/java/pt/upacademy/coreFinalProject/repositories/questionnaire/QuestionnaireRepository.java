@@ -35,8 +35,13 @@ public class QuestionnaireRepository extends EntityRepository<Questionnaire>{
 	}
 	
 	public Questionnaire getTemplateById(long id) {
-		return entityManager.createNamedQuery(Questionnaire.GET_ALL_TEMPLATES, Questionnaire.class).setParameter("id", id).getResultList().get(0);
-		
+		List<Questionnaire> list = entityManager.createNamedQuery(Questionnaire.GET_ALL_TEMPLATES, Questionnaire.class).setParameter("id", id).getResultList();
+		System.out.println(list);
+		if (list.isEmpty()) {
+			return null;
+		} else {
+		return list.get(0);
+		}
 	}
 	
 }
