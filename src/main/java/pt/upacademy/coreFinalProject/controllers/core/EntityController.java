@@ -52,7 +52,6 @@ public abstract class EntityController<S extends EntityService<R, E>, R extends 
 		
 	}
 	
-	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
