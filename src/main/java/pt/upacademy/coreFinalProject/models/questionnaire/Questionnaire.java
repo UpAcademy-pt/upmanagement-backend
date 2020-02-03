@@ -22,7 +22,7 @@ import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS EMPTY"),
 	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY"),
 	@NamedQuery(name = Questionnaire.GET_ALL_TEMPLATES, query = "SELECT q FROM Questionnaire q WHERE q.template = true"),
-	@NamedQuery(name = Questionnaire.GET_TEMPLATE_BY_ID, query = "SELECT q FROM Questionnaire q WHERE q.template = true AND q.id = :id"),
+	@NamedQuery(name = Questionnaire.GET_TEMPLATE_BY_ID, query = "SELECT q FROM Questionnaire q WHERE q.template = true AND q.id = (:id)"),
 	@NamedQuery(name = Questionnaire.GET_ALL_QUIZZES, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY AND q.qType = :type")
 })
 public class Questionnaire extends EntityRoot{

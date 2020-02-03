@@ -37,7 +37,7 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 	}
 	
 	public Questionnaire getTemplateById(long id) {
-		return repository.getTemplateById(id);
+		return repository.getEntity(id);
 	}
 	
 	public void createWithAccountId(List<String> userIds, boolean template, Questionnaire quest) {
