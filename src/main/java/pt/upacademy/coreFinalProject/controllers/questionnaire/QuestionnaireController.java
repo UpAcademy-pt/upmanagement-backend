@@ -1,6 +1,8 @@
 package pt.upacademy.coreFinalProject.controllers.questionnaire;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -11,6 +13,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+
+import org.apache.commons.lang3.ArrayUtils;
 
 import pt.upacademy.coreFinalProject.controllers.core.EntityControllerDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
@@ -66,7 +70,16 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
 	@Produces(MediaType.APPLICATION_JSON)
     public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(@PathParam("id") long id) {
 		return converter.questListToPreviewDTO(service.getAnsweredQuestionnairesByAccountId(id));
-			
+    }
+	
+	@GET
+    @Path("/{role}")
+	@Produces(MediaType.APPLICATION_JSON)
+    public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(@PathParam("role") String role) {
+		return converter.questListToPreviewDTO(service.getAnsweredQuestionnaires().stream().filter(el -> ArrayUtils.contains(
+				el.getViewPrivacy(), role)).collect(Collectors.toList()));
+				
+		//Arrays.stream(el.getViewPrivacy()).contains(role)));
     }
 	
 	@GET
