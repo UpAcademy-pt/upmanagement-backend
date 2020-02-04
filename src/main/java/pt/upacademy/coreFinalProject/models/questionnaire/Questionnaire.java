@@ -48,11 +48,12 @@ public class Questionnaire extends EntityRoot{
 	private int score;
 	private long templateId;
 	private boolean template;
+	private long answerTime;
 	
 	public Questionnaire() {}
 
 	public Questionnaire(long id, Set<Question> questionList, String name, long accountId, Qtype qType, String[] editPrivacy,
-			String[] viewPrivacy, long templateId, boolean template) {
+			String[] viewPrivacy, long templateId, boolean template, long answerTime) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -62,6 +63,7 @@ public class Questionnaire extends EntityRoot{
 		this.viewPrivacy = viewPrivacy;
 		this.templateId = templateId;
 		this.template = template;
+		this.answerTime = answerTime;
 	}
 
 	public Questionnaire(long id, String name, Qtype qType, String[] viewPrivacy) {
@@ -71,6 +73,14 @@ public class Questionnaire extends EntityRoot{
 		this.viewPrivacy = viewPrivacy;
 	}
 	
+	public long getAnswerTime() {
+		return answerTime;
+	}
+
+	public void setAnswerTime(long answerTime) {
+		this.answerTime = answerTime;
+	}
+
 	public Set<Question> getQuestionList() {
 		return questionList;
 	}
@@ -155,10 +165,10 @@ public class Questionnaire extends EntityRoot{
 		double score = this.getAnswerList().stream().filter(answer -> {
 			String[] rightAnswer = this.getQuestionList().stream().filter(question -> question.getId() == answer.getQuestionId())
 					.findFirst().orElse(null).getRightAnswer();
-			return Arrays.equals(answer.getAnswer(), rightAnswer);
+			answer.verifyAnswer(rightAnswer);
+			return answer.isRightAnswer();
 		}).count() / (double)this.getAnswerList().size();
 		setScore((int)(score * 100.0));
 	}
-
 	
 }

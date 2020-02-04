@@ -33,13 +33,14 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaire.setViewPrivacy(dto.getViewPrivacy());
 		questionnaire.setAnswerList(
 				dto.getAnswerList().stream().map(a -> new Answer(
-				a.getId() > 0 ? a.getId() : 0, questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0
+				a.getId() > 0 ? a.getId() : 0, questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0, a.isRightAnswer()
 				)).collect(Collectors.toSet()));
 		questionnaire.setScore(dto.getScore());
 		questionnaire.setTemplateId(dto.getTemplateId());
 		questionnaire.setCreateDate(dto.getCreateDate());
 		questionnaire.setLastModifiedDate(dto.getLastModifiedDate());
 		questionnaire.setTemplate(dto.isTemplate());
+		questionnaire.setAnswerTime(dto.getAnswerTime());
 		return questionnaire;
 	}
 	
@@ -69,6 +70,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 			answerDTO.setQuestionnaireId(a.getQuestionaire().getId());
 			answerDTO.setAnswer(a.getAnswer());
 			answerDTO.setQuestionId(a.getQuestionId());
+			answerDTO.setRightAnswer(a.isRightAnswer());
 			return answerDTO;
 		}).collect(Collectors.toSet()));
 		questionnaireDTO.setScore(entity.getScore());
@@ -76,6 +78,7 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaireDTO.setCreateDate(entity.getCreateDate());
 		questionnaireDTO.setLastModifiedDate(entity.getLastModifiedDate());
 		questionnaireDTO.setTemplate(entity.getTemplate());
+		questionnaireDTO.setAnswerTime(entity.getAnswerTime());
 		return questionnaireDTO;
 	}
 	
@@ -104,13 +107,15 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 								answer.getId(),
 								answer.getQuestionaire().getId(),
 								answer.getAnswer(),
-								answer.getQuestionId()
+								answer.getQuestionId(),
+								answer.isRightAnswer()
 								)).collect(Collectors.toSet()),
 						quest.getScore(),
 						quest.getTemplateId(),
 						quest.getCreateDate(),
 						quest.getLastModifiedDate(),
-						quest.getTemplate()
+						quest.getTemplate(),
+						quest.getAnswerTime()
 						)
 						).collect(Collectors.toList());
 	}
