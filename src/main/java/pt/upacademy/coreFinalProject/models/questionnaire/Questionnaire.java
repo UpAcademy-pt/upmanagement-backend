@@ -1,7 +1,6 @@
 package pt.upacademy.coreFinalProject.models.questionnaire;
 
 
-import java.util.Arrays;
 import java.util.Set;
 
 import javax.persistence.CascadeType;

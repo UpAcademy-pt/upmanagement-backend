@@ -73,7 +73,7 @@ public class QuestionnaireController extends EntityControllerDTO<QuestionnaireSe
     }
 	
 	@GET
-    @Path("/{role}")
+    @Path("/role/{role}")
 	@Produces(MediaType.APPLICATION_JSON)
     public List<QuestionnairePreviewDTO> getAnsweredQuestionnairesByAccountId(@PathParam("role") String role) {
 		return converter.questListToPreviewDTO(service.getAnsweredQuestionnaires().stream().filter(el -> ArrayUtils.contains(

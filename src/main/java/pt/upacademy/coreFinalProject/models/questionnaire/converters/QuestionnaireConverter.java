@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
+
 import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.models.questionnaire.Answer;
 import pt.upacademy.coreFinalProject.models.questionnaire.Question;
@@ -12,9 +14,19 @@ import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.AnswerDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnaireDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnairePreviewDTO;
+import pt.upacademy.coreFinalProject.repositories.core.UserRepository;
+import pt.upacademy.coreFinalProject.repositories.questionnaire.AccountQuestionnaireRepository;
+import pt.upacademy.coreFinalProject.repositories.questionnaire.QuestionnaireRepository;
 
 public class QuestionnaireConverter extends EntityConverter<Questionnaire, QuestionnaireDTO>{
 
+	@Inject
+	AccountQuestionnaireRepository accountQuestionnaireRepository;
+	
+	@Inject
+	UserRepository userRepository;
+	
+	
 	@Override
 	public Questionnaire toEntity(QuestionnaireDTO dto) {
 		Questionnaire questionnaire = new Questionnaire();
@@ -121,7 +133,11 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 	}
 	
 	public List<QuestionnairePreviewDTO> questListToPreviewDTO(List<Questionnaire> entities){
-		return entities.stream().map(quest -> new QuestionnairePreviewDTO(
+		
+		return entities.stream().map(quest -> {
+			long userId = accountQuestionnaireRepository.getEntity(quest.getAccountId()).getId();
+			String userName = userRepository.getEntity(userId).getName();
+			QuestionnairePreviewDTO questPreviewDTO = new QuestionnairePreviewDTO(
 				quest.getId(),
 				quest.getName(),
 				quest.getqType(),
@@ -129,8 +145,12 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 				quest.getViewPrivacy(),
 				quest.getCreateDate(),
 				quest.getLastModifiedDate(),
-				quest.getScore()
-				)).collect(Collectors.toList());
+				quest.getScore(),
+				quest.getAccountId(),
+				userName
+				);
+			return questPreviewDTO;
+			}).collect(Collectors.toList());
 	}
 	
 }

@@ -37,6 +37,7 @@ public abstract class EntityController<S extends EntityService<R, E>, R extends 
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public E get(@PathParam("id") long id) {
+		System.out.println(service.get(id));
 		return service.get(id);
 	}
 	
