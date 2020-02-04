@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.inject.Inject;
+
 import pt.upacademy.coreFinalProject.models.core.converters.EntityConverter;
 import pt.upacademy.coreFinalProject.models.questionnaire.Answer;
 import pt.upacademy.coreFinalProject.models.questionnaire.Question;
@@ -12,9 +14,19 @@ import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.AnswerDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnaireDTO;
 import pt.upacademy.coreFinalProject.models.questionnaire.DTOs.QuestionnairePreviewDTO;
+import pt.upacademy.coreFinalProject.repositories.core.UserRepository;
+import pt.upacademy.coreFinalProject.repositories.questionnaire.AccountQuestionnaireRepository;
+import pt.upacademy.coreFinalProject.repositories.questionnaire.QuestionnaireRepository;
 
 public class QuestionnaireConverter extends EntityConverter<Questionnaire, QuestionnaireDTO>{
 
+	@Inject
+	AccountQuestionnaireRepository accountQuestionnaireRepository;
+	
+	@Inject
+	UserRepository userRepository;
+	
+	
 	@Override
 	public Questionnaire toEntity(QuestionnaireDTO dto) {
 		Questionnaire questionnaire = new Questionnaire();
@@ -23,7 +35,8 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		}
 		questionnaire.setQuestionList(
 				dto.getQuestionList().stream().map(e -> new Question(
-				e.getId() > 0 ? e.getId() : 0, questionnaire, e.getQuestion(), e.getaType(), e.getOptions(), e.getRightAnswer()
+				e.getId() > 0 ? e.getId() : 0, questionnaire, e.getQuestion(), e.getaType(), e.getOptions(),
+						e.getRightAnswer(), e.getOrderNumber()
 				)).collect(Collectors.toSet()));
 		questionnaire.setName(dto.getName());
 		questionnaire.setAccountId(dto.getAccountId());
@@ -32,13 +45,14 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 		questionnaire.setViewPrivacy(dto.getViewPrivacy());
 		questionnaire.setAnswerList(
 				dto.getAnswerList().stream().map(a -> new Answer(
-				a.getId() > 0 ? a.getId() : 0, questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0
+				a.getId() > 0 ? a.getId() : 0, questionnaire, a.getAnswer(), a.getQuestionId() > 0 ? a.getQuestionId() : 0, a.isRightAnswer()
 				)).collect(Collectors.toSet()));
 		questionnaire.setScore(dto.getScore());
 		questionnaire.setTemplateId(dto.getTemplateId());
 		questionnaire.setCreateDate(dto.getCreateDate());
 		questionnaire.setLastModifiedDate(dto.getLastModifiedDate());
 		questionnaire.setTemplate(dto.isTemplate());
+		questionnaire.setAnswerTime(dto.getAnswerTime());
 		return questionnaire;
 	}
 	
@@ -53,7 +67,8 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 			questionDTO.setQuestion(e.getQuestion());
 			questionDTO.setaType(e.getaType());
 			questionDTO.setOptions(e.getOptions());
-			questionDTO.setRightAnswer(e.getRightAnswer());			
+			questionDTO.setRightAnswer(e.getRightAnswer());
+			questionDTO.setOrderNumber(e.getOrderNumber());
 			return questionDTO;
 		}).collect(Collectors.toSet()));
 		questionnaireDTO.setName(entity.getName());
@@ -67,13 +82,15 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 			answerDTO.setQuestionnaireId(a.getQuestionaire().getId());
 			answerDTO.setAnswer(a.getAnswer());
 			answerDTO.setQuestionId(a.getQuestionId());
+			answerDTO.setRightAnswer(a.isRightAnswer());
 			return answerDTO;
 		}).collect(Collectors.toSet()));
 		questionnaireDTO.setScore(entity.getScore());
 		questionnaireDTO.setTemplateId(entity.getTemplateId());
 		questionnaireDTO.setCreateDate(entity.getCreateDate());
 		questionnaireDTO.setLastModifiedDate(entity.getLastModifiedDate());
-		questionnaireDTO.setTemplate(entity.isTemplate());
+		questionnaireDTO.setTemplate(entity.getTemplate());
+		questionnaireDTO.setAnswerTime(entity.getAnswerTime());
 		return questionnaireDTO;
 	}
 	
@@ -89,7 +106,8 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 								question.getQuestion(),
 								question.getaType(),
 								question.getOptions(),
-								question.getRightAnswer()
+								question.getRightAnswer(),
+								question.getOrderNumber()
 								)).collect(Collectors.toSet()),
 						quest.getName(),
 						quest.getAccountId(),
@@ -101,27 +119,38 @@ public class QuestionnaireConverter extends EntityConverter<Questionnaire, Quest
 								answer.getId(),
 								answer.getQuestionaire().getId(),
 								answer.getAnswer(),
-								answer.getQuestionId()
+								answer.getQuestionId(),
+								answer.isRightAnswer()
 								)).collect(Collectors.toSet()),
 						quest.getScore(),
 						quest.getTemplateId(),
 						quest.getCreateDate(),
 						quest.getLastModifiedDate(),
-						quest.isTemplate()
+						quest.getTemplate(),
+						quest.getAnswerTime()
 						)
 						).collect(Collectors.toList());
 	}
 	
 	public List<QuestionnairePreviewDTO> questListToPreviewDTO(List<Questionnaire> entities){
-		return entities.stream().map(quest -> new QuestionnairePreviewDTO(
+		
+		return entities.stream().map(quest -> {
+			long userId = accountQuestionnaireRepository.getEntity(quest.getAccountId()).getUserId();
+			String userName = userRepository.getEntity(userId).getName();
+			QuestionnairePreviewDTO questPreviewDTO = new QuestionnairePreviewDTO(
 				quest.getId(),
 				quest.getName(),
 				quest.getqType(),
 				quest.getEditPrivacy(),
 				quest.getViewPrivacy(),
 				quest.getCreateDate(),
-				quest.getLastModifiedDate()
-				)).collect(Collectors.toList());
+				quest.getLastModifiedDate(),
+				quest.getScore(),
+				quest.getAccountId(),
+				userName
+				);
+			return questPreviewDTO;
+			}).collect(Collectors.toList());
 	}
 	
 }

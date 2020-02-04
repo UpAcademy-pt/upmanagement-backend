@@ -19,18 +19,20 @@ public class Question extends EntityRoot {
 	private Questionnaire questionnaire;
 	private String question;
 	private AnswerType aType;
-	private String [] options;
-	private int[] rightAnswer;
+	private String[] options;
+	private String[] rightAnswer;
+	private int orderNumber;
 
 	public Question() {}
-
-	public Question(long id, Questionnaire questionnaire, String question, AnswerType aType, String[] options, int[] rightAnswer) {
+	
+	public Question(long id, Questionnaire questionnaire, String question, AnswerType aType, String[] options, String[] rightAnswer, int orderNumber) {
 		setId(id);
 		this.questionnaire = questionnaire;
 		this.question = question;
 		this.aType = aType;
 		this.options = options;
 		this.rightAnswer = rightAnswer;
+		this.orderNumber = orderNumber;
 	}
 
 	public Questionnaire getQuestionnaire() {
@@ -66,12 +68,20 @@ public class Question extends EntityRoot {
 		this.options = list;
 	}
 
-	public int[] getRightAnswer() {
+	public String[] getRightAnswer() {
 		return rightAnswer;
 	}
 	
-	public void setRightAnswer(int[] rightAnswer) {
+	public void setRightAnswer(String[] rightAnswer) {
 		this.rightAnswer = rightAnswer;
+	}
+
+	public int getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(int orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 
 }

@@ -1,5 +1,7 @@
 package pt.upacademy.coreFinalProject.models.questionnaire;
 
+import java.util.Arrays;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -18,22 +20,34 @@ public class Answer extends EntityRoot{
 	private Questionnaire questionnaire;
 	private String[] answer;
 	private long questionId;
+	private boolean rightAnswer;
 
 	public Answer() {}
 
-	public Answer(long id, Questionnaire questionnaire, String[] answer, long questionId) {
+	public Answer(long id, Questionnaire questionnaire, String[] answer, long questionId, boolean rightAnswer) {
 		setId(id);
 		this.questionnaire = questionnaire;
 		this.answer = answer;
 		this.questionId = questionId;
+		this.rightAnswer = rightAnswer;
 	}
 	
-	public Answer(Questionnaire questionnaire, String[] answer, long questionId) {
+	public Answer(Questionnaire questionnaire, String[] answer, long questionId, boolean rightAnswer) {
 		this.questionnaire = questionnaire;
 		this.answer = answer;
 		this.questionId = questionId;
+		this.rightAnswer = rightAnswer;
 	}
 
+	
+	public boolean isRightAnswer() {
+		return rightAnswer;
+	}
+	
+	public void setRightAnswer(boolean rightAnswer) {
+		this.rightAnswer = rightAnswer;
+	}
+	
 	public Questionnaire getQuestionaire() {
 		return questionnaire;
 	}
@@ -57,6 +71,9 @@ public class Answer extends EntityRoot{
 	public void setQuestionId(long questionId) {
 		this.questionId = questionId;
 	}
-
 	
+	public void verifyAnswer(String[] rightAnswer) {
+		setRightAnswer(Arrays.equals(getAnswer(), rightAnswer));
+	}
+
 }

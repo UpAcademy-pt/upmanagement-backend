@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import pt.upacademy.coreFinalProject.models.questionnaire.Qtype;
 import pt.upacademy.coreFinalProject.models.questionnaire.Questionnaire;
 import pt.upacademy.coreFinalProject.repositories.questionnaire.QuestionnaireRepository;
 import pt.upacademy.coreFinalProject.services.core.EntityService;
@@ -23,6 +24,26 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
     
 	public List<Questionnaire> getAnsweredQuestionnairesByAccountId(long id) {
 		return repository.getAnsweredQuestionnairesByAccountId(id);
+	}
+	
+	public List<Questionnaire> getAnsweredQuestionnaires() {
+		return repository.getAnsweredQuestionnaires();
+	}
+	
+	
+	
+	public List<Questionnaire> getAllTemplates() {
+		return repository.getAllTemplates();
+	
+	}
+	
+	public List<Questionnaire> getAllQuizzesByAccountId(long id) {
+		return repository.getAllQuizzesByAccountId(id);
+	
+	}
+	
+	public Questionnaire getTemplateById(long id) {
+		return repository.getEntity(id);
 	}
 	
 	public void createWithAccountId(List<String> userIds, boolean template, Questionnaire quest) {
@@ -46,12 +67,12 @@ public class QuestionnaireService extends EntityService<QuestionnaireRepository,
 		});		
 	}
 	
-	public List<Questionnaire> getAllTemplates() {
-		return repository.getAllTemplates();
-	
+	@Override
+	public void update(Questionnaire questionnaire) {
+		if (questionnaire.getqType().equals(Qtype.QUIZ)) {
+			questionnaire.calculateScore();
+		}
+		repository.editEntity(questionnaire);
 	}
-	
-	public Questionnaire getTemplateById(long id) {
-		return repository.getTemplateById(id);
-	}
+
 }

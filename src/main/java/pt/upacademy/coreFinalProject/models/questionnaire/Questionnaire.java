@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,17 +19,21 @@ import pt.upacademy.coreFinalProject.models.core.EntityRoot;
 @NamedQueries({ 
 	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q"),
 	@NamedQuery(name = Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS EMPTY"),
-	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY"),
+	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES_BY_ACCOUNT_ID, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY"),
+	@NamedQuery(name = Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, query = "SELECT q FROM Questionnaire q WHERE q.answerList IS NOT EMPTY"),
 	@NamedQuery(name = Questionnaire.GET_ALL_TEMPLATES, query = "SELECT q FROM Questionnaire q WHERE q.template = true"),
-	@NamedQuery(name = Questionnaire.GET_TEMPLATE_BY_ID, query = "SELECT q FROM Questionnaire q WHERE q.template = true AND q.id = :id")
+	@NamedQuery(name = Questionnaire.GET_TEMPLATE_BY_ID, query = "SELECT q FROM Questionnaire q WHERE q.template = true AND q.id = (:id)"),
+	@NamedQuery(name = Questionnaire.GET_ALL_QUIZZES, query = "SELECT q FROM Questionnaire q WHERE q.accountId = :id AND q.answerList IS NOT EMPTY AND q.qType = :type")
 })
 public class Questionnaire extends EntityRoot{
 
 	public static final String GET_ALL_QUESTIONNAIRES = "getAllQuestionnaire";
 	public static final String GET_ALL_QUESTIONNAIRES_NOT_ANSWERED = "getAllQuestionnaireNotAnswered";
+	public static final String GET_ALL_ANSWERED_QUESTIONNAIRES_BY_ACCOUNT_ID = "getAllAnsweredQuestionnairesByAccountId";
 	public static final String GET_ALL_ANSWERED_QUESTIONNAIRES = "getAllAnsweredQuestionnaires";
 	public static final String GET_ALL_TEMPLATES = "getAllTemplates";
 	public static final String GET_TEMPLATE_BY_ID = "getTemplateById";
+	public static final String GET_ALL_QUIZZES = "getAllQuizzes";
 	private static final long serialVersionUID = 1L;
 		
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
@@ -36,17 +42,19 @@ public class Questionnaire extends EntityRoot{
 	private long accountId;
 	@OneToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "questionnaire", fetch = FetchType.EAGER)
 	private Set<Answer> answerList;
+	@Enumerated(EnumType.STRING)
 	private Qtype qType;
 	private String[] editPrivacy;
 	private String[] viewPrivacy;
 	private int score;
 	private long templateId;
 	private boolean template;
+	private long answerTime;
 	
 	public Questionnaire() {}
 
 	public Questionnaire(long id, Set<Question> questionList, String name, long accountId, Qtype qType, String[] editPrivacy,
-			String[] viewPrivacy, long templateId, boolean template) {
+			String[] viewPrivacy, long templateId, boolean template, long answerTime) {
 		setId(id);
 		this.questionList = questionList;
 		this.name = name;
@@ -55,6 +63,8 @@ public class Questionnaire extends EntityRoot{
 		this.editPrivacy = editPrivacy;
 		this.viewPrivacy = viewPrivacy;
 		this.templateId = templateId;
+		this.template = template;
+		this.answerTime = answerTime;
 	}
 
 	public Questionnaire(long id, String name, Qtype qType, String[] viewPrivacy) {
@@ -64,6 +74,14 @@ public class Questionnaire extends EntityRoot{
 		this.viewPrivacy = viewPrivacy;
 	}
 	
+	public long getAnswerTime() {
+		return answerTime;
+	}
+
+	public void setAnswerTime(long answerTime) {
+		this.answerTime = answerTime;
+	}
+
 	public Set<Question> getQuestionList() {
 		return questionList;
 	}
@@ -136,7 +154,7 @@ public class Questionnaire extends EntityRoot{
 		this.templateId = templateId;
 	}
 
-	public boolean isTemplate() {
+	public boolean getTemplate() {
 		return template;
 	}
 
@@ -144,6 +162,14 @@ public class Questionnaire extends EntityRoot{
 		this.template = template;
 	}
 
-	
+	public void calculateScore() {
+		double score = this.getAnswerList().stream().filter(answer -> {
+			String[] rightAnswer = this.getQuestionList().stream().filter(question -> question.getId() == answer.getQuestionId())
+					.findFirst().orElse(null).getRightAnswer();
+			answer.verifyAnswer(rightAnswer);
+			return answer.isRightAnswer();
+		}).count() / (double)this.getAnswerList().size();
+		setScore((int)(score * 100.0));
+	}
 	
 }
