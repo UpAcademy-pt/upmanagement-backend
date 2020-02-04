@@ -25,8 +25,14 @@ public class QuestionnaireRepository extends EntityRepository<Questionnaire>{
 		return entityManager.createNamedQuery(Questionnaire.GET_ALL_QUESTIONNAIRES_NOT_ANSWERED, Questionnaire.class).setParameter("id", id).getResultList();
 	}
 	
+	
 	public List<Questionnaire> getAnsweredQuestionnairesByAccountId(long id) {
-		return entityManager.createNamedQuery(Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, Questionnaire.class).setParameter("id", id).getResultList();
+		return entityManager.createNamedQuery(Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES_BY_ACCOUNT_ID, Questionnaire.class).setParameter("id", id).getResultList();
+	
+	}
+	
+	public List<Questionnaire> getAnsweredQuestionnaires() {
+		return entityManager.createNamedQuery(Questionnaire.GET_ALL_ANSWERED_QUESTIONNAIRES, Questionnaire.class).getResultList();
 	
 	}
 	
